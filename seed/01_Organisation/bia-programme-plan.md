@@ -2,7 +2,7 @@
 
 # BIA programme plan: Marschkamp, 2026 cycle
 
-Written for the demo pack, not in any prior record. Owner: Franziska Dohm (BCM Officer). As of Tuesday, 10 November 2026.
+Written for the demo pack, not in any prior record. Owner: Franziska Dohm (BCM Officer). As of Wednesday, 11 November 2026.
 
 **Cycle rule:** every process's BIA is reviewed every 12 months, and sooner after a significant change (a new
 customer contract, a new system, an organisational change). A review is due 12 months after its last interview. A review that confirms the record unchanged keeps its record; the next review is then due 12 months after the confirmation.
@@ -10,7 +10,7 @@ customer contract, a new system, an organisational change). A review is due 12 m
 **Where:** every prior-cycle interview was held at the Marschkamp plant (headquarters). Which sites a process
 runs at is not stated in the records.
 
-| Record | Process | Process owner | Last interview | Review due | Status on 10 Nov 2026 |
+| Record | Process | Process owner | Last interview | Review due | Status on 11 Nov 2026 |
 |---|---|---|---|---|---|
 | 1.1 | Raw material procurement | Jens Harder | 13 Feb 2025 | 13 Feb 2026 | overdue; re-interview planned for Tue 17 Nov 2026 |
 | 1.2 | Production and processing | Henning Barsch | 24 Sep 2024 | 24 Sep 2025 | overdue; re-interview held Mon 9 Nov 2026, not yet analysed |

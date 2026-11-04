@@ -645,6 +645,10 @@ async def mailbox(action: cl.Action) -> None:
 # header callback stays for the owner's tailnet proxy; behind nginx no request carries the header.
 ROOT = config.run.root_path
 REFUSED = "This link opens no chat. Scan the code on the screen to get your own chat."
+#: t764: where Start goes first, and the cookie the tour sets on "Don't show again". The tour and
+#: its cookie are its own session's; the door only reads it; the exit comes back by `<root>/new`.
+TOUR = "https://ai4bcm.org/nemo/tour/"
+TOUR_OFF = "nemo_tour_off"
 
 
 async def stage_qr(request: Request) -> Response:
@@ -714,7 +718,10 @@ async def landing(request: Request) -> Response:
 
     t290: with his switch on (nginx's `X-Nemo-Gate: on`) and no gate cookie yet, the page asks the
     password. A wrong one gets the page again, 401: no room, no email kept, no cookie. The right
-    one gets the room and the cookie nginx's `auth_request` asks `gate` about."""
+    one gets the room and the cookie nginx's `auth_request` asks `gate` about.
+
+    t764: Start then goes to the tour, cookies and all, unless the phone holds `TOUR_OFF`. Here and
+    never in `_sent_to`: the tour's exit is `stage_qr`, which would send the phone straight back."""
     secret = await asyncio.to_thread(stage_door.gate_secret)
     now = time.time()
     gated = (request.headers.get(stage_door.GATE_HEADER) == "on"
@@ -742,6 +749,8 @@ async def landing(request: Request) -> Response:
                 if await asyncio.to_thread(_still_there, code):
                     await asyncio.to_thread(stage_door.keep_contact, run, code, email)
     response = _sent_to(code)
+    if request.cookies.get(TOUR_OFF) != "1":
+        response.headers["location"] = TOUR
     if gated and secret:
         response.set_cookie(stage_door.GATE_COOKIE, stage_door.gate_cookie(secret, now),
                             max_age=stage_door.GATE_DAYS * 86400, path="/", secure=True,
