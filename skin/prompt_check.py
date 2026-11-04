@@ -2258,13 +2258,32 @@ def _says_day(seen: str, day: datetime.date) -> bool:
     return bool(re.search(rf"\b(?:{day.day} {month}|{month} {day.day})\b", seen))
 
 
-def _planned_for(seen: str, day: datetime.date) -> bool:
-    """596: code's card over a move before his tap (`led_turn.INVITE_MOVE`) plans it for `day`."""
+#: 723: a span of hours: no file holds an end hour, so no card over a move may state one
+_END_HOUR = re.compile(r"\b\d\d?:\d\d\s*(?:[–—-]|to\b|until\b|till\b)\s*\d\d?:\d\d\b", re.I)
+
+
+def _card_states_end_hour(seen: str) -> bool:
+    """723: a line of code's card over a move (`led_turn.INVITE_MOVE`) states a span of hours."""
     import led_turn
 
-    head, tail = led_turn.INVITE_MOVE.split("\n")[-1].split("{when}")
-    return any(_says_day(norm(line.removeprefix(head).split(tail.split("{was}")[0])[0]), day)
-               for line in seen.splitlines() if line.startswith(head))
+    opening, rest = led_turn.INVITE_MOVE.split("{activity}")
+    head = rest.split("{when}")[0]
+    return any(line.startswith(opening) and head in line and _END_HOUR.search(line)
+               for line in seen.splitlines())
+
+
+def _planned_for(seen: str, day: datetime.date) -> bool:
+    """596: code's card over a move before his tap (`led_turn.INVITE_MOVE`) would move it to `day`.
+    723: the day in its {when}; its "It is planned for" holds the day it leaves. A card stating
+    an end hour is refused."""
+    import led_turn
+
+    opening, rest = led_turn.INVITE_MOVE.split("{activity}")
+    head, rest = rest.split("{when}")
+    tail = rest.split("{was}")[0]
+    return any(_says_day(norm(line.partition(head)[2].partition(tail)[0]), day)
+               for line in seen.splitlines()
+               if line.startswith(opening) and not _card_states_end_hour(line))
 
 
 def _on_server(turn: Turn, day: datetime.date) -> list[str]:
@@ -2308,6 +2327,8 @@ def _moved_invitation(turn: Turn, seed: Path, cid: str) -> list[str]:
         out.append(f"no invitation moved to {day:%A} {day.day} {day:%B %Y}")
     elif moved and before and not any(a.get("id") == before[-1].get("id") for a in moved):
         out.append("a second invitation, not the one event moved")
+    if _card_states_end_hour(shown(turn)):
+        out.append("the card states an end hour no file holds")
     weekday = f"{day:%A}".lower()
     out += [f"says {w}: {day.day} {day:%B %Y} is a {weekday}"
             for w in dict.fromkeys(_WEEKDAY.findall(norm(shown(turn)))) if w != weekday]

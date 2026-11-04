@@ -249,6 +249,12 @@ _TITLED = re.compile(r"(?:(?<![\w-])(?!The\b)[A-Z][\w-]*"
                      r"[\s*_]*\Z")
 #: where a word opens a sentence or a line ("- ", "1. ", "**" before it), so "the" is "The"
 _OPENS = re.compile(r"(?:\A|[.!?]\s+|\n)[\s>*_#\d.)-]*\Z")
+#: t762: an address. A markdown link's target, whole with no space, that reads as one: `[x](Name)`
+#: and `[x](Mr. Name)` do not. Or a bare URL or room path, which ends before a quote mark, a table's
+#: bar, a closing bracket or a sentence's stop. A comma inside it stays: a fragment's range has one.
+_ADDRESS = re.compile(r"(?<=\]\()(?=[^\s)]*[/#?.]|[a-z+.-]+:)(?:[^\s()]|\([^\s()]*\))+(?=\))"
+                      r"|(?<![\w/.-])(?:(?i:[a-z][a-z+.-]*://|www\.|mailto:)|(?:/chat)?/w/)"
+                      r"(?:[^\s()<>\[\]|\"“”]|\([^\s()]*\))+(?<![.,;:!?])")
 
 
 def people(folder: Path) -> dict[str, str]:
@@ -365,9 +371,22 @@ def functions_only(text: str, folder: Path, tap: bool = False,
             ("'" if role(m).endswith("s") else "'s") if m["s"] else ""), part)
         return part
 
+    def line_said(line: str) -> str:
+        """t762: an address is held out as a mark, so a name's "the <function>" never lands in it
+        and what stands before a name still reads as text; the mark goes back as it went in."""
+        kept: list[str] = []
+
+        def mark(m: re.Match[str]) -> str:
+            kept.append(m[0])
+            return f"\0{len(kept) - 1}\0"
+        out = handover.outside_quotes(_ADDRESS.sub(mark, line), changed)
+        for n, address in enumerate(kept):
+            out = out.replace(f"\0{n}\0", address)
+        return out
+
     def lines(part: str) -> str:
-        return "\n".join(line if line.lstrip().startswith(">")
-                         else handover.outside_quotes(line, changed) for line in part.split("\n"))
+        return "\n".join(line if line.lstrip().startswith(">") else line_said(line)
+                         for line in part.split("\n"))
 
     out, at = [], 0
     for fenced in _FENCED.finditer(text):  # a transcript in its fence: his words, as he said them

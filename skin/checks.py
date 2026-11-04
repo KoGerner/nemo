@@ -500,6 +500,9 @@ RETRY_CHANGED = "the retry changed {path}, which had passed; nemo kept it as the
 RETRY_FIX = "the retry's fix to a failed item of {path} was taken"
 RETRY_OVER = ("the retry changed {path} beyond its failed items; "
               "nemo kept it as the first try had it")
+#: 761: the retry's rows for the list go on to the check; nothing else of its change to the list
+RETRY_ROWS = ("the retry's rows for the list code handed went on to the check; "
+              "the rest of its change to {path} nemo kept as the first try had it")
 #: 536 (488, his standing rule): a graph answer is at most three plain lines, then code's link;
 #: 632: a line naming a must-cover item the drawn graph shows is not one of them
 GRAPH_LINES = 3
@@ -2657,21 +2660,40 @@ def _retry_reason(p: Place, first: dict[str, Any], again: dict[str, Any], kept: 
     return (RETRY_CHANGED if lost else RETRY_OVER).format(path=path)
 
 
-def retry(first: dict[str, Any], again: dict[str, Any], failed: list[Place]
-          ) -> tuple[dict[str, Any], list[dict[str, str]]]:
+def _owed_rows(first: dict[str, Any], again: dict[str, Any], rows: list[Any],
+               must_cover: Iterable[str]) -> list[Any]:
+    """761: the retry's new `details` items, not in `rows`, naming an item of the list code handed
+    that no `details` item of the first try names. None where the first try drew no `details`."""
+    if "details" not in first:
+        return []
+    owed = [_said(m) for m in covered(" ".join(map(str, as_list(first["details"]))), must_cover)[0]]
+    said = as_list(again.get("details"))
+    return [y for i, y in enumerate(said) if y not in rows and y not in said[:i]
+            and any(m in _said(str(y)) for m in owed)]
+
+
+def retry(first: dict[str, Any], again: dict[str, Any], failed: list[Place],
+          must_cover: Iterable[str] = ()) -> tuple[dict[str, Any], list[dict[str, str]]]:
     """A retry after a send-back may change only what failed. 650 (658): the arguments that stand
     are the retry's, with every place it changed outside the failed ones as the first try had it
     (each such change a drop, `_retry_reason`), so its fix to a failed place stands beside the first
-    try's parts that passed."""
+    try's parts that passed. 761: a new `details` item naming an item of the list code handed that
+    no `details` item of the first try names stands too, after those kept."""
     kept: dict[str, Any] = again
     changed = _changes(first, again, (), failed)
     held = {p: {int(f[len(p)]) for f in failed if len(f) > len(p) and f[:len(p)] == p}
             for p in changed}
     for p, fails in held.items():
         kept = _keep(kept, first, p, fails)
-    return kept, [{"text": ".".join(map(str, p)) or "the call",
-                   "reason": _retry_reason(p, first, again, kept, fails)}
-                  for p, fails in held.items()]
+    rows = as_list(kept.get("details"))
+    new = _owed_rows(first, again, rows, must_cover)
+    stands = {**kept, "details": [*rows, *new]} if new else kept
+    return stands, [{"text": ".".join(map(str, p)) or "the call",
+                     "reason": RETRY_ROWS.format(path="details")
+                     if new and p == ("details",) and not fails
+                     else _retry_reason(p, first, again, kept, fails)}  # 660's read, without them
+                    for p, fails in held.items()
+                    if p != ("details",) or stands.get("details") != again.get("details")]
 
 
 def passed(first: dict[str, Any], failed: Iterable[str]) -> dict[str, Any]:

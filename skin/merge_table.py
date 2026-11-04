@@ -68,7 +68,7 @@ PEOPLE_ID, SITES_ID, FOUNDATION_ID = "people", "sites", "job:power-and-network"
 JOBS: tuple[tuple[str, str, tuple[str, ...], str | None], ...] = (
     ("ERP and warehouse control", ICT,
      ("CSB ERP Marschkamp", "MAWI ERP Breitenburg", "Automated warehouse control"),
-     "production orders, batches and the chilled warehouse"),
+     "orders, stock and deliveries"),
     ("Weighing and labelling", ICT,
      ("Merchandise management and price-labelling system", "Price-labelling devices"),
      "weighs and price-labels every pack"),

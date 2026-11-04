@@ -115,7 +115,8 @@ SHAPES: tuple[Shape, ...] = (
           "rows with no workaround stated",
           rf"^(?:Yes,\s+{_COUNT}\b(?:\s+\w+){{0,3}}\s+(?:have|has)\s+no\s+workarounds?\b|No\b)"),
     Shape("due", "Which BIAs are due", "the due list, with the date as of today", (
-        "per process: last BIA, due date, overdue or not, re-interview status",),
+        "one list item for each due BIA, each with its last BIA, due date, overdue or not, "
+        "re-interview status",),
         "how many others are current",
         r"\b\d{1,2}\s+(?:" + "|".join(checks._MONTHS) + r")\w*\b|\b\d{4}-\d\d-\d\d\b"),
     Shape("next_bia", "Which BIA next, and why", "the process and the planned date", (

@@ -111,7 +111,7 @@ import json
 import re
 import threading
 import time
-from collections.abc import Callable, Iterable
+from collections.abc import Callable, Collection, Iterable
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import date, datetime
@@ -258,8 +258,17 @@ INVITE_BACK = ("nemo checked your {name} call: {why}. Call it again; an argument
 INVITE_UNASKED = ("he asks who, a question about people, not for an invitation: answer it from the "
                   "fact_ tools (fact_last_participants, fact_invitees)")
 INVITE_CARD = "The interview on {activity}: {when}."
-#: 588 (I1): a move before his tap, which alone moves it (U5): where it would go, never "moved"
-INVITE_MOVE = "The interview on {activity}.\n\nNow planned for {when}. Tap to move it from {was}."
+#: 588 (I1): a move before his tap, which alone moves it (U5): where it would go, never "moved".
+#: 723: who it would go to, by function, and nothing blocked yet; `prompt_check._planned_for` reads
+#: {when} between its neighbours here, and {was} carries no weekday: the scorer reads every weekday
+#: a card says as the asked day's. {was} carries its hour only over the same day
+INVITE_MOVE = ("The interview on {activity} would move to {when}. It is planned for {was}. The "
+               "invitation would go to: {functions}. {calendar}")
+INVITE_NOT_BLOCKED = ("Your calendar is not blocked yet. Tap to block it and put the invitation in "
+                      "Drafts; nothing is sent.")
+#: 723: over an event his tap placed (`drafts.invited`), which that tap moves
+INVITE_PLACED = ("Your calendar still holds the old time. Tap to move it and put a new invitation "
+                 "in Drafts; nothing is sent.")
 MOVE_INVITE = "move_invite"
 MOVE_TAP = "Move the invitation" + core.MAIL_MARK
 MOVED = "The interview is in nemo's calendar: {when}."
@@ -1560,7 +1569,7 @@ class _Run:
                                               checks.RETRY_CHANGED.format(path="the template")}]
         else:
             standing, refused = checks.retry(first_args, args, was.failed or [
-                (k,) for k in first_args])
+                (k,) for k in first_args], self.must_cover)
         return self._done([(first_name, standing, None)], refused)
 
     def _check(self, name: str, args: dict[str, Any]) -> checks.CheckedCall:
@@ -1586,7 +1595,8 @@ class _Run:
             shapes.apply(checked, _briefing_first(
                 failed, str(checked.args.get("answer") or ""), self.folder)
                 if name == "briefing" else failed, said)
-            if stale := _stale(name, said, checked.args, self.folder, self.brief.focus):
+            if stale := _stale(name, said, checked.args, self.folder, self.brief.focus,
+                               {len(items) for items in self.brief.lists.values()}):
                 shapes.apply(checked, [(("answer",), stale)], said)
         if why := _verdict_off(self.brief.verdict, name, said):
             shapes.apply(checked, [why], said)
@@ -1865,8 +1875,14 @@ class _Run:
         merged = {**merged, "activity": activity, **_day(now)}
         before = self._again(INVITATION, lambda a: a["arguments"]["activity"] == merged["activity"])
         text = (INVITE_CARD if was == now else INVITE_MOVE).format(
-            activity=core.map_name(self.folder, merged["activity"]), when=_when(now, weekday=True),
-            was=_when(was))
+            activity=core.map_name(self.folder, merged["activity"]), when=_starts(now[0]),
+            was=f"{was[0].day} {was[0]:%B %Y}"
+                + (f" at {was[0]:%H:%M}" if was[0].date() == now[0].date() else ""),
+            functions=", ".join(dict.fromkeys(
+                core.holder_function(self.folder, {"holder": role, "to": person})
+                for person, role, _ in core.invitees(self.folder, merged["activity"]))),
+            calendar=INVITE_PLACED if drafts.invited(self.folder, merged["activity"])
+            else INVITE_NOT_BLOCKED)
         return self._turn(text, MODEL_LED, INVITATION, merged, [], [],
                           [self._artefact(INVITATION, merged, before)],
                           [(MOVE_TAP, {"kind": MOVE_INVITE, "activity": merged["activity"],
@@ -2052,15 +2068,17 @@ def _briefing_first(failed: list[tuple[shapes.Place, str]], first: str, folder: 
 
 
 def _stale(name: str, said: dict[str, Any], kept: dict[str, Any], folder: Path,
-           activity: str | None) -> str | None:
+           activity: str | None, handed: Collection[int]) -> str | None:
     """658 (4): a first line whose count matched the points under it and no longer matches the
     points a drop left: its reason (`shapes.LISTED_OFF`), so it is dropped, never re-counted. 738: a
-    true mismatch count was never the points' (`shapes.true_mismatches`)."""
+    true mismatch count was never the points' (`shapes.true_mismatches`). 761: nor was a count equal
+    to a list code handed (`handed`, their lengths)."""
     lead = checks.LISTED.sub(lambda m: f"{shapes._n(m[1])} {m[2]}",
                              shapes._bare(str(kept.get("answer") or "")), count=1)
     was, left = (checks.as_list(a.get("details")) for a in (said, kept))
     shape, m = shapes.BY_NAME.get(name), checks.LISTED.search(lead)
-    if not m or len(left) == len(was) or shapes._listed(shape, lead, was) \
+    if not m or int(m[1]) in handed or len(left) == len(was) \
+            or shapes._listed(shape, lead, was) \
             or shapes.true_mismatches(lead, folder, activity):
         return None
     return shapes._listed(shape, lead, left) if left else shapes.LISTED_OFF.format(
@@ -2317,6 +2335,11 @@ def _when(slot: Slot, weekday: bool = False) -> str:
     start, end = slot
     return f"{f'{start:%A}, ' if weekday else ''}{start.day} {start:%B %Y}, " \
         f"{start:%H:%M}–{end:%H:%M}"
+
+
+def _starts(start: datetime) -> str:
+    """723: a card's day and hour, no end: no file holds one (`core.INTERVIEW_LENGTH` is code's)."""
+    return f"{start:%A}, {start.day} {start:%B %Y} at {start:%H:%M}"
 
 
 def _day(slot: Slot) -> dict[str, str]:
