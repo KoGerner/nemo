@@ -1,0 +1,18 @@
+:root {
+  /* nemo-own, not from Harbour: keep on a Harbour re-sync. A re-sync copies tokens/colors.css over
+     whole from the mirror, so these live in their own file, imported after it by harbour.css
+     (ticket 403 r2, r4 and r5, 8_nemo_design): chart A's five impact classes, one hue each; then
+     the graph's six resource kinds (tickets 354, 356; spec §12.14 F1), each a 4 px bar on its
+     boxes and the dot of its column heading, each at least 3:1 on white and grey. */
+  --color-class-financial:#b8470f;
+  --color-class-operational:#1f4e79;
+  --color-class-image:#6d5bd0;
+  --color-class-legal:#17795a;
+  --color-class-health:#5b6676;
+  --kind-people:#6d5bd0;
+  --kind-providers:#2e7d6b;
+  --kind-release:#9a5b8a;
+  --kind-equipment:#7a6a2e;
+  --kind-ict:#2f6fb0;
+  --kind-buildings:#0b1f3a;
+}

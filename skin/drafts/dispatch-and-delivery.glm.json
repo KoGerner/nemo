@@ -1,0 +1,518 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "dispatch-and-delivery",
+   "why": "The process's own interview: it describes the process, scores the full impact grid, sets MTPD/RTO and names fleet, staff and partner resources.",
+   "own_department": true
+  },
+  {
+   "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "order-picking",
+   "why": "Upstream process of dispatch-and-delivery: it prepares goods for loading, so its outage feeds directly into dispatch.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/24_09_25_returns-and-by-product-disposal-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "returns-and-by-product-disposal",
+   "why": "Shares the same vehicle fleet and fleet staff with dispatch-and-delivery (collections ride along in the course of a delivery), so it competes for the same resources.",
+   "own_department": false
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Loading the goods onto the lorry (sub-step, merged into the fixed BIA activity 'Goods dispatch and delivery')",
+   "owner": {
+    "name": "Henning Barsch",
+    "quote": "It is a core process, and its process owner is plant management.",
+    "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact health: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Scored by the interviewee for the whole dispatch-and-delivery process, which this sub-step belongs to.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Scored by the interviewee for the whole process ('Financial. No impact.').",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact legal: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Scored by the interviewee: no SLAs within the group and no defined delivery quantities.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Scored by the interviewee: switch to an external fleet and redundancy with the fleet department are possible.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 4.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Scored by the interviewee: deliveries can be made later up to 72 h, after that high yield problems.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "168 h",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "MTPD: >168 h.",
+    "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "Stated by the process owner; the grid's worst rating (4 at 168 h operational) is the only threshold touch, consistent with the stated MTPD past the last horizon.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "72 h",
+    "kind": "stated",
+    "quote": "RTO: 72 h.",
+    "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "Stated: 'The RTO (recovery time objective) of 72 hours for goods dispatch and delivery was set because up to that point deliveries can be made later.'",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "missing dispatch or route data.",
+    "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "No RPO was stated for the process; loading depends on current dispatch data, so a data currency of under 24 h is proposed.",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "Goods come from order picking, prepared for loading",
+     "asset_id": "",
+     "quote": "Its upstream process is order picking; it has no downstream process.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Vehicle fleet for the loaded lorries",
+     "asset_id": "vehicle-fleet",
+     "quote": "Vehicle fleet: Delivery is made with our own fleet, which consists of about 60 internal lorries across all sites.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Fleet staff do the loading",
+     "asset_id": "fleet-staff",
+     "quote": "The job covers loading and delivering raw materials and meat products.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "verified_quote": true
+    }
+   ]
+  },
+  {
+   "id": "A2",
+   "name": "Delivery with the company's own fleet to retail locations or warehouse sites (sub-step, merged into the fixed BIA activity 'Goods dispatch and delivery')",
+   "owner": {
+    "name": "Henning Barsch",
+    "quote": "It is a core process, and its process owner is plant management.",
+    "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Health of persons. A standstill causes no harm to persons. In words: 1 h –, 2 h none, 4 h none, 8 h none, 24 h none, 72 h none, 168 h none.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Scored by the interviewee for the whole dispatch-and-delivery process, which this sub-step belongs to.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Scored by the interviewee ('Financial. No impact.') and restated in the RTO rationale: 'causes no financial losses'.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact legal: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Scored by the interviewee: no SLAs within the group, no defined quantities that have to be delivered.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Scored by the interviewee: external fleet switch and fleet-department redundancy keep image impacts low.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 4.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Scored by the interviewee: 'Up to 72 h deliveries can be made later. After that, high yield problems are to be expected.'",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "168 h",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "MTPD: >168 h.",
+    "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "Stated by the process owner; only the operational category reaches the threshold 4 at 168 h.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "72 h",
+    "kind": "stated",
+    "quote": "The RTO (recovery time objective) of 72 hours for goods dispatch and delivery was set because up to that point deliveries can be made later. After that, high yield problems are to be expected.",
+    "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "Stated by the process owner with his rationale.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "missing dispatch or route data.",
+    "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "No RPO was stated; delivery depends on current route data, so under 24 h is proposed as a best judgement.",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "Own vehicle fleet of about 60 lorries",
+     "asset_id": "vehicle-fleet",
+     "quote": "Vehicle fleet: Delivery is made with our own fleet, which consists of about 60 internal lorries across all sites. Workaround: Resources from the central logistics fleet and from external carriers are possible at short notice.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Fleet staff for loading and delivery (10 in emergency operation)",
+     "asset_id": "fleet-staff",
+     "quote": "Roles. Fleet staff: 15 in normal operation, 10 in emergency operation, needed within 72 h, on site. The job covers loading and delivering raw materials and meat products.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Fleet supervisors, replaced by the plant manager in emergency operation",
+     "asset_id": "fleet-supervisors",
+     "quote": "Roles. Fleet supervisors: 1 in normal operation, 0 in emergency operation, needed within 72 h, on site. Workaround: The fleet supervisor is not needed in emergency operation. The plant manager takes over the tasks.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Vehicle workshops for servicing and maintaining the vehicles",
+     "asset_id": "",
+     "quote": "Partners. Vehicle workshops: The workshop partners for the Marschkamp fleet include internal and external partners, who are responsible for servicing and maintaining the vehicles.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Schlugge Lagerlogistik GmbH as a logistics partner",
+     "asset_id": "",
+     "quote": "Partners. Schlugge Lagerlogistik GmbH: What the firm covers is not described. Workaround: Moving to another partner. A short-term switch is possible.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "The same fleet and fleet staff are also used by returns collection, so they are a shared resource",
+     "asset_id": "fleet-staff",
+     "quote": "Ten fleet staff take over prioritised collections.",
+     "path": "07_Interviews/24_09_25_returns-and-by-product-disposal-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Goods must be made ready for loading by the upstream order-picking process",
+     "asset_id": "",
+     "quote": "After checking and release, the goods are made ready for the retail locations concerned and prepared for loading.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2024) gives 168 h by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "168 h (the method's rule over the grid, 2024)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "MTPD: >168 h.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "A2-MTPD-RULE",
+   "activity": "A2",
+   "about": "MTPD: the grid (2024) gives 168 h by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "168 h (the method's rule over the grid, 2024)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "MTPD: >168 h.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "C1",
+   "activity": "A2",
+   "about": "Impact of a fleet outage on the returns process vs. the dispatch process: the returns interview scores operational impacts 4 only at 168 h, while the dispatch interview scores operational 2 at 72 h and 4 at 168 h for the same fleet and staff.",
+   "sides": [
+    {
+     "claim": "Dispatch-and-delivery reaches operational level 2 at 72 h and level 4 at 168 h, giving RTO 72 h and MTPD >168 h.",
+     "quote": "Impact operational: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 4.",
+     "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "implies": {
+      "item_id": "A2.operational",
+      "value": "72 h: 2, 168 h: 4"
+     },
+     "verified_quote": true
+    },
+    {
+     "claim": "The returns process using the same fleet and staff stays at level 1 through 72 h and only reaches 4 at 168 h, suggesting the shared fleet tolerates longer outages at low impact.",
+     "quote": "Impact operational: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 4.",
+     "path": "07_Interviews/24_09_25_returns-and-by-product-disposal-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "implies": null,
+     "verified_quote": true
+    }
+   ],
+   "recommend": 0,
+   "why": "The dispatch interview is the process's own scored record and its 72 h rating drives the stated RTO, so its figures stand; the returns score concerns a different process and changes no figure here."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "No RPO was stated for the dispatch or route data the process needs.",
+   "ask": "How old may the dispatch and route data be at most before loading and delivery must stop?"
+  },
+  {
+   "activity": "A2",
+   "what": "The interview notes 'Note that the set-up times are limited' and an external-forwarder workaround without quantifying either.",
+   "ask": "How quickly can external forwarders actually take over, and what is the maximum set-up time you can bridge?"
+  },
+  {
+   "activity": "A1",
+   "what": "The interviewee said 'The process is relevant to the BCMS' while the same owner rated the twin production process 'not relevant'; the fixed activity list from last cycle's BIA should be confirmed.",
+   "ask": "Is the BIA activity list for this cycle exactly the one activity 'Goods dispatch and delivery' from record 1.4, into which loading and delivery merge?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "dispatch-and-delivery",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 45.3,
+  "usage": {
+   "completion_tokens": 6298,
+   "prompt_tokens": 32667,
+   "total_tokens": 38965,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 1734,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00804905,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00804905,
+    "upstream_inference_prompt_cost": 0.00490005,
+    "upstream_inference_completions_cost": 0.003149
+   }
+  },
+  "calls": [
+   {
+    "seconds": 45.3,
+    "usage": {
+     "completion_tokens": 6298,
+     "prompt_tokens": 32667,
+     "total_tokens": 38965,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 1734,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00804905,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00804905,
+      "upstream_inference_prompt_cost": 0.00490005,
+      "upstream_inference_completions_cost": 0.003149
+     }
+    }
+   }
+  ],
+  "cost": 0.008,
+  "made": "2026-09-22 18:13"
+ }
+}

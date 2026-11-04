@@ -1,0 +1,200 @@
+[project]
+name = "nemo"
+version = "2026.11.1"
+description = "The BIA workflow rebuilt: a five-stage walk over a typed, server-owned run protocol, spoken over MCP."
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+# The gauntlet toolchain, so a rebuilt venv is one command: `.venv/bin/pip install -e '.[dev]'`.
+# `gauntlet` itself is in here because `gate.sh` calls three of its console scripts
+# (`gauntlet-deps`, `gauntlet-crap`, `gauntlet-mutants`) out of this venv, not out of the pipx copy.
+# It is the local build machine, local only, so it arrives by path.
+# `pytest-playwright` was QA's: `tests/ui/` drove the demo skin in a real browser until ticket 165
+# retired it with the qa line (ADR-0038). Nothing here uses it now; taking it out of this list is
+# another ticket's edit, since 166 may change only `testpaths` and mypy `files` in this file.
+dev = [
+    "pytest", "pytest-bdd", "hypothesis", "coverage", "ruff", "mypy", "mutmut", "radon",
+    "import-linter",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# ---- the gauntlet python profile's thresholds, pasted from gauntlet-thresholds.toml ----
+# complexity <= 6, CRAP <= 6, coverage 100, no surviving mutant.
+
+# `pythonpath` is what lets the suite import the package before anything installs it.
+# `features` holds the specifier's scenarios.
+[tool.pytest.ini_options]
+testpaths = ["src", "features", "skin"]
+pythonpath = ["src"]
+markers = ["not-yet-built-ticket-15: the run_id binding ticket 15 owns; red here means unbuilt, not broken"]
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+skip_covered = true
+exclude_also = [
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "C901"]
+
+# The skin's own modules sit beside it, not under `src` (ADR-0025), so isort would call them
+# third-party and hoist them above `nemo`; as local-folder they keep the order the skin has (128).
+[tool.ruff.lint.isort]
+known-local-folder = [
+    "PROTOTYPE_*", "bia_figures", "test_*", "gap_fixture", "stage_door", "live_guard",
+    "demo_rooms", "plan_b",
+]
+
+# A reason per ignore; ticket 128 changes no behaviour, so a rule only a refactor meets waits here.
+[tool.ruff.lint.per-file-ignores]
+# Fixtures imported from another test module are used only as parameters: F401 and F811 by design.
+"skin/tests/*.py" = ["F401", "F811"]
+# C901 (79 functions): meeting it means splitting a function, a refactor, never ticket 128's.
+"skin/PROTOTYPE_bakeoff.py" = ["C901"]
+"skin/PROTOTYPE_chatbar.py" = ["C901"]
+"skin/PROTOTYPE_conversation_app.py" = ["C901"]
+"skin/PROTOTYPE_draft.py" = ["C901"]
+"skin/PROTOTYPE_fidelity.py" = ["C901"]
+"skin/PROTOTYPE_lanes.py" = ["C901"]
+"skin/PROTOTYPE_scenarios.py" = ["C901"]
+"skin/PROTOTYPE_words.py" = ["C901"]
+# C901: as above.
+# F402: `_keep_reservations`'s loop value `words`; that method never reads the `words` module.
+# E741: `l` is a generator's own local; renaming it is a code edit.
+"skin/PROTOTYPE_core.py" = ["C901", "F402", "E741"]
+# C901: as above.
+# B023: `close` is called inside the loop iteration that defines it, never later.
+"skin/PROTOTYPE_clocks.py" = ["C901", "B023"]
+"skin/tests/test_fidelity_walks.py" = ["C901"]
+"skin/tests/test_his_act.py" = ["C901"]
+"skin/tests/test_named_taps.py" = ["C901"]
+"skin/tests/test_nothing_long_prints.py" = ["C901"]
+"skin/tests/test_plain_words.py" = ["C901"]
+"skin/tests/test_risk_register.py" = ["C901"]
+"skin/tests/test_t109_turn_file.py" = ["C901"]
+"skin/tests/test_t118_reopened_chat.py" = ["C901"]
+"skin/tests/test_t96_named_at_source.py" = ["C901"]
+"skin/tests/test_taps.py" = ["C901"]
+# C901: as above.
+# E731: turning the assigned lambda into a `def` is a code edit.
+# E501: one test's name is longer than the line; renaming it changes the test's id.
+"skin/tests/test_fidelity.py" = ["C901", "E731", "E501"]
+# E501: two tests' names are longer than the line; renaming them changes the tests' ids.
+"skin/tests/test_scoring.py" = ["E501"]
+# C901: as above.
+# E741: `l` is a comprehension's own local; renaming it is a code edit.
+"skin/tests/test_whose_words.py" = ["C901", "E741"]
+# E741: `l` is a comprehension's own local; renaming it is a code edit.
+"skin/tests/test_new_activity.py" = ["E741"]
+# F402: the loop's `words` is local to one assertion loop that never reads the `words` module.
+"skin/tests/test_refusals.py" = ["F402"]
+# B023: `_tapped` calls the lambda at once, inside the iteration that made it.
+"skin/tests/test_t171_every_row_checkable.py" = ["B023"]
+# F841: `c = _c1(s)` stays for its call, which raises if C1 is missing; ruff's fix is unsafe.
+"skin/tests/test_t120_kept_figure_says_why.py" = ["F841"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.mypy]
+strict = true
+files = ["src", "skin"]
+# `nemo` is read from this tree's `src`, never from the venv's installed copy (which has no
+# py.typed), so `mypy skin` alone checks the skin against the same nemo the gate does (128).
+mypy_path = "src"
+# Tests are guarded by mutation, not by annotations.
+exclude = ["/test_[^/]*\\.py$"]
+
+# The skin's framework and web libraries live in the skin's own venv (skin/requirements.txt), never
+# this one (ADR-0001), so mypy finds no stubs for them here and each of their names is `Any` (128).
+[[tool.mypy.overrides]]
+module = ["chainlit", "chainlit.*", "fastapi", "fastapi.*", "httpx", "aiohttp"]
+ignore_missing_imports = true
+
+# The phone app, `skin/PROTOTYPE_conversation_app.py`. Its framework is `Any` here (above), so every
+# decorator it hands the app is untyped. This was `demo_skin/app.py`'s override (module `app`) until
+# 166 archived that file; 128 points it at the app that replaced it. Everything the skin *decides*
+# is `nemo.door`'s or `nemo.walk`'s, checked strictly there.
+[[tool.mypy.overrides]]
+module = "PROTOTYPE_conversation_app"
+disallow_untyped_decorators = false
+
+# The skin's modules read the names `PROTOTYPE_core` imports through it (`core.drafting`,
+# `core.TURN_ID`, `core.figures_deps`), and spelling each as a re-export is an edit to its import
+# lines, not an annotation (128).
+[[tool.mypy.overrides]]
+module = "PROTOTYPE_core"
+implicit_reexport = true
+
+# The dependency contract. A ticket that adds a module adds its name here, top first, and
+# `lint-imports` goes red on an import upwards. `ask` and `door` share a layer as independent
+# siblings (`:`): both are what the demo skin calls, and neither may import the other.
+[tool.importlinter]
+root_package = "nemo"
+
+# `exhaustive` is the half of this contract that holds for modules nobody has written yet. Until
+# ticket 28 the array below was a list of the modules somebody had remembered: `nemo.evidence`,
+# whose docstring promises it reaches neither disk nor clock nor network, and `nemo.text` were
+# outside the contract entirely, so `from nemo.ask import call_lane` in `evidence.py` took the
+# package's only socket with `lint-imports` KEPT. With `exhaustive`, a module that exists and is
+# not named here is itself a breach, so the hole cannot reopen by forgetting.
+#
+# `containers` is what `exhaustive` needs, and it is why the names below are bare: they are read
+# relative to `nemo`. Its one cost is that this package keeps each test module beside the code it
+# tests, and `exhaustive` counts those as children too — so they are ignored by name, one line per
+# module, no wildcards accepted here. A ticket adding `nemo.foo` therefore adds `foo` to `layers`
+# and `test_foo` to `exhaustive_ignores`; forgetting either is red rather than silent.
+[[tool.importlinter.contracts]]
+name = "The layers only import downwards"
+type = "layers"
+containers = ["nemo"]
+exhaustive = true
+exhaustive_ignores = [
+    "conftest",
+    "test_ask", "test_bia", "test_card", "test_conduct", "test_counts", "test_door",
+    "test_duration", "test_evidence",
+    "test_facts", "test_figures",
+    "test_handover", "test_impact", "test_interview", "test_lane", "test_layers",
+    "test_method", "test_next_step", "test_purity", "test_record", "test_referee",
+    "test_referee_question", "test_room_code", "test_room_store",
+    "test_terms", "test_text", "test_verbatim",
+    "test_seed", "test_seed_method",
+    "test_turn_file",
+    "test_views", "test_walk",
+]
+# Top first. `seed` is above `walk` because it asks the walk's own admission check about a
+# directory nobody has minted a room from yet, and nothing in the package asks it anything.
+# `evidence : impact` are the two stage-3 readers, siblings because neither knows the
+# other; the bottom layer is the seven modules that import nothing of this package at all.
+# `refusal` is one of them by design: it is the vocabulary the referee raises and the walk words,
+# and it sits below both so that neither has to import the other to name a finding (ticket 26).
+# `room_code` is another: it holds what a room code has to look like before any door will
+# create a folder for it, and the one wording of `Refused`, and it imports nothing but `re`.
+layers = ["seed : counts", "card : walk", "conduct", "handover", "ask : door",
+          "views : next_step", "figures", "referee : bia", "evidence : impact : facts",
+          "method : interview", "room_store", "record",
+          "duration : lane : refusal : room_code : terms : text : turn_file : verbatim"]
+
+[tool.mutmut]
+# The current spellings; the old `paths_to_mutate`/`tests_dir` warn on stderr of every process
+# that imports mutmut.
+source_paths = ["src/"]
+pytest_add_cli_args_test_selection = ["src/"]
+do_not_mutate = ["*/test_*.py", "*/__init__.py"]

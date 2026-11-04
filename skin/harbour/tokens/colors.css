@@ -1,0 +1,62 @@
+/* Harbour palette. Cream #faf6f1 and orange #ff3c00 are RETIRED — never use. */
+:root{
+  --color-harbour-grey:#f4f6f8;
+  --color-white:#ffffff;
+  --color-hairline:#d5dce5;
+  --color-navy:#0b1f3a;
+  --color-slate:#4a5a70;
+  --color-muted:#5c6b80;   /* darkened from #6b7a90, which was 4.03:1 on the grey page */
+  /* Amber is a FILL only, and only ever under navy text. It is never a text colour. */
+  --color-amber:#f2a900;
+  --color-amber-hover:#d99700;
+  /* The only exception: the "BCM" of the wordmark. Nothing else may use it. */
+  --color-amber-wordmark:#9a6700;
+  --color-highlight:#fde7b0;
+  /* Dark rust — the accent colour for TYPE and for accent strokes. */
+  --color-rust:#8a3a14;
+  --color-on-navy:#f4f6f8;        /* grey text on a navy fill (button hover); navy is never a card fill */
+
+  /* Featured card (peach). Navy is never a card fill. */
+  --color-peach:#fff0e8;
+  --color-peach-border:#ffcfb8;
+  --color-peach-text:#5a3a2c;
+  --color-peach-eyebrow:var(--color-rust);
+
+  /* Surfaces */
+  --surface-page:var(--color-harbour-grey);
+  --surface-card:var(--color-white);
+  --surface-feature:var(--color-peach);
+  --surface-input:var(--color-white);
+
+  /* Semantic text */
+  --text-heading-color:var(--color-navy);
+  --text-body-color:var(--color-slate);
+  --text-muted-color:var(--color-muted);
+  --text-accent-color:var(--color-rust);
+  --text-on-feature:var(--color-navy);            /* headings on the peach card */
+  --text-on-feature-muted:var(--color-peach-text); /* body on the peach card */
+  --text-on-feature-eyebrow:var(--color-peach-eyebrow);  /* #8a3a14 */
+  --border-on-feature:var(--color-peach-border);
+  --text-link:var(--color-navy);
+  --text-link-hover:var(--color-rust);
+
+  /* Borders */
+  --border-hairline:var(--color-hairline);
+  --border-strong:var(--color-navy);
+  --border-width-hairline:1px;
+  --border-width-strong:1.5px;
+
+  /* Action */
+  --action-primary-bg:var(--color-amber);
+  --action-primary-bg-hover:var(--color-amber-hover);
+  --action-primary-fg:var(--color-navy);   /* never white on amber */
+  --action-secondary-fg:var(--color-navy);
+  --action-secondary-border:var(--color-navy);
+
+  /* Marker highlight across the lower half of the glyphs. Anchored in em, NOT in percent:
+     a percentage stop resolves against the inline background box (font metrics + line-height),
+     so it drifts off the letters as type gets larger. */
+  --highlight-marker-image:linear-gradient(var(--color-highlight),var(--color-highlight));
+  --highlight-marker-size:100% 0.36em;
+  --highlight-marker-position:0 0.63em; /* @kind other */
+}

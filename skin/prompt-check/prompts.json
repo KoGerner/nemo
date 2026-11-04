@@ -1,0 +1,24 @@
+{
+ "A": [
+  "Compare Monday's interview with last year's. What is different, and does it matter?",
+  "Show the interview quote behind each gap.",
+  "Show me the impact over time as a graph, this year against last year, for all impact classes.",
+  "How long can production be down? Compare the interview with last year's BIA.",
+  "Does anything in the interview not match last year's BIA or the impact grid?",
+  "Show me the dependencies, this year against last year.",
+  "Who has to decide on the open gaps?",
+  "Write an email to the people responsible and ask for their assessment. Show me the drafts first.",
+  "What should I still check myself?"
+ ],
+ "B": [
+  "Which BIAs are due for review, and when did we do the last one?",
+  "Which BIA should I do next week, and why?",
+  "Who should I invite, and who was there last time?",
+  "What did we ask last year, and what should I focus on now?",
+  "Does this process have SPOF (single points of failure) or missing workarounds?",
+  "Show me the dependencies of this process.",
+  "Prepare a briefing to print.",
+  "Invite them to the interview on [day and time], and block it in my calendar.",
+  "What should I still check myself?"
+ ]
+}

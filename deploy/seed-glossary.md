@@ -1,0 +1,94 @@
+<!-- synthetic:true pack:marschkamp note:"wholly invented demo data (D5) — no real organisation, person or brand" -->
+
+# Glossary — the abbreviations in these files
+
+What each abbreviation in Marschkamp's files stands for, in plain words. The first time one of them
+appears in something nemo shows, its plain words follow it in brackets. The words of business
+continuity itself (BIA, MTPD, RTO and the rest) are nemo's and are not repeated here.
+
+- **ABP**: animal by-products, the parts of an animal not sold as food
+- **AG**: a German public limited company
+- **AN**: the start of a production line's asset number
+- **ASF**: African swine fever
+- **ASKG**: the German law on safety at work in the meat industry, which limits agency staff
+- **AW**: the animal welfare and food safety scores
+- **BAS**: the building automation system that raises plant alarms
+- **BCI**: the Business Continuity Institute
+- **BGN**: the statutory accident insurer for the food industry
+- **BOD5**: biological oxygen demand, a wastewater limit measured over five days
+- **CCP**: critical control point, a step where a food safety hazard must be controlled
+- **CCTV**: video cameras
+- **CIP**: clean-in-place, cleaning the machines without taking them apart
+- **CO2**: carbon dioxide, used for stunning and cooling
+- **COD**: chemical oxygen demand, a wastewater limit
+- **DAF**: dissolved air flotation, the stage that takes the fat out of the wastewater
+- **DB**: a database
+- **DE**: Germany
+- **DGUV**: the umbrella of Germany's statutory accident insurers
+- **EBIT**: profit before interest and tax
+- **EC**: the European Community, in the name of European law
+- **EDI**: orders and invoices exchanged electronically with customers
+- **EG**: the German letters for the European Community
+- **EN**: a European standard
+- **ERP**: the business software for orders, stock and invoices
+- **EU**: the European Union
+- **EUROP**: the European grading scale for carcasses
+- **FY2023**: the financial year ending in that year
+- **FY2025**: the financial year ending in that year
+- **GFSI**: the Global Food Safety Initiative, which recognises food safety certificates
+- **GPG**: the Business Continuity Institute's Good Practice Guidelines
+- **GVE**: livestock units, a count of animals by size
+- **HACCP**: hazard analysis and critical control points, the food safety plan
+- **HFC**: a synthetic refrigerant gas
+- **HRA**: the commercial register for partnerships
+- **HRB**: the commercial register for companies
+- **ID**: an identifier
+- **IEC**: the International Electrotechnical Commission
+- **IED**: the European directive on industrial emissions
+- **IFS**: International Featured Standards, the food safety certificate customers ask for
+- **ISO**: the International Organization for Standardization
+- **IT**: the computers, networks and software
+- **JSONL**: a file with one record per line
+- **KA**: the start of a refrigeration plant's asset number
+- **KG**: a German limited partnership
+- **KO**: knock-out, a criterion that ends a listing on its own
+- **KPI**: key performance indicator, a measured target
+- **KT**: refrigeration engineering, the part of the contracts about refrigeration
+- **MAP**: modified atmosphere packaging, packs filled with a protective gas
+- **MCP**: the connection an assistant program uses to reach these files
+- **MD**: the managing director
+- **MES**: the software that runs the production floor
+- **MIN**: the rule that the tightest limit wins
+- **NEA**: the standby generator
+- **NGG**: the food and hospitality workers' union
+- **NGO**: a campaign group
+- **NH3**: ammonia, the refrigerant in the plant room
+- **NM**: the register court at Neumünster
+- **NRKP**: the national plan for testing meat for residues
+- **NTV**: the logistics company that collects slaughter waste
+- **OTIF**: on time, in full
+- **PC**: a computer
+- **PI**: the register court at Pinneberg
+- **PIP**: performance improvement plan
+- **PM**: preventive maintenance
+- **PP3**: the analysis stage of the Good Practice Guidelines
+- **PP4**: the design stage of the Good Practice Guidelines, where solutions are chosen
+- **PRP**: prerequisite programme, the basic hygiene every food plant must run
+- **QA**: quality assurance
+- **QM**: quality management
+- **QS**: quality assurance
+- **RA**: the risk register
+- **RASFF**: the European rapid alert system for unsafe food
+- **SAP**: the maker of the business software
+- **SH**: Schleswig-Holstein
+- **SLA**: service level agreement, what a supplier has promised
+- **SMF**: site master file, the description of the site
+- **SRM**: specified risk material, the parts of cattle that must be destroyed
+- **SSOP**: the written cleaning and hygiene procedures
+- **STEC**: a toxin-producing strain of the bacterium E. coli
+- **TBD**: not decided yet
+- **UTC**: universal time
+- **VAT**: value added tax
+- **WIP**: work in progress, meat part-way through processing
+- **WKZ**: marketing allowance paid to a retailer
+- **WWTP**: the wastewater treatment plant

@@ -1,0 +1,251 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+   "speaker": "Henrik Stoltenberg",
+   "department": "it-financial-management",
+   "why": "The process's own interview: full impact grid, RTO, MTPD and relevance stated by the process owner.",
+   "own_department": true
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "IT financial management",
+   "owner": {
+    "name": "Henrik Stoltenberg",
+    "quote": "It is a support process, and its process owner is the head of IT financial management. The organisational unit is IT and organisation.",
+    "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+     "speaker": "Henrik Stoltenberg",
+     "reason": "Scored by the interviewee himself in the impact table.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+     "speaker": "Henrik Stoltenberg",
+     "reason": "Scored by the interviewee himself in the impact table.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+     "speaker": "Henrik Stoltenberg",
+     "reason": "Scored by the interviewee himself in the impact table.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+     "speaker": "Henrik Stoltenberg",
+     "reason": "Scored by the interviewee himself in the impact table.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+     "speaker": "Henrik Stoltenberg",
+     "reason": "Scored by the interviewee himself in the impact table.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Henrik Stoltenberg: MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+    "speaker": "Henrik Stoltenberg",
+    "reason": "Consistent with the grid, which never reaches the intolerability level 4 in any horizon.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Henrik Stoltenberg: RTO: >168 h.",
+    "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+    "speaker": "Henrik Stoltenberg",
+    "reason": "The owner explicitly stated an RTO of more than 168 hours, classing the process as not time-critical; this is a stated RTO, not a recovery gap.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+    "speaker": "Henrik Stoltenberg",
+    "reason": "No RPO was stated anywhere and no data-recovery need was described for a process with no significant impact at any horizon, so the most tolerant vocabulary value is proposed.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "Henrik Stoltenberg: MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+     "speaker": "Henrik Stoltenberg"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "The interview names no resources or dependencies at all (no IT systems, roles or partners), and the process description implies financial transactions and reporting that presumably rely on systems such as SAP S/4HANA Finance and Microsoft 365.",
+   "ask": "Which systems, data and roles does IT financial management actually depend on, and could any outage of those push the impact grid above level 1?"
+  },
+  {
+   "activity": "A1",
+   "what": "No sub-steps of the process were walked through in the interview, so the evidence for monitoring IT spending, budgeting and assessing project impact rests only on the process description sentence.",
+   "ask": "Can you walk me through the individual sub-steps (spending monitoring, budgeting, project assessment, compliance checking) so we can confirm they all stay below criticality?"
+  },
+  {
+   "activity": "A1",
+   "what": "No RPO was stated for the activity.",
+   "ask": "How current must the IT cost and budget data be at most after a disruption before the financial management work is impaired?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "it-financial-management",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 13.7,
+  "usage": {
+   "completion_tokens": 2180,
+   "prompt_tokens": 32667,
+   "total_tokens": 34847,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 475,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00599005,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00599005,
+    "upstream_inference_prompt_cost": 0.00490005,
+    "upstream_inference_completions_cost": 0.00109
+   }
+  },
+  "calls": [
+   {
+    "seconds": 13.7,
+    "usage": {
+     "completion_tokens": 2180,
+     "prompt_tokens": 32667,
+     "total_tokens": 34847,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 475,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00599005,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00599005,
+      "upstream_inference_prompt_cost": 0.00490005,
+      "upstream_inference_completions_cost": 0.00109
+     }
+    }
+   }
+  ],
+  "cost": 0.006,
+  "made": "2026-09-22 18:17"
+ }
+}

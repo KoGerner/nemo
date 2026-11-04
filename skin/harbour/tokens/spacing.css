@@ -1,0 +1,10 @@
+:root{
+  --spacing-4:4px;   --spacing-8:8px;   --spacing-12:12px; --spacing-16:16px;
+  --spacing-20:20px; --spacing-24:24px; --spacing-32:32px; --spacing-40:40px;
+  --spacing-48:48px; --spacing-64:64px; --spacing-80:80px; --spacing-120:120px;
+
+  --page-max-width:1200px;
+  --section-gap:80px;
+  --card-padding:28px;
+  --page-gutter:32px;
+}

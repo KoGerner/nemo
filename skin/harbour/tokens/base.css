@@ -1,0 +1,19 @@
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{margin:0;background:var(--surface-page);color:var(--text-body-color);font-family:var(--font-body);font-size:var(--text-body);line-height:var(--leading-body)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:var(--font-weight-medium);color:var(--text-heading-color);margin:0}
+h1{font-size:var(--text-display);line-height:var(--leading-display);letter-spacing:var(--tracking-display)}
+h2{font-size:var(--text-heading-lg);line-height:var(--leading-heading-lg);letter-spacing:var(--tracking-heading-lg)}
+h3{font-size:var(--text-heading);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading)}
+h4{font-size:var(--text-heading-sm);line-height:var(--leading-heading-sm);letter-spacing:var(--tracking-heading-sm)}
+p{margin:0 0 var(--spacing-16)}
+a{color:var(--text-link);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--text-link-hover)}
+mark,.mark{background-image:var(--highlight-marker-image);background-repeat:no-repeat;background-size:var(--highlight-marker-size);background-position:var(--highlight-marker-position);color:var(--color-navy);padding:0 .04em}
+code,kbd,samp{font-family:var(--font-mono)}
+::selection{background:var(--color-highlight);color:var(--color-navy)}
+
+/* The one motion in Harbour: an 8px upward fade as a section enters view, once. */
+@keyframes harbour-reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.harbour-reveal{opacity:0}
+.harbour-reveal.is-in{animation:harbour-reveal 300ms cubic-bezier(.2,.6,.3,1) forwards}
+@media (prefers-reduced-motion: reduce){.harbour-reveal,.harbour-reveal.is-in{opacity:1;animation:none;transform:none}}

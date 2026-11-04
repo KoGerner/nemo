@@ -1,0 +1,710 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+   "speaker": "Björn Ketelsen",
+   "department": "it-procurement-and-licences",
+   "why": "Own-department interview: gives the process description, all scored impact rows and MTPD/RTO for IT procurement and licence management.",
+   "own_department": true
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Identify demand (IT procurement and licence management)",
+   "owner": {
+    "name": "Björn Ketelsen",
+    "quote": "It includes identifying demand, selecting and assessing suppliers, negotiating contracts, and monitoring and managing deliveries. The process ensures that all procurement complies with legal and internal policies, and assesses the impact on areas such as finance, law, image and operations. It is a support process, and its process owner is the head of IT procurement.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level health row is 1 at every horizon, so demand identification inherits it.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level financial row is 1 at every horizon, so demand identification inherits it.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level legal row is 1 at every horizon, so demand identification inherits it.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level image row is 1 at every horizon, so demand identification inherits it.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level operational row is 1 at every horizon, so demand identification inherits it.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "Björn Ketelsen: MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "The grid never reaches 4 at any horizon, so the process-level MTPD past the last horizon applies to this sub-step.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "The recovery time was set at >168 h. What counts are the impacts shown in the criticality assessment, and the possibility of continuing the process in the emergency operation described until it is restored.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "The process owner set >168 h for the whole process; nothing faster is said about demand identification, so it carries that.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "Nothing at all was said about data recovery points for this process, so a best-judgement RPO beyond the last horizon is proposed.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  },
+  {
+   "id": "A2",
+   "name": "Select and assess suppliers (IT procurement and licence management)",
+   "owner": {
+    "name": "Björn Ketelsen",
+    "quote": "It includes identifying demand, selecting and assessing suppliers, negotiating contracts, and monitoring and managing deliveries. The process ensures that all procurement complies with legal and internal policies, and assesses the impact on areas such as finance, law, image and operations. It is a support process, and its process owner is the head of IT procurement.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level health row is 1 at every horizon, so supplier selection inherits it.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level financial row is 1 at every horizon, so supplier selection inherits it.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level legal row is 1 at every horizon, so supplier selection inherits it.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level image row is 1 at every horizon, so supplier selection inherits it.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level operational row is 1 at every horizon, so supplier selection inherits it.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "Björn Ketelsen: MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "The grid never reaches 4 at any horizon, so the process-level MTPD past the last horizon applies to this sub-step.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "The recovery time was set at >168 h. What counts are the impacts shown in the criticality assessment, and the possibility of continuing the process in the emergency operation described until it is restored.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "The process owner set >168 h for the whole process; nothing faster is said about supplier selection, so it carries that.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "Nothing at all was said about data recovery points for this process, so a best-judgement RPO beyond the last horizon is proposed.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  },
+  {
+   "id": "A3",
+   "name": "Negotiate contracts (IT procurement and licence management)",
+   "owner": {
+    "name": "Björn Ketelsen",
+    "quote": "It includes identifying demand, selecting and assessing suppliers, negotiating contracts, and monitoring and managing deliveries. The process ensures that all procurement complies with legal and internal policies, and assesses the impact on areas such as finance, law, image and operations. It is a support process, and its process owner is the head of IT procurement.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level health row is 1 at every horizon, so contract negotiation inherits it.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level financial row is 1 at every horizon, so contract negotiation inherits it.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level legal row is 1 at every horizon, so contract negotiation inherits it.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level image row is 1 at every horizon, so contract negotiation inherits it.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level operational row is 1 at every horizon, so contract negotiation inherits it.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "Björn Ketelsen: MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "The grid never reaches 4 at any horizon, so the process-level MTPD past the last horizon applies to this sub-step.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "The recovery time was set at >168 h. What counts are the impacts shown in the criticality assessment, and the possibility of continuing the process in the emergency operation described until it is restored.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "The process owner set >168 h for the whole process; nothing faster is said about contract negotiation, so it carries that.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "Nothing at all was said about data recovery points for this process, so a best-judgement RPO beyond the last horizon is proposed.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  },
+  {
+   "id": "A4",
+   "name": "Monitor and manage deliveries (IT procurement and licence management)",
+   "owner": {
+    "name": "Björn Ketelsen",
+    "quote": "It includes identifying demand, selecting and assessing suppliers, negotiating contracts, and monitoring and managing deliveries. The process ensures that all procurement complies with legal and internal policies, and assesses the impact on areas such as finance, law, image and operations. It is a support process, and its process owner is the head of IT procurement.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level health row is 1 at every horizon, so delivery monitoring inherits it.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level financial row is 1 at every horizon, so delivery monitoring inherits it.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level legal row is 1 at every horizon, so delivery monitoring inherits it.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level image row is 1 at every horizon, so delivery monitoring inherits it.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "proposed",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen",
+     "reason": "No sub-step-specific statements; the process-level operational row is 1 at every horizon, so delivery monitoring inherits it.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "Björn Ketelsen: MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "The grid never reaches 4 at any horizon, so the process-level MTPD past the last horizon applies to this sub-step.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "The recovery time was set at >168 h. What counts are the impacts shown in the criticality assessment, and the possibility of continuing the process in the emergency operation described until it is restored.",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "The process owner set >168 h for the whole process; nothing faster is said about delivery monitoring, so it carries that.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+    "speaker": "Björn Ketelsen",
+    "reason": "Nothing at all was said about data recovery points for this process, so a best-judgement RPO beyond the last horizon is proposed.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (proposed)",
+     "quote": "Björn Ketelsen: MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "A2-MTPD-RULE",
+   "activity": "A2",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (proposed)",
+     "quote": "Björn Ketelsen: MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "A3-MTPD-RULE",
+   "activity": "A3",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (proposed)",
+     "quote": "Björn Ketelsen: MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "A4-MTPD-RULE",
+   "activity": "A4",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (proposed)",
+     "quote": "Björn Ketelsen: MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+     "speaker": "Björn Ketelsen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "The interview names no resources, IT systems, roles or 'Depends on' list for the process, so dependencies could not be attached to any sub-step.",
+   "ask": "Which systems, staff roles and suppliers does IT procurement and licence management depend on, and which of them have recovery targets of their own?"
+  },
+  {
+   "activity": "A1",
+   "what": "No RPO was stated anywhere for the process; the >168 h values are the analyst's best judgement with no words behind them.",
+   "ask": "Is there any data state (orders, licence positions, contract documents) that must be recovered to a specific point in time after an outage?"
+  },
+  {
+   "activity": "A1",
+   "what": "The interview says only 'The process is not relevant to the BCMS' without an emergency-operation description, although the RTO reason refers to continuing the process in emergency operation.",
+   "ask": "How would you continue procurement and licence work if the office and systems were unavailable, and for how long could that last?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "it-procurement-and-licences",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 30.5,
+  "usage": {
+   "completion_tokens": 6678,
+   "prompt_tokens": 32675,
+   "total_tokens": 39353,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 1511,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00824025,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00824025,
+    "upstream_inference_prompt_cost": 0.00490125,
+    "upstream_inference_completions_cost": 0.003339
+   }
+  },
+  "calls": [
+   {
+    "seconds": 30.5,
+    "usage": {
+     "completion_tokens": 6678,
+     "prompt_tokens": 32675,
+     "total_tokens": 39353,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 1511,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00824025,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00824025,
+      "upstream_inference_prompt_cost": 0.00490125,
+      "upstream_inference_completions_cost": 0.003339
+     }
+    }
+   }
+  ],
+  "cost": 0.0082,
+  "made": "2026-09-22 18:17"
+ }
+}

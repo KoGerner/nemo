@@ -1,0 +1,69 @@
+{
+  "org": "Marschkamp Fleisch GmbH & Co. KG",
+  "method_version": "2026.2-MK",
+  "synthetic": true,
+  "change_note": "2026.2-MK: Marschkamp's BIA method as its twenty finished BIA records apply it. 5 impact categories (Health of persons; Financial; Legal; Image; Operational), 7 time horizons (1 h to 168 h), a five-level scale (none 1, low 2, medium 3, high 4, very high 5) and intolerability threshold 4. The records hold no per-level definitions, so the scale carries labels only. RPO vocabulary as the records' RPO column writes it. Human read-back mirror: impact-criteria.md.",
+  "time_horizons": [
+    "1 h",
+    "2 h",
+    "4 h",
+    "8 h",
+    "24 h",
+    "72 h",
+    "168 h"
+  ],
+  "beyond_horizons": ">168 h",
+  "scenarios": [
+    {
+      "id": "health",
+      "name": "Health of persons"
+    },
+    {
+      "id": "financial",
+      "name": "Financial"
+    },
+    {
+      "id": "legal",
+      "name": "Legal"
+    },
+    {
+      "id": "image",
+      "name": "Image"
+    },
+    {
+      "id": "operational",
+      "name": "Operational"
+    }
+  ],
+  "severity_scale": [
+    {
+      "level": 1,
+      "label": "none"
+    },
+    {
+      "level": 2,
+      "label": "low"
+    },
+    {
+      "level": 3,
+      "label": "medium"
+    },
+    {
+      "level": 4,
+      "label": "high"
+    },
+    {
+      "level": 5,
+      "label": "very high"
+    }
+  ],
+  "intolerability_threshold": 4,
+  "mtpd_rule": "MTPD = the earliest time horizon at which the worst-case rating across the categories reaches intolerability threshold 4 (high). A grid that reaches it in no horizon has no MTPD within the horizons, which is what '>168 h' means.",
+  "rto_rule": "The RTO is the process owner's decision in the interview, recorded as stated; it is not derived from the grid.",
+  "rpo_vocabulary": [
+    "<1 h",
+    "<24 h",
+    "<168 h",
+    ">168 h"
+  ]
+}

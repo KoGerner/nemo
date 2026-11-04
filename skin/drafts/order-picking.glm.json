@@ -1,0 +1,364 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "order-picking",
+   "why": "Own interview: describes the order-picking process, its sub-steps, full impact grid, RTO, MTPD, failure causes, emergency operation, resources and dependencies.",
+   "own_department": true
+  },
+  {
+   "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "production-and-processing",
+   "why": "Names order picking as its downstream process and shows that production staff who cover order picking are shared with 25 needed in emergency operation.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "dispatch-and-delivery",
+   "why": "Names order picking as its upstream process, confirming the process chain position of order picking.",
+   "own_department": false
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Order picking",
+   "owner": {
+    "name": "Henning Barsch",
+    "quote": "It is a core process, and its process owner is plant management.",
+    "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact health: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "The interviewee scored this row himself; a standstill causes no harm to persons.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "The interviewee scored this row himself; goods can be picked later.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact legal: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "The interviewee scored this row himself; no SLAs or defined delivery quantities.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "The interviewee scored this row himself; a substitute can be found among competitors.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 4.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "The interviewee scored this row himself; damage higher than production outage because bought-in goods are added, high at 168 h.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "168 h",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Henning Barsch: MTPD: >168 h.",
+    "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "The worst stated rating reaches 4 only at 168 h, so per the method no horizon reaches intolerability — matching the stated MTPD.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "72 h",
+    "kind": "stated",
+    "quote": "Order picking has an RTO (recovery time objective) of 72 hours, because a standstill after 72 hours has considerable operational impacts: bought-in goods are added, and the damage is higher than with an outage of production and processing.",
+    "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "The process owner explicitly set the RTO at 72 hours, which sits inside the MTPD of >168 h.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "IT systems. CSB ERP Marschkamp: RPO <24 h, RTO 72 h.",
+    "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "No process-level RPO was stated, but the essential ERPs carry RPO <24 h, so <24 h is the tightest supported value.",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "Order-picking ERP essential for order picking",
+     "asset_id": "csb-erp-marschkamp",
+     "quote": "Workaround: none; the program is essential for order picking.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Breitenburg ERP essential for order picking",
+     "asset_id": "mawi-erp-breitenburg",
+     "quote": "Workaround: none; the program is essential for order picking.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Merchandise management and price-labelling system supplies price-labelling data",
+     "asset_id": "merchandise-and-price-labelling",
+     "quote": "The data needed for price labelling are read out of the merchandise management system.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Automated warehouse control essential for order picking at the Marschkamp site",
+     "asset_id": "automated-warehouse-control",
+     "quote": "Workaround: none for the Marschkamp site; the program is essential for order picking at the Marschkamp site; the Breitenburg site can go on picking.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Missing order, merchandise-management or labelling data can make the process fail",
+     "asset_id": "merchandise-and-price-labelling",
+     "quote": "missing order, merchandise-management or labelling data",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Refrigeration for the chilled range of 4°, workaround stacking straight into the lorry",
+     "asset_id": "refrigeration",
+     "quote": "Technical resources. Refrigeration: Refrigeration covers the chilled range of 4°. Workaround: Goods can be stacked straight into the lorry.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Production staff (30 normal, 15 emergency) cover taking deliveries, packing, order picking and making goods ready",
+     "asset_id": "production-staff",
+     "quote": "Roles. Production staff: 30 in normal operation, 15 in emergency operation, needed within 72 h, on site. The jobs cover taking deliveries, packing, order picking and making goods ready.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Technicians solve technical problems when faults occur",
+     "asset_id": "technician",
+     "quote": "Roles. Technician: 8 in normal operation, 4 in emergency operation, needed within 72 h, on site. The jobs cover solving technical problems when faults occur.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Order-picking supervisors lead and monitor the order-picking processes",
+     "asset_id": "order-picking-supervisors",
+     "quote": "The order-picking supervisor leads and monitors the order-picking processes and coordinates the staff; in normal operation this takes 1 supervisor.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Time-recording system for working times",
+     "asset_id": "time-recording-system",
+     "quote": "IT systems. Time-recording system: RPO <24 h, RTO 72 h.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft 365 as standard office resource",
+     "asset_id": "microsoft-365",
+     "quote": "IT systems. Microsoft 365: RPO <24 h, RTO 72 h.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft Teams for chat and video conferences",
+     "asset_id": "microsoft-teams",
+     "quote": "IT systems. Microsoft Teams: RPO <24 h, RTO 72 h.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Atlassian Jira",
+     "asset_id": "jira",
+     "quote": "IT systems. Atlassian Jira: RPO <24 h, RTO 72 h.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft SharePoint Online to exchange and store data",
+     "asset_id": "sharepoint-online",
+     "quote": "IT systems. Microsoft SharePoint Online: RPO <24 h, RTO 72 h.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "verified_quote": true
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2024) gives 168 h by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "168 h (the method's rule over the grid, 2024)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "Henning Barsch: MTPD: >168 h.",
+     "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+     "speaker": "Henning Barsch"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "Sub-steps named in the interview (weighing ordered goods exactly per branch; checking and release; making goods ready for the retail locations; preparing for loading) must be merged into the single fixed activity from last cycle's BIA with the manager.",
+   "ask": "Do you confirm that last cycle's single activity 'Order picking' covers all four named sub-steps, and do you confirm the worst-score/tightest-clock merge of the stated evidence?"
+  },
+  {
+   "activity": "A1",
+   "what": "No RPO was stated for the order-picking process itself; <24 h was proposed from the ERPs' RPO.",
+   "ask": "Do you confirm an RPO of <24 h for order picking, or should it follow a different data-backup clock?"
+  },
+  {
+   "activity": "A1",
+   "what": "The interview states 2 order-picking supervisors in normal operation but says 1 supervisor is needed in normal operation and 0 in emergency; the headcount is inconsistent.",
+   "ask": "How many order-picking supervisors are actually needed in normal and in emergency operation?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "order-picking",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 188.8,
+  "usage": {
+   "completion_tokens": 3457,
+   "prompt_tokens": 32665,
+   "total_tokens": 36122,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 659,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00662825,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00662825,
+    "upstream_inference_prompt_cost": 0.00489975,
+    "upstream_inference_completions_cost": 0.0017285
+   }
+  },
+  "calls": [
+   {
+    "seconds": 188.8,
+    "usage": {
+     "completion_tokens": 3457,
+     "prompt_tokens": 32665,
+     "total_tokens": 36122,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 659,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00662825,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00662825,
+      "upstream_inference_prompt_cost": 0.00489975,
+      "upstream_inference_completions_cost": 0.0017285
+     }
+    }
+   }
+  ],
+  "cost": 0.0066,
+  "made": "2026-09-22 18:20"
+ }
+}

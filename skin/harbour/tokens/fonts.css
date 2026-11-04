@@ -1,0 +1,6 @@
+@font-face{font-family:"Space Grotesk";src:url("../assets/fonts/space-grotesk-var.woff2") format("woff2");font-weight:300 700;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("../assets/fonts/ibm-plex-sans-var.woff2") format("woff2");font-weight:100 700;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/ibm-plex-mono-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/ibm-plex-mono-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+/* nemo's own (ticket 355, spec §12.9): Inter 4.1 (rsms/inter release, OFL, inter-LICENSE.txt beside it), the graph pages' one face */
+@font-face{font-family:"Inter";src:url("../assets/fonts/inter-var.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}

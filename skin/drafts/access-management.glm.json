@@ -1,0 +1,362 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+   "speaker": "Timo Voß",
+   "department": "access-management",
+   "why": "Own-process interview: supplies the impact grid, MTPD, RTO, emergency operation, owner and all dependencies for access management.",
+   "own_department": true
+  },
+  {
+   "path": "07_Interviews/25_01_20_helpdesk-and-support-sievers-interview.md",
+   "speaker": "Frerk Sievers",
+   "department": "helpdesk-and-support",
+   "why": "Names Atlassian Jira Service Management and Microsoft 365, two systems access management depends on, and covers access problems routed to the helpdesk.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+   "speaker": "Marek Sobotta",
+   "department": "incident-and-problem-management",
+   "why": "Names Atlassian Jira Service Management and Microsoft Teams, two systems access management depends on, and shows their outage behaviour and workarounds.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+   "speaker": "Ulrike Tiedemann",
+   "department": "data-protection",
+   "why": "Names Atlassian Jira Service Management and Microsoft 365, two systems access management depends on, including their protection needs and workarounds.",
+   "own_department": false
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Access management (merges the named sub-steps: granting, reviewing, changing and withdrawing permissions)",
+   "owner": {
+    "name": "Timo Voß",
+    "quote": "It is a support process, and its process owner is the head of identity and access management.",
+    "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "speaker": "Timo Voß",
+     "reason": "Interviewee's own scored row for health of persons.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 5,
+      "4 h": 5,
+      "8 h": 5,
+      "24 h": 5,
+      "72 h": 5,
+      "168 h": 5
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h 1, 2 h 5, 4 h 5, 8 h 5, 24 h 5, 72 h 5, 168 h 5.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "speaker": "Timo Voß",
+     "reason": "Interviewee's own scored row; very high from 2 h because rights that still exist can cause very high damage.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "speaker": "Timo Voß",
+     "reason": "Interviewee's own scored row for legal.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 3,
+      "4 h": 3,
+      "8 h": 3,
+      "24 h": 3,
+      "72 h": 3,
+      "168 h": 3
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h 1, 2 h 3, 4 h 3, 8 h 3, 24 h 3, 72 h 3, 168 h 3.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "speaker": "Timo Voß",
+     "reason": "Interviewee's own scored row; repeated negative reports with the fault lying inside.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 4,
+      "4 h": 5,
+      "8 h": 5,
+      "24 h": 5,
+      "72 h": 5,
+      "168 h": 5
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h 1, 2 h 4, 4 h 5, 8 h 5, 24 h 5, 72 h 5, 168 h 5.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "speaker": "Timo Voß",
+     "reason": "Interviewee's own scored row; high at 2 h, very high from 4 h with clear cuts in quality, quantity and duration.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "2 h",
+   "mtpd": {
+    "value": "1 h",
+    "kind": "stated",
+    "quote": "Timo Voß: MTPD: 1 h.",
+    "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+    "speaker": "Timo Voß",
+    "reason": "Process owner states the MTPD explicitly; carried as stated (see conflict C1 on the grid-derived value).",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "1 h",
+    "kind": "stated",
+    "quote": "The recovery time was set at 1 h. What counts are the impacts shown in the criticality assessment, and the possibility of continuing the process in the emergency operation described until it is restored.",
+    "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+    "speaker": "Timo Voß",
+    "reason": "Owner's decision recorded as stated; 1 h sits strictly inside the stated MTPD of 1 h.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<1 h",
+    "kind": "proposed",
+    "quote": "If central IAM systems fail, prepared emergency accounts or direct changes in the target system are used.",
+    "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+    "speaker": "Timo Voß",
+    "reason": "No process RPO stated; all IAM systems it runs on carry RPO <1 h and emergency operation relies on current identity and permission data.",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "Atlassian Jira Service Management steers request, approval, implementation and evidence of permission changes",
+     "asset_id": "jira-service-management",
+     "quote": "Atlassian Jira Service Management steers the request, approval, implementation and evidence of permission changes.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft 365 supports communication, evidence of approvals and secure provision of working documents",
+     "asset_id": "microsoft-365",
+     "quote": "Microsoft 365 supports communication, evidence of approvals and the secure provision of working documents.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft Teams used for operational coordination in urgent permission cases",
+     "asset_id": "microsoft-teams",
+     "quote": "Microsoft Teams is used for operational coordination in urgent permission cases.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft Active Directory manages Windows identities, groups, device assignments and access rights",
+     "asset_id": "active-directory",
+     "quote": "Microsoft Active Directory manages Windows identities, groups, device assignments and access rights.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Central authorisation system manages role-based access and approval workflows for business applications",
+     "asset_id": "central-authorisation-system",
+     "quote": "The central authorisation system manages role-based access and approval workflows for business applications.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Keycloak provides central authentication and role-based authorisation for connected applications",
+     "asset_id": "keycloak",
+     "quote": "Keycloak provides central authentication and role-based authorisation for connected applications.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Windows administrator carries out locks, unlocks and changes in Active Directory, needed within 1 h",
+     "asset_id": "windows-administrator",
+     "quote": "Windows administrator: 30 in normal operation, 1 in emergency operation, needed within 1 h, remote or office. Carries out locks, unlocks and changes in Microsoft Active Directory.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Central authorisation system administrator implements approved role and permission changes, needed within 1 h",
+     "asset_id": "central-authorisation-administrator",
+     "quote": "Central authorisation system administrator: 3 in normal operation, 1 in emergency operation, needed within 1 h, remote or office. Implements approved role and permission changes in the central authorisation system.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Keycloak administrator manages realms, clients, roles and administrative emergency access, needed within 1 h",
+     "asset_id": "keycloak-administrator",
+     "quote": "Keycloak administrator: 5 in normal operation, 1 in emergency operation, needed within 1 h, remote or office. Manages realms, clients, roles and administrative emergency access in Keycloak.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "verified_quote": true
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2025) gives 2 h by the method's rule, the draft says 1 h",
+   "sides": [
+    {
+     "claim": "2 h (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": "1 h (stated)",
+     "quote": "Timo Voß: MTPD: 1 h.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "speaker": "Timo Voß"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "C1",
+   "activity": "A1",
+   "about": "MTPD for access management: stated 1 h versus the earliest horizon at which the stated grid reaches intolerability 4.",
+   "sides": [
+    {
+     "claim": "Timo Voß states the MTPD as 1 h.",
+     "quote": "Timo Voß: MTPD: 1 h.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "speaker": "Timo Voß",
+     "implies": {
+      "item_id": "A1.mtpd",
+      "value": "1 h"
+     },
+     "verified_quote": true
+    },
+    {
+     "claim": "The stated grid reaches severity 4 (financial 5, operational 4) first at the 2 h horizon, so the method's mtpd_rule derives an MTPD of 2 h.",
+     "quote": "Impact financial: 1 h 1, 2 h 5, 4 h 5, 8 h 5, 24 h 5, 72 h 5, 168 h 5.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "speaker": "Timo Voß",
+     "implies": {
+      "item_id": "A1.mtpd",
+      "value": "2 h"
+     },
+     "verified_quote": true
+    }
+   ],
+   "recommend": 1,
+   "why": "The method's mtpd_rule defines the MTPD as the earliest horizon at which the worst-case rating reaches intolerability 4, which the grid first does at 2 h, and the stated RTO of 1 h still sits strictly inside it."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "No recovery point objective was stated for the access-management process itself; the proposed <1 h is inferred from the RPOs of its IAM systems.",
+   "ask": "How much permission and identity data may you lose before restoration, and is <1 h the right RPO for the process?"
+  },
+  {
+   "activity": "A1",
+   "what": "The four named sub-steps (granting, reviewing, changing, withdrawing permissions) were only scored as one block, so per-sub-step criticality is unknown.",
+   "ask": "Do all four permission sub-steps really need the same 1 h recovery, or is, for example, withdrawing privileged rights tighter than the rest?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "access-management",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 22.5,
+  "usage": {
+   "completion_tokens": 5107,
+   "prompt_tokens": 32663,
+   "total_tokens": 37770,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 2055,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00745295,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00745295,
+    "upstream_inference_prompt_cost": 0.00489945,
+    "upstream_inference_completions_cost": 0.0025535
+   }
+  },
+  "calls": [
+   {
+    "seconds": 22.5,
+    "usage": {
+     "completion_tokens": 5107,
+     "prompt_tokens": 32663,
+     "total_tokens": 37770,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 2055,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00745295,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00745295,
+      "upstream_inference_prompt_cost": 0.00489945,
+      "upstream_inference_completions_cost": 0.0025535
+     }
+    }
+   }
+  ],
+  "cost": 0.0075,
+  "made": "2026-09-22 18:11"
+ }
+}

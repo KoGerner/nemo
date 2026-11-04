@@ -1,0 +1,102 @@
+{
+  "interviews": [
+    {
+      "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+      "speaker": "Kai Brüning",
+      "department": "asset-and-configuration-management",
+      "why": "This is the process's own interview: it states the activity's impact grid (all 1s), RTO, MTPD and BCMS relevance."
+    }
+  ],
+  "activities": [
+    {
+      "id": "A1",
+      "name": "IT asset and configuration management",
+      "owner": {
+        "name": "Kai Brüning",
+        "quote": "The systematic recording, management and control of all of a company's IT assets and configuration items (CIs), to ensure their integrity, traceability and dependencies over the whole life cycle. It is a support process, and its process owner is the head of IT service management.",
+        "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md"
+      },
+      "grid": [
+        {
+          "lens": "health",
+          "scores": {"1 h": 1, "2 h": 1, "4 h": 1, "8 h": 1, "24 h": 1, "72 h": 1, "168 h": 1},
+          "kind": "stated",
+          "quote": "Kai Brüning: Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+          "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+          "speaker": "Kai Brüning",
+          "reason": "Interviewee's own scored row."
+        },
+        {
+          "lens": "financial",
+          "scores": {"1 h": 1, "2 h": 1, "4 h": 1, "8 h": 1, "24 h": 1, "72 h": 1, "168 h": 1},
+          "kind": "stated",
+          "quote": "Kai Brüning: Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+          "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+          "speaker": "Kai Brüning",
+          "reason": "Interviewee's own scored row."
+        },
+        {
+          "lens": "legal",
+          "scores": {"1 h": 1, "2 h": 1, "4 h": 1, "8 h": 1, "24 h": 1, "72 h": 1, "168 h": 1},
+          "kind": "stated",
+          "quote": "Kai Brüning: Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+          "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+          "speaker": "Kai Brüning",
+          "reason": "Interviewee's own scored row."
+        },
+        {
+          "lens": "image",
+          "scores": {"1 h": 1, "2 h": 1, "4 h": 1, "8 h": 1, "24 h": 1, "72 h": 1, "168 h": 1},
+          "kind": "stated",
+          "quote": "Kai Brüning: Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+          "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+          "speaker": "Kai Brüning",
+          "reason": "Interviewee's own scored row."
+        },
+        {
+          "lens": "operational",
+          "scores": {"1 h": 1, "2 h": 1, "4 h": 1, "8 h": 1, "24 h": 1, "72 h": 1, "168 h": 1},
+          "kind": "stated",
+          "quote": "Kai Brüning: Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+          "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+          "speaker": "Kai Brüning",
+          "reason": "Interviewee's own scored row."
+        }
+      ],
+      "mtpd": {
+        "value": ">168 h",
+        "kind": "stated",
+        "quote": "Kai Brüning: MTPD: >168 h.",
+        "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+        "speaker": "Kai Brüning",
+        "reason": "Stated by the process owner; consistent with the grid never reaching the threshold of 4."
+      },
+      "rto": {
+        "value": ">168 h",
+        "kind": "stated",
+        "quote": "Kai Brüning: RTO: >168 h.",
+        "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+        "speaker": "Kai Brüning",
+        "reason": "The owner's own recovery decision, carried as stated; an RTO past the last horizon over an MTPD past the last horizon is not a recovery gap."
+      },
+      "rpo": {
+        "value": ">168 h",
+        "kind": "proposed",
+        "quote": "",
+        "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+        "speaker": "",
+        "reason": "Nothing at all was said about RPO in the interview; proposed >168 h because CMDB/asset record data are rebuilt over the life cycle and no other process names this process as time-critical."
+      },
+      "dependencies": [],
+      "substeps": []
+    }
+  ],
+  "conflicts": [],
+  "gaps": [
+    {
+      "activity": "A1",
+      "what": "The interview names no sub-steps, no resources and no dependencies for the process, so evidence for what the activity needs (e.g. a CMDB/ITSM tool, Microsoft 365) and for any data-loss tolerance is missing.",
+      "ask": "Which systems and roles does asset and configuration management depend on, and how much asset/CI data can be lost (RPO) before the process is impaired?"
+    }
+  ]
+}

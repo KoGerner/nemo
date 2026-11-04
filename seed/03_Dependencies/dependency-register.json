@@ -1,0 +1,4208 @@
+{
+  "synthetic": true,
+  "depends_on_evidence_note": "Every quote under depends_on_evidence is rendered the way the rest of this seed renders the records, and the source's own wording stands in the prior BIA record its evidence_refs names. An edge whose evidence_refs reads 'authored for the pack A<k>' was written for the demo pack and no prior BIA record states it; its quote is line A<k> of the resource dependencies file in the Prior Cycle folder, word for word.",
+  "microsoft-365": {
+    "asset_id": "microsoft-365",
+    "name": "Microsoft 365",
+    "description": "Office suite: Word, Excel, PowerPoint, Outlook, OneDrive and Teams.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [
+      "corporate-network",
+      "active-directory"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A1"
+        ],
+        "quote": "Microsoft 365 is reached over the Corporate network."
+      },
+      {
+        "asset_id": "active-directory",
+        "evidence_refs": [
+          "authored for the pack A2"
+        ],
+        "quote": "Microsoft 365 takes its user accounts from Microsoft Active Directory."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Standard resource for Word, Excel, PowerPoint, Outlook, OneDrive and Teams.",
+        "workaround": "Meat procurement is possible without Office 365.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Standard resource for Word, Excel, PowerPoint, Outlook, OneDrive and Teams.",
+        "workaround": "Production can run without Office 365.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Standard resource for Word, Excel, PowerPoint, Outlook, OneDrive and Teams.",
+        "workaround": "Production can run without Office 365.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "change-and-release-management",
+        "dept": "it",
+        "activity": "Change and release management",
+        "rpo": "<24 h",
+        "rto": ">168 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Supports communication, scheduling, documentation and provision of release documents.",
+        "workaround": "Communication by phone. Approvals and minutes are documented locally in an encrypted template and entered later.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "helpdesk-and-support",
+        "dept": "it",
+        "activity": "IT helpdesk and support",
+        "rpo": "<1 h",
+        "rto": "8 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Used for e-mail, knowledge documents, shift handovers and coordination in support.",
+        "workaround": "Communication by Cisco telephony or company mobiles. Requests are recorded in whichever ticket system is available.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "access-management",
+        "dept": "it",
+        "activity": "Access management",
+        "rpo": "<1 h",
+        "rto": "1 h",
+        "confidentiality": "high",
+        "integrity": "high",
+        "authenticity": "high",
+        "need": "Supports communication, evidence of approvals and secure provision of working documents.",
+        "workaround": "Urgent lockouts use telephony and the local emergency form. Regular requests are deferred until recovery.",
+        "consumer_mtpd": "1 h"
+      },
+      {
+        "department": "data-protection",
+        "dept": "it",
+        "activity": "Data protection management",
+        "rpo": "<1 h",
+        "rto": "72 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Supports secure communication, documentation and collaboration on data protection incidents.",
+        "workaround": "Phone reports and a local encrypted emergency form are used. Personal data are not sent through private e-mail accounts.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "hr-correspondence",
+        "dept": "hr",
+        "activity": "HR correspondence and documents",
+        "need": "Written for the demo pack, not in any prior record: Office suite: Word, Excel, PowerPoint, Outlook, OneDrive and Teams.",
+        "authored": true
+      },
+      {
+        "department": "hr-service-ticketing",
+        "dept": "hr",
+        "activity": "HR service ticketing",
+        "need": "Written for the demo pack, not in any prior record: Office suite: Word, Excel, PowerPoint, Outlook, OneDrive and Teams.",
+        "authored": true,
+        "basis": [
+          "01_Organisation/process-map.md 2.3 l.65-67: personnel-related requests from the operating and administrative sites",
+          "Microsoft 365's description: Outlook"
+        ]
+      },
+      {
+        "department": "it-procurement-and-licences",
+        "dept": "it",
+        "activity": "IT procurement and licence management",
+        "need": "Written for the demo pack, not in any prior record: Office suite: Word, Excel, PowerPoint, Outlook, OneDrive and Teams.",
+        "authored": true,
+        "basis": [
+          "01_Organisation/process-map.md 3.7 l.140-142: Suppliers and offers are assessed, contracts and licence holdings are managed",
+          "Microsoft 365's description: Office suite"
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.1",
+      "prior BIA record 1.2",
+      "prior BIA record 1.3",
+      "prior BIA record 3.1",
+      "prior BIA record 3.4",
+      "prior BIA record 3.5",
+      "prior BIA record 3.9"
+    ],
+    "quality_flags": [
+      "RTO differs between records: 72 h (Raw material procurement); 72 h (Production and processing); 72 h (Order picking); >168 h (Change and release management); 8 h (IT helpdesk and support); 1 h (Access management); 72 h (Data protection management). Stated per consumer.",
+      "RPO differs between records: <24 h (Raw material procurement); <24 h (Production and processing); <24 h (Order picking); <24 h (Change and release management); <1 h (IT helpdesk and support); <1 h (Access management); <1 h (Data protection management). Stated per consumer."
+    ]
+  },
+  "microsoft-teams": {
+    "asset_id": "microsoft-teams",
+    "name": "Microsoft Teams",
+    "description": "Chat and video conferences.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [
+      "microsoft-365",
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "microsoft-365",
+        "evidence_refs": [
+          "authored for the pack A3"
+        ],
+        "quote": "Microsoft Teams runs as a service of Microsoft 365."
+      },
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A4"
+        ],
+        "quote": "Microsoft Teams is reached over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Used for chat and video conferences.",
+        "workaround": "Production can run without MS Teams.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Used for chat and video conferences.",
+        "workaround": "Production can run without MS Teams.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "incident-and-problem-management",
+        "dept": "it",
+        "activity": "Incident and problem management",
+        "rpo": ">168 h",
+        "rto": "8 h",
+        "confidentiality": "medium",
+        "integrity": "high",
+        "authenticity": "high",
+        "need": "Used for situation calls, virtual war rooms and coordinating the recovery teams.",
+        "workaround": "Communication by phone, e-mail and conference call. Decisions are documented in the incident log.",
+        "consumer_mtpd": "24 h"
+      },
+      {
+        "department": "access-management",
+        "dept": "it",
+        "activity": "Access management",
+        "rpo": "<1 h",
+        "rto": "1 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Used for operational coordination in urgent authorisation cases.",
+        "workaround": "Coordination by phone. Formal approvals are documented in the emergency form.",
+        "consumer_mtpd": "1 h"
+      },
+      {
+        "department": "event-management",
+        "dept": "it",
+        "activity": "IT event management",
+        "need": "Written for the demo pack, not in any prior record: Chat and video conferences.",
+        "authored": true,
+        "basis": [
+          "01_Organisation/process-map.md 3.6 l.136-138: or the responsible technical teams",
+          "judgement: the alerting channel"
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2",
+      "prior BIA record 1.3",
+      "prior BIA record 3.3",
+      "prior BIA record 3.5"
+    ],
+    "quality_flags": [
+      "RTO differs between records: 72 h (Production and processing); 72 h (Order picking); 8 h (Incident and problem management); 1 h (Access management). Stated per consumer.",
+      "RPO differs between records: <24 h (Production and processing); <24 h (Order picking); >168 h (Incident and problem management); <1 h (Access management). Stated per consumer."
+    ]
+  },
+  "sharepoint-online": {
+    "asset_id": "sharepoint-online",
+    "name": "Microsoft SharePoint Online",
+    "description": "Exchange and storage of data and documents.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "72 h",
+    "depends_on": [
+      "microsoft-365",
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "microsoft-365",
+        "evidence_refs": [
+          "authored for the pack A5"
+        ],
+        "quote": "Microsoft SharePoint Online runs as a service of Microsoft 365."
+      },
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A6"
+        ],
+        "quote": "Microsoft SharePoint Online is reached over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "rpo": "<168 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "low",
+        "authenticity": "low",
+        "need": "Used to exchange and store data.",
+        "workaround": "Meat procurement is possible without SharePoint Online.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Used to exchange and store data.",
+        "workaround": "Production can run without SharePoint.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Used to exchange and store data.",
+        "workaround": "Production can run without SharePoint.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "data-protection",
+        "dept": "it",
+        "activity": "Data protection management",
+        "rpo": "<1 h",
+        "rto": "72 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Protected store for case files, evidence, templates and reports to authorities.",
+        "workaround": "Released encrypted offline templates are used locally and moved into the protected store after recovery.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "hr-correspondence",
+        "dept": "hr",
+        "activity": "HR correspondence and documents",
+        "need": "Written for the demo pack, not in any prior record: Exchange and storage of data and documents.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.1",
+      "prior BIA record 1.2",
+      "prior BIA record 1.3",
+      "prior BIA record 3.9"
+    ],
+    "quality_flags": [
+      "RPO differs between records: <168 h (Raw material procurement); <24 h (Production and processing); <24 h (Order picking); <1 h (Data protection management). Stated per consumer."
+    ]
+  },
+  "jira": {
+    "asset_id": "jira",
+    "name": "Atlassian Jira",
+    "description": "Issue tracking; the change and release record (the core records write it JIRA).",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Service Management (Kai Brüning)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rpo": "<24 h",
+    "depends_on": [
+      "corporate-network",
+      "keycloak"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A7"
+        ],
+        "quote": "Atlassian Jira is reached over the Corporate network."
+      },
+      {
+        "asset_id": "keycloak",
+        "evidence_refs": [
+          "authored for the pack A71"
+        ],
+        "quote": "Atlassian Jira signs users in through Keycloak."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "workaround": "Production can run without JIRA.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "workaround": "Production can run without JIRA.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "change-and-release-management",
+        "dept": "it",
+        "activity": "Change and release management",
+        "rpo": "<24 h",
+        "rto": ">168 h",
+        "confidentiality": "medium",
+        "integrity": "high",
+        "authenticity": "high",
+        "need": "Used to record, assess, approve, schedule and track changes and releases.",
+        "workaround": "Change requests are documented in a released emergency form. Coordination and approval go by phone or Microsoft Teams.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2",
+      "prior BIA record 1.3",
+      "prior BIA record 3.1"
+    ],
+    "quality_flags": [
+      "RTO differs between records: 72 h (Production and processing); 72 h (Order picking); >168 h (Change and release management). Stated per consumer."
+    ]
+  },
+  "jira-service-management": {
+    "asset_id": "jira-service-management",
+    "name": "Atlassian Jira Service Management",
+    "description": "Service management: incidents, problems, service and access requests, data protection cases.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Service Management (Kai Brüning)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [
+      "corporate-network",
+      "keycloak"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A8"
+        ],
+        "quote": "Atlassian Jira Service Management is reached over the Corporate network."
+      },
+      {
+        "asset_id": "keycloak",
+        "evidence_refs": [
+          "authored for the pack A70"
+        ],
+        "quote": "Atlassian Jira Service Management signs users in through Keycloak."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "incident-and-problem-management",
+        "dept": "it",
+        "activity": "Incident and problem management",
+        "rpo": "<24 h",
+        "rto": "8 h",
+        "confidentiality": "medium",
+        "integrity": "high",
+        "authenticity": "high",
+        "need": "Records, prioritises, assigns, escalates and documents incidents and problems.",
+        "workaround": "Incidents are taken by phone or e-mail and kept in a local incident list with time, priority, responsibility and status.",
+        "consumer_mtpd": "24 h"
+      },
+      {
+        "department": "helpdesk-and-support",
+        "dept": "it",
+        "activity": "IT helpdesk and support",
+        "rpo": "<1 h",
+        "rto": "8 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Manages service requests and incidents and synchronises defined cases with TicketME.",
+        "workaround": "TicketME is used as the substitute system. Missing details are documented in a local capture list.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "access-management",
+        "dept": "it",
+        "activity": "Access management",
+        "rpo": "<1 h",
+        "rto": "1 h",
+        "confidentiality": "high",
+        "integrity": "high",
+        "authenticity": "high",
+        "need": "Steers requesting, approving, implementing and evidencing authorisation changes.",
+        "workaround": "Urgent lockouts are ordered by phone through a defined emergency number and documented in a four-eyes emergency form.",
+        "consumer_mtpd": "1 h"
+      },
+      {
+        "department": "data-protection",
+        "dept": "it",
+        "activity": "Data protection management",
+        "rpo": "<1 h",
+        "rto": "72 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Records, assesses, assigns and tracks deadlines for data protection incidents.",
+        "workaround": "Data protection incidents are taken by phone on a local emergency form, or through a released alternative internal reporting channel.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "hr-service-ticketing",
+        "dept": "hr",
+        "activity": "HR service ticketing",
+        "need": "Written for the demo pack, not in any prior record: Service management: incidents, problems, service and access requests, data protection cases.",
+        "authored": true,
+        "basis": [
+          "01_Organisation/process-map.md 2.3 l.65-67: the central recording, categorisation, prioritisation and handling of personnel-related requests",
+          "Atlassian Jira Service Management's description: service and access requests"
+        ]
+      },
+      {
+        "department": "asset-and-configuration-management",
+        "dept": "it",
+        "activity": "IT asset and configuration management",
+        "need": "Written for the demo pack, not in any prior record: Service management: incidents, problems, service and access requests, data protection cases.",
+        "authored": true,
+        "basis": [
+          "01_Organisation/process-map.md 3.2 l.120-122: Dependencies, states and changes are documented traceably",
+          "judgement: the service management system holds the configuration items"
+        ]
+      },
+      {
+        "department": "event-management",
+        "dept": "it",
+        "activity": "IT event management",
+        "need": "Written for the demo pack, not in any prior record: Service management: incidents, problems, service and access requests, data protection cases.",
+        "authored": true,
+        "basis": [
+          "01_Organisation/process-map.md 3.6 l.136-138: Relevant deviations are passed on to incident management",
+          "prior BIA record 3.3 §7.1: Atlassian Jira Service Management"
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.3",
+      "prior BIA record 3.4",
+      "prior BIA record 3.5",
+      "prior BIA record 3.9"
+    ],
+    "quality_flags": [
+      "Prior BIA record 3.4 names TicketME as its substitute system; TicketME is not a section-7 row in any record, so it is not an asset here.",
+      "RTO differs between records: 8 h (Incident and problem management); 8 h (IT helpdesk and support); 1 h (Access management); 72 h (Data protection management). Stated per consumer.",
+      "RPO differs between records: <24 h (Incident and problem management); <1 h (IT helpdesk and support); <1 h (Access management); <1 h (Data protection management). Stated per consumer."
+    ]
+  },
+  "csb-erp-marschkamp": {
+    "asset_id": "csb-erp-marschkamp",
+    "name": "CSB ERP Marschkamp",
+    "description": "ERP essential for production and order picking at the Marschkamp site.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "site": "Marschkamp",
+    "rto": "72 h",
+    "rpo": "<24 h",
+    "depends_on": [
+      "corporate-network",
+      "marsh-data-edi"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A9"
+        ],
+        "quote": "CSB ERP Marschkamp is reached over the Corporate network."
+      },
+      {
+        "asset_id": "marsh-data-edi",
+        "evidence_refs": [
+          "authored for the pack A42"
+        ],
+        "quote": "CSB ERP Marschkamp exchanges orders with the retail chains through Marsh Data EDI Services GmbH."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Essential for production at the Marschkamp site.",
+        "workaround": "No workaround: the program is essential for production at the Marschkamp site.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Essential for production at the Marschkamp site.",
+        "workaround": "No workaround: the program is essential for order picking.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Written for the demo pack, not in any prior record: Purchase orders and raw-material stock for the Marschkamp site are kept in it.",
+        "workaround": "When systems fail, orders are placed by phone and e-mail and documented in a local order list.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.1 §1: based on current stock and on the demand of the retail locations",
+          "prior BIA record 1.1 §6: When systems fail, orders are placed by phone and e-mail and documented in a local order list."
+        ]
+      },
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: Delivery notes and loading lists for the Marschkamp site come from it.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.4 §1: Goods dispatch and delivery begins with loading the goods onto the lorry. Delivery then follows with the company's own fleet to the various retail locations or warehouse sites."
+        ]
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Returns are booked against the delivery for credit and traceability at the Marschkamp site.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.5 §1: The process covers taking back and disposing of food from the retail locations that was complained about or left over."
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2",
+      "prior BIA record 1.3"
+    ]
+  },
+  "mawi-erp-breitenburg": {
+    "asset_id": "mawi-erp-breitenburg",
+    "name": "MAWI ERP Breitenburg",
+    "description": "ERP essential for production and order picking at the Breitenburg site.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "site": "Breitenburg",
+    "rto": "72 h",
+    "rpo": "<24 h",
+    "depends_on": [
+      "corporate-network",
+      "marsh-data-edi"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A10"
+        ],
+        "quote": "MAWI ERP Breitenburg is reached over the Corporate network."
+      },
+      {
+        "asset_id": "marsh-data-edi",
+        "evidence_refs": [
+          "authored for the pack A43"
+        ],
+        "quote": "MAWI ERP Breitenburg exchanges orders with the retail chains through Marsh Data EDI Services GmbH."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Essential for production at the Breitenburg site.",
+        "workaround": "No workaround: the program is essential for production at the Breitenburg site.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Essential for production at the Breitenburg site.",
+        "workaround": "No workaround: the program is essential for order picking.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Returns are booked against the delivery for credit and traceability at the Breitenburg site.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.5 §1: The process covers taking back and disposing of food from the retail locations that was complained about or left over."
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2",
+      "prior BIA record 1.3"
+    ]
+  },
+  "merchandise-and-price-labelling": {
+    "asset_id": "merchandise-and-price-labelling",
+    "name": "Merchandise management and price-labelling system",
+    "description": "Merchandise management system; the data needed for price labelling are read from it.",
+    "asset_type": "IT system",
+    "owner_name": "Head of Quality Assurance (Dr Katrin Sauer)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "72 h",
+    "rpo": "<24 h",
+    "depends_on": [
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A11"
+        ],
+        "quote": "The Merchandise management and price-labelling system is reached over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "The data needed for price labelling are read from the merchandise management system.",
+        "workaround": "Price labelling is only possible with the merchandise management system; production is possible without an order.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "The data needed for price labelling are read from the merchandise management system.",
+        "workaround": "Price labelling is only possible with the merchandise management system; order picking is possible without an order.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2",
+      "prior BIA record 1.3"
+    ]
+  },
+  "time-recording-system": {
+    "asset_id": "time-recording-system",
+    "name": "Time-recording system",
+    "description": "Records working times only; no holiday or salary data.",
+    "asset_type": "IT system",
+    "owner_name": "Head of HR Operations (Birte Lorenzen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "72 h",
+    "rpo": "<24 h",
+    "depends_on": [
+      "corporate-network",
+      "hr-master-data-system"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A12"
+        ],
+        "quote": "The Time-recording system is reached over the Corporate network."
+      },
+      {
+        "asset_id": "hr-master-data-system",
+        "evidence_refs": [
+          "authored for the pack A75"
+        ],
+        "quote": "The Time-recording system takes the employees from the HR master data system."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "high",
+        "authenticity": "high",
+        "need": "Records working times only; no holiday or salary data are recorded.",
+        "workaround": "Production can run without the time-recording system.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "high",
+        "authenticity": "high",
+        "need": "Records working times only; no holiday or salary data are recorded.",
+        "workaround": "Production can run without the time-recording system.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "time-recording",
+        "dept": "hr",
+        "activity": "Time recording",
+        "need": "Written for the demo pack, not in any prior record: Records working times only; no holiday or salary data.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2",
+      "prior BIA record 1.3"
+    ]
+  },
+  "automated-warehouse-control": {
+    "asset_id": "automated-warehouse-control",
+    "name": "Automated warehouse control",
+    "description": "Automated high-bay warehouse software, essential for production and order picking at the Marschkamp site.",
+    "asset_type": "IT system",
+    "owner_name": "Head of Order Picking (Sven Hollmann)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "site": "Marschkamp",
+    "rto": "72 h",
+    "rpo": "<24 h",
+    "depends_on": [
+      "corporate-network",
+      "csb-erp-marschkamp",
+      "power-supply"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A13"
+        ],
+        "quote": "Automated warehouse control is reached over the Corporate network."
+      },
+      {
+        "asset_id": "csb-erp-marschkamp",
+        "evidence_refs": [
+          "authored for the pack A14"
+        ],
+        "quote": "Automated warehouse control takes its storage and retrieval orders from CSB ERP Marschkamp."
+      },
+      {
+        "asset_id": "power-supply",
+        "evidence_refs": [
+          "authored for the pack A47"
+        ],
+        "quote": "Automated warehouse control runs on the Power supply."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Automated high-bay warehouse software; essential for production at the Marschkamp site.",
+        "workaround": "No workaround for the Marschkamp site, where the program is essential for production; the Breitenburg site can continue producing.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "rpo": "<24 h",
+        "rto": "72 h",
+        "confidentiality": "high",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Essential for production at the Marschkamp site.",
+        "workaround": "No workaround for the Marschkamp site, where the program is essential for order picking; the Breitenburg site can continue order picking.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2",
+      "prior BIA record 1.3"
+    ],
+    "quality_flags": [
+      "Prior BIA record 1.3: the description starts with unfilled template text ('What does the program do? What is it used for? (1 sentence)'); left out here."
+    ]
+  },
+  "payroll-system": {
+    "asset_id": "payroll-system",
+    "name": "Payroll system",
+    "description": "Processes payroll master data, time data, pay, deductions and payroll runs.",
+    "asset_type": "IT system",
+    "owner_name": "Head of Payroll (Heike Brodersen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "72 h",
+    "rpo": "<1 h",
+    "depends_on": [
+      "corporate-network",
+      "hr-master-data-system",
+      "time-recording-system"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A15"
+        ],
+        "quote": "The Payroll system is reached over the Corporate network."
+      },
+      {
+        "asset_id": "hr-master-data-system",
+        "evidence_refs": [
+          "authored for the pack A16"
+        ],
+        "quote": "The Payroll system takes payroll master data from the HR master data system."
+      },
+      {
+        "asset_id": "time-recording-system",
+        "evidence_refs": [
+          "authored for the pack A17"
+        ],
+        "quote": "The Payroll system takes the recorded working times from the Time-recording system."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "rpo": "<1 h",
+        "rto": "72 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Processes payroll master data, time data, pay, deductions and payroll runs.",
+        "workaround": "No complete manual substitute. The last backed-up data state is used; changes are recorded offline in a controlled way and entered after recovery.",
+        "consumer_mtpd": "168 h"
+      },
+      {
+        "department": "payments-and-salary-transfers",
+        "dept": "hr",
+        "activity": "One-off payments and salary transfers",
+        "need": "Written for the demo pack, not in any prior record: Payments are reconciled with the released payroll in it.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 2.2 §1: Payment data are reconciled with the released payroll and master data."
+        ]
+      },
+      {
+        "department": "employee-registration",
+        "dept": "hr",
+        "activity": "Employee registration and deregistration",
+        "need": "Written for the demo pack, not in any prior record: The statutory registrations and deregistrations are sent from it.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 2.4 §1: transmitting the statutory registrations and deregistrations on time to the competent bodies"
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.1"
+    ]
+  },
+  "hr-master-data-system": {
+    "asset_id": "hr-master-data-system",
+    "name": "HR master data system",
+    "description": "Personal data, bank details, employment data and payroll master data.",
+    "asset_type": "IT system",
+    "owner_name": "Head of HR Systems (Jan Thießen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "72 h",
+    "rpo": "<1 h",
+    "depends_on": [
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A18"
+        ],
+        "quote": "The HR master data system is reached over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "rpo": "<1 h",
+        "rto": "72 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Manages personal data, bank details, employment data and payroll master data.",
+        "workaround": "Released master-data exports and secured personnel records are used. Changes are documented in an encrypted difference list.",
+        "consumer_mtpd": "168 h"
+      },
+      {
+        "department": "payments-and-salary-transfers",
+        "dept": "hr",
+        "activity": "One-off payments and salary transfers",
+        "rpo": "<1 h",
+        "rto": "72 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Provides checked bank details, employment data and payment bases.",
+        "workaround": "Bank details are taken from the protected digital personnel file and the last released master-data export. Changes are checked under the four-eyes principle.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "employee-registration",
+        "dept": "hr",
+        "activity": "Employee registration and deregistration",
+        "need": "Written for the demo pack, not in any prior record: Personal data, bank details, employment data and payroll master data.",
+        "authored": true
+      },
+      {
+        "department": "hr-correspondence",
+        "dept": "hr",
+        "activity": "HR correspondence and documents",
+        "need": "Written for the demo pack, not in any prior record: Contracts and contract changes are written from the employment data in it.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 2.6 §1: creating, checking, issuing and filing employment contracts, contract changes, confirmations and other personnel-related correspondence"
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.1",
+      "prior BIA record 2.2"
+    ]
+  },
+  "sap-s4hana-finance": {
+    "asset_id": "sap-s4hana-finance",
+    "name": "SAP S/4HANA Finance",
+    "description": "Finance system: payment data, approvals and transmission of payments to the bank.",
+    "asset_type": "IT system",
+    "owner_name": "CFO",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "72 h",
+    "rpo": "<1 h",
+    "depends_on": [
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A19"
+        ],
+        "quote": "SAP S/4HANA Finance is reached over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "rpo": "<1 h",
+        "rto": "72 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Takes over checked payment data, supports approvals and transmits bulk payments to the bank.",
+        "workaround": "The released payment file is recreated from the HR master data system. Approvals are obtained through the defined emergency process.",
+        "consumer_mtpd": "168 h"
+      },
+      {
+        "department": "payments-and-salary-transfers",
+        "dept": "hr",
+        "activity": "One-off payments and salary transfers",
+        "rpo": "<1 h",
+        "rto": "72 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Records, checks, approves and transmits one-off payments for salaries and correction payments.",
+        "workaround": "Payment orders are prepared in a released encrypted template. Transmission follows recovery, or goes through an emergency channel agreed with Finance and the bank.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "it-financial-management",
+        "dept": "it",
+        "activity": "IT financial management",
+        "need": "Written for the demo pack, not in any prior record: Finance system: payment data, approvals and transmission of payments to the bank.",
+        "authored": true
+      },
+      {
+        "department": "it-procurement-and-licences",
+        "dept": "it",
+        "activity": "IT procurement and licence management",
+        "need": "Written for the demo pack, not in any prior record: Finance system: payment data, approvals and transmission of payments to the bank.",
+        "authored": true,
+        "basis": [
+          "01_Organisation/process-map.md 3.7 l.140-142: Suppliers and offers are assessed",
+          "SAP S/4HANA Finance's description: payment data, approvals and transmission of payments to the bank",
+          "judgement: IT purchases are approved and paid there"
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.1",
+      "prior BIA record 2.2"
+    ]
+  },
+  "hr-finance-interface": {
+    "asset_id": "hr-finance-interface",
+    "name": "HR-to-financial-accounting interface",
+    "description": "Transfers payroll data to financial accounting for posting.",
+    "asset_type": "IT system",
+    "owner_gap": "built by a consultant years ago; payroll says IT, IT says finance",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "72 h",
+    "rpo": "<1 h",
+    "depends_on": [
+      "payroll-system",
+      "corporate-network",
+      "sap-s4hana-finance"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "payroll-system",
+        "evidence_refs": [
+          "authored for the pack A21"
+        ],
+        "quote": "The HR-to-financial-accounting interface takes the payroll data it transfers from the Payroll system."
+      },
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A22"
+        ],
+        "quote": "The HR-to-financial-accounting interface runs over the Corporate network."
+      },
+      {
+        "asset_id": "sap-s4hana-finance",
+        "evidence_refs": [
+          "authored for the pack A46"
+        ],
+        "quote": "The HR-to-financial-accounting interface delivers the payroll postings into SAP S/4HANA Finance."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "rpo": "<1 h",
+        "rto": "72 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "high",
+        "need": "Transfers payroll data to financial accounting for posting and further processing.",
+        "workaround": "Payroll and posting data are provided as a controlled file and imported, reconciled, once the interface is restored.",
+        "consumer_mtpd": "168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.1"
+    ]
+  },
+  "cisco-call-manager": {
+    "asset_id": "cisco-call-manager",
+    "name": "Cisco Call Manager",
+    "description": "Central telephony for reporting, escalating and coordinating IT disruptions.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "8 h",
+    "rpo": ">168 h",
+    "depends_on": [
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A23"
+        ],
+        "quote": "Cisco Call Manager carries its calls over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "incident-and-problem-management",
+        "dept": "it",
+        "activity": "Incident and problem management",
+        "rpo": ">168 h",
+        "rto": "8 h",
+        "confidentiality": "low",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Provides the central telephony for reporting, escalating and coordinating IT disruptions.",
+        "workaround": "Major-incident communication goes over mobile phones, Microsoft Teams or the alerting system.",
+        "consumer_mtpd": "24 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.3"
+    ]
+  },
+  "cisco-telephony": {
+    "asset_id": "cisco-telephony",
+    "name": "Cisco telephony",
+    "description": "Central phone intake and forwarding of support requests.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "8 h",
+    "rpo": "<24 h",
+    "depends_on": [
+      "cisco-call-manager",
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "cisco-call-manager",
+        "evidence_refs": [
+          "authored for the pack A24"
+        ],
+        "quote": "Cisco telephony runs on Cisco Call Manager as its call-control platform."
+      },
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A25"
+        ],
+        "quote": "Cisco telephony is reached over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "helpdesk-and-support",
+        "dept": "it",
+        "activity": "IT helpdesk and support",
+        "rpo": "<24 h",
+        "rto": "8 h",
+        "confidentiality": "medium",
+        "integrity": "low",
+        "authenticity": "low",
+        "need": "Enables central phone intake and forwarding of support requests.",
+        "workaround": "Calls are diverted to company mobiles or Microsoft Teams. An emergency number is communicated.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.4"
+    ]
+  },
+  "bmc-remedy": {
+    "asset_id": "bmc-remedy",
+    "name": "BMC Remedy AR System",
+    "description": "Records, classifies, assigns and tracks support requests and disruptions.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Helpdesk (Frerk Sievers)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "8 h",
+    "rpo": "<1 h",
+    "depends_on": [
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A26"
+        ],
+        "quote": "BMC Remedy AR System is reached over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "helpdesk-and-support",
+        "dept": "it",
+        "activity": "IT helpdesk and support",
+        "rpo": "<1 h",
+        "rto": "8 h",
+        "confidentiality": "medium",
+        "integrity": "medium",
+        "authenticity": "medium",
+        "need": "Records, classifies, assigns and tracks support requests and disruptions.",
+        "workaround": "Atlassian Jira Service Management is used as the substitute system. Basic information not transferred is documented in a local handover list.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.4"
+    ]
+  },
+  "active-directory": {
+    "asset_id": "active-directory",
+    "name": "Microsoft Active Directory",
+    "description": "Windows identities, groups, device assignments and access rights.",
+    "asset_type": "IT system",
+    "owner_name": "Head of Identity and Access Management (Timo Voß)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "1 h",
+    "rpo": "<1 h",
+    "depends_on": [
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A27"
+        ],
+        "quote": "Microsoft Active Directory is reached over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "access-management",
+        "dept": "it",
+        "activity": "Access management",
+        "rpo": "<1 h",
+        "rto": "1 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Manages Windows identities, groups, device assignments and access rights.",
+        "workaround": "Critical lockouts are done through a separate administration account and an available domain controller. Changes are documented in the emergency log.",
+        "consumer_mtpd": "1 h"
+      },
+      {
+        "department": "asset-and-configuration-management",
+        "dept": "it",
+        "activity": "IT asset and configuration management",
+        "need": "Written for the demo pack, not in any prior record: Device and user accounts are read from it.",
+        "authored": true,
+        "basis": [
+          "Microsoft Active Directory's description: Windows identities, groups, device assignments and access rights."
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.5"
+    ]
+  },
+  "central-authorisation-system": {
+    "asset_id": "central-authorisation-system",
+    "name": "Central authorisation system",
+    "description": "Role-based access and approval workflows for business applications.",
+    "asset_type": "IT system",
+    "owner_name": "Head of Identity and Access Management (Timo Voß)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "1 h",
+    "rpo": "<1 h",
+    "depends_on": [
+      "corporate-network",
+      "active-directory"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A28"
+        ],
+        "quote": "The Central authorisation system is reached over the Corporate network."
+      },
+      {
+        "asset_id": "active-directory",
+        "evidence_refs": [
+          "authored for the pack A29"
+        ],
+        "quote": "The Central authorisation system takes the identities it assigns roles to from Microsoft Active Directory."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "access-management",
+        "dept": "it",
+        "activity": "Access management",
+        "rpo": "<1 h",
+        "rto": "1 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Manages role-based access and approval workflows for business applications.",
+        "workaround": "Urgent withdrawals are made directly in the target systems by authorised administrators. Every measure is logged under the four-eyes principle.",
+        "consumer_mtpd": "1 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.5"
+    ]
+  },
+  "keycloak": {
+    "asset_id": "keycloak",
+    "name": "Keycloak",
+    "description": "Central authentication and role-based authorisation for connected applications.",
+    "asset_type": "IT system",
+    "owner_name": "Head of Identity and Access Management (Timo Voß)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "rto": "1 h",
+    "rpo": "<1 h",
+    "depends_on": [
+      "corporate-network",
+      "active-directory"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A30"
+        ],
+        "quote": "Keycloak is reached over the Corporate network."
+      },
+      {
+        "asset_id": "active-directory",
+        "evidence_refs": [
+          "authored for the pack A31"
+        ],
+        "quote": "Keycloak takes its user identities from Microsoft Active Directory."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "access-management",
+        "dept": "it",
+        "activity": "Access management",
+        "rpo": "<1 h",
+        "rto": "1 h",
+        "confidentiality": "very high",
+        "integrity": "very high",
+        "authenticity": "very high",
+        "need": "Provides central authentication and role-based authorisation for connected applications.",
+        "workaround": "On failure, critical applications run on prepared local emergency accounts. Changes to emergency accounts are logged and cleaned up after recovery.",
+        "consumer_mtpd": "1 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.5"
+    ]
+  },
+  "price-labelling-devices": {
+    "asset_id": "price-labelling-devices",
+    "name": "Price-labelling devices",
+    "description": "Price-labelling devices, made by the company of the same name.",
+    "asset_type": "Equipment and facilities",
+    "owner_name": "Head of Production (Petra Louven)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [
+      "merchandise-and-price-labelling",
+      "power-supply"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "merchandise-and-price-labelling",
+        "evidence_refs": [
+          "authored for the pack A32"
+        ],
+        "quote": "The Price-labelling devices take the data they print from the Merchandise management and price-labelling system."
+      },
+      {
+        "asset_id": "power-supply",
+        "evidence_refs": [
+          "authored for the pack A33"
+        ],
+        "quote": "The Price-labelling devices run on the Power supply."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "The price-labelling devices of the company of the same name are used for price labelling.",
+        "workaround": "If price labelling fails there is no direct workaround, as several parallel lines are in use.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: Weighs and labels the ordered goods per branch.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.3 §1: Order picking begins with weighing the ordered goods exactly per branch."
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2"
+    ]
+  },
+  "refrigeration": {
+    "asset_id": "refrigeration",
+    "name": "Refrigeration",
+    "description": "Chilled and frozen areas: frozen, chilled at 4 °C and chilled at 10 °C.",
+    "asset_type": "Equipment and facilities",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [
+      "power-supply"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "power-supply",
+        "evidence_refs": [
+          "authored for the pack A34"
+        ],
+        "quote": "Refrigeration runs on the Power supply."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Three temperature zones: frozen, chilled at 4 °C and chilled at 10 °C.",
+        "workaround": "Without refrigeration the frozen zone stays up, while the 4 °C and 10 °C zones can be cleared.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "The chilled area at 4 °C.",
+        "workaround": "Goods can be stacked directly into the lorry.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Written for the demo pack, not in any prior record: Keeps the delivered raw materials chilled when they are taken in at the ramp.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.1 §5: interruption of transport routes or of the cold chain"
+        ]
+      },
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: Keeps the goods chilled until they are loaded for delivery.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.4 §5: interruption of the cold chain"
+        ]
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Keeps the animal by-products chilled until the disposal partner collects them.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2",
+      "prior BIA record 1.3"
+    ],
+    "quality_flags": [
+      "The records describe different scope: three zones, frozen, 4 °C and 10 °C (prior BIA record 1.2); the 4 °C chilled area (prior BIA record 1.3). No record says which site."
+    ]
+  },
+  "vehicle-fleet": {
+    "asset_id": "vehicle-fleet",
+    "name": "Vehicle fleet",
+    "description": "The company's own fleet of about 60 lorries across all sites.",
+    "asset_type": "Equipment and facilities",
+    "owner_name": "Head of Fleet and Transport (Diana Petke)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [
+      "marshland-fuels"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "marshland-fuels",
+        "evidence_refs": [
+          "authored for the pack A44"
+        ],
+        "quote": "The Vehicle fleet runs on diesel from Marshland Fuels GmbH."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Delivery is by the company's own fleet of about 60 lorries across all sites.",
+        "workaround": "Capacity from the central logistics fleet and external carriers at short notice.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Delivery is by the company's own fleet of about 60 lorries across all sites.",
+        "workaround": "Capacity from the central logistics fleet and external carriers at short notice.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.4",
+      "prior BIA record 1.5"
+    ]
+  },
+  "corporate-network": {
+    "asset_id": "corporate-network",
+    "name": "Corporate network",
+    "description": "Protected access to HR and finance systems.",
+    "asset_type": "IT infrastructure",
+    "owner_gap": "IT owns the core, maintenance the switches in the cold rooms; each thinks the other has the rest",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [
+      "power-supply",
+      "north-net-communications"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "power-supply",
+        "evidence_refs": [
+          "prior BIA record 2.2"
+        ],
+        "quote": "Supplies workstations, network components and end devices."
+      },
+      {
+        "asset_id": "north-net-communications",
+        "evidence_refs": [
+          "authored for the pack A41"
+        ],
+        "quote": "The Corporate network runs over lines from North Net Communications GmbH, the telecoms and network carrier."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "payments-and-salary-transfers",
+        "dept": "hr",
+        "activity": "One-off payments and salary transfers",
+        "need": "Enables protected access to HR and finance systems.",
+        "workaround": "Access through a released remote connection or an alternative company site.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.2"
+    ]
+  },
+  "power-supply": {
+    "asset_id": "power-supply",
+    "name": "Power supply",
+    "description": "Supplies workstations, network components and end devices.",
+    "asset_type": "Utilities",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [
+      "grid-operator"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "grid-operator",
+        "evidence_refs": [
+          "authored for the pack A35"
+        ],
+        "quote": "The Power supply draws its electricity from the Grid operator."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "payments-and-salary-transfers",
+        "dept": "hr",
+        "activity": "One-off payments and salary transfers",
+        "need": "Supplies workstations, network components and end devices.",
+        "workaround": "Use of an unaffected site or secured remote workstations.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.2"
+    ]
+  },
+  "personnel-mail": {
+    "asset_id": "personnel-mail",
+    "name": "Personnel mail",
+    "description": "Garnishments, notices of termination and other payroll-relevant documents.",
+    "asset_type": "Communication channel",
+    "owner_gap": "everyone handles it, nobody owns it",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "site": "Central HR administration",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "need": "Includes garnishments, notices of termination and other payroll-relevant documents.",
+        "workaround": "Deadline-critical documents are prioritised, physically secured and processed after recovery. Missing documents are requested specifically.",
+        "consumer_mtpd": "168 h"
+      },
+      {
+        "department": "hr-correspondence",
+        "dept": "hr",
+        "activity": "HR correspondence and documents",
+        "need": "Written for the demo pack, not in any prior record: Garnishments, notices of termination and other payroll-relevant documents.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.1"
+    ]
+  },
+  "buyer": {
+    "asset_id": "buyer",
+    "name": "Buyer",
+    "description": "Selects suppliers, places orders and secures on-time, high-quality delivery.",
+    "asset_type": "Role",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "staff_normal": 2,
+        "staff_emergency": 1,
+        "provided_within": "72 h",
+        "location": "home office",
+        "need": "Selects suitable suppliers, places orders and makes sure the ordered products arrive on time and in high quality. Two people are needed in normal operation.",
+        "workaround": "Can be handled with the existing structure and documentation, at reduced quality.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.1"
+    ],
+    "quality_flags": [
+      "Prior BIA record 1.1: the workaround names the stand-in as 'xxx', a placeholder the record never filled."
+    ]
+  },
+  "cutting-staff": {
+    "asset_id": "cutting-staff",
+    "name": "Cutting staff",
+    "description": "Cutting and processing of raw materials and meat products.",
+    "asset_type": "Role",
+    "owner_name": "Head of Production (Petra Louven)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "staff_normal": 40,
+        "staff_emergency": 25,
+        "provided_within": "72 h",
+        "location": "on site",
+        "need": "Cutting and processing of raw materials and meat products.",
+        "workaround": "A pool of 40 people is available; 25 are needed in emergency operation.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2"
+    ]
+  },
+  "production-staff": {
+    "asset_id": "production-staff",
+    "name": "Production staff",
+    "description": "Taking in deliveries, packing, order picking and making goods ready.",
+    "asset_type": "Role",
+    "owner_name": "Head of Production (Petra Louven)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "staff_normal": 40,
+        "staff_emergency": 25,
+        "provided_within": "72 h",
+        "location": "on site",
+        "need": "Taking in deliveries, packing, order picking and making goods ready.",
+        "workaround": "A pool of 40 people is available; 25 are needed in emergency operation.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "staff_normal": 30,
+        "staff_emergency": 15,
+        "provided_within": "72 h",
+        "location": "on site",
+        "need": "Taking in deliveries, packing, order picking and making goods ready.",
+        "workaround": "A pool of 30 people is available; 15 are needed in emergency operation.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2",
+      "prior BIA record 1.3"
+    ],
+    "quality_flags": [
+      "Pool and emergency headcount differ by record: 40 and 25 (prior BIA record 1.2), 30 and 15 (prior BIA record 1.3)."
+    ]
+  },
+  "technician": {
+    "asset_id": "technician",
+    "name": "Technician",
+    "description": "Solving technical problems in a disruption.",
+    "asset_type": "Role",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "staff_normal": 8,
+        "staff_emergency": 4,
+        "provided_within": "72 h",
+        "location": "on site",
+        "need": "Solving technical problems in a disruption.",
+        "workaround": "A pool of 8 people is available; 4 are needed in emergency operation.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "staff_normal": 8,
+        "staff_emergency": 4,
+        "provided_within": "72 h",
+        "location": "on site",
+        "need": "Solving technical problems in a disruption.",
+        "workaround": "A pool of 8 people is available; 4 are needed in emergency operation.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2",
+      "prior BIA record 1.3"
+    ]
+  },
+  "production-supervisors": {
+    "asset_id": "production-supervisors",
+    "name": "Production supervisors",
+    "description": "Lead and supervise the production processes and coordinate the staff.",
+    "asset_type": "Role",
+    "owner_name": "Head of Production (Petra Louven)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "staff_normal": 3,
+        "staff_emergency": 1,
+        "provided_within": "72 h",
+        "location": "on site",
+        "need": "Leading and supervising the production processes and coordinating the staff; 3 supervisors are needed in normal operation.",
+        "workaround": "A pool of 3 people is available. Stand-in by delegating to a deputy or the Plant Manager. 1 production supervisor is needed in emergency operation.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2"
+    ]
+  },
+  "order-picking-supervisors": {
+    "asset_id": "order-picking-supervisors",
+    "name": "Order-picking supervisors",
+    "description": "Lead and supervise the order-picking processes and coordinate the staff.",
+    "asset_type": "Role",
+    "owner_name": "Head of Order Picking (Sven Hollmann)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "staff_normal": 2,
+        "staff_emergency": 0,
+        "provided_within": "72 h",
+        "location": "on site",
+        "need": "Leading and supervising the order-picking processes and coordinating the staff; 1 supervisor is needed in normal operation.",
+        "workaround": "A pool of 2 people is available. Not needed in emergency operation.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.3"
+    ],
+    "quality_flags": [
+      "Prior BIA record 1.3: normal headcount 2, but the description says 1 supervisor is needed in normal operation."
+    ]
+  },
+  "fleet-staff": {
+    "asset_id": "fleet-staff",
+    "name": "Fleet staff",
+    "description": "Drivers: loading and delivery.",
+    "asset_type": "Role",
+    "owner_name": "Head of Fleet and Transport (Diana Petke)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "staff_normal": 15,
+        "staff_emergency": 10,
+        "provided_within": "72 h",
+        "location": "on site",
+        "need": "Loading and delivering raw materials and meat products. 15 people are needed in normal operation.",
+        "workaround": "10 people are needed in emergency operation. The staff pool is sufficient; additional staff can be requested.",
+        "consumer_mtpd": ">168 h"
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "staff_normal": 15,
+        "staff_emergency": 10,
+        "provided_within": "72 h",
+        "location": "on site",
+        "need": "Loading and delivering raw materials and meat products. 15 people are needed in normal operation.",
+        "workaround": "10 people are needed in emergency operation. The staff pool is sufficient; additional staff can be requested from storage and transport.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.4",
+      "prior BIA record 1.5"
+    ]
+  },
+  "fleet-supervisors": {
+    "asset_id": "fleet-supervisors",
+    "name": "Fleet supervisors",
+    "description": "Supervision of the fleet.",
+    "asset_type": "Role",
+    "owner_name": "Head of Fleet and Transport (Diana Petke)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "staff_normal": 1,
+        "staff_emergency": 0,
+        "provided_within": "72 h",
+        "location": "on site",
+        "need": "Leading and supervising the production processes and coordinating the staff; 3 supervisors are needed in normal operation.",
+        "workaround": "Not needed in emergency operation; the Plant Manager takes over the tasks.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.4"
+    ],
+    "quality_flags": [
+      "Prior BIA record 1.4: normal headcount 1, but the description is the production supervisors' text, which says 3 supervisors are needed in normal operation."
+    ]
+  },
+  "payroll-clerks": {
+    "asset_id": "payroll-clerks",
+    "name": "Payroll clerks",
+    "description": "Record and check payroll data; payroll and payments.",
+    "asset_type": "Role",
+    "owner_name": "Head of Payroll (Heike Brodersen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "staff_normal": 70,
+        "staff_emergency": 10,
+        "provided_within": "72 h",
+        "location": "remote or office",
+        "need": "Record and check payroll data and produce the monthly payroll.",
+        "workaround": "A qualified staff pool handles prioritised payroll cases and critical corrections.",
+        "consumer_mtpd": "168 h"
+      },
+      {
+        "department": "payments-and-salary-transfers",
+        "dept": "hr",
+        "activity": "One-off payments and salary transfers",
+        "staff_normal": 70,
+        "staff_emergency": 2,
+        "provided_within": "72 h",
+        "location": "remote or office",
+        "need": "Create, check and monitor one-off payments and correction transfers.",
+        "workaround": "Two qualified staff handle deadline-critical payments only.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.1",
+      "prior BIA record 2.2"
+    ],
+    "quality_flags": [
+      "re-BIA finding: prior BIA records 2.1 and 2.2 (§7.3) give 70 payroll clerks in normal operation, for a company of about 600 staff (01_Organisation/company-profile.md). The figure stands as the records give it; the re-BIA asks again."
+    ]
+  },
+  "hr-systems-owner": {
+    "asset_id": "hr-systems-owner",
+    "name": "HR systems owner",
+    "description": "Monitors payroll runs, interfaces and technical jobs.",
+    "asset_type": "Role",
+    "owner_name": "Head of HR Systems (Jan Thießen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "staff_normal": 2,
+        "staff_emergency": 1,
+        "provided_within": "72 h",
+        "location": "remote or office",
+        "need": "Monitor payroll runs, interfaces and technical jobs.",
+        "workaround": "Mutual stand-in; if needed the Head of Payroll takes over coordination.",
+        "consumer_mtpd": "168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.1"
+    ]
+  },
+  "head-of-payroll": {
+    "asset_id": "head-of-payroll",
+    "name": "Head of Payroll",
+    "description": "Prioritisation, control and formal approvals in payroll.",
+    "asset_type": "Role",
+    "owner_name": "Head of Payroll (Heike Brodersen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "staff_normal": 1,
+        "staff_emergency": 1,
+        "provided_within": "72 h",
+        "location": "remote or office",
+        "need": "Responsible for prioritisation, control and formal approvals.",
+        "workaround": "Approvals go through the documented deputy and emergency process.",
+        "consumer_mtpd": "168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.1"
+    ]
+  },
+  "release-manager": {
+    "asset_id": "release-manager",
+    "name": "Release manager",
+    "description": "Plans releases, coordinates dependencies, controls implementation.",
+    "asset_type": "Role",
+    "owner_name": "Head of IT Service Management (Kai Brüning)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "change-and-release-management",
+        "dept": "it",
+        "activity": "Change and release management",
+        "staff_normal": 2,
+        "staff_emergency": 1,
+        "provided_within": ">168 h",
+        "location": "remote or office",
+        "need": "Plans releases, coordinates dependencies and makes sure they are implemented under control.",
+        "workaround": "An available release manager takes over prioritisation and coordination.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.1"
+    ]
+  },
+  "release-controller": {
+    "asset_id": "release-controller",
+    "name": "Release controller",
+    "description": "Checks completeness, approval status and compliance with the release rules.",
+    "asset_type": "Role",
+    "owner_name": "Head of IT Service Management (Kai Brüning)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "change-and-release-management",
+        "dept": "it",
+        "activity": "Change and release management",
+        "staff_normal": 2,
+        "staff_emergency": 1,
+        "provided_within": ">168 h",
+        "location": "remote or office",
+        "need": "Checks completeness, approval status and compliance with the release rules.",
+        "workaround": "An available release controller continues documentation and quality checks.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.1"
+    ]
+  },
+  "recovery-team": {
+    "asset_id": "recovery-team",
+    "name": "Recovery team",
+    "description": "Analyses disruptions and carries out technical recovery measures.",
+    "asset_type": "Role",
+    "owner_gap": "exists on a slide; no head has it",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "incident-and-problem-management",
+        "dept": "it",
+        "activity": "Incident and problem management",
+        "staff_normal": 500,
+        "staff_emergency": "as needed",
+        "provided_within": "8 h",
+        "location": "on site or remote",
+        "need": "Analyses disruptions and carries out technical recovery measures.",
+        "workaround": "The specialist teams the affected service needs are activated.",
+        "consumer_mtpd": "24 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.3"
+    ],
+    "quality_flags": [
+      "re-BIA finding: prior BIA record 3.3 (§7.2) gives a recovery team of 500 in normal operation, for a company of about 600 staff (01_Organisation/company-profile.md). The figure stands as the record gives it; the re-BIA asks again."
+    ]
+  },
+  "lead-incident-manager": {
+    "asset_id": "lead-incident-manager",
+    "name": "Lead incident manager",
+    "description": "Leads major incidents, prioritises measures, coordinates communication and escalation.",
+    "asset_type": "Role",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "incident-and-problem-management",
+        "dept": "it",
+        "activity": "Incident and problem management",
+        "staff_normal": 8,
+        "staff_emergency": 2,
+        "provided_within": "8 h",
+        "location": "on site or remote",
+        "need": "Leads major incidents, prioritises measures and coordinates communication and escalation.",
+        "workaround": "Availability from a rotating staff pool.",
+        "consumer_mtpd": "24 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.3"
+    ]
+  },
+  "manager-on-duty": {
+    "asset_id": "manager-on-duty",
+    "name": "Manager on duty",
+    "description": "Takes cross-cutting decisions and ensures management escalation.",
+    "asset_type": "Role",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "incident-and-problem-management",
+        "dept": "it",
+        "activity": "Incident and problem management",
+        "staff_normal": 7,
+        "staff_emergency": 1,
+        "provided_within": "8 h",
+        "location": "on site or remote",
+        "need": "Takes cross-cutting decisions and ensures management escalation.",
+        "workaround": "Stand-in by a named IT Operations manager.",
+        "consumer_mtpd": "24 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.3"
+    ]
+  },
+  "it-helpdesk-staff": {
+    "asset_id": "it-helpdesk-staff",
+    "name": "IT helpdesk staff",
+    "description": "Take, prioritise, analyse and escalate support requests.",
+    "asset_type": "Role",
+    "owner_name": "Head of IT Helpdesk (Frerk Sievers)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "helpdesk-and-support",
+        "dept": "it",
+        "activity": "IT helpdesk and support",
+        "staff_normal": 10,
+        "staff_emergency": 4,
+        "provided_within": "8 h",
+        "location": "remote or office",
+        "need": "Take requests, prioritise them, carry out first analysis and escalate to the responsible support groups.",
+        "workaround": "An available staff pool covers telephony, ticket intake and first-line resolution.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.4"
+    ]
+  },
+  "windows-administrator": {
+    "asset_id": "windows-administrator",
+    "name": "Windows administrator",
+    "description": "Lockouts, unlocks and changes in Microsoft Active Directory.",
+    "asset_type": "Role",
+    "owner_name": "Head of Identity and Access Management (Timo Voß)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "access-management",
+        "dept": "it",
+        "activity": "Access management",
+        "staff_normal": 30,
+        "staff_emergency": 1,
+        "provided_within": "1 h",
+        "location": "remote or office",
+        "need": "Carries out lockouts, unlocks and changes in Microsoft Active Directory.",
+        "workaround": "Availability from a qualified administrator pool.",
+        "consumer_mtpd": "1 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.5"
+    ],
+    "quality_flags": [
+      "re-BIA finding: prior BIA record 3.5 (§7.2) gives 30 Windows administrators in normal operation, for a company of about 600 staff (01_Organisation/company-profile.md). The figure stands as the record gives it; the re-BIA asks again."
+    ]
+  },
+  "central-authorisation-administrator": {
+    "asset_id": "central-authorisation-administrator",
+    "name": "Central authorisation system administrator",
+    "description": "Implements approved role and authorisation changes in the central authorisation system.",
+    "asset_type": "Role",
+    "owner_name": "Head of Identity and Access Management (Timo Voß)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "access-management",
+        "dept": "it",
+        "activity": "Access management",
+        "staff_normal": 3,
+        "staff_emergency": 1,
+        "provided_within": "1 h",
+        "location": "remote or office",
+        "need": "Implements approved role and authorisation changes in the central authorisation system.",
+        "workaround": "Stand-in from the qualified IAM team.",
+        "consumer_mtpd": "1 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.5"
+    ]
+  },
+  "keycloak-administrator": {
+    "asset_id": "keycloak-administrator",
+    "name": "Keycloak administrator",
+    "description": "Manages realms, clients, roles and administrative emergency access in Keycloak.",
+    "asset_type": "Role",
+    "owner_name": "Head of Identity and Access Management (Timo Voß)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "access-management",
+        "dept": "it",
+        "activity": "Access management",
+        "staff_normal": 5,
+        "staff_emergency": 1,
+        "provided_within": "1 h",
+        "location": "remote or office",
+        "need": "Manages realms, clients, roles and administrative emergency access in Keycloak.",
+        "workaround": "Stand-in from the qualified IAM team.",
+        "consumer_mtpd": "1 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.5"
+    ]
+  },
+  "data-protection-officer": {
+    "asset_id": "data-protection-officer",
+    "name": "Data protection officer",
+    "description": "Assesses data protection incidents, coordinates measures, decides on notifications.",
+    "asset_type": "Role",
+    "owner_name": "Data Protection Officer (Ulrike Tiedemann)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "data-protection",
+        "dept": "it",
+        "activity": "Data protection management",
+        "staff_normal": 3,
+        "staff_emergency": 1,
+        "provided_within": "72 h",
+        "location": "remote or office",
+        "need": "Assesses data protection incidents, coordinates measures and decides on required notifications.",
+        "workaround": "Availability from an internal and external deputy pool.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.9"
+    ]
+  },
+  "data-protection-coordinator": {
+    "asset_id": "data-protection-coordinator",
+    "name": "Data protection coordinator",
+    "description": "Supports case intake, documentation, communication and follow-up.",
+    "asset_type": "Role",
+    "owner_name": "Data Protection Officer (Ulrike Tiedemann)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "data-protection",
+        "dept": "it",
+        "activity": "Data protection management",
+        "staff_normal": 4,
+        "staff_emergency": 1,
+        "provided_within": "72 h",
+        "location": "remote or office",
+        "need": "Supports case intake, documentation, communication and follow-up.",
+        "workaround": "A coordinator takes over intake, fact-finding and deadline control.",
+        "consumer_mtpd": ">168 h"
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 3.9"
+    ]
+  },
+  "grid-operator": {
+    "asset_id": "grid-operator",
+    "name": "Grid operator",
+    "description": "Public electricity supply to the company's sites.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [],
+    "evidence_refs": []
+  },
+  "emergency-generator": {
+    "asset_id": "emergency-generator",
+    "name": "Emergency generator",
+    "description": "Stand-by electricity when the public supply fails.",
+    "asset_type": "Equipment and facilities",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "backup_for": [
+      "power-supply"
+    ],
+    "depends_on": [
+      "marshland-fuels"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "marshland-fuels",
+        "evidence_refs": [
+          "authored for the pack A45"
+        ],
+        "quote": "The Emergency generator runs on diesel from Marshland Fuels GmbH."
+      }
+    ],
+    "consumers": [],
+    "evidence_refs": []
+  },
+  "bank": {
+    "asset_id": "bank",
+    "name": "Bank",
+    "description": "Executes the payments the company transmits.",
+    "asset_type": "External supplier",
+    "owner_name": "CFO",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "need": "Written for the demo pack, not in any prior record: Executes the bulk payments SAP S/4HANA Finance transmits to the bank.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 2.1 §7.2: Takes over checked payment data, supports releases and transmits bulk payments to the bank."
+        ]
+      },
+      {
+        "department": "payments-and-salary-transfers",
+        "dept": "hr",
+        "activity": "One-off payments and salary transfers",
+        "need": "Written for the demo pack, not in any prior record: Executes the one-off payments SAP S/4HANA Finance transmits to the bank.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 2.2 §5: failure of the connection to the bank",
+          "prior BIA record 2.2 §7.1: Records, checks, approves and transmits one-off payments for salaries and correction payments."
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "raw-material-suppliers": {
+    "asset_id": "raw-material-suppliers",
+    "name": "Raw material suppliers (framework contracts and the open market)",
+    "description": "Suppliers: There are suppliers with framework contracts, bound long-term, who regularly deliver set quantities of raw materials and meat products, and suppliers on the open market, chosen as needed.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Suppliers: There are suppliers with framework contracts, bound long-term, who regularly deliver set quantities of raw materials and meat products, and suppliers on the open market, chosen as needed.",
+        "workaround": "There are enough suppliers on the market. A short-term switch is possible."
+      },
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Suppliers: There are suppliers with framework contracts, bound long-term, who regularly deliver set quantities of raw materials and meat products, and suppliers on the open market, chosen as needed.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.2 §5: missing raw materials or packaging materials"
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.1"
+    ]
+  },
+  "cleaning-contractors": {
+    "asset_id": "cleaning-contractors",
+    "name": "Cleaning contractors (Reinigung & Clar, Fresh & Clean)",
+    "description": "Cleaning contractors: 2 suppliers (Reinigung & Clar, Fresh & Clean).",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Cleaning contractors: 2 suppliers (Reinigung & Clar, Fresh & Clean).",
+        "workaround": "Possible under our own responsibility, and there are enough other service providers."
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2"
+    ]
+  },
+  "external-technicians": {
+    "asset_id": "external-technicians",
+    "name": "External technicians (Wirfixens GmbH, Technobros GmbH)",
+    "description": "External technicians: Wirfixens GmbH, Technobros GmbH.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "External technicians: Wirfixens GmbH, Technobros GmbH.",
+        "workaround": "Well-known firms, assessed against criteria at regular intervals."
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2"
+    ]
+  },
+  "elbe-industrial-gases": {
+    "asset_id": "elbe-industrial-gases",
+    "name": "Elbe Industrial Gases GmbH",
+    "description": "Elbe Industrial Gases GmbH: Supplier of nitrogen.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Elbe Industrial Gases GmbH: Supplier of nitrogen.",
+        "workaround": "Other suppliers are available. A short-term switch is possible."
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.2"
+    ],
+    "quality_flags": [
+      "Prior BIA record 1.2 names a real brand for this supplier; renamed Elbe Industrial Gases GmbH for the demo pack on the owner's ruling (ADR-0034, Part A of the suppliers addendum). The vault original is unchanged."
+    ]
+  },
+  "vehicle-workshops": {
+    "asset_id": "vehicle-workshops",
+    "name": "Vehicle workshops (internal and external)",
+    "description": "Vehicle workshops: The workshop partners for the Marschkamp fleet include internal and external partners, who are responsible for servicing and maintaining the vehicles.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "service_for": [
+      "vehicle-fleet"
+    ],
+    "service_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Vehicle workshops: The workshop partners for the Marschkamp fleet include internal and external partners, who are responsible for servicing and maintaining the vehicles.",
+        "workaround": "Internal or external repair. A short-term switch is possible."
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.4"
+    ]
+  },
+  "schlugge-lagerlogistik": {
+    "asset_id": "schlugge-lagerlogistik",
+    "name": "Schlugge Lagerlogistik GmbH",
+    "description": "Schlugge Lagerlogistik GmbH: What the firm covers is not described.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Schlugge Lagerlogistik GmbH: What the firm covers is not described.",
+        "workaround": "Moving to another partner. A short-term switch is possible."
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.4"
+    ],
+    "quality_flags": [
+      "Prior BIA record 1.4 leaves what this firm covers as 'xxx', a placeholder the record never filled."
+    ]
+  },
+  "muellnix": {
+    "asset_id": "muellnix",
+    "name": "Müllnix GmbH",
+    "description": "Disposal contractor: Müllnix GmbH is responsible for collecting and maintaining the disposal containers.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [
+      "north-german-rendering"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "north-german-rendering",
+        "evidence_refs": [
+          "authored for the pack A39"
+        ],
+        "quote": "Müllnix GmbH passes the animal by-products it collects to North German Rendering GmbH for rendering."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Disposal contractor: Müllnix GmbH is responsible for collecting and maintaining the disposal containers.",
+        "workaround": "Other external service providers are available on the market. A short-term switch is possible."
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 1.5"
+    ]
+  },
+  "north-german-rendering": {
+    "asset_id": "north-german-rendering",
+    "name": "North German Rendering GmbH",
+    "description": "Written for the demo pack, not in any prior record: Renders animal by-products.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Takes production's own animal by-products for rendering.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "frostmark-refrigeration": {
+    "asset_id": "frostmark-refrigeration",
+    "name": "Frostmark Refrigeration GmbH",
+    "description": "Written for the demo pack, not in any prior record: Ammonia refrigeration service, on call.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "service_for": [
+      "refrigeration"
+    ],
+    "service_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [],
+    "consumers": [],
+    "evidence_refs": []
+  },
+  "packform-north": {
+    "asset_id": "packform-north",
+    "name": "PackForm North GmbH",
+    "description": "Written for the demo pack, not in any prior record: Printed packaging film and trays; the single source for them.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Supplies the printed packaging film and trays.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "north-gas": {
+    "asset_id": "north-gas",
+    "name": "North Gas GmbH",
+    "description": "Written for the demo pack, not in any prior record: Food-grade carbon dioxide for modified-atmosphere packs.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [],
+    "evidence_refs": []
+  },
+  "north-net-communications": {
+    "asset_id": "north-net-communications",
+    "name": "North Net Communications GmbH",
+    "description": "Written for the demo pack, not in any prior record: Telecoms and network carrier.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of IT Procurement (Björn Ketelsen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [],
+    "evidence_refs": []
+  },
+  "marsh-data-edi": {
+    "asset_id": "marsh-data-edi",
+    "name": "Marsh Data EDI Services GmbH",
+    "description": "Written for the demo pack, not in any prior record: Electronic order exchange with the retail chains.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of IT Procurement (Björn Ketelsen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [],
+    "evidence_refs": []
+  },
+  "marshland-fuels": {
+    "asset_id": "marshland-fuels",
+    "name": "Marshland Fuels GmbH",
+    "description": "Written for the demo pack, not in any prior record: Diesel.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [],
+    "evidence_refs": []
+  },
+  "steinburg-public-utilities": {
+    "asset_id": "steinburg-public-utilities",
+    "name": "Steinburg Public Utilities GmbH",
+    "description": "Written for the demo pack, not in any prior record: Mains water and wastewater discharge.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [],
+    "evidence_refs": []
+  },
+  "cutting-and-processing-lines": {
+    "asset_id": "cutting-and-processing-lines",
+    "name": "Cutting and processing lines",
+    "description": "Written for the demo pack, not in any prior record: Cutting and processing lines.",
+    "asset_type": "Equipment and facilities",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "power-supply",
+      "steam-and-hot-water",
+      "compressed-air",
+      "industrial-gases"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "power-supply",
+        "evidence_refs": [
+          "authored for the pack A48"
+        ],
+        "quote": "Cutting and processing lines run on the Power supply."
+      },
+      {
+        "asset_id": "steam-and-hot-water",
+        "evidence_refs": [
+          "authored for the pack A49"
+        ],
+        "quote": "Cutting and processing lines take steam and hot water from Steam and hot water."
+      },
+      {
+        "asset_id": "compressed-air",
+        "evidence_refs": [
+          "authored for the pack A50"
+        ],
+        "quote": "Cutting and processing lines are driven by Compressed air."
+      },
+      {
+        "asset_id": "industrial-gases",
+        "evidence_refs": [
+          "authored for the pack A76"
+        ],
+        "quote": "Cutting and processing lines take nitrogen and carbon dioxide from Industrial gases."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Cutting and processing lines.",
+        "workaround": "The production programme is reduced to prioritised articles and available lines.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.2 §5: failure of essential production equipment",
+          "prior BIA record 1.2 §6: The production programme is reduced to prioritised articles and available lines."
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "steam-and-hot-water": {
+    "asset_id": "steam-and-hot-water",
+    "name": "Steam and hot water",
+    "description": "Written for the demo pack, not in any prior record: Steam and hot water.",
+    "asset_type": "Utilities",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "power-supply",
+      "mains-water"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "power-supply",
+        "evidence_refs": [
+          "authored for the pack A51"
+        ],
+        "quote": "Steam and hot water runs on the Power supply."
+      },
+      {
+        "asset_id": "mains-water",
+        "evidence_refs": [
+          "authored for the pack A52"
+        ],
+        "quote": "Steam and hot water takes its water from Mains water."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Steam and hot water.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "compressed-air": {
+    "asset_id": "compressed-air",
+    "name": "Compressed air",
+    "description": "Written for the demo pack, not in any prior record: Compressed air.",
+    "asset_type": "Utilities",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "power-supply"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "power-supply",
+        "evidence_refs": [
+          "authored for the pack A53"
+        ],
+        "quote": "Compressed air runs on the Power supply."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Compressed air.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.2 §5: power, refrigeration, water or compressed-air failure"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "mains-water": {
+    "asset_id": "mains-water",
+    "name": "Mains water",
+    "description": "Written for the demo pack, not in any prior record: Mains water.",
+    "asset_type": "Utilities",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "steinburg-public-utilities"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "steinburg-public-utilities",
+        "evidence_refs": [
+          "authored for the pack A54"
+        ],
+        "quote": "Mains water is supplied by Steinburg Public Utilities GmbH."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Supplies the mains water production uses.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.2 §5: power, refrigeration, water or compressed-air failure"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "wastewater-treatment": {
+    "asset_id": "wastewater-treatment",
+    "name": "Wastewater treatment",
+    "description": "Written for the demo pack, not in any prior record: Wastewater treatment.",
+    "asset_type": "Utilities",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "power-supply",
+      "steinburg-public-utilities"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "power-supply",
+        "evidence_refs": [
+          "authored for the pack A55"
+        ],
+        "quote": "Wastewater treatment runs on the Power supply."
+      },
+      {
+        "asset_id": "steinburg-public-utilities",
+        "evidence_refs": [
+          "authored for the pack A56"
+        ],
+        "quote": "Wastewater treatment discharges through Steinburg Public Utilities GmbH."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Wastewater treatment.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "industrial-gases": {
+    "asset_id": "industrial-gases",
+    "name": "Industrial gases (nitrogen, carbon dioxide)",
+    "description": "Written for the demo pack, not in any prior record: Industrial gases (nitrogen, carbon dioxide).",
+    "asset_type": "Utilities",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "north-gas",
+      "elbe-industrial-gases"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "north-gas",
+        "evidence_refs": [
+          "authored for the pack A57"
+        ],
+        "quote": "Industrial gases (nitrogen, carbon dioxide) are supplied by North Gas GmbH."
+      },
+      {
+        "asset_id": "elbe-industrial-gases",
+        "evidence_refs": [
+          "authored for the pack A58"
+        ],
+        "quote": "Industrial gases (nitrogen, carbon dioxide) are supplied by Elbe Industrial Gases GmbH."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Supplies the nitrogen and carbon dioxide production uses.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.2 §7.3: Elbe Industrial Gases GmbH: Supplier of nitrogen."
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "veterinary-and-qa-release": {
+    "asset_id": "veterinary-and-qa-release",
+    "name": "Veterinary and QA release",
+    "description": "Written for the demo pack, not in any prior record: Veterinary and QA release.",
+    "asset_type": "Approval",
+    "owner_name": "Head of Quality Assurance (Dr Katrin Sauer)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "district-veterinary-office"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "district-veterinary-office",
+        "evidence_refs": [
+          "authored for the pack A59"
+        ],
+        "quote": "Veterinary and QA release is granted by the District Veterinary Office."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Veterinary and QA release.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.2 §5: quality or hygiene block on a production area"
+        ]
+      },
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Written for the demo pack, not in any prior record: Veterinary and QA release.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.1 §5: quality, veterinary or release problems with raw materials"
+        ],
+        "workaround": "No workaround: no raw material is accepted for production without the veterinary and QA release, and nothing replaces it."
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: The goods are checked and released before they are made ready for the branches.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.3 §1: After checking and release, the goods are made ready for the retail locations concerned and prepared for loading."
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "district-veterinary-office": {
+    "asset_id": "district-veterinary-office",
+    "name": "District Veterinary Office",
+    "description": "Written for the demo pack, not in any prior record: Official veterinary control.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Quality Assurance (Dr Katrin Sauer)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [],
+    "evidence_refs": []
+  },
+  "route-planner": {
+    "asset_id": "route-planner",
+    "name": "Route planner",
+    "description": "Written for the demo pack, not in any prior record: Plans delivery tours and time slots and sends delivery notices.",
+    "asset_type": "IT system",
+    "owner_gap": "Bought by purchasing, run by IT, used by logistics; nobody has been named.",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "site": "Marschkamp logistics centre",
+    "depends_on": [
+      "corporate-network",
+      "csb-erp-marschkamp",
+      "marsh-data-edi"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A60"
+        ],
+        "quote": "The Route planner is reached over the Corporate network."
+      },
+      {
+        "asset_id": "csb-erp-marschkamp",
+        "evidence_refs": [
+          "authored for the pack A61"
+        ],
+        "quote": "The Route planner takes the orders to deliver from CSB ERP Marschkamp."
+      },
+      {
+        "asset_id": "marsh-data-edi",
+        "evidence_refs": [
+          "authored for the pack A62"
+        ],
+        "quote": "The Route planner sends delivery notices through Marsh Data EDI Services GmbH."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: Plans delivery tours and time slots and sends delivery notices.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.4 §5: missing dispatch or route data"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "ticket-interface": {
+    "asset_id": "ticket-interface",
+    "name": "Ticket interface",
+    "description": "Written for the demo pack, not in any prior record: Passes tickets between BMC Remedy AR System and Atlassian Jira Service Management.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Helpdesk (Frerk Sievers)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "bmc-remedy",
+      "jira-service-management"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "bmc-remedy",
+        "evidence_refs": [
+          "authored for the pack A64"
+        ],
+        "quote": "The Ticket interface takes tickets from BMC Remedy AR System."
+      },
+      {
+        "asset_id": "jira-service-management",
+        "evidence_refs": [
+          "authored for the pack A65"
+        ],
+        "quote": "The Ticket interface passes tickets to Atlassian Jira Service Management."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "helpdesk-and-support",
+        "dept": "it",
+        "activity": "IT helpdesk and support",
+        "need": "Written for the demo pack, not in any prior record: Passes tickets between BMC Remedy AR System and Atlassian Jira Service Management.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 3.4 §5: disruption of the interface between the ticket systems"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "remote-access": {
+    "asset_id": "remote-access",
+    "name": "Remote access",
+    "description": "Written for the demo pack, not in any prior record: Access to the company's systems from secured remote workplaces.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "corporate-network",
+      "active-directory"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A66"
+        ],
+        "quote": "Remote access is reached over the Corporate network."
+      },
+      {
+        "asset_id": "active-directory",
+        "evidence_refs": [
+          "authored for the pack A68"
+        ],
+        "quote": "Remote access signs users in against Microsoft Active Directory."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "need": "Written for the demo pack, not in any prior record: Access to the company's systems from secured remote workplaces.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 2.1 §5: failure of network, power supply or remote access"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "remote-maintenance-access": {
+    "asset_id": "remote-maintenance-access",
+    "name": "Remote-maintenance access",
+    "description": "Written for the demo pack, not in any prior record: Lets the helpdesk reach users' devices remotely.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Helpdesk (Frerk Sievers)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "corporate-network",
+      "active-directory"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A67"
+        ],
+        "quote": "Remote-maintenance access is reached over the Corporate network."
+      },
+      {
+        "asset_id": "active-directory",
+        "evidence_refs": [
+          "authored for the pack A69"
+        ],
+        "quote": "Remote-maintenance access signs helpdesk staff in against Microsoft Active Directory."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "helpdesk-and-support",
+        "dept": "it",
+        "activity": "IT helpdesk and support",
+        "need": "Written for the demo pack, not in any prior record: Lets the helpdesk reach users' devices remotely.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 3.4 §5: failure of the knowledge base or of the remote-maintenance access"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "marschkamp-headquarters": {
+    "asset_id": "marschkamp-headquarters",
+    "name": "Marschkamp (headquarters)",
+    "description": "Written for the demo pack, not in any prior record: Meat cutting; packing; distribution centre.",
+    "asset_type": "Site",
+    "owner_name": "Plant Manager (Henning Barsch)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "partly",
+        "basis": [
+          "prior BIA record 1.2 §6: Where technically possible, production is moved to another site.",
+          "01_Organisation/company-profile.md §5 l.73: Meat cutting; packing; distribution centre"
+        ]
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "CSB ERP Marschkamp's description: production and order picking at the Marschkamp site"
+        ]
+      },
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "01_Organisation/company-profile.md §5 l.73: Meat cutting; packing; distribution centre"
+        ]
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "prior BIA record 1.5 §1: At the production and processing sites these boxes are disposed of in the containers provided for them.",
+          "01_Organisation/company-profile.md §5 l.73: Meat cutting; packing; distribution centre"
+        ]
+      },
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "judgement: purchasing sits at headquarters"
+        ]
+      },
+      {
+        "department": "change-and-release-management",
+        "dept": "it",
+        "activity": "Change and release management",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "judgement: IT sits at headquarters"
+        ]
+      },
+      {
+        "department": "helpdesk-and-support",
+        "dept": "it",
+        "activity": "IT helpdesk and support",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "judgement: IT sits at headquarters"
+        ]
+      },
+      {
+        "department": "access-management",
+        "dept": "it",
+        "activity": "Access management",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "judgement: IT sits at headquarters"
+        ]
+      },
+      {
+        "department": "data-protection",
+        "dept": "it",
+        "activity": "Data protection management",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "judgement: IT sits at headquarters"
+        ]
+      },
+      {
+        "department": "incident-and-problem-management",
+        "dept": "it",
+        "activity": "Incident and problem management",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "judgement: IT sits at headquarters"
+        ]
+      },
+      {
+        "department": "it-financial-management",
+        "dept": "it",
+        "activity": "IT financial management",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "judgement: IT sits at headquarters"
+        ]
+      },
+      {
+        "department": "asset-and-configuration-management",
+        "dept": "it",
+        "activity": "IT asset and configuration management",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "judgement: IT sits at headquarters"
+        ]
+      },
+      {
+        "department": "event-management",
+        "dept": "it",
+        "activity": "IT event management",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "judgement: IT sits at headquarters"
+        ]
+      },
+      {
+        "department": "it-procurement-and-licences",
+        "dept": "it",
+        "activity": "IT procurement and licence management",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "judgement: IT sits at headquarters"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "marschkamp-logistics-centre": {
+    "asset_id": "marschkamp-logistics-centre",
+    "name": "Marschkamp logistics centre",
+    "description": "Written for the demo pack, not in any prior record: National distribution; consolidation of goods; warehousing.",
+    "asset_type": "Site",
+    "owner_name": "Plant Manager (Henning Barsch)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "01_Organisation/company-profile.md §5 l.74: National distribution; consolidation of goods; warehousing"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "wilstermarsch": {
+    "asset_id": "wilstermarsch",
+    "name": "Wilstermarsch",
+    "description": "Written for the demo pack, not in any prior record: Meat processing; sausage and speciality production.",
+    "asset_type": "Site",
+    "owner_name": "Plant Manager (Henning Barsch)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "partly",
+        "basis": [
+          "prior BIA record 1.2 §6: Where technically possible, production is moved to another site.",
+          "01_Organisation/company-profile.md §5 l.75: Meat processing; sausage and speciality production"
+        ]
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "prior BIA record 1.5 §1: At the production and processing sites these boxes are disposed of in the containers provided for them.",
+          "01_Organisation/company-profile.md §5 l.75: Meat processing; sausage and speciality production"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "breitenburg": {
+    "asset_id": "breitenburg",
+    "name": "Breitenburg",
+    "description": "Written for the demo pack, not in any prior record: Convenience production; portioning; packing.",
+    "asset_type": "Site",
+    "owner_name": "Plant Manager (Henning Barsch)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "partly",
+        "basis": [
+          "prior BIA record 1.2 §6: Where technically possible, production is moved to another site.",
+          "01_Organisation/company-profile.md §5 l.76: Convenience production; portioning; packing"
+        ]
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "MAWI ERP Breitenburg's description: production and order picking at the Breitenburg site"
+        ]
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "prior BIA record 1.5 §1: At the production and processing sites these boxes are disposed of in the containers provided for them.",
+          "01_Organisation/company-profile.md §5 l.76: Convenience production; portioning; packing"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "central-hr-administration": {
+    "asset_id": "central-hr-administration",
+    "name": "Central HR administration",
+    "description": "The central workplace of payroll and HR administration.",
+    "asset_type": "Site",
+    "owner_name": "Head of HR Administration (Silke Jessen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "depends_on": [
+      "marschkamp-headquarters"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "marschkamp-headquarters",
+        "evidence_refs": [
+          "authored for the pack A63"
+        ],
+        "quote": "Central HR administration is at Marschkamp (headquarters)."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "payroll",
+        "dept": "hr",
+        "activity": "Payroll",
+        "need": "The central workplace of payroll and HR administration.",
+        "workaround": "The process can be continued from secured remote workplaces.",
+        "takeover": "not stated",
+        "basis": [
+          "prior BIA record 2.1 §7.4: Central HR administration: The central workplace of payroll and HR administration."
+        ]
+      },
+      {
+        "department": "payments-and-salary-transfers",
+        "dept": "hr",
+        "activity": "One-off payments and salary transfers",
+        "need": "The central seat of payroll.",
+        "workaround": "Work from secured remote workplaces or an alternative company site.",
+        "takeover": "yes",
+        "basis": [
+          "prior BIA record 2.2 §7.4: Central HR administration: The central seat of payroll. Workaround: Work from secured remote workplaces or an alternative company site."
+        ]
+      },
+      {
+        "department": "employee-registration",
+        "dept": "hr",
+        "activity": "Employee registration and deregistration",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "prior BIA record 2.1 §7.4: Central HR administration: The central workplace of payroll and HR administration."
+        ]
+      },
+      {
+        "department": "time-recording",
+        "dept": "hr",
+        "activity": "Time recording",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "prior BIA record 2.1 §7.4: Central HR administration: The central workplace of payroll and HR administration."
+        ]
+      },
+      {
+        "department": "hr-correspondence",
+        "dept": "hr",
+        "activity": "HR correspondence and documents",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "prior BIA record 2.1 §7.4: Central HR administration: The central workplace of payroll and HR administration."
+        ]
+      },
+      {
+        "department": "hr-service-ticketing",
+        "dept": "hr",
+        "activity": "HR service ticketing",
+        "need": "Written for the demo pack, not in any prior record: Runs at this site.",
+        "authored": true,
+        "takeover": "not stated",
+        "basis": [
+          "prior BIA record 2.1 §7.4: Central HR administration: The central workplace of payroll and HR administration."
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "prior BIA record 2.1",
+      "prior BIA record 2.2"
+    ]
+  },
+  "crisis-team-lead": {
+    "asset_id": "crisis-team-lead",
+    "name": "Crisis team lead (deputy: Plant Manager)",
+    "description": "Written for the demo pack, not in any prior record: Held by the CEO, Dr Reinhard Kettler; deputy: Henning Barsch.",
+    "asset_type": "Role",
+    "owner_name": "Plant Manager (Henning Barsch)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Written for the demo pack, not in any prior record: Held by the CEO, Dr Reinhard Kettler; deputy: Henning Barsch.",
+        "authored": true
+      },
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Held by the CEO, Dr Reinhard Kettler; deputy: Henning Barsch.",
+        "authored": true
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: Held by the CEO, Dr Reinhard Kettler; deputy: Henning Barsch.",
+        "authored": true
+      },
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: Held by the CEO, Dr Reinhard Kettler; deputy: Henning Barsch.",
+        "authored": true
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Held by the CEO, Dr Reinhard Kettler; deputy: Henning Barsch.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "product-recall-coordinator": {
+    "asset_id": "product-recall-coordinator",
+    "name": "Product recall and withdrawal coordinator",
+    "description": "Written for the demo pack, not in any prior record: Held by the Head of Quality Assurance, Dr Katrin Sauer.",
+    "asset_type": "Role",
+    "owner_name": "Head of Quality Assurance (Dr Katrin Sauer)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Held by the Head of Quality Assurance, Dr Katrin Sauer.",
+        "authored": true
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Held by the Head of Quality Assurance, Dr Katrin Sauer.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "haccp-team-lead": {
+    "asset_id": "haccp-team-lead",
+    "name": "HACCP team lead",
+    "description": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+    "asset_type": "Role",
+    "owner_name": "Head of Quality Assurance (Dr Katrin Sauer)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Decides how returned goods are stored and disposed of hygienically.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.5 §6: Separate, hygienically safe intermediate storage and the documentation of returns are kept up."
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "site-management": {
+    "asset_id": "site-management",
+    "name": "Site management (all three plants)",
+    "description": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+    "asset_type": "Role",
+    "owner_name": "Plant Manager (Henning Barsch)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "shift-lead": {
+    "asset_id": "shift-lead",
+    "name": "Shift lead (early, late, night sanitation, weekend)",
+    "description": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+    "asset_type": "Role",
+    "owner_name": "Head of Production (Petra Louven)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "refrigeration-engineer-on-call": {
+    "asset_id": "refrigeration-engineer-on-call",
+    "name": "Refrigeration engineer on call (ammonia competence)",
+    "description": "Written for the demo pack, not in any prior record: Held by the Maintenance Manager, Dirk Wohlleben.",
+    "asset_type": "Role",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Held by the Maintenance Manager, Dirk Wohlleben.",
+        "authored": true
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: Held by the Maintenance Manager, Dirk Wohlleben.",
+        "authored": true
+      },
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: Held by the Maintenance Manager, Dirk Wohlleben.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "works-council": {
+    "asset_id": "works-council",
+    "name": "Works council (consent to overtime, shift changes, Sunday work)",
+    "description": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+    "asset_type": "Role",
+    "owner_name": "Plant Manager (Henning Barsch)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: A position only; no holder is named.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "hr-service-coordinator": {
+    "asset_id": "hr-service-coordinator",
+    "name": "HR service coordinator",
+    "description": "Written for the demo pack, not in any prior record: Held by the HR Service Coordinator, Arne Detlefsen.",
+    "asset_type": "Role",
+    "owner_name": "Head of HR Service Centre (Wiebke Hansen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "hr-service-ticketing",
+        "dept": "hr",
+        "activity": "HR service ticketing",
+        "need": "Written for the demo pack, not in any prior record: Held by the HR Service Coordinator, Arne Detlefsen.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "senior-hr-administrator": {
+    "asset_id": "senior-hr-administrator",
+    "name": "Senior HR administrator",
+    "description": "Written for the demo pack, not in any prior record: Held by the Senior HR Administrator, Malte Rohwer.",
+    "asset_type": "Role",
+    "owner_name": "Head of HR Administration (Silke Jessen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "employee-registration",
+        "dept": "hr",
+        "activity": "Employee registration and deregistration",
+        "need": "Written for the demo pack, not in any prior record: Held by the Senior HR Administrator, Malte Rohwer.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "time-management-coordinator": {
+    "asset_id": "time-management-coordinator",
+    "name": "Time management coordinator",
+    "description": "Written for the demo pack, not in any prior record: Held by the Time Management Coordinator, Hauke Paulsen.",
+    "asset_type": "Role",
+    "owner_name": "Head of HR Operations (Birte Lorenzen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "time-recording",
+        "dept": "hr",
+        "activity": "Time recording",
+        "need": "Written for the demo pack, not in any prior record: Held by the Time Management Coordinator, Hauke Paulsen.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "hr-document-manager": {
+    "asset_id": "hr-document-manager",
+    "name": "HR document manager",
+    "description": "Written for the demo pack, not in any prior record: Held by the HR Document Manager, Insa Klüver.",
+    "asset_type": "Role",
+    "owner_name": "Head of HR Administration (Silke Jessen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "hr-correspondence",
+        "dept": "hr",
+        "activity": "HR correspondence and documents",
+        "need": "Written for the demo pack, not in any prior record: Held by the HR Document Manager, Insa Klüver.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "configuration-manager": {
+    "asset_id": "configuration-manager",
+    "name": "Configuration manager",
+    "description": "Written for the demo pack, not in any prior record: Held by the Configuration Manager, Ole Harms.",
+    "asset_type": "Role",
+    "owner_name": "Head of IT Service Management (Kai Brüning)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "asset-and-configuration-management",
+        "dept": "it",
+        "activity": "IT asset and configuration management",
+        "need": "Written for the demo pack, not in any prior record: Held by the Configuration Manager, Ole Harms.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "it-monitoring-manager": {
+    "asset_id": "it-monitoring-manager",
+    "name": "IT monitoring manager",
+    "description": "Written for the demo pack, not in any prior record: Held by the IT Monitoring Manager, Lasse Rathjen.",
+    "asset_type": "Role",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "event-management",
+        "dept": "it",
+        "activity": "IT event management",
+        "need": "Written for the demo pack, not in any prior record: Held by the IT Monitoring Manager, Lasse Rathjen.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "licence-manager": {
+    "asset_id": "licence-manager",
+    "name": "Licence manager",
+    "description": "Written for the demo pack, not in any prior record: Held by the Licence Manager, Gesa Frahm.",
+    "asset_type": "Role",
+    "owner_name": "Head of IT Procurement (Björn Ketelsen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "it-procurement-and-licences",
+        "dept": "it",
+        "activity": "IT procurement and licence management",
+        "need": "Written for the demo pack, not in any prior record: Held by the Licence Manager, Gesa Frahm.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "it-controller": {
+    "asset_id": "it-controller",
+    "name": "IT controller",
+    "description": "Written for the demo pack, not in any prior record: Held by the IT Controller, Deniz Arslan.",
+    "asset_type": "Role",
+    "owner_name": "Head of IT Financial Management (Henrik Stoltenberg)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "it-financial-management",
+        "dept": "it",
+        "activity": "IT financial management",
+        "need": "Written for the demo pack, not in any prior record: Held by the IT Controller, Deniz Arslan.",
+        "authored": true
+      }
+    ],
+    "evidence_refs": []
+  },
+  "network-and-system-monitoring": {
+    "asset_id": "network-and-system-monitoring",
+    "name": "Network and system monitoring",
+    "description": "Written for the demo pack, not in any prior record: Watches systems and network links; raises an event when one fails or degrades.",
+    "asset_type": "IT system",
+    "owner_name": "Head of IT Operations (Marek Sobotta)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A72"
+        ],
+        "quote": "Network and system monitoring watches the systems and links over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "event-management",
+        "dept": "it",
+        "activity": "IT event management",
+        "need": "Written for the demo pack, not in any prior record: Raises the IT events the process assesses.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 3.6 §1: monitoring and managing IT events"
+        ]
+      },
+      {
+        "department": "incident-and-problem-management",
+        "dept": "it",
+        "activity": "Incident and problem management",
+        "need": "Written for the demo pack, not in any prior record: Detects failures and raises them as incidents.",
+        "authored": true,
+        "basis": [
+          "01_Organisation/process-map.md 3.6 l.137-138: Relevant deviations are passed on to incident management"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "cold-chain-temperature-monitoring": {
+    "asset_id": "cold-chain-temperature-monitoring",
+    "name": "Cold-chain temperature monitoring",
+    "description": "Written for the demo pack, not in any prior record: Logs the cold-chain temperatures; sensors and loggers record them at goods-in, in the cold rooms and on the vehicles, and QA releases goods only against these records.",
+    "asset_type": "Equipment and facilities",
+    "owner_name": "Maintenance Manager (Dirk Wohlleben)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [
+      "power-supply",
+      "corporate-network"
+    ],
+    "depends_on_evidence": [
+      {
+        "asset_id": "power-supply",
+        "evidence_refs": [
+          "authored for the pack A73"
+        ],
+        "quote": "Cold-chain temperature monitoring runs on the Power supply."
+      },
+      {
+        "asset_id": "corporate-network",
+        "evidence_refs": [
+          "authored for the pack A74"
+        ],
+        "quote": "Cold-chain temperature monitoring sends its temperature records over the Corporate network."
+      }
+    ],
+    "consumers": [
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Written for the demo pack, not in any prior record: Records the cold-chain temperatures; without the records QA cannot release the goods.",
+        "authored": true,
+        "basis": [
+          "judgement: HACCP needs recorded temperatures (the reviewer round 8, 2026-10-06)"
+        ],
+        "workaround": "No workaround: without the recorded temperatures QA cannot release the goods, and there is no manual temperature log to fall back on."
+      },
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Records the cold-chain temperatures; without the records QA cannot release the goods.",
+        "authored": true,
+        "basis": [
+          "judgement: HACCP needs recorded temperatures (the reviewer round 8, 2026-10-06)"
+        ]
+      },
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: Records the cold-chain temperatures; without the records QA cannot release the goods.",
+        "authored": true,
+        "basis": [
+          "judgement: HACCP needs recorded temperatures (the reviewer round 8, 2026-10-06)"
+        ]
+      },
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: Records the cold-chain temperatures; without the records QA cannot release the goods.",
+        "authored": true,
+        "basis": [
+          "judgement: HACCP needs recorded temperatures (the reviewer round 8, 2026-10-06)"
+        ]
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Records the cold-chain temperatures; without the records QA cannot release the goods.",
+        "authored": true,
+        "basis": [
+          "judgement: HACCP needs recorded temperatures (the reviewer round 8, 2026-10-06)"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "social-insurance-agencies": {
+    "asset_id": "social-insurance-agencies",
+    "name": "Social insurance agencies",
+    "description": "Written for the demo pack, not in any prior record: Statutory bodies for employee registrations; they receive the registrations and deregistrations, and the health insurance funds act as the collecting agencies.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of HR Administration (Silke Jessen)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "employee-registration",
+        "dept": "hr",
+        "activity": "Employee registration and deregistration",
+        "need": "Written for the demo pack, not in any prior record: Receive the statutory employee registrations; deregistrations go the same way, and the health insurance funds act as the collecting agencies.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 2.4 §1: transmitting the statutory registrations and deregistrations on time to the competent bodies"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "stoer-valley-abattoir": {
+    "asset_id": "stoer-valley-abattoir",
+    "name": "Stoer Valley Abattoir GmbH",
+    "description": "Written for the demo pack, not in any prior record: Beef carcasses and primals, under a framework contract.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Written for the demo pack, not in any prior record: Delivers beef carcasses and primals; under a framework contract.",
+        "workaround": "When suppliers fail, approved alternative suppliers are activated.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.1 §7: suppliers with framework contracts, bound long-term, who regularly deliver set quantities",
+          "prior BIA record 1.1 §6: When suppliers fail, approved alternative suppliers are activated."
+        ]
+      },
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Delivers beef carcasses and primals; under a framework contract.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.2 §5: missing raw materials or packaging materials"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "kellinghusen-pork": {
+    "asset_id": "kellinghusen-pork",
+    "name": "Kellinghusen Pork GmbH",
+    "description": "Written for the demo pack, not in any prior record: Pork carcasses and primals, under a framework contract.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "raw-material-procurement",
+        "activity": "Raw material procurement",
+        "need": "Written for the demo pack, not in any prior record: Delivers pork carcasses and primals; under a framework contract.",
+        "workaround": "When suppliers fail, approved alternative suppliers are activated.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.1 §7: suppliers with framework contracts, bound long-term, who regularly deliver set quantities",
+          "prior BIA record 1.1 §6: When suppliers fail, approved alternative suppliers are activated."
+        ]
+      },
+      {
+        "department": "production-and-processing",
+        "activity": "Production and processing",
+        "need": "Written for the demo pack, not in any prior record: Delivers pork carcasses and primals; under a framework contract.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.2 §5: missing raw materials or packaging materials"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  },
+  "north-crate-pool": {
+    "asset_id": "north-crate-pool",
+    "name": "North Crate Pool GmbH",
+    "description": "Written for the demo pack, not in any prior record: Returnable crates and pallets.",
+    "asset_type": "External supplier",
+    "owner_name": "Head of Purchasing (Jens Harder)",
+    "owner_evidence": "Written for the demo pack, not in any prior record",
+    "authored": true,
+    "depends_on": [],
+    "consumers": [
+      {
+        "department": "order-picking",
+        "activity": "Order picking",
+        "need": "Written for the demo pack, not in any prior record: Crates the goods are picked into; returnable, for the branches.",
+        "authored": true,
+        "basis": [
+          "prior BIA record 1.3 §1: made ready for the retail locations concerned"
+        ]
+      },
+      {
+        "department": "dispatch-and-delivery",
+        "activity": "Goods dispatch and delivery",
+        "need": "Written for the demo pack, not in any prior record: Crates and pallets the goods travel in.",
+        "authored": true,
+        "basis": [
+          "North Crate Pool GmbH's description: Returnable crates and pallets"
+        ]
+      },
+      {
+        "department": "returns-and-by-product-disposal",
+        "activity": "Returns and animal by-product disposal",
+        "need": "Written for the demo pack, not in any prior record: Takes the crates and pallets back.",
+        "authored": true,
+        "basis": [
+          "North Crate Pool GmbH's description: Returnable crates and pallets"
+        ]
+      }
+    ],
+    "evidence_refs": []
+  }
+}

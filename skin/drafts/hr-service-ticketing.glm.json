@@ -1,0 +1,863 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+   "speaker": "Wiebke Hansen",
+   "department": "hr-service-ticketing",
+   "why": "Own department's interview: it describes the hr-service-ticketing process, scores its impact grid, and gives its RTO and MTPD.",
+   "own_department": true
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Recording of personnel-related requests",
+   "owner": {
+    "name": "Wiebke Hansen",
+    "quote": "The process covers the central recording, categorisation, prioritisation, assignment and follow-up of personnel-related requests from the operating and administrative sites. It is a support process, and its process owner is the head of HR service centre.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process health row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process financial row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 2.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process legal row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process image row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 3
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 3.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process operational row, carried onto this sub-step.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Wiebke Hansen: MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "No category reaches the intolerability threshold 4 at any stated horizon.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "168 h",
+    "kind": "stated",
+    "quote": "Wiebke Hansen: RTO: 168 h.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "Process owner stated an RTO of 168 h in the interview.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "Nothing was said about tolerable data loss, so a day of lost tickets is proposed as best judgement for this non-BCMS support process.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  },
+  {
+   "id": "A2",
+   "name": "Categorisation of personnel-related requests",
+   "owner": {
+    "name": "Wiebke Hansen",
+    "quote": "The process covers the central recording, categorisation, prioritisation, assignment and follow-up of personnel-related requests from the operating and administrative sites. It is a support process, and its process owner is the head of HR service centre.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process health row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process financial row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 2.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process legal row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process image row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 3
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 3.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process operational row, carried onto this sub-step.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Wiebke Hansen: MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "No category reaches the intolerability threshold 4 at any stated horizon.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "168 h",
+    "kind": "stated",
+    "quote": "Wiebke Hansen: RTO: 168 h.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "Process owner stated an RTO of 168 h in the interview.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "Nothing was said about tolerable data loss, so a day of lost tickets is proposed as best judgement for this non-BCMS support process.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  },
+  {
+   "id": "A3",
+   "name": "Prioritisation of personnel-related requests",
+   "owner": {
+    "name": "Wiebke Hansen",
+    "quote": "The process covers the central recording, categorisation, prioritisation, assignment and follow-up of personnel-related requests from the operating and administrative sites. It is a support process, and its process owner is the head of HR service centre.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process health row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process financial row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 2.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process legal row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process image row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 3
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 3.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process operational row, carried onto this sub-step.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Wiebke Hansen: MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "No category reaches the intolerability threshold 4 at any stated horizon.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "168 h",
+    "kind": "stated",
+    "quote": "Wiebke Hansen: RTO: 168 h.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "Process owner stated an RTO of 168 h in the interview.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "Nothing was said about tolerable data loss, so a day of lost tickets is proposed as best judgement for this non-BCMS support process.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  },
+  {
+   "id": "A4",
+   "name": "Assignment of personnel-related requests",
+   "owner": {
+    "name": "Wiebke Hansen",
+    "quote": "The process covers the central recording, categorisation, prioritisation, assignment and follow-up of personnel-related requests from the operating and administrative sites. It is a support process, and its process owner is the head of HR service centre.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process health row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process financial row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 2.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process legal row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process image row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 3
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 3.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process operational row, carried onto this sub-step.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Wiebke Hansen: MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "No category reaches the intolerability threshold 4 at any stated horizon.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "168 h",
+    "kind": "stated",
+    "quote": "Wiebke Hansen: RTO: 168 h.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "Process owner stated an RTO of 168 h in the interview.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "Nothing was said about tolerable data loss, so a day of lost tickets is proposed as best judgement for this non-BCMS support process.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  },
+  {
+   "id": "A5",
+   "name": "Follow-up of personnel-related requests",
+   "owner": {
+    "name": "Wiebke Hansen",
+    "quote": "The process covers the central recording, categorisation, prioritisation, assignment and follow-up of personnel-related requests from the operating and administrative sites. It is a support process, and its process owner is the head of HR service centre.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process health row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process financial row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 2.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process legal row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process image row, carried onto this sub-step.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 3
+     },
+     "kind": "stated",
+     "quote": "Wiebke Hansen: Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 3.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen",
+     "reason": "Stated whole-process operational row, carried onto this sub-step.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Wiebke Hansen: MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "No category reaches the intolerability threshold 4 at any stated horizon.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "168 h",
+    "kind": "stated",
+    "quote": "Wiebke Hansen: RTO: 168 h.",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "Process owner stated an RTO of 168 h in the interview.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+    "speaker": "Wiebke Hansen",
+    "reason": "Nothing was said about tolerable data loss, so a day of lost tickets is proposed as best judgement for this non-BCMS support process.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "Wiebke Hansen: MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "A2-MTPD-RULE",
+   "activity": "A2",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "Wiebke Hansen: MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "A3-MTPD-RULE",
+   "activity": "A3",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "Wiebke Hansen: MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "A4-MTPD-RULE",
+   "activity": "A4",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "Wiebke Hansen: MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "A5-MTPD-RULE",
+   "activity": "A5",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "Wiebke Hansen: MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+     "speaker": "Wiebke Hansen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "The interview names no systems, roles or partners the ticketing depends on, so no dependency entries carry asset_ids; a ticketing system (candidates in the register: Atlassian Jira Service Management or BMC Remedy) is presumable but unconfirmed.",
+   "ask": "Which ticket system does HR service ticketing run on, and which staff and communication tools does it need in emergency operation?"
+  },
+  {
+   "activity": "A1",
+   "what": "No RPO for the ticket data was stated anywhere; the <24 h proposal rests on analyst judgement only.",
+   "ask": "How long can recorded personnel-related requests be lost without harm, so the RPO can be fixed?"
+  },
+  {
+   "activity": "A1",
+   "what": "The impact grid was scored for the whole process; per sub-step scores were carried over unchanged rather than scored individually.",
+   "ask": "Do any sub-steps of recording, categorisation, prioritisation, assignment and follow-up score differently from the whole-process grid?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "hr-service-ticketing",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 33.3,
+  "usage": {
+   "completion_tokens": 7335,
+   "prompt_tokens": 32667,
+   "total_tokens": 40002,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 872,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00856755,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00856755,
+    "upstream_inference_prompt_cost": 0.00490005,
+    "upstream_inference_completions_cost": 0.0036675
+   }
+  },
+  "calls": [
+   {
+    "seconds": 33.3,
+    "usage": {
+     "completion_tokens": 7335,
+     "prompt_tokens": 32667,
+     "total_tokens": 40002,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 872,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00856755,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00856755,
+      "upstream_inference_prompt_cost": 0.00490005,
+      "upstream_inference_completions_cost": 0.0036675
+     }
+    }
+   }
+  ],
+  "cost": 0.0086,
+  "made": "2026-09-22 18:16"
+ }
+}

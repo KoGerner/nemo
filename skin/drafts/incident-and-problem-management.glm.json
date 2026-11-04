@@ -1,0 +1,331 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+   "speaker": "Marek Sobotta",
+   "department": "incident-and-problem-management",
+   "why": "The process's own BIA interview: describes the process, gives the impact grid, MTPD 24 h, RTO 8 h, emergency operation and dependencies.",
+   "own_department": true
+  },
+  {
+   "path": "07_Interviews/25_01_20_helpdesk-and-support-sievers-interview.md",
+   "speaker": "Frerk Sievers",
+   "department": "helpdesk-and-support",
+   "why": "Upstream intake for the same fault-handling chain: describes central recording, prioritisation, escalation and systematic follow-up of incidents and recurring problems, and shares the ticket-system dependency.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+   "speaker": "Timo Voß",
+   "department": "access-management",
+   "why": "Talks about Atlassian Jira Service Management and Microsoft Teams, which incident-and-problem-management depends on, and about urgent incident-style handling (account locks, emergency numbers).",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+   "speaker": "Ulrike Tiedemann",
+   "department": "data-protection",
+   "why": "Talks about Atlassian Jira Service Management, a dependency of incident-and-problem-management, for recording and tracking incidents and deadlines.",
+   "own_department": false
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Incident and problem management (detection, classification, handling and resolution of IT faults, and identification and removal of underlying causes of recurring faults)",
+   "owner": {
+    "name": "Marek Sobotta",
+    "quote": "Marek Sobotta (Head of IT Operations, process owner)",
+    "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Marek Sobotta: Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "speaker": "Marek Sobotta",
+     "reason": "Interviewee scored the row himself.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Marek Sobotta: Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "speaker": "Marek Sobotta",
+     "reason": "Interviewee scored the row himself.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Marek Sobotta: Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 2.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "speaker": "Marek Sobotta",
+     "reason": "Interviewee scored the row himself.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Marek Sobotta: Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "speaker": "Marek Sobotta",
+     "reason": "Interviewee scored the row himself.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 2,
+      "4 h": 2,
+      "8 h": 3,
+      "24 h": 4,
+      "72 h": 5,
+      "168 h": 5
+     },
+     "kind": "stated",
+     "quote": "Marek Sobotta: Impact operational: 1 h 1, 2 h 2, 4 h 2, 8 h 3, 24 h 4, 72 h 5, 168 h 5.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "speaker": "Marek Sobotta",
+     "reason": "Interviewee scored the row himself, based on a major incident not being handled over the stated time span.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "24 h",
+   "mtpd": {
+    "value": "24 h",
+    "kind": "stated",
+    "quote": "MTPD: 24 h.",
+    "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+    "speaker": "Marek Sobotta",
+    "reason": "Process owner stated it; consistent with the grid reaching level 4 (operational) at 24 h.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "8 h",
+    "kind": "stated",
+    "quote": "The recovery time was set at 8 h.",
+    "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+    "speaker": "Marek Sobotta",
+    "reason": "Process owner stated it; sits strictly inside the 24 h MTPD.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "IT systems. Atlassian Jira Service Management: RPO <24 h, RTO 8 h.",
+    "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+    "speaker": "Marek Sobotta",
+    "reason": "No RPO was stated for the process itself; the ticket data it depends on carry an RPO of <24 h, so <24 h is proposed.",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "Cisco Call Manager provides the central telephony for reporting, escalating and coordinating IT faults",
+     "asset_id": "cisco-call-manager",
+     "quote": "Cisco Call Manager provides the central telephony for reporting, escalating and coordinating IT faults.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft Teams is used for situation briefings, virtual war rooms and coordinating the recovery teams",
+     "asset_id": "microsoft-teams",
+     "quote": "Microsoft Teams is used for situation briefings, virtual war rooms and coordinating the recovery teams.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Atlassian Jira Service Management records, prioritises, assigns, escalates and documents incidents and problems",
+     "asset_id": "jira-service-management",
+     "quote": "Atlassian Jira Service Management records, prioritises, assigns, escalates and documents incidents and problems.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Recovery team analyses faults and carries out technical recovery measures",
+     "asset_id": "recovery-team",
+     "quote": "Analyses faults and carries out technical recovery measures.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Lead incident manager leads major incidents, prioritises measures and coordinates communication and escalation",
+     "asset_id": "lead-incident-manager",
+     "quote": "Leads major incidents, prioritises measures and coordinates communication and escalation.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Manager on duty takes cross-cutting decisions and ensures management escalations",
+     "asset_id": "manager-on-duty",
+     "quote": "Takes cross-cutting decisions and ensures management escalations.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Central recording, categorisation and prioritisation of requests upstream, in the helpdesk, feeding the incident and problem chain",
+     "asset_id": "bmc-remedy",
+     "quote": "BMC Remedy AR System records, classifies, assigns and tracks support requests and faults.",
+     "path": "07_Interviews/25_01_20_helpdesk-and-support-sievers-interview.md",
+     "verified_quote": true
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "C1",
+   "activity": "A1",
+   "about": "Recovery time of the shared ticket system Atlassian Jira Service Management, a dependency of A1",
+   "sides": [
+    {
+     "claim": "In the incident-and-problem-management interview, Jira Service Management has RPO <24 h and RTO 8 h.",
+     "quote": "IT systems. Atlassian Jira Service Management: RPO <24 h, RTO 8 h.",
+     "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+     "speaker": "Marek Sobotta",
+     "implies": null,
+     "verified_quote": true
+    },
+    {
+     "claim": "In the helpdesk interview, the same system has RPO <1 h and RTO 8 h.",
+     "quote": "IT systems. Atlassian Jira Service Management: RPO <1 h, RTO 8 h.",
+     "path": "07_Interviews/25_01_20_helpdesk-and-support-sievers-interview.md",
+     "speaker": "Frerk Sievers",
+     "implies": null,
+     "verified_quote": true
+    },
+    {
+     "claim": "In the data protection interview, the same system has RPO <1 h and RTO 72 h.",
+     "quote": "IT systems. Atlassian Jira Service Management: RPO <1 h, RTO 72 h.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "speaker": "Ulrike Tiedemann",
+     "implies": null,
+     "verified_quote": true
+    },
+    {
+     "claim": "In the access-management interview, the same system has RPO <1 h and RTO 1 h.",
+     "quote": "IT systems. Atlassian Jira Service Management: RPO <1 h, RTO 1 h.",
+     "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+     "speaker": "Timo Voß",
+     "implies": null,
+     "verified_quote": true
+    }
+   ],
+   "recommend": 0,
+   "why": "The process owner's own figures (RPO <24 h, RTO 8 h) govern the BIA of this process; the differing values are dependency-level views belonging to the other processes' records, so they change no figure here."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "No RPO was stated for the process itself; <24 h was proposed from the ticket-system dependency.",
+   "ask": "Can the process tolerate losing up to 24 hours of ticket/incident data, or should the RPO be tighter (<1 h) like in the helpdesk and data-protection records?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "incident-and-problem-management",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 19.9,
+  "usage": {
+   "completion_tokens": 3968,
+   "prompt_tokens": 32669,
+   "total_tokens": 36637,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 1259,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00688435,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00688435,
+    "upstream_inference_prompt_cost": 0.00490035,
+    "upstream_inference_completions_cost": 0.001984
+   }
+  },
+  "calls": [
+   {
+    "seconds": 19.9,
+    "usage": {
+     "completion_tokens": 3968,
+     "prompt_tokens": 32669,
+     "total_tokens": 36637,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 1259,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00688435,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00688435,
+      "upstream_inference_prompt_cost": 0.00490035,
+      "upstream_inference_completions_cost": 0.001984
+     }
+    }
+   }
+  ],
+  "cost": 0.0069,
+  "made": "2026-09-22 18:17"
+ }
+}

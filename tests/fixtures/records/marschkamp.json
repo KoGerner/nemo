@@ -1,0 +1,367 @@
+{
+  "company": "Marschkamp Fleisch GmbH & Co. KG",
+  "process_slug": "owner-interviews",
+  "method_version": "2026.1-MK",
+  "synthetic": true,
+  "activities": [
+    {
+      "activity_id": "BIA-2026-002",
+      "dependencies": [
+        "AN-ZERLEG-01",
+        "AN-SCHLACHT-01",
+        "KA-01",
+        "UV-STROM-01",
+        "UV-WASSER-01",
+        "UV-DAMPF-01",
+        "UV-ABWASSER-01",
+        "IT-ERP-01",
+        "IT-WAAGE-01",
+        "PE-ZERLEG-01",
+        "LF-ABP-01"
+      ],
+      "dependency_recovery_requirements": [
+        {
+          "asset_id": "KA-01",
+          "requirement": "approximately 90 minutes to avoid Cutting line stop; pending owner read-back; not Cutting RTO or MTPD"
+        },
+        {
+          "asset_id": "IT-ERP-01",
+          "requirement": "below grid-derived MTPD; current 8 h target produces acknowledged gap"
+        },
+        {
+          "asset_id": "IT-WAAGE-01",
+          "requirement": "below grid-derived MTPD; current 8 h target produces acknowledged gap"
+        },
+        {
+          "asset_id": "PE-ZERLEG-01",
+          "requirement": "below grid-derived MTPD; current 24 h target produces acknowledged gap"
+        },
+        {
+          "asset_id": "AN-SCHLACHT-01",
+          "requirement": "below grid-derived MTPD; current 8 h target produces acknowledged gap"
+        }
+      ],
+      "dept": "zerlegung",
+      "deputy": "Kolja Reim",
+      "evidence": [
+        {
+          "quote": "The minimum staffing for a shift is around ninety cutters. Not ninety people in the building — ninety on the knives and saws, plus foremen and QA. Below that you can't run the line sensibly, you break more than you finish.",
+          "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md",
+          "type": "transcript_quote"
+        },
+        {
+          "quote": "After eight hours it hits on two sides. First, the plant — if the stoppage comes from the line, eight hours is my RTO, and then the cutting line has to be back up. Second, and this is the one people underestimate: without the ERP and the labelling system I can't release anything. I can physically cut meat, but I can't legally label it, weigh it, batch-trace it and release it. The system — IT-ERP-01, with the recovery time of eight hours and a recovery point of four hours — is the silent stopper. The scale and labelling system hangs off it too.",
+          "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md",
+          "type": "transcript_quote"
+        },
+        {
+          "quote": "After a day we're talking about people and about listing. If I can't staff a whole shift, everything backs up into the cold store, and the orders for the A-customers fall through. Kornmark is twenty-seven percent of our revenue, Frischwert nineteen — those are the ones where a delivery failure lands in the annual listing, not just in a penalty. From there on it gets existential for the department.",
+          "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md",
+          "type": "transcript_quote"
+        },
+        {
+          "quote": "Fifty percent cutting capacity, A-customers only, one shift. That's the number I can defend. Fifty percent means: half the line, the core crew — roughly forty-five cutters instead of ninety, two foremen, one QA person — chilled hall at twelve degrees, the labelling line and one scale PC. And I only run the orders that hurt most contractually if they fail — Kornmark and Frischwert first, the rest waits. It's not a pretty number, but it's an honest one.",
+          "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md",
+          "type": "transcript_quote"
+        },
+        {
+          "quote": "In the peak, worse than February. Four hours down in week 28 is not the same as four hours down in week 10. Contractually, still nothing formal at four hours — I can move one loading window. But the volume does not come back in the peak. If I lose four hours in the barbecue weeks, I do not catch it up on Saturday, because Saturday is already committed. In February I told you four hours was a level two. In the peak I would call it a three, and the reason is purely that the recovery capacity is already spent.",
+          "source_path": "07_Interviews/26_08_03_cutting-louven-followup-interview.md",
+          "type": "transcript_quote"
+        },
+        {
+          "quote": "Eight hours in peak is where the A-customer orders start failing rather than slipping. Kornmark at twenty-seven percent of revenue and Frischwert at nineteen — in the peak those two are ordering at their maximum, and a failed delivery in the barbecue window is the one they remember at the listing review. Off-peak I called eight hours a level three. In peak it is a four, which is at my intolerability threshold.",
+          "source_path": "07_Interviews/26_08_03_cutting-louven-followup-interview.md",
+          "type": "transcript_quote"
+        },
+        {
+          "quote": "Off-peak, backlog and a night shift. In peak, a lost week. And I want to be precise: not a lost day. If I lose a full day in week 28, the orders for that week do not shift into week 29 — week 29 is already full at capacity. They are simply gone, and so is the margin on them.",
+          "source_path": "07_Interviews/26_08_03_cutting-louven-followup-interview.md",
+          "type": "transcript_quote"
+        },
+        {
+          "quote": "Here is where I want to change my February answer, and I want to be explicit that I am changing it rather than have it look like a discrepancy later. In February I said forty-eight hours, and I derived that from the listing risk and contract penalties. I still think forty-eight is right for the normal mix. For the peak weeks I think the honest figure is twenty-four, because the loss becomes unrecoverable a full day earlier — there is no catch-up capacity to buy back the time with.",
+          "source_path": "07_Interviews/26_08_03_cutting-louven-followup-interview.md",
+          "type": "transcript_quote"
+        },
+        {
+          "quote": "No, and I want to be careful here because it would be easy to conflate two things. My RTO for the cutting line is still eight hours — that is how long I can be down before the day is unrecoverable. The ninety minutes is not my RTO, it is the recovery time the refrigeration dependency needs in order for my eight hours to mean anything. If KA-01 needs four hours to come back, then my eight-hour RTO is fiction, because I was stopped at ninety minutes and I will not restart until the hall is back.",
+          "source_path": "07_Interviews/26_08_03_cutting-louven-followup-interview.md",
+          "type": "transcript_quote"
+        },
+        {
+          "quote": "It has not been tested in the peak and I will not claim it has. The 08 July event was a hundred and sixty minutes, which is well inside anything. Fifty percent, A-customers only, one shift, roughly forty-five cutters, two foremen, one QA, twelve-degree hall, labelling line and one scale PC — that is still what I would defend. But it is a February number carried forward, not something the summer proved.",
+          "source_path": "07_Interviews/26_08_03_cutting-louven-followup-interview.md",
+          "type": "transcript_quote"
+        }
+      ],
+      "impact_basis": "Canonical peak-season analyst proposal reviewed at a delegated agent gate; human approval remains pending. Customer/delivery 8 h = 4 is the only unambiguous owner-stated category score. Customer/delivery 0–4 h is level 2 because one loading window moves with no formal consequence. People/safety remains level 1 because staffing is an outage cause, not an evidenced safety consequence. Animal welfare/food safety remains below intolerance because Cutting has no CCP and no evidenced cold-chain breach. Financial is capped at level 4 because the evidence supports a lost week of orders and margin but not level-5 site-survival impact.",
+      "impact_grid": {
+        "animal-welfare-food-safety": {
+          "0–4 h": 2,
+          "1 week": 3,
+          "24 h": 3,
+          "48 h": 3,
+          "72 h": 3,
+          "8 h": 3
+        },
+        "customer-delivery": {
+          "0–4 h": 2,
+          "1 week": 5,
+          "24 h": 4,
+          "48 h": 5,
+          "72 h": 5,
+          "8 h": 4
+        },
+        "environment": {
+          "0–4 h": 1,
+          "1 week": 1,
+          "24 h": 1,
+          "48 h": 1,
+          "72 h": 1,
+          "8 h": 1
+        },
+        "financial": {
+          "0–4 h": 2,
+          "1 week": 4,
+          "24 h": 4,
+          "48 h": 4,
+          "72 h": 4,
+          "8 h": 3
+        },
+        "legal-regulatory": {
+          "0–4 h": 2,
+          "1 week": 3,
+          "24 h": 3,
+          "48 h": 3,
+          "72 h": 3,
+          "8 h": 3
+        },
+        "people-safety": {
+          "0–4 h": 1,
+          "1 week": 1,
+          "24 h": 1,
+          "48 h": 1,
+          "72 h": 1,
+          "8 h": 1
+        },
+        "reputation": {
+          "0–4 h": 1,
+          "1 week": 5,
+          "24 h": 3,
+          "48 h": 4,
+          "72 h": 4,
+          "8 h": 2
+        }
+      },
+      "mbco": "50% cutting capacity, A-customers only, one shift; approximately 45 cutters, two foremen, one QA person, chilled hall at 12 °C, labelling line and one scale PC. Off-peak-derived, peak-untested and not executable in peak until plant/executive management selects which A-customer is served.",
+      "method_version": "2026.1-MK",
+      "minimum_resources": {
+        "equipment": "Cutting line, band saws, deboning and trimming line, metal detection, refrigeration, ERP, weighing/labelling",
+        "mbco": "Approximately 45 cutters, two foremen, one QA person, half line, chilled hall at 12 °C, labelling line and one scale PC (off-peak-derived and peak-untested)",
+        "normal_floor": "Around 90 cutters on knives and saws, plus foremen and QA",
+        "peak": "96–102 cutters on early shift (pending owner read-back)",
+        "skills": "Qualified cutting/deboning, foreman supervision, QA release, ERP/traceability and legal labelling"
+      },
+      "mtpd": "8 h",
+      "name": "Cutting / deboning",
+      "open_decisions": [
+        "Owner read-back and authorisation of all August-only statements is scheduled for 10 Aug 2026 and remains pending.",
+        "Final management approval by Dr Reinhard Kettler, Managing Director, remains pending.",
+        "No approval-log.jsonl provenance entry is to be added before actual authorisation.",
+        "Management must decide which A-customer receives the peak-season 50% MBCO; the BIA does not choose.",
+        "The proposed contract-cutting MoU is unsigned and unavailable; liability, hygiene, labelling and cross-approval-number traceability remain unresolved.",
+        "Peak grid cells other than customer/delivery 8 h = 4 are analyst-proposed and require human approval.",
+        "LF-ABP-01 backup-renderer action owner is TBD with target 31 Aug 2026; asset ownership is assigned and no Cutting consumer MTPD is registered.",
+        "UV-DAMPF-01 Cutting/CIP clock is register-sourced and unconfirmed by Louven."
+      ],
+      "owner": "Franz Schubert",
+      "owner_asserted_mtpd": {
+        "authorisation": "pending owner read-back",
+        "off_peak": "48 h",
+        "peak": "24 h"
+      },
+      "priority": "Rank 2",
+      "recovery_gap": "RECOVERY GAP (acknowledged): owner-stated Cutting RTO 8 h is not strictly inside the grid-derived MTPD 8 h. KA-01 supplier and register targets also do not meet the pending 90-minute consumer requirement.",
+      "recovery_gap_flagged": true,
+      "recovery_target": "8 h",
+      "rpo": "4 h (ERP order data)",
+      "rpo_status": "IT-stated and contract-backed; Petra Louven has not seen a current-cycle restore test against Cutting data.",
+      "status": "PROVISIONAL — August-only evidence pending Petra Louven in-person read-back scheduled 10 Aug 2026; owner authorisation and final management approval pending"
+    },
+    {
+      "name": "Slaughter process (stunning → dressing)",
+      "dept": "schlachtung",
+      "owner": "Torsten Ahlgrim",
+      "contact": "Slaughter Production Manager, ext. -110",
+      "related_process": "Slaughter (lead line): CO2 group stunning, sticking/bleeding, scalding, dehairing, evisceration, official post-mortem inspection, EUROP grading",
+      "product_service": "Slaughtered, graded, chilled pig (and secondary cattle-line) carcasses handed to Cutting",
+      "critical_time_periods": "Barbecue season (May–Aug); Christmas weeks 48–51",
+      "description": "Stage 1 named six sub-activities (stunning, sticking/bleeding, scalding & dehairing, evisceration, official post-mortem inspection, EUROP grading). The owner interview gave one impact clock for the line as a whole, not per sub-step, so this activity is rated at the process level, matching the evidence rather than inventing six separate grids. Finding, not resolved here.",
+      "dependencies": [
+        "AN-SCHLACHT-01",
+        "UV-STROM-01",
+        "UV-WASSER-01",
+        "UV-CO2-01",
+        "UV-DAMPF-01",
+        "KA-01",
+        "LF-ABP-01"
+      ],
+      "impact_grid": {
+        "financial": {
+          "0–4 h": 1,
+          "8 h": 2,
+          "24 h": 3,
+          "48 h": 3,
+          "72 h": 3,
+          "1 week": 3
+        },
+        "customer-delivery": {
+          "0–4 h": 1,
+          "8 h": 2,
+          "24 h": 3,
+          "48 h": 3,
+          "72 h": 3,
+          "1 week": 3
+        },
+        "legal-regulatory": {
+          "0–4 h": 3,
+          "8 h": 3,
+          "24 h": 4,
+          "48 h": 4,
+          "72 h": 4,
+          "1 week": 4
+        },
+        "reputation": {
+          "0–4 h": 1,
+          "8 h": 1,
+          "24 h": 1,
+          "48 h": 1,
+          "72 h": 1,
+          "1 week": 1
+        },
+        "animal-welfare-food-safety": {
+          "0–4 h": 3,
+          "8 h": 3,
+          "24 h": 4,
+          "48 h": 4,
+          "72 h": 4,
+          "1 week": 4
+        },
+        "people-safety": {
+          "0–4 h": 1,
+          "8 h": 1,
+          "24 h": 1,
+          "48 h": 1,
+          "72 h": 1,
+          "1 week": 1
+        },
+        "environment": {
+          "0–4 h": 1,
+          "8 h": 1,
+          "24 h": 1,
+          "48 h": 1,
+          "72 h": 1,
+          "1 week": 1
+        }
+      },
+      "mtpd": "24 h",
+      "priority_tier": "Tier derived from grid: earliest horizon reaching threshold 4 = 24 h (legal-regulatory, animal-welfare-food-safety). Note: prior-cycle 2025 ranked Slaughter Rank 1 (most critical, tighter than Cutting); this cycle's grid-derived 24 h MTPD is looser than Cutting's grid-derived 8 h MTPD — a tier-ranking inconsistency vs. prior cycle, flagged as a finding, not resolved here.",
+      "recovery_target": "6 h",
+      "recovery_gap_flagged": true,
+      "recovery_gap_note": "Target 6 h (Franziska Dohm, Stage 3 amendment, this run's one deliberate amendment) is not achievable against provider RTOs: UV-CO2-01 and UV-DAMPF-01 both register at RTO 8 h. Owner-evidenced RTO is 8 h (see evidence). RECOVERY GAP (acknowledged) per method 2026.1-MK, referred to PP4 solution design; not resolved here.",
+      "rpo": "4 h (ERP order data)",
+      "mbco": "One shift, reduced line speed, contingent on three preconditions holding simultaneously: official veterinarian present, potable water available, ABP outflow running — owner: 'without one of those three, minimum operation is zero, not half.' Core crew needed at stunning, dressing and meat inspection, plus continuous pre-line chilling. No numeric minimum headcount evidenced — gap.",
+      "resource_requirements": {
+        "people": [
+          {
+            "role": "Core crew: stunning, dressing, meat-inspection stretch",
+            "minimum_over_time": "not quantified by owner",
+            "skills_mandates": "line-qualified slaughter staff",
+            "workaround_pool": "none evidenced"
+          }
+        ],
+        "buildings_seats": {
+          "seats_needed": null,
+          "recovery_seats_needed": null,
+          "work_from_home_possible": false,
+          "transfer_to_other_site": null
+        },
+        "it_applications": [
+          {
+            "name_normalised": "IT-ERP-01",
+            "as_named_in_interview": "the ERP",
+            "instance": "SAP S/4HANA + MES",
+            "rto": "8 h",
+            "rpo": "4 h",
+            "workaround": "paper-based dressing for one shift; legal label/release still needs the system",
+            "it_actual_rto": "8 h",
+            "it_actual_rpo": "4 h"
+          }
+        ],
+        "suppliers": [
+          {
+            "name": "Nordgas Industriegase GmbH / AirTec Gase AG",
+            "what": "CO2 stunning gas (UV-CO2-01)",
+            "rto": "8 h",
+            "alternative": "second supplier AirTec listed"
+          },
+          {
+            "name": "Norddeutsche Tierkörperverwertung GmbH (NTV)",
+            "what": "Category 3 ABP collection (LF-ABP-01)",
+            "rto": "24 h nominal, not contractually guaranteed",
+            "alternative": "none contracted — owner assigned Stage 3a, capability still open"
+          }
+        ],
+        "other_requirements": "Permanently present official veterinarian (Dr Wilhelm Grote); potable-water quality"
+      },
+      "dependencies_other_departments": [
+        {
+          "department": "zerlegung",
+          "contact": "Petra Louven",
+          "direction": "downstream",
+          "what": "continuous carcass supply into cutting",
+          "rto": "8 h (owner-evidenced) / 6 h target (BCM reviewer amendment, RECOVERY GAP)",
+          "alternative": "none evidenced"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "transcript_quote",
+          "quote": "That's the point beyond which it's no longer tolerable for me. Regulatory, commercial, animal welfare — all together. That's my MTPD: twenty-four hours for the slaughter process.",
+          "source_path": "07_Interviews/26_02_04_slaughter-ahlgrim-interview.md"
+        },
+        {
+          "type": "transcript_quote",
+          "quote": "Give me the stunning and the line back within eight hours, and in a pinch I still save the shift with overtime. Eight hours is my RTO for the slaughter line.",
+          "source_path": "07_Interviews/26_02_04_slaughter-ahlgrim-interview.md"
+        },
+        {
+          "type": "transcript_quote",
+          "quote": "After two hours I start making real decisions. Pens are full, the twelve-hour threshold comes into view for the ones that arrived first, and I have to start feeding and bedding — or diverting. From then on the Animal Welfare Officer is on board too, Dr Iversen, and if it goes over, at some point the official veterinarian is standing in the slaughterhouse telling me it's over. That's no longer my decision.",
+          "source_path": "07_Interviews/26_02_04_slaughter-ahlgrim-interview.md"
+        },
+        {
+          "type": "transcript_quote",
+          "quote": "If he's not there, or the veterinary authority suspends the approval, then I don't slaughter a single pig. That's not discretion, that's a switch. No official vet, no legal slaughter.",
+          "source_path": "07_Interviews/26_02_04_slaughter-ahlgrim-interview.md"
+        },
+        {
+          "type": "transcript_quote",
+          "quote": "After eight hours the day's plan is done — in the bad sense. Eight hours is effectively the shift. If that's gone, the day's slaughter plan is gone, and hanging off that are the retail orders for tomorrow's cutting. We then run overtime when we start up again, but you don't make the volume back one for one.",
+          "source_path": "07_Interviews/26_02_04_slaughter-ahlgrim-interview.md"
+        },
+        {
+          "type": "transcript_quote",
+          "quote": "The slaughter and grading data go into the ERP, with a recovery point of four hours.",
+          "source_path": "07_Interviews/26_02_04_slaughter-ahlgrim-interview.md"
+        },
+        {
+          "type": "transcript_quote",
+          "quote": "Minimum operation, for me, means: one shift, reduced line speed, and only if three things are standing — official veterinarian present, potable water there, and the by-product outflow running. Without one of those three, minimum operation is zero, not half.",
+          "source_path": "07_Interviews/26_02_04_slaughter-ahlgrim-interview.md"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3367 @@
+{
+  "record_schema_version": 1,
+  "provenance_version": 1,
+  "run_id": "7abf4990-4dd7-505c-887f-6e300b15eeb9",
+  "dept": "cutting-deboning",
+  "version": 1,
+  "source_digests": {
+    "01_Organisation/company-profile.md": "ee46b2b389a11cb0912f21549a81472534ee25c17c4adf264999afc507ae93e6",
+    "01_Organisation/org-and-roles.md": "1188acafbd0e58d8c95e74c7e88dc729aca11428dde6452e55da59ffa8551893",
+    "02_BCM-Method/bia-template.json": "a081610e01188beff06f09851647dcfb84711cecc2c85afc2b292bc2624a7545",
+    "02_BCM-Method/impact-criteria.md": "9aadc316f4d2511031a3c10bf22b94ec585e90eeb837ce68f329c8517ff20199",
+    "02_BCM-Method/method.json": "31141a95f88b203be91e857933a1c2af4f6dcfef386c239bf3c2b906d16a57e9",
+    "03_Dependencies/asset-inventory.md": "ea2a70aafbee5cbc8acce759389ea97f9139016ba97e3ee549c4cd9f9e2c2461",
+    "03_Dependencies/dependency-register.json": "a3b8f7ccec79caa741454da068bd80a7b39f72e8ff1fb27e205e99f05ea8e21a",
+    "04_Suppliers/supplier-sla.md": "63da73cabfa472a43271ea6de2af6d0b8983dccc13cf07ed097b9662e7e3bc71",
+    "05_Regulatory/haccp-plan.md": "890dec2b484f369cc4d76d9362d45044bbe32b8e67e78aec9754821bf4b518d2",
+    "05_Regulatory/regulatory-obligations.md": "1e948280b4a6c698956a1b0ae16989a1b46653c77316823da9cb467ba7e9199b",
+    "06_Risk-and-Incidents/exercise-record.md": "7783fc52a410a5d52e609bf352f44ee8707d68c0c1c18615411156484dd82292",
+    "06_Risk-and-Incidents/incident-history.md": "ade09361eae034f0e8d2aac24ad648f3d3dcc8b869bc361d67ab6f679c813d47",
+    "06_Risk-and-Incidents/risk-register.md": "e22abd05bc871c790964bb876365b23b53e1d778b6e0b2048992591447a3cbd0",
+    "07_Interviews/26_02_04_slaughter-ahlgrim-interview.md": "94bf3b82276a42b88349f2deee140893b6c83f4d945f8453a463d30a6f9aa6ae",
+    "07_Interviews/26_02_06_cutting-louven-interview.md": "5a62008dc1805223dedfaa58350298f45b71936a4d26611bf436c2e485006602",
+    "07_Interviews/26_02_11_chilling-dispatch-hollmann-interview.md": "f145611a93e46274018a595809d72e6ee8e4ffee19e3a06a3887094e035c42eb",
+    "07_Interviews/26_02_13_maintenance-wohlleben-interview.md": "a4175b8f000b6432058b2f24f930cfad19ee002e39b056db4f8796f80ed29a3c",
+    "07_Interviews/26_07_22_packing-ruser-interview.md": "ac09bd17e5d3c14da51913e5e30b6401870eb35edf3a1ac638d653d3f6f91e0d",
+    "07_Interviews/26_08_03_cutting-louven-followup-interview.md": "3c959c0a627b7a70b407d013d5e5d32c5b2dc607898dc7c7721c7823eecbe746",
+    "07_Interviews/26_08_03_maintenance-wohlleben-followup-interview.md": "ec944a15e1fb36b034830c9c8e959a3bb03a3a373dc1e56377d5c5eaa926297a",
+    "07_Interviews/26_08_20_slaughter-ahlgrim-followup-interview.md": "de0534d57ab19efe487ddf8271c1228a57441cac739e52e93787212dc2307f45",
+    "07_Interviews/26_08_24_cutting-louven-dependency-controls-interview.md": "f5c4ee93f9b38e8f9641fdb552b3fa7e41e7d49cfebb667d893ad3910f22a5d2",
+    "08_Prior-Cycle/25_04_15_prior-bia.md": "f315613e90248eaeae9cf0711796a6bd8952e8018aabe1112630d36aa9c02ae2",
+    "README.md": "d67261884e8770f210793a1709653b69f9c1ad4f9bb535ef60a0a03cd40c40a5"
+  },
+  "quotations": {
+    "cutting-deboning::d1": {
+      "activity_id": "chilled-cutting-room-12-c-and-wip-protection",
+      "quote": "First, the plant — if the stoppage comes from the line, eight hours is my RTO, and then the cutting line has to be back up.",
+      "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md",
+      "source_sha256": "5a62008dc1805223dedfaa58350298f45b71936a4d26611bf436c2e485006602"
+    },
+    "cutting-deboning::d2": {
+      "activity_id": "chilled-cutting-room-12-c-and-wip-protection",
+      "quote": "MTPD forty-eight.",
+      "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md",
+      "source_sha256": "5a62008dc1805223dedfaa58350298f45b71936a4d26611bf436c2e485006602"
+    },
+    "cutting-deboning::d3": {
+      "activity_id": "chilled-cutting-room-12-c-and-wip-protection",
+      "quote": "Your MBCO — if you have to run reduced, what does the minimum look like?",
+      "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md",
+      "source_sha256": "5a62008dc1805223dedfaa58350298f45b71936a4d26611bf436c2e485006602"
+    },
+    "cutting-deboning::d4": {
+      "activity_id": "chilled-cutting-room-12-c-and-wip-protection",
+      "quote": "Fifty percent cutting capacity, A-customers only, one shift.",
+      "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md",
+      "source_sha256": "5a62008dc1805223dedfaa58350298f45b71936a4d26611bf436c2e485006602"
+    }
+  },
+  "activities": [
+    {
+      "id": "chilled-cutting-room-12-c-and-wip-protection",
+      "name": "chilled cutting room ≤ 12 °C and WIP protection",
+      "owner": "Petra Louven",
+      "owner_name": "Petra Louven",
+      "dept": "cutting-deboning",
+      "impact_grid": {
+        "financial": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "customer-delivery": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "legal-regulatory": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "reputation": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "animal-welfare-food-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "people-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "environment": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        }
+      },
+      "mtpd": "no MTPD within horizons",
+      "recovery_target": "8 h",
+      "rpo": null,
+      "mbco": null,
+      "resources": {
+        "people": {
+          "items": {},
+          "status": "unknown"
+        },
+        "premises": {
+          "items": {},
+          "status": "unknown"
+        },
+        "suppliers": {
+          "items": {},
+          "status": "unknown"
+        },
+        "technology": {
+          "items": {},
+          "status": "unknown"
+        }
+      },
+      "dependencies": [
+        "IT-ERP-01",
+        "AN-ZERLEG-01",
+        "PE-ZERLEG-01"
+      ],
+      "reservations": {},
+      "disagreements": {},
+      "open_items": {
+        "stated-mtpd-not-derived": {
+          "detail": "Owner-stated MTPD 48 h; the impact grid was not scored, so no grid-derived MTPD confirms it. Accept knowingly at sign-off, or score the grid at the review.",
+          "kind": "stated_value",
+          "subject": "MTPD"
+        }
+      },
+      "evidence": [
+        {
+          "type": "transcript_quote",
+          "quote": "First, the plant — if the stoppage comes from the line, eight hours is my RTO, and then the cutting line has to be back up.",
+          "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md"
+        },
+        {
+          "type": "transcript_quote",
+          "quote": "Your MBCO — if you have to run reduced, what does the minimum look like?",
+          "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md"
+        },
+        {
+          "type": "transcript_quote",
+          "quote": "Fifty percent cutting capacity, A-customers only, one shift.",
+          "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md"
+        },
+        {
+          "type": "transcript_quote",
+          "quote": "MTPD forty-eight.",
+          "source_path": "07_Interviews/26_02_06_cutting-louven-interview.md"
+        }
+      ],
+      "provenance": {
+        "impact_grid": {
+          "financial": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "customer-delivery": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "legal-regulatory": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "reputation": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "animal-welfare-food-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "people-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "environment": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          }
+        },
+        "recovery": {
+          "mtpd": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          },
+          "rto": {
+            "status": "known",
+            "quotation_ids": [
+              "cutting-deboning::d1"
+            ],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          },
+          "rpo": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          },
+          "mbco": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          }
+        },
+        "resources": {
+          "people": {},
+          "premises": {},
+          "suppliers": {},
+          "technology": {}
+        },
+        "open_items": {
+          "stated-mtpd-not-derived": {
+            "status": "open",
+            "quotation_ids": [],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          }
+        }
+      },
+      "not_elicited_ack": {
+        "approved_by": "Petra Louven",
+        "next_question": "Rate each impact category at each time horizon on the method's 1–5 scale for this activity.",
+        "owner_informed": "Petra Louven — told by this record",
+        "reason": "The owner was asked for impact figures per horizon and declined to rate them in the interview.",
+        "review_date": "2026-09-20",
+        "review_owner": "Franziska Dohm"
+      },
+      "owner_stated": {
+        "mbco": {
+          "value": "Fifty percent cutting capacity, A-customers only, one shift.",
+          "quotation_ids": [
+            "cutting-deboning::d3",
+            "cutting-deboning::d4"
+          ],
+          "source_paths": [
+            "07_Interviews/26_02_06_cutting-louven-interview.md"
+          ]
+        },
+        "mtpd": {
+          "value": "48 h",
+          "quotation_ids": [
+            "cutting-deboning::d2"
+          ],
+          "source_paths": [
+            "07_Interviews/26_02_06_cutting-louven-interview.md"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cip-cleaning-for-a-hygienic-next-day-start",
+      "name": "CIP cleaning for a hygienic next-day start",
+      "owner": "Petra Louven",
+      "owner_name": "Petra Louven",
+      "dept": "cutting-deboning",
+      "impact_grid": {
+        "financial": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "customer-delivery": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "legal-regulatory": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "reputation": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "animal-welfare-food-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "people-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "environment": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        }
+      },
+      "mtpd": "no MTPD within horizons",
+      "recovery_target": null,
+      "rpo": null,
+      "mbco": null,
+      "resources": {
+        "people": {
+          "items": {},
+          "status": "unknown"
+        },
+        "premises": {
+          "items": {},
+          "status": "unknown"
+        },
+        "suppliers": {
+          "items": {},
+          "status": "unknown"
+        },
+        "technology": {
+          "items": {},
+          "status": "unknown"
+        }
+      },
+      "dependencies": [],
+      "reservations": {},
+      "disagreements": {},
+      "open_items": {
+        "missing-evidence-cip-cleaning-for-a-hygienic-next-day-start": {
+          "detail": "No interview evidence supports this activity yet.",
+          "kind": "missing_evidence",
+          "subject": "CIP cleaning for a hygienic next-day start"
+        }
+      },
+      "evidence": [],
+      "provenance": {
+        "impact_grid": {
+          "financial": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "customer-delivery": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "legal-regulatory": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "reputation": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "animal-welfare-food-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "people-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "environment": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          }
+        },
+        "recovery": {
+          "mtpd": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rto": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rpo": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "mbco": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          }
+        },
+        "resources": {
+          "people": {},
+          "premises": {},
+          "suppliers": {},
+          "technology": {}
+        },
+        "open_items": {
+          "missing-evidence-cip-cleaning-for-a-hygienic-next-day-start": {
+            "status": "open",
+            "quotation_ids": [],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          }
+        }
+      },
+      "not_elicited_ack": {
+        "approved_by": "Petra Louven",
+        "next_question": "Rate each impact category at each time horizon on the method's 1–5 scale for this activity.",
+        "owner_informed": "Petra Louven — told by this record",
+        "reason": "The owner was asked for impact figures per horizon and declined to rate them in the interview.",
+        "review_date": "2026-09-20",
+        "review_owner": "Franziska Dohm"
+      }
+    },
+    {
+      "id": "hand-and-equipment-hygiene-between-batches",
+      "name": "hand and equipment hygiene between batches",
+      "owner": "Petra Louven",
+      "owner_name": "Petra Louven",
+      "dept": "cutting-deboning",
+      "impact_grid": {
+        "financial": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "customer-delivery": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "legal-regulatory": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "reputation": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "animal-welfare-food-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "people-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "environment": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        }
+      },
+      "mtpd": "no MTPD within horizons",
+      "recovery_target": null,
+      "rpo": null,
+      "mbco": null,
+      "resources": {
+        "people": {
+          "items": {},
+          "status": "unknown"
+        },
+        "premises": {
+          "items": {},
+          "status": "unknown"
+        },
+        "suppliers": {
+          "items": {},
+          "status": "unknown"
+        },
+        "technology": {
+          "items": {},
+          "status": "unknown"
+        }
+      },
+      "dependencies": [],
+      "reservations": {},
+      "disagreements": {},
+      "open_items": {
+        "missing-evidence-hand-and-equipment-hygiene-between-batches": {
+          "detail": "No interview evidence supports this activity yet.",
+          "kind": "missing_evidence",
+          "subject": "hand and equipment hygiene between batches"
+        }
+      },
+      "evidence": [],
+      "provenance": {
+        "impact_grid": {
+          "financial": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "customer-delivery": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "legal-regulatory": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "reputation": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "animal-welfare-food-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "people-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "environment": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          }
+        },
+        "recovery": {
+          "mtpd": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rto": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rpo": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "mbco": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          }
+        },
+        "resources": {
+          "people": {},
+          "premises": {},
+          "suppliers": {},
+          "technology": {}
+        },
+        "open_items": {
+          "missing-evidence-hand-and-equipment-hygiene-between-batches": {
+            "status": "open",
+            "quotation_ids": [],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          }
+        }
+      },
+      "not_elicited_ack": {
+        "approved_by": "Petra Louven",
+        "next_question": "Rate each impact category at each time horizon on the method's 1–5 scale for this activity.",
+        "owner_informed": "Petra Louven — told by this record",
+        "reason": "The owner was asked for impact figures per horizon and declined to rate them in the interview.",
+        "review_date": "2026-09-20",
+        "review_owner": "Franziska Dohm"
+      }
+    },
+    {
+      "id": "minimum-staffing-1-shift-90-cutters",
+      "name": "minimum staffing 1 shift (≈ 90 cutters)",
+      "owner": "Petra Louven",
+      "owner_name": "Petra Louven",
+      "dept": "cutting-deboning",
+      "impact_grid": {
+        "financial": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "customer-delivery": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "legal-regulatory": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "reputation": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "animal-welfare-food-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "people-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "environment": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        }
+      },
+      "mtpd": "no MTPD within horizons",
+      "recovery_target": null,
+      "rpo": null,
+      "mbco": null,
+      "resources": {
+        "people": {
+          "items": {},
+          "status": "unknown"
+        },
+        "premises": {
+          "items": {},
+          "status": "unknown"
+        },
+        "suppliers": {
+          "items": {},
+          "status": "unknown"
+        },
+        "technology": {
+          "items": {},
+          "status": "unknown"
+        }
+      },
+      "dependencies": [],
+      "reservations": {},
+      "disagreements": {},
+      "open_items": {
+        "missing-evidence-minimum-staffing-1-shift-90-cutters": {
+          "detail": "No interview evidence supports this activity yet.",
+          "kind": "missing_evidence",
+          "subject": "minimum staffing 1 shift (≈ 90 cutters)"
+        }
+      },
+      "evidence": [],
+      "provenance": {
+        "impact_grid": {
+          "financial": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "customer-delivery": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "legal-regulatory": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "reputation": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "animal-welfare-food-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "people-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "environment": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          }
+        },
+        "recovery": {
+          "mtpd": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rto": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rpo": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "mbco": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          }
+        },
+        "resources": {
+          "people": {},
+          "premises": {},
+          "suppliers": {},
+          "technology": {}
+        },
+        "open_items": {
+          "missing-evidence-minimum-staffing-1-shift-90-cutters": {
+            "status": "open",
+            "quotation_ids": [],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          }
+        }
+      },
+      "not_elicited_ack": {
+        "approved_by": "Petra Louven",
+        "next_question": "Rate each impact category at each time horizon on the method's 1–5 scale for this activity.",
+        "owner_informed": "Petra Louven — told by this record",
+        "reason": "The owner was asked for impact figures per horizon and declined to rate them in the interview.",
+        "review_date": "2026-09-20",
+        "review_owner": "Franziska Dohm"
+      }
+    },
+    {
+      "id": "removal-of-bones-and-trim-from-cutting",
+      "name": "removal of bones and trim from cutting",
+      "owner": "Petra Louven",
+      "owner_name": "Petra Louven",
+      "dept": "cutting-deboning",
+      "impact_grid": {
+        "financial": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "customer-delivery": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "legal-regulatory": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "reputation": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "animal-welfare-food-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "people-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "environment": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        }
+      },
+      "mtpd": "no MTPD within horizons",
+      "recovery_target": null,
+      "rpo": null,
+      "mbco": null,
+      "resources": {
+        "people": {
+          "items": {},
+          "status": "unknown"
+        },
+        "premises": {
+          "items": {},
+          "status": "unknown"
+        },
+        "suppliers": {
+          "items": {},
+          "status": "unknown"
+        },
+        "technology": {
+          "items": {},
+          "status": "unknown"
+        }
+      },
+      "dependencies": [],
+      "reservations": {},
+      "disagreements": {},
+      "open_items": {
+        "missing-evidence-removal-of-bones-and-trim-from-cutting": {
+          "detail": "No interview evidence supports this activity yet.",
+          "kind": "missing_evidence",
+          "subject": "removal of bones and trim from cutting"
+        }
+      },
+      "evidence": [],
+      "provenance": {
+        "impact_grid": {
+          "financial": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "customer-delivery": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "legal-regulatory": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "reputation": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "animal-welfare-food-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "people-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "environment": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          }
+        },
+        "recovery": {
+          "mtpd": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rto": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rpo": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "mbco": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          }
+        },
+        "resources": {
+          "people": {},
+          "premises": {},
+          "suppliers": {},
+          "technology": {}
+        },
+        "open_items": {
+          "missing-evidence-removal-of-bones-and-trim-from-cutting": {
+            "status": "open",
+            "quotation_ids": [],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          }
+        }
+      },
+      "not_elicited_ack": {
+        "approved_by": "Petra Louven",
+        "next_question": "Rate each impact category at each time horizon on the method's 1–5 scale for this activity.",
+        "owner_informed": "Petra Louven — told by this record",
+        "reason": "The owner was asked for impact figures per horizon and declined to rate them in the interview.",
+        "review_date": "2026-09-20",
+        "review_owner": "Franziska Dohm"
+      }
+    },
+    {
+      "id": "supply-of-carcasses-into-cutting",
+      "name": "supply of carcasses into cutting",
+      "owner": "Petra Louven",
+      "owner_name": "Petra Louven",
+      "dept": "cutting-deboning",
+      "impact_grid": {
+        "financial": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "customer-delivery": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "legal-regulatory": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "reputation": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "animal-welfare-food-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "people-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "environment": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        }
+      },
+      "mtpd": "no MTPD within horizons",
+      "recovery_target": null,
+      "rpo": null,
+      "mbco": null,
+      "resources": {
+        "people": {
+          "items": {},
+          "status": "unknown"
+        },
+        "premises": {
+          "items": {},
+          "status": "unknown"
+        },
+        "suppliers": {
+          "items": {},
+          "status": "unknown"
+        },
+        "technology": {
+          "items": {},
+          "status": "unknown"
+        }
+      },
+      "dependencies": [],
+      "reservations": {},
+      "disagreements": {},
+      "open_items": {
+        "missing-evidence-supply-of-carcasses-into-cutting": {
+          "detail": "No interview evidence supports this activity yet.",
+          "kind": "missing_evidence",
+          "subject": "supply of carcasses into cutting"
+        }
+      },
+      "evidence": [],
+      "provenance": {
+        "impact_grid": {
+          "financial": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "customer-delivery": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "legal-regulatory": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "reputation": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "animal-welfare-food-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "people-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "environment": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          }
+        },
+        "recovery": {
+          "mtpd": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rto": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rpo": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "mbco": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          }
+        },
+        "resources": {
+          "people": {},
+          "premises": {},
+          "suppliers": {},
+          "technology": {}
+        },
+        "open_items": {
+          "missing-evidence-supply-of-carcasses-into-cutting": {
+            "status": "open",
+            "quotation_ids": [],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          }
+        }
+      },
+      "not_elicited_ack": {
+        "approved_by": "Petra Louven",
+        "next_question": "Rate each impact category at each time horizon on the method's 1–5 scale for this activity.",
+        "owner_informed": "Petra Louven — told by this record",
+        "reason": "The owner was asked for impact figures per horizon and declined to rate them in the interview.",
+        "review_date": "2026-09-20",
+        "review_owner": "Franziska Dohm"
+      }
+    },
+    {
+      "id": "wastewater-fat-arising-from-cutting-cleaning",
+      "name": "wastewater/fat arising from cutting/cleaning",
+      "owner": "Petra Louven",
+      "owner_name": "Petra Louven",
+      "dept": "cutting-deboning",
+      "impact_grid": {
+        "financial": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "customer-delivery": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "legal-regulatory": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "reputation": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "animal-welfare-food-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "people-safety": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        },
+        "environment": {
+          "0–4 h": "MISSING",
+          "8 h": "MISSING",
+          "24 h": "MISSING",
+          "48 h": "MISSING",
+          "72 h": "MISSING",
+          "1 week": "MISSING"
+        }
+      },
+      "mtpd": "no MTPD within horizons",
+      "recovery_target": null,
+      "rpo": null,
+      "mbco": null,
+      "resources": {
+        "people": {
+          "items": {},
+          "status": "unknown"
+        },
+        "premises": {
+          "items": {},
+          "status": "unknown"
+        },
+        "suppliers": {
+          "items": {},
+          "status": "unknown"
+        },
+        "technology": {
+          "items": {},
+          "status": "unknown"
+        }
+      },
+      "dependencies": [],
+      "reservations": {},
+      "disagreements": {},
+      "open_items": {
+        "missing-evidence-wastewater-fat-arising-from-cutting-cleaning": {
+          "detail": "No interview evidence supports this activity yet.",
+          "kind": "missing_evidence",
+          "subject": "wastewater/fat arising from cutting/cleaning"
+        }
+      },
+      "evidence": [],
+      "provenance": {
+        "impact_grid": {
+          "financial": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "customer-delivery": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "legal-regulatory": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "reputation": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "animal-welfare-food-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "people-safety": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          },
+          "environment": {
+            "0–4 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "8 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "24 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "48 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "72 h": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            },
+            "1 week": {
+              "status": "unknown",
+              "quotation_ids": [],
+              "source_paths": [
+                "02_BCM-Method/method.json"
+              ]
+            }
+          }
+        },
+        "recovery": {
+          "mtpd": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rto": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "rpo": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          },
+          "mbco": {
+            "status": "unknown",
+            "quotation_ids": [],
+            "source_paths": [
+              "02_BCM-Method/method.json"
+            ]
+          }
+        },
+        "resources": {
+          "people": {},
+          "premises": {},
+          "suppliers": {},
+          "technology": {}
+        },
+        "open_items": {
+          "missing-evidence-wastewater-fat-arising-from-cutting-cleaning": {
+            "status": "open",
+            "quotation_ids": [],
+            "source_paths": [
+              "07_Interviews/26_02_06_cutting-louven-interview.md"
+            ]
+          }
+        }
+      },
+      "not_elicited_ack": {
+        "approved_by": "Petra Louven",
+        "next_question": "Rate each impact category at each time horizon on the method's 1–5 scale for this activity.",
+        "owner_informed": "Petra Louven — told by this record",
+        "reason": "The owner was asked for impact figures per horizon and declined to rate them in the interview.",
+        "review_date": "2026-09-20",
+        "review_owner": "Franziska Dohm"
+      }
+    }
+  ],
+  "comparison": [],
+  "pp4_handoff": [
+    "Missing evidence: MTPD — Owner-stated MTPD 48 h; the impact grid was not scored, so no grid-derived MTPD confirms it. Accept knowingly at sign-off, or score the grid at the review.",
+    "Missing evidence: CIP cleaning for a hygienic next-day start — No interview evidence supports this activity yet.",
+    "Missing evidence: hand and equipment hygiene between batches — No interview evidence supports this activity yet.",
+    "Missing evidence: minimum staffing 1 shift (≈ 90 cutters) — No interview evidence supports this activity yet.",
+    "Missing evidence: removal of bones and trim from cutting — No interview evidence supports this activity yet.",
+    "Missing evidence: supply of carcasses into cutting — No interview evidence supports this activity yet.",
+    "Missing evidence: wastewater/fat arising from cutting/cleaning — No interview evidence supports this activity yet.",
+    "Missing evidence: activity cip-cleaning-for-a-hygienic-next-day-start lists no dependencies — name the exact register asset ids it needs (known: ['AN-SCHLACHT-01', 'AN-ZERLEG-01', 'IT-ERP-01', 'IT-WAAGE-01', 'KA-01', 'KA-02', 'LF-ABP-01', 'LF-SPED-01', 'LF-VERP-01', 'PE-ZERLEG-01', 'UV-ABWASSER-01', 'UV-CO2-01', 'UV-DAMPF-01', 'UV-STROM-01', 'UV-WASSER-01']), or confirm it needs nothing in the register [ref-ca1706e2f3]",
+    "Missing evidence: activity hand-and-equipment-hygiene-between-batches lists no dependencies — name the exact register asset ids it needs (known: ['AN-SCHLACHT-01', 'AN-ZERLEG-01', 'IT-ERP-01', 'IT-WAAGE-01', 'KA-01', 'KA-02', 'LF-ABP-01', 'LF-SPED-01', 'LF-VERP-01', 'PE-ZERLEG-01', 'UV-ABWASSER-01', 'UV-CO2-01', 'UV-DAMPF-01', 'UV-STROM-01', 'UV-WASSER-01']), or confirm it needs nothing in the register [ref-0f504bffd8]",
+    "Missing evidence: activity minimum-staffing-1-shift-90-cutters lists no dependencies — name the exact register asset ids it needs (known: ['AN-SCHLACHT-01', 'AN-ZERLEG-01', 'IT-ERP-01', 'IT-WAAGE-01', 'KA-01', 'KA-02', 'LF-ABP-01', 'LF-SPED-01', 'LF-VERP-01', 'PE-ZERLEG-01', 'UV-ABWASSER-01', 'UV-CO2-01', 'UV-DAMPF-01', 'UV-STROM-01', 'UV-WASSER-01']), or confirm it needs nothing in the register [ref-00a64bdf8a]",
+    "Missing evidence: activity removal-of-bones-and-trim-from-cutting lists no dependencies — name the exact register asset ids it needs (known: ['AN-SCHLACHT-01', 'AN-ZERLEG-01', 'IT-ERP-01', 'IT-WAAGE-01', 'KA-01', 'KA-02', 'LF-ABP-01', 'LF-SPED-01', 'LF-VERP-01', 'PE-ZERLEG-01', 'UV-ABWASSER-01', 'UV-CO2-01', 'UV-DAMPF-01', 'UV-STROM-01', 'UV-WASSER-01']), or confirm it needs nothing in the register [ref-fa9faff2b8]",
+    "Missing evidence: activity supply-of-carcasses-into-cutting lists no dependencies — name the exact register asset ids it needs (known: ['AN-SCHLACHT-01', 'AN-ZERLEG-01', 'IT-ERP-01', 'IT-WAAGE-01', 'KA-01', 'KA-02', 'LF-ABP-01', 'LF-SPED-01', 'LF-VERP-01', 'PE-ZERLEG-01', 'UV-ABWASSER-01', 'UV-CO2-01', 'UV-DAMPF-01', 'UV-STROM-01', 'UV-WASSER-01']), or confirm it needs nothing in the register [ref-dba09f6b5c]",
+    "Missing evidence: activity wastewater-fat-arising-from-cutting-cleaning lists no dependencies — name the exact register asset ids it needs (known: ['AN-SCHLACHT-01', 'AN-ZERLEG-01', 'IT-ERP-01', 'IT-WAAGE-01', 'KA-01', 'KA-02', 'LF-ABP-01', 'LF-SPED-01', 'LF-VERP-01', 'PE-ZERLEG-01', 'UV-ABWASSER-01', 'UV-CO2-01', 'UV-DAMPF-01', 'UV-STROM-01', 'UV-WASSER-01']), or confirm it needs nothing in the register [ref-55be5e78df]"
+  ],
+  "plan": null
+}

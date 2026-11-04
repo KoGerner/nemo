@@ -1,0 +1,18 @@
+# nemo calls these three model names on 127.0.0.1:4000. Each one has to exist here.
+# Change the `model` lines to use another provider: https://docs.litellm.ai/docs/providers
+model_list:
+  - model_name: ai4bcm/glm-5.3-flash-fastest
+    litellm_params:
+      model: openrouter/z-ai/glm-5.3-flash
+      api_key: os.environ/OPENROUTER_API_KEY
+      temperature: 0
+  - model_name: ai4bcm/glm-5.3-flash
+    litellm_params:
+      model: openrouter/z-ai/glm-5.3-flash
+      api_key: os.environ/OPENROUTER_API_KEY
+      temperature: 0
+  - model_name: ai4bcm/deepseek-v4.1-flash
+    litellm_params:
+      model: openrouter/deepseek/deepseek-v4.1-flash
+      api_key: os.environ/OPENROUTER_API_KEY
+      temperature: 0

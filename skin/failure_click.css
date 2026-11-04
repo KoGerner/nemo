@@ -1,0 +1,21 @@
+/* "What if this fails?" (ticket 254), after graph.css: the failed resource is rust on peach, what
+   it hits is amber. Both stay distinct from the page's own focus ring and its red critical stroke.
+   t287: every colour is a Harbour token, inlined before this by PROTOTYPE_v1graph. */
+#fail-mode, #fail-clear { padding: 2px 10px; border-radius: 4px;
+                          border: 1px solid var(--color-hairline); background: var(--color-white);
+                          font: inherit; font-size: 12px; color: var(--color-navy);
+                          cursor: pointer; min-height: 32px; }
+/* t293: rust is type and stroke, never a fill: pressed, the mode is the failure pair, rust on peach */
+#fail-mode[aria-pressed="true"] { background: var(--color-peach); border-color: var(--color-rust);
+                                  color: var(--color-rust); font-weight: 600; }
+.node.failed rect.box { fill: var(--color-peach-border); stroke: var(--color-rust);
+                        stroke-width: 3; }
+.node.hit rect.box { fill: var(--color-highlight); stroke: var(--color-amber); stroke-width: 2.5; }
+body.failing .edge.hot { stroke: var(--color-rust); }
+#facts h2.failed { color: var(--color-rust); }
+body.failing .edge.hot.depends_on, body.failing .edge.hot.activity_dep {
+  marker-start: url(#fail-arrow); }
+body.failing .edge.hot.consumes { marker-end: url(#fail-arrow); }
+/* Ticket 263: how soon the failed resource is needed back, and an RTO too slow for it in rust */
+#facts p.need, #facts p.too-slow { margin: 4px 0; }
+#facts p.too-slow { color: var(--color-rust); }

@@ -1,0 +1,586 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "production-and-processing",
+   "why": "The process owner's own interview: it describes the process, scores the impact grid, and states RTO, MTPD, emergency operation, failure causes and all resources.",
+   "own_department": true,
+   "keep": true
+  },
+  {
+   "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+   "speaker": "Jens Harder",
+   "department": "raw-material-procurement",
+   "why": "Names production and processing as its downstream process and describes delivering raw materials to the production ramp for goods receipt, which production depends on.",
+   "own_department": false,
+   "keep": true
+  },
+  {
+   "path": "07_Interviews/25_01_20_time-recording-lorenzen-interview.md",
+   "speaker": "Birte Lorenzen",
+   "department": "time-recording",
+   "why": "EXCLUDED - says nothing about production-and-processing or its dependencies; it concerns HR time recording only.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/24_09_25_order-picking-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "order-picking",
+   "why": "Names production and processing as its upstream process and describes damage relative to a production outage, plus the shared ERP, warehouse-control and refrigeration dependencies production also relies on.",
+   "own_department": false,
+   "keep": true
+  },
+  {
+   "path": "07_Interviews/24_09_25_returns-and-by-product-disposal-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "returns-and-by-product-disposal",
+   "why": "Says disposal boxes are handled at the production and processing sites and that undisposed food piling up there would badly impair operations.",
+   "own_department": false,
+   "keep": true
+  },
+  {
+   "path": "07_Interviews/24_09_25_dispatch-and-delivery-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "dispatch-and-delivery",
+   "why": "EXCLUDED - its upstream process is order picking, not production and processing, and it never mentions production or its dependencies.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+   "speaker": "Silke Jessen",
+   "department": "employee-registration",
+   "why": "EXCLUDED - HR registration process, nothing about production-and-processing or what it depends on.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_event-management-sobotta-interview.md",
+   "speaker": "Marek Sobotta",
+   "department": "event-management",
+   "why": "EXCLUDED - generic IT monitoring process, no link to production-and-processing or its assets.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_helpdesk-and-support-sievers-interview.md",
+   "speaker": "Frerk Sievers",
+   "department": "helpdesk-and-support",
+   "why": "EXCLUDED - IT helpdesk process and its own systems; no reference to production-and-processing or its dependencies.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_hr-correspondence-jessen-interview.md",
+   "speaker": "Silke Jessen",
+   "department": "hr-correspondence",
+   "why": "EXCLUDED - HR documents process, no link to production-and-processing.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_hr-service-ticketing-hansen-interview.md",
+   "speaker": "Wiebke Hansen",
+   "department": "hr-service-ticketing",
+   "why": "EXCLUDED - HR ticketing process, no link to production-and-processing.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_it-financial-management-stoltenberg-interview.md",
+   "speaker": "Henrik Stoltenberg",
+   "department": "it-financial-management",
+   "why": "EXCLUDED - IT financials, no link to production-and-processing or its dependencies.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_it-procurement-and-licences-ketelsen-interview.md",
+   "speaker": "Björn Ketelsen",
+   "department": "it-procurement-and-licences",
+   "why": "EXCLUDED - IT procurement and licences, no link to production-and-processing.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+   "speaker": "Heike Brodersen",
+   "department": "payments-and-salary-transfers",
+   "why": "EXCLUDED - salary payment process; its dependencies (SAP, HR master data) are not among production-and-processing's dependencies.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+   "speaker": "Heike Brodersen",
+   "department": "payroll",
+   "why": "EXCLUDED - payroll process; no mention of production-and-processing or its assets.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+   "speaker": "Timo Voß",
+   "department": "access-management",
+   "why": "EXCLUDED - IAM process and its systems; none of these are dependencies of production-and-processing.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+   "speaker": "Kai Brüning",
+   "department": "asset-and-configuration-management",
+   "why": "EXCLUDED - IT asset management, no link to production-and-processing.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+   "speaker": "Kai Brüning",
+   "department": "change-and-release-management",
+   "why": "EXCLUDED - change and release management, no link to production-and-processing.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_02_25_incident-and-problem-management-sobotta-interview.md",
+   "speaker": "Marek Sobotta",
+   "department": "incident-and-problem-management",
+   "why": "EXCLUDED - IT incident management; no reference to production-and-processing or its dependencies.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+   "speaker": "Ulrike Tiedemann",
+   "department": "data-protection",
+   "why": "EXCLUDED - data protection management, no link to production-and-processing or its assets.",
+   "own_department": false,
+   "keep": false
+  },
+  {
+   "path": "07_Interviews/26_11_09_production-and-processing-barsch-interview.md",
+   "speaker": "",
+   "department": "production-and-processing",
+   "why": "filed under this activity's department",
+   "own_department": true,
+   "floor": true,
+   "keep": true
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Production and processing (merges the named sub-steps: taking over and checking goods, cutting into parts, portioning, packing, moving to storage)",
+   "owner": {
+    "name": "Henning Barsch",
+    "quote": "It is a core process, and its process owner is plant management.",
+    "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/26_11_09_production-and-processing-barsch-interview.md",
+     "speaker": "Petra Louven",
+     "reason": "Stated in this year's interview (9 Nov 2026); the scores are read by code from its line.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 4,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 4, 168 h 4.",
+     "path": "07_Interviews/26_11_09_production-and-processing-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Stated in this year's interview (9 Nov 2026); the scores are read by code from its line.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 2,
+      "24 h": 3,
+      "72 h": 4,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 2, 24 h 3, 72 h 4, 168 h 4.",
+     "path": "07_Interviews/26_11_09_production-and-processing-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Stated in this year's interview (9 Nov 2026); the scores are read by code from its line.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 2,
+      "4 h": 2,
+      "8 h": 2,
+      "24 h": 3,
+      "72 h": 4,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h 1, 2 h 2, 4 h 2, 8 h 2, 24 h 3, 72 h 4, 168 h 4.",
+     "path": "07_Interviews/26_11_09_production-and-processing-barsch-interview.md",
+     "speaker": "Petra Louven",
+     "reason": "Stated in this year's interview (9 Nov 2026); the scores are read by code from its line.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 4.",
+     "path": "07_Interviews/26_11_09_production-and-processing-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "reason": "Stated in this year's interview (9 Nov 2026); the scores are read by code from its line.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "72 h",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "MTPD: >168 h.",
+    "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "Stated by the process owner; note the grid itself reaches level 4 at 168 h, see conflict C1.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "72 h",
+    "kind": "stated",
+    "quote": "RTO: 72 h.",
+    "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "Stated: a standstill of up to 24 hours can be compensated with extra effort; more than 72 hours would lead to considerable losses of yield.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "IT systems. CSB ERP Marschkamp: RPO <24 h, RTO 72 h.",
+    "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+    "speaker": "Henning Barsch",
+    "reason": "No process-level RPO was stated; every essential production system (both ERPs, warehouse control) carries RPO <24 h, so the process inherits <24 h.",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "MAWI ERP Breitenburg, essential for production at the Breitenburg site",
+     "asset_id": "mawi-erp-breitenburg",
+     "quote": "The program is essential for production at the Breitenburg site. Workaround: none; the program is essential for production at the Breitenburg site.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "CSB ERP Marschkamp, essential for production at the Marschkamp site",
+     "asset_id": "csb-erp-marschkamp",
+     "quote": "The program is essential for production at the Marschkamp site. Workaround: none; the program is essential for production at the Marschkamp site.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft 365 as standard office resource",
+     "asset_id": "microsoft-365",
+     "quote": "Office 365 is needed as the standard resource for Word, Excel, PowerPoint, Outlook, OneDrive and Teams. Workaround: Production can run without Office 365 too.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft Teams for chat and video conferences",
+     "asset_id": "microsoft-teams",
+     "quote": "Microsoft Teams is used for chat and video conferences. Workaround: Production can run without MS Teams too.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Atlassian Jira",
+     "asset_id": "jira",
+     "quote": "IT systems. Atlassian Jira: RPO <24 h, RTO 72 h.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Merchandise management and price-labelling system, source of price-labelling data",
+     "asset_id": "merchandise-and-price-labelling",
+     "quote": "The data needed for price labelling are read out of the merchandise management system.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Time-recording system for working times",
+     "asset_id": "time-recording-system",
+     "quote": "This system serves only to record working times.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft SharePoint Online to exchange and store data",
+     "asset_id": "sharepoint-online",
+     "quote": "SharePoint is used to exchange and store data.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Automated warehouse control of the high-bay warehouse, essential at the Marschkamp site",
+     "asset_id": "automated-warehouse-control",
+     "quote": "Software of the automated high-bay warehouse. The program is essential for production at the Marschkamp site.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Price-labelling devices, no direct workaround because several parallel lines are in use",
+     "asset_id": "price-labelling-devices",
+     "quote": "If price labelling fails there is no direct workaround, because several parallel lines are in use.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Refrigeration across three temperature ranges",
+     "asset_id": "refrigeration",
+     "quote": "Refrigeration covers three temperature ranges: deep-freeze, chilling at 4 degrees Celsius and chilling at 10 degrees Celsius.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Cutting staff, 25 in emergency operation, needed within 72 h",
+     "asset_id": "cutting-staff",
+     "quote": "Cutting staff: 40 in normal operation, 25 in emergency operation, needed within 72 h, on site.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Production staff, 25 in emergency operation, needed within 72 h",
+     "asset_id": "production-staff",
+     "quote": "Production staff: 40 in normal operation, 25 in emergency operation, needed within 72 h, on site.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Technician, 4 in emergency operation, needed within 72 h",
+     "asset_id": "technician",
+     "quote": "Technician: 8 in normal operation, 4 in emergency operation, needed within 72 h, on site.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Production supervisors, 1 in emergency operation, needed within 72 h",
+     "asset_id": "production-supervisors",
+     "quote": "Production supervisors: 3 in normal operation, 1 in emergency operation, needed within 72 h, on site.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Cleaning contractors (Reinigung & Clar, Fresh & Clean) with alternative providers",
+     "asset_id": "",
+     "quote": "Partners. Cleaning contractors: 2 suppliers (Reinigung & Clar, Fresh & Clean).",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "External technicians (Wirfixens GmbH, Technobros GmbH)",
+     "asset_id": "",
+     "quote": "Partners. External technicians: Wirfixens GmbH, Technobros GmbH.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Elbe Industrial Gases GmbH, supplier of nitrogen, short-term switch possible",
+     "asset_id": "",
+     "quote": "Partners. Elbe Industrial Gases GmbH: Supplier of nitrogen. Workaround: Other suppliers are available. A short-term switch is possible.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Raw material deliveries received at the ramp from the upstream procurement process",
+     "asset_id": "",
+     "quote": "",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "verified_quote": false,
+     "dropped_quote": "It ends with delivery at the ramp of the production and processing site concerned, where the goods are received."
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2026) gives 72 h by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "72 h (the method's rule over the grid, 2026)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "MTPD: >168 h.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "speaker": "Henning Barsch"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "C1",
+   "activity": "A1",
+   "about": "Stated MTPD '>168 h' versus the method's MTPD rule applied to the stated grid",
+   "sides": [
+    {
+     "claim": "The process owner states MTPD as more than 168 hours.",
+     "quote": "MTPD: >168 h.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "implies": {
+      "item_id": "A1.mtpd",
+      "value": ">168 h"
+     },
+     "verified_quote": true
+    },
+    {
+     "claim": "The stated operational grid reaches high (4) at 168 h, so the method rule (MTPD = earliest horizon at which the worst-case rating reaches 4) implies an MTPD of 168 h.",
+     "quote": "Impact operational: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 4.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "implies": {
+      "item_id": "A1.mtpd",
+      "value": "168 h"
+     },
+     "verified_quote": true
+    }
+   ],
+   "recommend": 1,
+   "why": "The method's mtpd_rule derives the MTPD from the grid, and the stated grid reaches level 4 at 168 h, so 168 h is the consistent value; the stated RTO of 72 h still sits strictly inside it."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "No RPO was stated at process level, only per IT resource.",
+   "ask": "Do you accept <24 h as the maximum data loss tolerable for production and processing, given both production ERPs carry RPO <24 h?"
+  },
+  {
+   "activity": "A1",
+   "what": "The process owner states 'The process is not relevant to the BCMS.' while setting RTO 72 h, high potential threat and essential systems.",
+   "ask": "Is production and processing really not relevant to the BCMS despite the 72 h RTO and the essential ERP, warehouse-control and refrigeration dependencies?"
+  },
+  {
+   "activity": "A1",
+   "what": "The stated MTPD '>168 h' contradicts the stated grid, which reaches high (4) at 168 h (conflict C1).",
+   "ask": "Should the MTPD be corrected to 168 h per the method's grid rule, or should the operational 168 h score be lowered so '>168 h' holds?"
+  }
+ ],
+ "verify_log": [
+  "A1.dep: quote not found verbatim in '07_Interviews/25_02_13_raw-material-procurement-harder-interview.md', removed: 'It ends with delivery at the ramp of the production and processing site concerned, where the goods are received.'",
+  "interview '07_Interviews/26_11_09_production-and-processing-barsch-interview.md' is filed under 'production-and-processing' and was left out: added back (floor)"
+ ],
+ "floor": {
+  "interviews_added": [
+   "07_Interviews/26_11_09_production-and-processing-barsch-interview.md"
+  ],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "production-and-processing",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 277.6,
+  "usage": {
+   "completion_tokens": 6433,
+   "prompt_tokens": 32665,
+   "total_tokens": 39098,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 1462,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00811625,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00811625,
+    "upstream_inference_prompt_cost": 0.00489975,
+    "upstream_inference_completions_cost": 0.0032165
+   }
+  },
+  "calls": [
+   {
+    "seconds": 277.6,
+    "usage": {
+     "completion_tokens": 6433,
+     "prompt_tokens": 32665,
+     "total_tokens": 39098,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 1462,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00811625,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00811625,
+      "upstream_inference_prompt_cost": 0.00489975,
+      "upstream_inference_completions_cost": 0.0032165
+     }
+    }
+   }
+  ],
+  "cost": 0.0081,
+  "made": "2026-09-22 18:26",
+  "regenerated": "2026-10-10 21:51",
+  "grid_from": "nemo.evidence.standardise over 07_Interviews/26_11_09_production-and-processing-barsch-interview.md (369; no model call)"
+ }
+}

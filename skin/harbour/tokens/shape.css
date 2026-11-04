@@ -1,0 +1,14 @@
+:root{
+  --radius-inputs:6px;
+  --radius-cards:14px;
+  --radius-buttons:100px;
+  /* Structure comes from hairlines and surface contrast. Nothing that sits IN the page
+     is elevated — cards, inputs, the nav and the diagram are bordered, not shadowed. */
+  --shadow-none:none;
+  /* The one exception, taken by the owner on 2026-09-12: a surface that floats OVER the
+     page carries this. Today that is the open question-box panel on ai4bcm.org and
+     nothing else. A hairline alone does not say which layer a card is on where it
+     overlaps the text behind it. It is the ink colour at low opacity, never a neutral
+     grey, so it stays warm against the grey page. */
+  --shadow-float:0 12px 32px rgba(11,31,58,.10), 0 2px 8px rgba(11,31,58,.06);
+}

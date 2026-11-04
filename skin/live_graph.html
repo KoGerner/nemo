@@ -1,0 +1,1249 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nemo · Dependency graph</title>
+{{harbour}}<style>
+/* Ticket 292: nemo_design's approved prototype (PROTOTYPE-graph-chat.html), ported as it is onto the
+   room's register and the room's chat. Every colour is a pinned Harbour token (287's guard). */
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--color-white); color: var(--color-slate); font: 16px/1.55 var(--font-body, sans-serif);
+       display: flex; flex-direction: column; -webkit-text-size-adjust: 100%; }
+:focus-visible { outline: 3px solid var(--color-amber); outline-offset: 2px; }
+header.top { display: flex; align-items: center; gap: 10px; padding: 14px 20px;
+             border-bottom: 1px solid var(--color-hairline); flex: none; }
+.wm { font: 700 18px/1 var(--font-display, sans-serif); letter-spacing: -.03em; color: var(--color-navy); }
+.wm b { color: var(--color-amber-wordmark); }
+.prod { font: 500 18px/1 var(--font-display, sans-serif); color: var(--color-navy); }
+.where { color: var(--color-muted); margin-left: 8px; }
+.badge { font: 500 12px var(--font-mono, monospace); letter-spacing: .12em; color: var(--color-rust);
+         border: 1px solid var(--color-rust); border-radius: 6px; padding: 2px 6px; margin-left: auto; }
+.back { color: var(--color-navy); text-decoration: none; font-weight: 500; margin-left: 12px;
+        display: inline-flex; align-items: center; min-height: 44px; }  /* 643: a 44 px tap at 1440 too */
+.shell { flex: 1; display: flex; min-height: 0; }
+.gwrap { flex: 1; overflow: auto; padding: 16px 20px 90px; min-width: 0; }
+.eb { font: 500 12px/1.2 var(--font-mono, monospace);
+      color: var(--color-muted); margin: 0; }
+.gtop { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.seg2 { display: inline-flex; border: 1px solid var(--color-hairline); border-radius: 100px;
+        overflow: hidden; font-size: 14px; }
+.seg2 button { font: inherit; padding: 6px 14px; color: var(--color-slate); background: none; border: 0;
+               cursor: pointer; }
+.seg2 button.on { background: var(--color-navy); color: var(--color-on-navy); }
+.card { cursor: pointer; }
+.fbar .flag { color: var(--color-rust); font-weight: inherit; }
+.fbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; border: 1px solid var(--color-hairline);
+        border-radius: 14px; padding: 10px 14px; margin: 0 0 12px; background: var(--color-white);
+        position: sticky; top: 0; left: 0; z-index: 3; }  /* in view wherever the card was tapped */
+.fbar b { color: var(--color-navy); font-weight: 500; }
+.fbar button { font: 500 14px var(--font-body, sans-serif); border-radius: 100px; padding: 6px 14px; cursor: pointer; }
+.fbar .add { background: var(--color-amber); color: var(--color-navy); border: 0; }
+.fbar .clr { background: var(--color-white); color: var(--color-navy); border: 1.5px solid var(--color-navy); }
+/* Ask nemo */
+.ask { background: var(--color-white); border: 1px solid var(--color-hairline); display: flex;
+       flex-direction: column; gap: 10px; padding: 16px; overflow: auto; }
+.ask.a { position: fixed; right: 20px; bottom: 24px; width: 400px; max-height: 76vh; border-radius: 14px;
+         box-shadow: var(--shadow-float); z-index: 5; }
+.ask.hidden { display: none; }
+.ask header { display: flex; justify-content: space-between; align-items: center; color: var(--color-navy); }
+.ask header b { font: 500 20px var(--font-display, sans-serif); }
+.ask .x { font: 14px var(--font-body, sans-serif); color: var(--color-muted); background: none; border: 0; cursor: pointer; }
+.ctx, .sugg, .next { display: flex; flex-wrap: wrap; gap: 6px; }
+.ctx span { font-size: 14px; color: var(--color-navy); border: 1.5px solid var(--color-navy); border-radius: 6px;
+            padding: 4px 8px; cursor: pointer; }
+.ctx .none { border: 0; color: var(--color-muted); padding: 0; cursor: default; }
+.sugg button, .next button { font: 14px var(--font-body, sans-serif); color: var(--color-navy); background: var(--color-white);
+                             border: 1px solid var(--color-hairline); border-radius: 100px; padding: 6px 12px;
+                             cursor: pointer; }
+.next button { border: 1.5px solid var(--color-navy); }
+.sugg button:disabled { opacity: .45; cursor: not-allowed; }
+.turn { font-size: 14px; line-height: 1.5; color: var(--color-navy); overflow-wrap: anywhere; }
+.turn.y { align-self: flex-end; background: var(--color-harbour-grey); border-radius: 14px; padding: 8px 12px; }
+.turn.n { border: 1px solid var(--color-hairline); border-radius: 14px; padding: 10px 12px; }
+.turn.n.wait { color: var(--color-muted); }
+.turn a { color: var(--color-navy); }
+.turn table { border-collapse: collapse; margin: 6px 0; width: 100%; }
+.turn th, .turn td { text-align: left; vertical-align: top; padding: 4px 6px 4px 0;
+                     border-bottom: 1px solid var(--color-hairline); }
+.turn th { font-weight: 500; }
+.turn .who { display: block; font: 500 12px var(--font-mono, monospace);
+             color: var(--color-rust); }
+.comp { display: flex; align-items: flex-end; gap: 8px; border: 1px solid var(--color-hairline); border-radius: 6px;
+        padding: 6px 6px 6px 12px; margin-top: auto; }
+.comp textarea { flex: 1; border: 0; resize: none; font: 14px/1.5 var(--font-body, sans-serif); color: var(--color-navy);
+                 background: var(--color-white); min-height: 36px; padding: 7px 0; }
+.comp textarea:focus { outline: none; }
+.comp .send { width: 36px; height: 36px; border-radius: 100px; border: 0; background: var(--color-amber);
+              color: var(--color-navy); cursor: pointer; flex: none; }
+/* Ticket 326: G2, the laptop's page for one BIA (1_nemo_design's nemo-graph-g.html), top to bottom:
+   the gap filter, the columns by kind, "Not drawn, and why" (352: the flow and Show rows are gone) */
+.bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 10px 0;
+       border-bottom: 1px solid var(--color-hairline); font-size: 14px; }
+/* 326 §9.9: the handoffs above and below the BIA card, the flow's navy, never a line between boxes */
+.b.hand { border-color: var(--color-navy); }
+.hw { font: 500 10px var(--font-mono, monospace); color: var(--color-navy); text-align: center; }
+.ocard .plant { font: 14px var(--font-body, sans-serif); color: var(--color-navy); background: var(--color-white);
+               border: 1px solid var(--color-navy); border-radius: 100px; padding: 2px 10px; cursor: pointer; }
+.ocard .plant.on { background: var(--color-peach); }
+.bar { font: 500 12px var(--font-mono, monospace); color: var(--color-muted);
+ }
+.bar .c, .bar #reset { text-transform: none; }
+.bar .c, .bar #reset { font: 14px var(--font-body, sans-serif); color: var(--color-navy);
+                       background: var(--color-white); border: 1px solid var(--color-hairline);
+                       border-radius: 100px; padding: 2px 10px; cursor: pointer; }
+.bar .c.g { border-color: var(--color-rust); color: var(--color-rust); }
+.bar .c.g.on { background: var(--color-peach); } .bar .sp { margin-left: auto; }
+.bar #reset { border: 1.5px solid var(--color-navy); padding: 3px 12px; }
+/* 383 row 25 (§12.27): a gap no drawn box carries reads "<gap> · 0", greyed, and does nothing */
+.bar .c.g.none, .ph-counts .cnt.none { border-color: var(--color-hairline); color: var(--color-muted); cursor: default; }
+#g2 { position: relative; display: flex; gap: 30px; align-items: flex-start; min-width: max-content; padding-top: 16px; }
+#g2 svg { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 0; }
+/* 462 B1 (spec Ticket A): the lines 1.4 px at .75 (slate on white 3.84:1), the lit chain 2.2 px at 1, the rest .12 */
+#g2 path { fill: none; stroke: var(--color-slate); stroke-width: 1.4; opacity: .75; }
+#g2 path.use { stroke-dasharray: 4 3; }
+#g2 path.hot { stroke: var(--color-navy); stroke-width: 2.2; opacity: 1; }
+#g2 path.mute { opacity: .12; }
+#g2 rect.under { fill: var(--color-white); }  /* 383 row 19: a line runs under every box and heading */
+.col2 { width: 168px; display: flex; flex-direction: column; gap: 9px; position: relative; z-index: 1; }
+/* 462 B9: This BIA uses the 1440 width: its columns share the row (168 px each at least), so no
+   empty right half and no box name on 3 lines */
+#g2.fill .col2 { flex: 1 1 168px; }
+.col2 .ch { font: 500 12px var(--font-mono, monospace);
+            color: var(--color-muted); margin-bottom: 2px; }
+.b { background: var(--color-white); border: 1px solid var(--color-hairline); border-radius: 6px;
+     padding: 8px 10px; cursor: pointer; }
+.b .nm { font-weight: 500; font-size: 14px; line-height: 1.3; color: var(--color-navy); }
+.b .why { font-size: 13px; color: var(--color-slate); line-height: 1.35; margin-top: 1px; }
+.b small, .b .gp, .b .rf, .b .nw { display: block; font: 500 10px/1.35 var(--font-mono, monospace);
+ color: var(--color-muted); margin-top: 3px; }
+.b .gp, .b .rf { color: var(--color-rust); margin-top: 2px; } .b .nw { color: var(--color-amber-wordmark); margin-top: 2px; }
+.b.gap { border-color: var(--color-rust); }
+.b.bia { border: 1.5px solid var(--color-navy); padding: 12px; }
+.b.bia .nm { font: 500 19px/1.2 var(--font-display, sans-serif); }
+#g2.dim .b:not(.hot) { opacity: .65; }  /* 353 F4: greyed, still read; 462 B12: names >= 4.5:1 (navy at .65 5.2:1) */
+.b.hot { border-color: var(--color-navy); box-shadow: 0 0 0 1px var(--color-navy); }
+.b.lit { border-color: var(--color-rust); box-shadow: 0 0 0 1px var(--color-rust); }
+.b.named { border-style: dashed; border-color: var(--color-slate); }
+.b.sel { box-shadow: 0 0 0 2px var(--color-navy); }
+.nd { margin: 28px 0 0; max-width: 900px; font-size: 14px; color: var(--color-slate); }
+.nd h3 { font: 500 12px var(--font-mono, monospace); color: var(--color-muted); margin: 0 0 6px; }
+.nd ul { margin: 0; padding: 0; } .nd li { margin: 3px 0 3px 18px; } .nd b { font-weight: 500; color: var(--color-navy); }
+.nd li.fd b { color: var(--color-rust); }
+/* Ticket 463 (spec 'Hover style and the laptop Open card'): no panel under the graph; after a click
+   the chain line, Add and Clear sit in the title row, one line, a long name ellipsised */
+.gtop { flex-wrap: nowrap; } .gtop > .seg2, .gtop > .bp, .gtop > h1 { flex: none; }
+.fbar.chain { flex: 0 1 auto; min-width: 0; margin: 0 0 0 auto; padding: 0; border: 0; background: none;
+              position: static; flex-wrap: nowrap; }
+.fbar.chain .cnt { display: block; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+                   font-size: 14px; }
+.fbar.chain .cnt b, .ph-tray .cnt .cn { display: inline-block; overflow: hidden; text-overflow: ellipsis;
+                     white-space: nowrap; vertical-align: bottom; }  /* 505: its max-width is fitChain's */
+.fbar.chain button { flex: none; white-space: nowrap; padding: 4px 12px; }
+/* the Open card: everything the hover card leaves out, beside its box; Esc or a click outside closes it */
+.ocard { position: fixed; z-index: 7; width: 400px; overflow: auto;
+         background: var(--color-white); border: 1px solid var(--color-hairline); border-radius: 10px;
+         box-shadow: var(--shadow-float); padding: 12px 14px; font-size: 13.5px; line-height: 1.45; color: var(--color-slate); }
+.ocard .h { font: 500 16px/1.3 var(--font-display, sans-serif); color: var(--color-navy); margin: 0 0 4px; }
+.ocard .lines p { margin: 3px 0 0; } .ocard .lines .flag { color: var(--color-rust); }
+.ocard .lines ul { margin: 2px 0 4px; padding: 0 0 0 18px; } .ocard .lines li { margin: 1px 0; }
+.ocard p { margin: 3px 0 0; }
+.ocard .clr { font: 500 14px var(--font-body, sans-serif); border-radius: 100px; padding: 6px 14px; cursor: pointer;
+              background: var(--color-white); color: var(--color-navy); border: 1.5px solid var(--color-navy); margin-top: 8px; }
+#tip .op { font: inherit; color: var(--color-navy); background: none; border: 0; padding: 0; margin-top: 4px;
+           text-decoration: underline; cursor: pointer; pointer-events: auto; }
+/* Ticket 467 (spec 'People column'): a People box's face is its owner's function in bold with
+   "process owner" under it, then its lead functions, "no deputy named" under each one the record
+   names no deputy for; at 390 the box takes the grid's full row and the mark sits inline after its
+   function, in slate */
+.pf { display: flex; flex-direction: column; font-size: 14px; line-height: 1.3; color: var(--color-navy); }
+.pf + .pf { margin-top: 4px; }
+.pf .fn { font-weight: 500; } .pf.po .fn { font-weight: 700; }
+.pf .pt { order: 1; } .pf .dn { order: 2; }
+.pf .pt, .pf .dn { font-size: 12.5px; color: var(--color-slate); }
+#ph .pf { display: block; } #ph .pf .fn, #ph .pf .dn { display: inline; } #ph .pf .pt { display: block; }
+#ph .pf .pt, #ph .pf .dn { font-size: 13px; }
+#ph .pf .dn::before { content: " \00b7\0020"; }
+#ph .ph-grid > .t.pp { grid-column: 1 / -1; }
+/* Ticket 331: the phone's page for one BIA (spec §10.2, §10.4 variant A): top to bottom, bands by
+   kind, a tap chooses (amber), one column with one amber line, the tray; no navy fill */
+#ph { font-size: 15px; }
+#ph .eb { font-size: 11px; }
+.ph-scope { display: inline-flex; border: 1px solid var(--color-navy); border-radius: 100px; overflow: hidden; }
+.ph-scope span { padding: 5px 12px; font-size: 14px; color: var(--color-navy); cursor: pointer; }
+.ph-scope .on { background: var(--color-navy); color: var(--color-on-navy); }  /* 639 S1: his 'Navy on both' */
+.ph-bia { border: 1.5px solid var(--color-navy); border-radius: 8px; padding: 10px 12px; margin-top: 10px; }
+.ph-bia .nm { font: 500 18px/1.2 var(--font-display, sans-serif); color: var(--color-navy); }
+.ph-bia .mono, #ph .mono { font: 500 11px/1.4 var(--font-mono, monospace); color: var(--color-muted); }
+#ph .gp, #ph .rf, .ph-page .gp { font: 500 10.5px var(--font-mono, monospace); color: var(--color-rust); }
+#ph .t .gp + .nw, #ph .t .rf { display: block; margin-top: 2px; }  /* 332 round 2: never beside a gap badge */
+#ph .lb { font: 500 10.5px var(--font-mono, monospace); color: var(--color-amber-wordmark); margin-top: 2px; }
+.ph-counts { display: flex; gap: 6px; margin-top: 10px; }
+.ph-counts .cnt { flex: 1; border: 1px solid var(--color-rust); color: var(--color-rust); border-radius: 8px;
+                  padding: 6px 8px; cursor: pointer; background: var(--color-white); }
+.ph-counts .cnt b { display: block; font: 500 22px var(--font-display, sans-serif); }
+.ph-counts .cnt span { font: 500 9.5px var(--font-mono, monospace); }
+.ph-counts .cnt.on { background: var(--color-peach); border-width: 2px; }
+.ph-band { margin-top: 14px; } .ph-band > .eb { display: block; margin-bottom: 6px; }
+.ph-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+#ph .t { position: relative; background: var(--color-white); border: 1px solid var(--color-hairline); border-radius: 8px;
+         padding: 8px 10px; cursor: pointer; min-height: 56px; min-width: 0; overflow-wrap: anywhere; }
+#ph .t .nm { font-weight: 500; font-size: 14px; line-height: 1.25; color: var(--color-navy); }
+#ph .t .rl { font-size: 12.5px; color: var(--color-slate); line-height: 1.35; }
+#ph .t.gap { border-color: var(--color-rust); }
+#ph .t.sel { background: var(--color-highlight); border: 2px solid var(--color-amber); }
+#ph .t.hot { border-color: var(--color-amber-wordmark); }
+#ph .t.more { font-size: 14px; color: var(--color-navy); font-family: inherit; text-align: left; }
+/* Ticket 332: Whole company: the Activities band, its flow arrows and the Customers pill, "Needed by" */
+#ph .t .nb { font: 500 10.5px var(--font-mono, monospace); color: var(--color-slate); margin-top: 2px; }
+#ph .t.act { border-color: var(--color-navy); }
+#ph .t.act.gap { border-color: var(--color-rust); }
+.ph-grp { margin-top: 10px; } .ph-grp > .eb { display: block; margin-bottom: 6px; }
+.ph-own { font-size: 13px; color: var(--color-muted); margin-bottom: 6px; }
+.ph-hw { font: 500 10.5px var(--font-mono, monospace); color: var(--color-navy); margin: 3px 0 3px 12px; }
+.ph-cust { border: 1px dashed var(--color-navy); border-radius: 100px; padding: 4px 12px; font-size: 14px;
+           color: var(--color-navy); display: inline-block; max-width: 100%; }
+.ph-side { font-size: 13px; color: var(--color-muted); }
+.ph-grp .ph-side { margin: 8px 0 4px; }
+.ph-gh { display: flex; width: 100%; align-items: center; gap: 8px; background: var(--color-white); border: 1px solid var(--color-hairline);
+         border-radius: 6px; padding: 10px 12px; margin-bottom: 6px; cursor: pointer; font: inherit; text-align: left; }
+.ph-gh .eb { flex: 1; margin: 0; } .ph-gh .ch { color: var(--color-navy); }
+.ph-gh { color: var(--color-navy); }  /* a button's own black is no Harbour colour (the all-pages check) */
+.ph-gh.sel { background: var(--color-highlight); border: 2px solid var(--color-amber); }  /* 345 Q1: a band carrying the gap */
+.ph-gh.hot { border-color: var(--color-amber-wordmark); }  /* 462 K1: a plant's system folded inside it, as #ph .t.hot */
+.ph-pair { font-size: 14px; color: var(--color-slate); }
+.ph-chain { position: relative; display: flex; flex-direction: column; gap: 8px; padding-left: 20px; margin-top: 14px; }
+.ph-line { position: absolute; left: 7px; top: 10px; bottom: 26px; width: 2px; background: var(--color-amber); }
+.ph-chain .tick { position: absolute; left: -13px; top: 26px; width: 13px; height: 2px; background: var(--color-amber); }
+.ph-chain .dot { position: absolute; left: -19px; top: 21px; width: 12px; height: 12px; border-radius: 50%; background: var(--color-amber); }
+.ph-nd { margin-top: 18px; font-size: 14px; color: var(--color-slate); }
+.ph-nd summary { font: 500 12px var(--font-mono, monospace); color: var(--color-muted); cursor: pointer;
+ }
+.ph-nd ul { margin: 6px 0 0; padding: 0; } .ph-nd li { margin: 3px 0 3px 18px; } .ph-nd b { font-weight: 500; color: var(--color-navy); }
+.ph-nd li.fd b { color: var(--color-rust); }
+.ph-tray { position: fixed; left: 0; right: 0; bottom: 0; z-index: 4; background: var(--color-white);
+           border-top: 1px solid var(--color-hairline); padding: 10px 16px 14px; box-shadow: var(--shadow-float); }
+.ph-tray .nm { font: 500 16px var(--font-display, sans-serif); color: var(--color-navy); }
+.ph-tray .why { font-size: 14px; color: var(--color-slate); line-height: 1.4; }
+.ph-tray .pr { font-size: 13.5px; color: var(--color-navy); border: 1px solid var(--color-hairline); border-radius: 8px;
+               padding: 6px 10px; margin-top: 6px; cursor: pointer; } .ph-tray .pr.on { border: 2px solid var(--color-amber); }
+.ph-tray .acts { display: flex; gap: 8px; margin-top: 8px; }
+.ph-tray button, .ph-page button { font: 15px var(--font-body, sans-serif); color: var(--color-navy); border-radius: 100px;
+                                   padding: 7px 14px; cursor: pointer; background: var(--color-white); border: 1px solid var(--color-navy); }
+.ph-tray button.pill, .ph-page button.pill { background: var(--color-amber); border-color: var(--color-amber); }
+.ph-page .crumb { font-size: 13px; color: var(--color-slate); margin-bottom: 8px; }
+.ph-page .crumb a { color: var(--color-navy); cursor: pointer; text-decoration: underline; }
+.ph-page .card { border: 1.5px solid var(--color-navy); border-radius: 10px; padding: 12px; overflow-wrap: anywhere; }
+.ph-page .card .h { font: 500 20px/1.2 var(--font-display, sans-serif); color: var(--color-navy); }
+.ph-page .card p { color: var(--color-slate); margin: 4px 0 0; font-size: 14px; }
+.ph-page details { font-size: 13px; color: var(--color-slate); margin-top: 6px; } .ph-page summary { cursor: pointer; color: var(--color-navy); }
+.ph-page .kh { font: 500 11px var(--font-mono, monospace); color: var(--color-muted); margin: 14px 0 4px; }
+.ph-page .li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; border: 1px solid var(--color-hairline);
+               padding: 10px 12px; margin-top: -1px; color: var(--color-navy); }
+.ph-page .li[data-go] { cursor: pointer; } .ph-page .li .nm { flex: 1; font-weight: 500; line-height: 1.25; }
+.ph-page .li.gap { border-left: 3px solid var(--color-rust); } .ph-page .li .ar { color: var(--color-muted); }
+.ph-page .why { color: var(--color-slate); font-size: 14px; }
+body.tray .gwrap { padding-bottom: 220px; }
+/* Ticket 334: the laptop's Whole company, the one table's page */
+.sum { margin: 8px 0 0; font-size: 14px; color: var(--color-slate); }
+.col2 .sub { font: 500 10px var(--font-mono, monospace);
+             color: var(--color-muted); margin-top: 4px; }
+.b .kr { font-size: 13px; color: var(--color-slate); line-height: 1.35; }
+.b.act.ag { border-left: 3px solid var(--color-rust); }
+.b .r { font-size: 13px; color: var(--color-navy); border: 1px solid var(--color-hairline); border-radius: 6px;
+        padding: 4px 8px; margin-top: 6px; background: var(--color-white); cursor: pointer; }
+.b .r.hot { border-color: var(--color-navy); } .b .r.lit { border-color: var(--color-rust); }
+.b .more { font: 13px var(--font-body, sans-serif); color: var(--color-navy); background: none; border: 0; padding: 6px 0 0;
+           cursor: pointer; text-decoration: underline; }
+.b .rb { display: block; font: 500 10px/1.35 var(--font-mono, monospace); color: var(--color-rust);
+         margin-top: 2px; }
+.col2 > .cust { border: 1px dashed var(--color-navy); border-radius: 100px; padding: 3px 12px; color: var(--color-navy);
+                font-size: 13px; text-align: center; }
+/* Ticket 380 (§12.26): a navy × top-right (44 px) closes the phone's tray as Clear does */
+.ph-tray .x { position: absolute; top: 4px; right: 8px; width: 44px; height: 44px; padding: 0; border: 0; background: none;
+                        color: var(--color-navy); font: 400 28px/1 var(--font-body, sans-serif); cursor: pointer; border-radius: 100px; }
+.ph-tray .x::before { content: "\00d7"; }
+.ph-tray .nm, .ph-tray .rows > div { padding-right: 52px; }  /* r3, r4: no tray text under the × (right 8 + 44), every tray row */
+/* Ticket 354 (spec §12.6, §12.14 F2/F8/F9, §12.15, §12.17 F14, §12.18): each box's kind, a 4 px bar
+   in its Harbour token, the column heading's dot the same; no chip; white boxes; the switch "By
+   resource type | By dependency level"; real buttons, a 2 px navy ring; 28 px controls at 1440 and
+   44 px at 390; a hover tooltip saying what the face no longer does */
+[data-kind="people"] { --k: var(--kind-people); } [data-kind="providers"] { --k: var(--kind-providers); }
+[data-kind="release"] { --k: var(--kind-release); } [data-kind="equipment"] { --k: var(--kind-equipment); }
+[data-kind="ict"] { --k: var(--kind-ict); } [data-kind="buildings"] { --k: var(--kind-buildings); }
+#g2 .b[data-kind], #ph .t[data-kind] { border-left: 4px solid var(--k); }
+#g2 .ch[data-kind]::before, #g2 .kh[data-kind]::before, #ph .ph-band[data-kind] > .eb::before {
+  content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--k);
+  margin-right: 6px; vertical-align: middle; }
+#g2 .kh { font: 500 12px var(--font-body, sans-serif); color: var(--color-muted); margin: 8px 0 0; }
+.view { display: inline-flex; gap: 4px; }
+.view button { font: 14px var(--font-body, sans-serif); color: var(--color-navy); background: var(--color-white);
+               border: 1px solid var(--color-hairline); border-radius: 100px; padding: 2px 12px; cursor: pointer; }
+.view button[aria-pressed="true"] { background: var(--color-navy); color: var(--color-on-navy); border-color: var(--color-navy); }
+.bar .c, .bar button, .fbar button, .seg2 button { min-height: 28px; display: inline-flex; align-items: center; }
+#g2 [role="button"]:focus-visible, .bar [role="button"]:focus-visible, .bar button:focus-visible,
+#ph [role="button"]:focus-visible, #ph button:focus-visible { outline: 2px solid var(--color-navy); outline-offset: 2px; }
+#tip { position: fixed; z-index: 6; max-width: 380px; overflow: hidden; background: var(--color-white); border: 1px solid var(--color-hairline);
+       border-radius: 8px; box-shadow: var(--shadow-float); padding: 8px 10px; font-size: 13px; line-height: 1.4;
+       color: var(--color-slate); pointer-events: none; }  /* 463: but its "Open for the full list" link */
+#tip b { color: var(--color-navy); font-weight: 500; } #tip p { margin: 2px 0 0; } #tip .flag { color: var(--color-rust); }
+.ph-view { display: flex; width: max-content; max-width: 100%; margin-top: 10px; border: 1px solid var(--color-navy);
+           border-radius: 100px; overflow: hidden; }
+.ph-view button { font: 15px var(--font-body, sans-serif); color: var(--color-navy); background: var(--color-white); border: 0;
+                  padding: 13px 16px; min-height: 44px; cursor: pointer; }
+.ph-view button[aria-pressed="true"] { background: var(--color-navy); color: var(--color-on-navy); }
+.ph-scope span { min-height: 44px; display: inline-flex; align-items: center; }
+.ph-tray button, .ph-page button, #ph .t.more, .ph-gh, .ph-counts .cnt { min-height: 44px; }
+/* Ticket 355 (spec §12.9-§12.12): the graph in Inter (pinned in Harbour's fonts.css), sentence case,
+   no letter-spacing; small labels 12.5 px at 1440 and 13 px at 390, badges 600 in rust; the card's
+   lines; the phone card's tray */
+#gwrap, #tip, .ocard { --font-body: "Inter", system-ui, sans-serif; --font-display: "Inter", system-ui, sans-serif;
+               --font-mono: "Inter", system-ui, sans-serif; font-family: "Inter", system-ui, sans-serif; }
+.col2 .ch, #g2 .kh, .b .gp, .b .rf, .hw, .col2 .sub { font-size: 12.5px; }
+/* 462 B2: no laptop text under 12 px: "N with gaps", the "BIA '24" chips, the picker's arrow, at 355's small size */
+.b small, .b .nw, .b .rb, #g2 .by { font-size: 12.5px; }
+.b .gp, .b .rf, #ph .gp, #ph .rf, .ph-counts .cnt span { font-weight: 600; }
+#ph .eb, #ph .gp, #ph .rf, .ph-page .gp, #ph .lb, .ph-counts .cnt span, .ph-hw, .ph-page .kh { font-size: 13px; }
+.b.bia .cl, .ph-bia .cl { display: block; font-size: 12.5px; color: var(--color-slate); margin-top: 2px; }
+.ph-bia .cl { font-size: 13px; }
+.b.bia .cl.flag, .ph-bia .cl.flag { color: var(--color-rust); font-weight: 600; }
+/* the tray's text: its name, three lines that scroll inside themselves, the chain's count (§12.11) */
+/* R1 (30_nemo_check): every phone tray shows its rows whole up to half the screen; one rule */
+.ph-tray .rows { font-size: 13px; line-height: 1.4; max-height: 50vh; overflow: auto; }
+.ph-counts .cnt span { white-space: nowrap; }  /* D4: one line at 390 */
+/* Ticket 353: a click's chain on top of each column, every other box greyed below it; on the
+   phone the chain's one amber column on top, every other tile greyed in its band below */
+.fbar .cnt { display: block; font-weight: 500; color: var(--color-slate); }
+.ph-tray .cnt { font-size: 13px; color: var(--color-slate); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#ph .t.grey { opacity: .5; }
+/* Ticket 372 (§12.23): "Waiting for n answers", a gap badge's size and weight, in slate: not a gap */
+.b .wt, #ph .wt { display: block; font: 600 12.5px/1.35 var(--font-body, sans-serif); color: var(--color-slate); margin-top: 2px; }
+#ph .wt { font-size: 13px; white-space: nowrap; }
+@media (max-width: 720px) {
+  header.top { padding: 12px 16px; } header.top .where { display: none; }
+  .ask.a { left: 0; right: 0; bottom: 0; width: auto; max-height: 70vh; border-radius: 14px 14px 0 0; }
+  /* 386 (row 31, §12.15): every control in the panel and the header's "← Chat" is a 44 px tap */
+  .ask .x, .ctx [data-un], .sugg button, .next button, .comp .send, .back {
+    min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .comp textarea { min-height: 44px; }
+  .shell { flex-direction: column; }
+  .gwrap { padding: 12px 16px 90px; }
+}
+/* 462 B13: each view's one h1 keeps the look its div or p had */
+h1.eb, h1.nm, h1.h, h1.bp-h { margin: 0; } h1.bp-h { font: inherit; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+/* 375 B (§12.25 B): "BIA 'yy", slate, never rust (a BIA's age is not a gap); the processes with no BIA greyed */
+.by { display: inline-block; margin-left: 6px; font: 600 12px/1 var(--font-sans, Inter, sans-serif); color: var(--color-slate);
+      border: 1px solid var(--color-slate); border-radius: 999px; padding: 3px 6px; vertical-align: 2px; white-space: nowrap; }
+.b small .by { margin: 0 6px 0 0; } #ph .t .by { display: block; width: max-content; margin: 4px 0 0; }
+.r.nob { color: var(--color-muted); cursor: default; }
+#ph .t.nob { color: var(--color-muted); border-style: dashed; background: none; cursor: default; }
+#ph .t.nob .nm { color: var(--color-muted); }
+/* 375 A (§12.25 A): the BIA picker, a popover at 1440, a bottom sheet at 390 */
+.bp { position: relative; }
+.bp-btn { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font: 600 15px/1.3 var(--font-sans, Inter, sans-serif);
+          color: var(--color-navy); padding: 6px 10px; margin: -6px -10px; border-radius: 8px; min-height: 28px; }
+.bp-btn:hover, .bp-btn[aria-expanded="true"] { background: var(--color-highlight); }
+.bp-btn:focus-visible, .bp-r:focus-visible, .bp-ph:focus-visible { outline: 2px solid var(--color-navy); }
+.bp-no { font-weight: 500; color: var(--color-muted); } .bp-car { font-size: 12.5px; color: var(--color-muted); }  /* 462 B2 */
+.bp-st { white-space: nowrap; font-size: 12.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid; }
+.bp-st.overdue { color: var(--color-rust); border-color: var(--color-rust); }
+.bp-st.ok { color: var(--color-slate); border-color: var(--color-slate); }
+.bp-pop { position: absolute; z-index: 20; top: calc(100% + 12px); left: -10px; background: var(--color-white); border: 1px solid var(--color-hairline);
+          border-radius: 12px; box-shadow: 0 12px 32px color-mix(in srgb, var(--color-navy) 14%, transparent); width: 560px;
+          max-height: 70vh; overflow: auto; padding: 8px 0; font-size: 14px; line-height: 1.35; color: var(--color-navy); }
+.bp-g { font-size: 12.5px; font-weight: 600; color: var(--color-muted); padding: 10px 16px 4px; }
+.bp-r { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 34px 1fr auto; gap: 2px 10px;
+        width: 100%; padding: 8px 16px; min-height: 44px; }
+.bp-r:hover { background: var(--color-highlight); }
+.bp-r.cur { background: color-mix(in srgb, var(--color-amber) 12%, var(--color-white)); box-shadow: inset 3px 0 0 var(--color-amber); }
+.bp-r .n { color: var(--color-muted); } .bp-r .t { font-weight: 600; }
+.bp-r .o { grid-column: 2; color: var(--color-muted); font-size: 12.5px; }
+.bp-r .s { grid-row: 1 / 3; grid-column: 3; align-self: center; font-size: 12.5px; text-align: right; max-width: 210px; }
+.bp-r .s.overdue { color: var(--color-rust); font-weight: 600; } .bp-r .s.ok { color: var(--color-slate); }
+.bp-foot { padding: 10px 16px 6px; color: var(--color-muted); font-size: 12.5px; border-top: 1px solid var(--color-hairline); margin-top: 6px; }
+.bp-ph { all: unset; box-sizing: border-box; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+         width: 100%; min-height: 44px; margin: 8px 0 0; padding: 8px 12px; border: 1px solid var(--color-hairline); border-radius: 10px;
+         font-size: 14px; font-weight: 600; color: var(--color-navy); background: var(--color-white); }
+.bp-sheet { position: fixed; inset: 0; z-index: 60; background: color-mix(in srgb, var(--color-navy) 35%, transparent); display: flex; align-items: flex-end; }
+.bp-sheet .bp-pop { position: static; width: 100%; max-height: 82vh; border-radius: 16px 16px 0 0; }
+.bp-sheet .bp-r { grid-template-columns: 32px 1fr; } .bp-sheet .bp-r .s { grid-row: auto; grid-column: 2; text-align: left; max-width: none; }
+/* 639 (his G1-G3, S3, 2026-10-30): the page as the chat's */
+.ask .priv { margin: 0; font-size: 12px; color: var(--color-muted); }  /* S3: the chat's line under its typing box */
+.ask .priv a { margin-left: 8px; padding-block: 13px; color: inherit; text-decoration: underline; }  /* 661: the chat's Privacy beside it */
+@media (min-width: 721px) {
+  #g2:not(.fill) { gap: 16px; min-width: 0; } #g2:not(.fill) .col2 { width: auto; flex: 1 1 150px; min-width: 140px; }  /* G1: 7 columns fit 1366 */
+  .gtop, .bar { position: sticky; top: -16px; z-index: 5; background: var(--color-white); }  /* G2: render() sets .bar's top */
+  .gtop { z-index: 6; }  /* 643: "← Chat"'s 44 px tap reaches over the chips row's top gap */
+  .gtop header.top { padding: 0; border: 0; gap: 8px; margin-right: auto; } .gtop header.top .where { display: none; }
+  .gtop header.top .badge { margin-left: 0; } .gtop header.top .back { margin: -4px 8px -4px 0; order: -1; }  /* G3: no header row; 643: the 44 px
+     tap reaches into the row's gap, so the row and the board stay where 639 put them */
+  /* 18's (2): a chain line takes the chips row's left part (gap chips, sort switches), one line, so nothing moves */
+  .bar.chained { flex-wrap: nowrap; } .bar .fbar.chain { margin: 0; font: 16px/1.55 var(--font-body, sans-serif);
+    text-transform: none; letter-spacing: normal; color: var(--color-slate); }
+}
+@media (max-width: 720px) {  /* G3, phone: a floating "← Chat" where the chat has "☰ nemo" */
+  header.top { position: fixed; top: 8px; left: 8px; z-index: 9; padding: 0; border: 0; background: none; }
+  header.top .wm, header.top .prod, header.top .badge { display: none; }
+  header.top .back { margin: 0; padding: 6px 14px; border: 1.5px solid var(--color-navy); border-radius: 100px;
+                     background: var(--color-white); box-shadow: var(--shadow-float); }
+  .gwrap { padding-top: 64px; scroll-padding-top: 64px; }  /* a tile scrolled to sits below the pill */
+}
+</style></head>
+<body>
+<header class="top"><span class="wm">AI4<b>BCM</b></span><span class="prod">nemo</span><span class="where">Dependency graph</span>
+<span class="badge">PROTOTYPE</span><a class="back" id="back" href="#">&#8592; Chat</a></header>
+<main class="shell" id="shell"><div class="gwrap" id="gwrap"></div></main>
+<script type="application/json" id="island">{{island}}</script>
+<script>
+const ISLAND = JSON.parse(document.getElementById("island").textContent);
+const D = ISLAND.data, ASK = ISLAND.ask;
+document.getElementById("back").href = ISLAND.back;
+// 639 amend (owner via 49): "← Chat" closes this tab where it came from the chat; where the browser
+// keeps it open, or it came from elsewhere (a bookmark), the link takes him to the chat. 643: the
+// chat's link marks the address (#from-chat), since nginx sends no referrer to tell it; taken off
+// the address, so a bookmark or a copied link never carries it. 654: kept in the tab's
+// sessionStorage, so a reload and the BIA picker keep it and a fresh tab has none; a view's own
+// words (#chain=…) stay; kept by the room's chat, so another room's graph in that tab has none; a
+// storage that throws keeps no mark
+const MARK = "#from-chat", FROM_CHAT = (() => {
+  const words = location.hash.slice(1).split("&"), marked = words.includes(MARK.slice(1));
+  const view = words.filter(w => w && w !== MARK.slice(1)).join("&"), key = MARK + " " + ISLAND.back;
+  if (marked) history.replaceState(history.state, "", location.pathname + location.search + (view && "#" + view));
+  try { if (marked) sessionStorage.setItem(key, "1"); return marked || sessionStorage.getItem(key) === "1"; }
+  catch (e) { return marked; } })();
+document.getElementById("back").addEventListener("click", e => {
+  const chat = new URL(ISLAND.back, location.href).href;
+  if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || !FROM_CHAT) return;
+  e.preventDefault(); window.close(); setTimeout(() => { location.href = chat; }, 150); });
+// 326's amend (321's R6, moved): Ask nemo is the floating panel A only; a stray ?variant= is ignored
+const S = {mode: "bia", sel: new Set(), lit: new Set(), named: new Set(), focus: null, open: false, turns: [], next: [],
+           draft: "", busy: false, gap: null, plant: null, opened: new Set(),
+           pick: [], more: new Set(), page: [], grp: new Set(), view: "kind", card: false, bp: false, show: null};
+// 344: each card's name, never the cards: the server keeps them (live_graph.shipped)
+const NAMES = D.names, ACT = "act";
+// 356: the boxes always drawn and never filtered (Sites, Power and network), deepest last in their
+// column; the columns by kind are the register's six (merge_table.KIND), left to right
+const BASE = D.base, isBase = k => BASE.includes(k), depth = k => BASE.indexOf(k) + 1;
+// 354: a box's kind (its column's token, never inline) and a real button's attributes (F2)
+const kindAttr = b => b && D.kinds[b.col] ? ` data-kind="${D.kinds[b.col]}"` : "";
+const btn = on => ` role="button" tabindex="0" aria-pressed="${!!on}"`;
+const hands = g => Object.fromEntries([...g.handoffs.up, ...g.handoffs.down].map(h => [h.id, h]));
+// 334: Whole company on the laptop draws the one table (D.whole); 332: on the phone, the company's
+// boxes (D.company, the same table) through 331's page; every part reads the scope's G, GB, H and A.
+// "Open its BIA graph" goes to that activity's own page (332 round 2), never carried in this one
+const CO = D.company, A = D.act;
+const C = D.whole, CB = C.boxes, CA = Object.fromEntries([...C.acts, ...C.bands, ...C.bands.flatMap(b => b.rows)].map(a => [a.id, a]));
+let G, GB, H;
+function scope() { G = S.mode === "all" && phview() ? CO : D.g2; GB = cpview() ? CB : G.boxes; H = cpview() ? {} : hands(G); }
+const openBia = slug => { location.href = ISLAND.bia + encodeURIComponent(slug); };
+const isAct = id => id.startsWith("a:"), actOf = id => CO.acts[id.slice(2)];
+const name = id => isAct(id) ? actOf(id).name : id === ACT ? A.name : (H[id] || GB[id] || CA[id] || (Object.hasOwn(NAMES, id) ? {name: NAMES[id]} : G.boxes[id] || CB[id]) || {name: id}).name;
+const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+// 345 R2: a number keeps its unit ("72 h") and "depend on" its "it" on one line, at every width
+const tie = s => s.replace(/(\d) (?=(?:h|d|min|hours?|days?|weeks?|°C)(?!\w))/gi, "$1\u00a0").replace(/\bon it\b/g, "on\u00a0it");
+const actFigures = (a = D.act) => [a.mtpd ? "MTPD " + a.mtpd : "MTPD not stated",
+                                   a.target ? "Recovery target " + a.target : "No recovery target stated"];
+
+// Ticket 326: G2, the laptop's page for one BIA. Its boxes, lines and "Not drawn" come from the
+// register by the skin's rules (live_graph.g2); here they are only laid out, filtered and focused.
+const g2edges = () => G.needs.map(b => [ACT, b, true]).concat(DEPS(G).map(([a, b]) => [a, b, false]));
+function g2chain(id) { const s = new Set([id]), E = g2edges();
+  if (H[id]) return new Set([id, ACT]);  // a handoff lights only itself and the BIA (§9.9)
+  // 408: the Sites box lights the activities drawn that run at its sites, a plant those at it
+  // (`siteActs`, This BIA only while SITES_LIGHT_ACTIVITIES says so) and the boxes tagged to it
+  if (id === "sites") { const at = G.siteActs || {}; (S.plant ? [S.plant] : Object.keys(at)).forEach(p => (at[p] || []).forEach(x => s.add(x)));
+    if (S.plant) Object.keys(GB).forEach(k => { if (GB[k].sites[S.plant]) s.add(k); });
+    return s; }
+  if (id === ACT || !GB[id]) { const todo = [id];  // the BIA card: what it uses, and all beneath
+    while (todo.length) { const x = todo.pop(); E.forEach(e => { if (e[0] === x && !s.has(e[1])) { s.add(e[1]); todo.push(e[1]); } }); }
+    return s; }
+  // part D: a box's chain member by member (merge_table.reach), never box to box through a fold
+  const R = reachOf(id);
+  [...Object.keys(R.up), ...Object.keys(R.down)].forEach(k => s.add(k));
+  if (D.slug in R.acts) s.add(ACT);
+  return s; }
+// 359 (§12.19): a gap tile is a click: the boxes carrying the gap and what they reach, member by
+// member (375 part D), on top of their columns, every other box greyed below; nothing is hidden
+function g2gapHot() { const s = new Set();
+  Object.keys(GB).forEach(m => { if (GB[m].gaps.includes(S.gap)) g2chain(m).forEach(x => s.add(x)); });
+  return s.size ? s : null; }
+const g2hot = () => S.focus ? g2chain(S.focus) : S.gap ? g2gapHot() : null;
+const g2any = (set, k) => set.has(k) || (GB[k] ? GB[k].members.some(m => set.has(m)) : false);
+function g2cls(k, hot) { return (hot && hot.has(k) ? " hot" : "") + (S.sel.has(k) ? " sel" : "")
+  + (g2any(S.lit, k) ? " lit" : g2any(S.named, k) ? " named" : ""); }
+const capital = s => s.charAt(0).toUpperCase() + s.slice(1);
+// 336: a gap badge names the members that carry it ("SINGLE SOURCE: PackForm North GmbH")
+const shortName = n => n.replace(/\s*\(.*\)\s*$/, "");
+const gapText = (b, whole) => b.gaps.map(g => `${g}: ${b.gapNames[g].map(n => whole ? n : shortName(n)).join(", ")}`);
+// 355 F15: a face's gap badge names at most two parts, then "+n"; the strip names them all; 462 B11:
+// never the box's own name ("No workaround", not "No workaround: Veterinary and QA release")
+const gapFace = b => b.gaps.map(g => { const ns = b.gapNames[g].filter(n => n !== b.name).map(shortName);
+  return !ns.length ? capital(g) : `${capital(g)}: ${ns.slice(0, 2).join(", ")}${ns.length > 2 ? ` +${ns.length - 2}` : ""}`; });
+// 359 (§12.20): a re-BIA finding on the face is "re-BIA: <member>" in rust, a gap badge's look but
+// not a gap; its text is the strip's
+const rebiaFace = b => b.rebiaOf && b.rebiaOf.length ? `<span class="rf">${esc(`re-BIA: ${b.rebiaOf.join(", ")}`)}</span>` : "";
+// 3_nemo_design's read (C3): named key roles, then "+ n more role(s)"; none named, "n role(s), no figure stated"
+const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
+// W1/W2 (359): a strip's why, none where it is empty or clipped from the record text shown in full
+const whyOf = b => { const w = (b.why || "").trim();
+  return !w || (b.desc && b.desc.toLowerCase().startsWith(w.toLowerCase().replace(/\.$/, ""))) ? "" : `Why: ${w}`; };
+// P1 r2: Whole company's why is one line, "Why: <part> · <part>": the box's own why, then what the
+// record says of it and its marks, never a stray unlabelled part (row 20 left the count out)
+const clauseOf = b => { const w = whyOf(b).replace(/^Why: /, ""), ps = [w, ...b.said, ...b.marks].filter(Boolean);
+  return ps.length ? `Why: ${ps.join(" · ")}` : ""; };
+const roles = b => !b.more ? "" : b.named && b.named.length ? `+ ${plural(b.more, "more role")}` : `${plural(b.more, "role")}, no figure stated`;
+// 467 (his "B · Owner + leads only", D1): a People box's face is its owner's function and its lead
+// functions (live_graph._people_column), each with "no deputy named" where the record names none;
+// a band's, and a box with no face, is its name
+const ND = "no deputy named", OWNER = "process owner";
+const faceName = b => b.people && b.people.fns ? b.people.fns.map(([f, o, d]) => `<div class="pf${o ? " po" : ""}"><span class="fn">${esc(f)}</span>`
+  + (d ? "" : `<span class="dn">${ND}</span>`) + (o ? `<span class="pt">${OWNER}</span>` : "") + `</div>`).join("") : `<div class="nm">${esc(b.name)}</div>`;
+// H3 / P2: its hover's and its sheet's one count line; a band's, its BIAs and their process owners (the plan's)
+const peopleCount = b => b.people.owners ? `${b.people.acts} ${b.people.acts === 1 ? "activity" : "activities"} · ${plural(b.people.n, "process owner")}`
+  : `${plural(b.members.length, "role")} · ${b.people.shared.length} shared with other activities`;
+// its Open card, at both widths: its why (as the other boxes' cards), the owner and leads with
+// their deputies (a band: each BIA's owner), the shared roles with how many other activities need
+// each, every role, its re-BIA lines and gaps
+function peopleOpen(b, why) { const p = b.people, n = xs => ` (${xs.length})`;
+  return [[why], p.fns ? ["Owner and leads:", "", "", p.fns.map(([f, o, d]) => `${f}${o ? ` (${OWNER})` : ""} · ${d ? `deputy: ${d}` : ND}`)] : [""],
+    p.owners ? [`Process owners${n(p.owners)}:`, "", "", p.owners.map(([a, f]) => `${a}: ${f}`)] : [""],
+    p.shared.length ? [`Shared with other activities${n(p.shared)}:`, "", "", p.shared.map(([r, k]) => `${r} · also needed by ${k} other activit${k === 1 ? "y" : "ies"}`)] : [""],
+    [`Roles${n(p.roles)}:`, "", "", p.roles], ...b.rebia.map(x => [x, "flag"]), [b.gaps.length ? gapText(b, true).map(capital).join(" · ") : "", "flag"]].filter(([t]) => t); }
+// 372 (§12.23): an activity's open follow-ups, one per draft nemo writes for it (live_graph._waiting);
+// its badge on the activity alone, its last strip or tray row naming whom it waits for
+const waitN = s => (D.waiting[s] || []).length;
+const waitBadge = s => waitN(s) ? `Waiting for ${plural(waitN(s), "answer")}` : "";
+const waitRow = s => waitN(s) ? `${waitBadge(s)}: ${D.waiting[s].join(", ")}` : "";
+const waitSpan = s => waitN(s) ? `<span class="wt">${esc(waitBadge(s))}</span>` : "";
+// 354 (§12.7 item 5): a box's face is its name and its gap badges; the rest is in its strip and
+// its hover tooltip (`g2facts`). ADR-0048: no demo mark and no dashed border on the graph
+function g2box(k, hot) { const b = GB[k];
+  return `<div class="b${b.gaps.length ? " gap" : ""}${isBase(k) ? " fnd" : ""}${g2cls(k, hot)}" data-id="${esc(k)}"${kindAttr(b)}${btn(S.focus === k)}>`
+    + faceName(b) + gapFace(b).map(g => `<span class="gp">${esc(g)}</span>`).join("") + rebiaFace(b) + `</div>`; }
+// what a box's face no longer says, a line each [text, class]: its strip and its tooltip; 351 C1:
+// a box of outside firms that stands on nothing drawn says it is an outside firm
+function g2facts(f) { const b = GB[f], E = g2edges(), names = ids => ids.map(name).join(", ") || "nothing";
+  const on = E.filter(e => e[0] === f).map(e => e[1]), by = E.filter(e => e[1] === f).map(e => e[0]);
+  const team = b.named && b.named.length ? b.named.map(r => `${r.name}: ${r.figures.join(", ")}`).join(" · ") + (b.more ? ` · ${roles(b)}` : "") : roles(b);
+  return [[whyOf(b)], ...[b.fact, ...b.said, ...b.marks, ...workRows(b)].map(x => [x]),
+    [b.desc ? `What the record says: ${b.desc}` : ""], [team], ...shared(b),
+    ["Needed by:", "", "", b.neededBy.map(s => G.actNames[s] || s)],
+    [dependCount(f, b)], [b.partOf ? `Part of: ${b.partOf}` : ""],
+    ...sides(on.length || !b.outside ? names(on) : "outside firm", names(by), on.length || by.length || b.outside), [mergedOf(b) ? MERGED : "", "", "", mergedRows(b)],
+    ...b.rebia.map(x => [x]), [b.gaps.length ? gapText(b, true).map(capital).join(" · ") : "", "flag"]].filter(([t]) => t); }
+// 463 (spec 'Hover style and the laptop Open card'): the Open card's "Stands on" and "Stood on by",
+// left out when both are empty; "Merged from" for two records or more, or one not named as the box,
+// each record named once (466 I2), with its type where the parts differ in type (466 I3)
+const sides = (on, by, any) => any ? [[`Stands on: ${on}`], [`Stood on by: ${by}`]] : [];
+const mergedOf = b => b.merged.length > 1 || (b.merged.length === 1 && b.merged[0] !== b.name);
+// 466 r2: a list, one part a line, "<name> · <type>"
+const MERGED = "Merged from:";
+const mergedRows = b => mergedOf(b) ? b.merged.map(n => b.types[n] ? `${n} · ${b.types[n]}` : n) : [];
+// 466 H2/I1: the record's workaround, one line each, "Workaround: <its words>" (words saying there is
+// none stand alone); on Whole company each names the activities whose rows give it. r2: in a merged
+// box each line leads with the parts whose records give it, "<part> and <part>: <its words>"
+const NONE_SAID = /^no (direct )?workaround\b/i;
+const workText = w => NONE_SAID.test(w) ? w : `Workaround: ${w}`;
+const both = ns => ns.length > 1 ? `${ns.slice(0, -1).join(", ")} and ${ns[ns.length - 1]}` : ns[0];
+const workRows = b => (b.work || []).map(([w, ss, ps]) => (b.members.length > 1 ? `${both(ps)}: ` : "") + workText(w)
+  + (S.mode === "all" ? ` (${ss.map(s => G.actNames[s] || s).join(", ")})` : ""));
+// 466 H1/H2: the firms an activity's record says can step in, each with the record's words
+const firmRows = s => (D.firms[s] || []).map(([n, w]) => `${n} · ${workText(w)}`);
+const STEP_IN = "Other firms can step in:";
+// 355 F7 and §12.14's content read: a shared role's other activities; "<n> activities depend on
+// it, <d> directly", never for People (its own activity) or Sites (a tag)
+const shared = b => Object.entries(b.also || {}).map(([r, as]) => [`${r} also needed by: ${as.join(", ")}`]);
+const dependCount = (k, b) => k === SITES || b.col === "People" || !b.direct ? ""
+  : `${b.neededBy.length} ${b.neededBy.length === 1 ? "activity depends" : "activities depend"} on it, ${b.direct.length} directly`;
+// a line is [text, class, html, list]: the html where the text alone will not do; a list's names
+// one under the other below its line (463, B10: never one run-on line)
+const lines = L => `<div class="lines">${L.map(([t, c, h, ns]) => `<p${c ? ` class="${c}"` : ""}>${h || esc(t)}</p>`
+  + (ns ? `<ul>${ns.map(n => `<li>${esc(n)}</li>`).join("")}</ul>` : "")).join("")}</div>`;
+// 326 §9.9: a handoff box, the flow, not what it runs on: no gap badge, never hidden by a filter
+function g2hand(h, side, hot) {
+// 355 (§12.11): a handoff's face is its name; its place and the arrow say the rest
+  return `<div class="b hand${hot && hot.has(h.id) ? " hot" : ""}" data-id="${esc(h.id)}" data-side="${side}"${btn(S.focus === h.id)}><div class="nm">${esc(h.name)}</div></div>`; }
+// 355 (§12.9, §12.12, F11, F17, §12.18 item 6): the card's face, a line each [text, class]: last
+// year's MTPD, the recovery target, the re-BIA line (both figures, no side taken), the findings, or
+// for an activity the register has no rows for, that it has none yet; a value and its unit tied
+const tieUnit = s => s.replace(/\bMTPD (?=\S)/g, "MTPD\u00a0").replace(/(\d) (h|d|min|hours?|days?|weeks?)\b/g, "$1\u00a0$2");
+const NONE_YET = "No dependencies recorded for this activity yet.";
+function cardFace() {
+  return [[(A.lastYear ? "Last year: " : "") + (A.mtpd ? `MTPD ${A.mtpd}` : "MTPD not stated")],
+    [A.target ? `Recovery target ${A.target}` : "No recovery target stated"], [waitBadge(D.slug), "wt"], [G.finding ? G.rebiaFace : "", "flag"],
+    ...(G.needs.length ? G.census.map(t => [`Finding: ${t}`, "flag"]) : [[NONE_YET]])].filter(([t]) => t).map(([t, c]) => [tieUnit(t), c]); }
+// F3, §12.12: the card's strip and tooltip: the record's own words in full, what it shares, what it
+// runs without and who can step in (384: every box is drawn, so nothing is left off the page)
+function cardFacts() {
+  return [[A.desc], [(A.lastYear ? "Last year · " : "") + actFigures(A).join(" · ")], [G.finding || "", "flag"],
+    ...G.census.map(t => [`Finding: ${t}`, "flag"]), [G.needs.length ? `Uses ${G.needs.length} boxes directly.` : NONE_YET],
+    [G.shared ? `Shares boxes with ${G.shared} other activit${G.shared === 1 ? "y" : "ies"}` : ""],
+    [G.runsWithout.length ? `Runs without (the record says so): ${G.runsWithout.join(", ")}` : ""],
+    [G.stepIn.length ? STEP_IN : "", "", "", firmRows(D.slug)],
+    [waitRow(D.slug)]].filter(([t]) => t); }
+function g2act(hot) {
+  return `<div class="b bia${G.finding ? " gap" : ""}${g2cls(ACT, hot)}" data-id="${ACT}"${btn(S.focus === ACT)}><div class="nm">${esc(A.name)}</div>`
+    + cardFace().map(([t, c]) => `<span class="cl${c ? ` ${c}` : ""}">${esc(t)}</span>`).join("") + `</div>`; }
+const HW = `<div class="hw">&#8595; Hands work to</div>`;
+// 462 B13: the lines' SVG says what it draws to a screen reader (the page's one h1 names the BIA or company)
+const SVG = `<svg role="img" aria-label="The lines: what each box uses and stands on"></svg>`;
+// 462 B4 (his "one form"): a chip always reads "<kind> · <n>", n the phone's count (gapN)
+function g2page() {
+  const hot = g2hot();
+  const chips = `Gap ${["no workaround", "single source", "owner missing"].map(g => gapIds(g).length
+    ? `<span class="c g${S.gap === g ? " on" : ""}" data-g="${g}"${btn(S.gap === g)}>${capital(g)} · ${gapN(g)}</span>` : NOGAP(g, "c g", "g", `${capital(g)} · 0`)).join("")}` + VIEW();
+  const bar = chipsRow(chainLine(S.focus, hot || new Set(), drawnIds(GB)), chips);
+  const ups = G.handoffs.up.map(h => g2hand(h, "up", hot) + HW).join(""), downs = G.handoffs.down.map(h => HW + g2hand(h, "down", hot)).join("");
+  const cols = `<div class="col2"><div class="ch">Activity</div>${ups}${g2act(hot)}${downs}</div>` + (S.view === "level" ? levelCols(hot) : kindCols(hot));
+  // 355 (§12.12): no "Not drawn, and why"; its rows are the card's strip and tooltip
+  return `<div class="gtop">${bpTitle()}${seg(false)}</div>`
+    + bar + `<div id="g2" class="fill${hot ? " dim" : ""}">${SVG}${cols}</div>`;
+}
+// 375 A (§12.25 A): a BIA is a record about an activity; the page title opens the plan's BIAs
+// (live_graph._bias: its rows, its groups from the map, the map's processes with no BIA as the foot)
+const BIAS = D.plan.rows, MINE = () => BIAS.find(b => b.slug === D.slug);
+// 375 B: an activity's "BIA 'yy", the year of its last finished record (the plan's "Last interview")
+const byBadge = s => { const b = BIAS.find(x => x.slug === s);
+  return b ? `<span class="by" title="BIA ${esc(b.no)} · last interview ${esc(b.last)}">BIA \u2019${esc(b.last.slice(-2))}</span>` : ""; };
+const bpPill = b => `<span class="bp-st ${b.kind}">${b.kind === "overdue" ? "Overdue" : "Reviewed"}</span>`;
+const bpList = () => `<div class="bp-pop" role="listbox" aria-label="Other BIAs">` + [...new Set(BIAS.map(b => b.group))].map(g => `<div class="bp-g">${esc(g)}</div>`
+  + BIAS.filter(b => b.group === g).map(b => `<button class="bp-r${b.slug === D.slug ? " cur" : ""}" role="option" data-bia="${esc(b.slug)}" title="${esc(b.status)}" aria-current="${b.slug === D.slug}">`
+    + `<span class="n">${esc(b.no)}</span><span class="t">${esc(b.name)}</span><span class="s ${b.kind}">${esc(b.short)}</span><span class="o">${esc(b.owner)} · last interview ${esc(b.last)}</span></button>`).join("")).join("")
+  + (D.plan.nobia.length ? `<div class="bp-foot">No BIA yet: ${esc(D.plan.nobia.join(", "))}.</div>` : "") + `</div>`;
+const bpTitle = () => { const b = MINE(); return !b ? `<h1 class="eb">${esc(A.name)}</h1>`
+  : `<div class="bp"><h1 class="bp-h"><button class="bp-btn" aria-haspopup="listbox" aria-expanded="${S.bp}"><span class="bp-no">BIA ${esc(b.no)} ·</span> <span>${esc(b.name)}</span> ${bpPill(b)} <span class="bp-car">&#9662;</span></button></h1>${S.bp ? bpList() : ""}</div>`; };
+// on the phone, one 44 px row under the scope switch (the card names the process), a bottom sheet
+const bpRow = () => { const b = MINE(); return b ? `<button class="bp-ph" aria-haspopup="listbox" aria-expanded="${S.bp}"><span><span class="bp-no">BIA ${esc(b.no)}</span> ${bpPill(b)}</span> <span>Other BIAs &#9662;</span></button>` : ""; };
+const bpSheet = () => S.bp && MINE() && S.mode === "bia" ? `<div class="bp-sheet">${bpList()}</div>` : "";
+// 354 (§12.6 L2, §12.18 items 1-2): the boxes by resource type (a column per kind) or by
+// dependency level (a column per level, its boxes under their kinds' sub-headings); 374: both scopes
+const VIEW = () => ` <span class="view" role="group" aria-label="Sort the boxes">${[["kind", "By resource type"], ["level", "By dependency level"]]
+  .map(([v, t]) => `<button data-v="${v}" aria-pressed="${S.view === v}">${t}</button>`).join("")}</span>`;
+const ofKind = (c, keep) => Object.keys(GB).filter(k => GB[k].col === c && keep(k));
+// 462 B3: a click never re-sorts a column (353's chain on top is gone): the boxes stay where they
+// are, the chain lights and the rest greys
+const kindCols = hot => G.cols.map(c => `<div class="col2"><div class="ch" data-kind="${D.kinds[c]}">${esc(c)}</div>${ofKind(c, () => true).map(k => g2box(k, hot)).join("")}</div>`).join("");
+// F13: by level, each level column grouped by kind (462 B3: a click moves none of them); 374
+// (§12.24): the levels are the longest chain, plain "Level n", on both
+// scopes (Whole company passes its own levels, boxes and box face), no empty level drawn; r2: the
+// drawn levels numbered without gaps (computed 1, 2, 4 read Level 1, 2, 3)
+function levelCols(hot, levels = G.levels, cols = G.cols, keys = ofKind, face = g2box) {
+  const group = (L, keep) => cols.map(c => { const ks = keys(c, k => levels[k] === L && keep(k));
+    return ks.length ? `<div class="kh" data-kind="${D.kinds[c]}">${esc(c)}</div>` + ks.map(k => face(k, hot)).join("") : ""; }).join("");
+  return [...new Set(Object.values(levels))].sort((a, b) => a - b).map((L, n) => `<div class="col2"><div class="ch">Level ${n + 1}</div>`
+    + group(L, () => true) + `</div>`).join(""); }
+// the strip's head line: whose chain, and what it lights (505)
+// 378 r4: the boxes the view draws; a level-only box (`levelOnly`) only by dependency level
+const drawnIds = B => Object.keys(B).filter(k => S.view === "level" || !B[k].levelOnly);
+// 505 (his "B: what is lit"), replacing 462 B5's "n of m boxes": the activity cards lit (This BIA's
+// card and handoffs, Whole company's activities) and every other lit box the view draws, People
+// boxes included, as resources; singular forms, a zero part left out; one helper for both widths
+const isCard = k => k === ACT || isAct(k) || k.startsWith("act:") || !!H[k];
+const litWords = (hot, all) => { const a = [...hot.keys()].filter(isCard).length, r = all.filter(k => hot.has(k)).length;
+  return [a && `${a} ${a === 1 ? "activity" : "activities"}`, r && plural(r, "resource")].filter(Boolean).join(" and ") + " lit"; };
+// 505: the chain line is one line on both widths: the name ellipsised, never the count (fitChain)
+const cutName = (tag, n) => `<${tag} class="cn">${esc(n)}</${tag}>`;
+const fitChain = () => document.querySelectorAll(".cnt > .cn").forEach(n => { const over = n.parentElement.scrollWidth - n.parentElement.clientWidth;
+  if (over > 0) n.style.maxWidth = `${Math.max(0, n.offsetWidth - over)}px`; });
+// 463: the chain line, "Add to Ask nemo" and "Clear", one line (the name ellipsised); 639 (18's (2)): in
+// the chips row, in place of the gap chips and the sort switches, so no box moves; Clear brings them back
+const chipsRow = (chain, chips) => `<div class="bar${chain ? " chained" : ""}">${chain || chips}<span class="sp">Esc clears</span><button id="reset">Reset view</button></div>`;
+const chainLine = (f, hot, all) => !f && !S.show ? "" : `<div class="fbar chain"><span class="cnt">Showing ${f ? "the chain of " + cutName("b", name(f)) : cutName("b", S.show.label)} · ${litWords(hot, all)}</span>`
+  + (f ? `<button class="add" data-add="${esc(f)}">Add to Ask nemo</button>` : "") + `<button class="clr" data-clear>Clear</button></div>`;
+const acts = slugs => slugs.map(s => G.actNames[s] || s).join(", ") || "nothing";
+// 336: the Sites box opens its plants, each with its takeover; a plant tap lights only the boxes the
+// register tags to it, and names only their members tagged there
+function sitesBody(b) {
+  return (b.why ? `<p>Why: ${esc(b.why)}</p>` : "") + `<p>${esc(b.fact)}:</p>` + b.plants.map(p => `<p><button class="plant${S.plant === p.id ? " on" : ""}" data-plant="${esc(p.id)}">${esc(p.name)}</button>`
+    + ` · ${esc(plantWords(p))}</p>`).join("");
+}
+// 463: This BIA's Open card, everything its hover card leaves out
+function g2open(f) {
+  return f === ACT ? lines(cardFacts())
+    : H[f] ? `<p>${esc(H[f].why)} · the flow: work handed on, not something it runs on</p>`
+    : f === "sites" ? sitesBody(GB[f])
+    : GB[f] ? lines(GB[f].people ? peopleOpen(GB[f], whyOf(GB[f])) : g2facts(f)) : ""; }
+// dashed from the BIA to what it uses, solid from a box to what it stands on; between two boxes of
+// one column the line runs out to the right and back, never under a box
+function g2lines() {
+  const gr = document.getElementById("g2"); if (!gr) return;
+  const cp = cpview(), svg = gr.querySelector("svg"), R = gr.getBoundingClientRect(), at = {};
+  const hot = cp ? cphot() : g2hot();
+  gr.querySelectorAll(".b[data-id], .r[data-id]").forEach(e => { const r = e.getBoundingClientRect();
+    at[e.dataset.id] = {x: r.left - R.left, y: r.top - R.top, w: r.width, h: r.height}; });
+  svg.setAttribute("width", gr.scrollWidth); svg.setAttribute("height", gr.scrollHeight);
+  svg.innerHTML = (cp ? cpedges(hot) : g2edges()).map(([a, b, use]) => { const p = at[a], q = at[b]; if (!p || !q) return "";
+    let x1 = p.x + p.w, x2 = q.x; const y1 = p.y + Math.min(p.h / 2, 24), y2 = q.y + Math.min(q.h / 2, 24); let d;
+    if (Math.abs(p.x - q.x) < 5) d = `M${x1},${y1} C${x1 + 30},${y1} ${q.x + q.w + 30},${y2} ${q.x + q.w},${y2}`;
+    else if (q.x < p.x) { x1 = p.x; x2 = q.x + q.w; d = `M${x1},${y1} C${x1 - 28},${y1} ${x2 + 28},${y2} ${x2},${y2}`; }
+    else d = `M${x1},${y1} C${x1 + 28},${y1} ${x2 - 28},${y2} ${x2},${y2}`;
+    const on = hot && hot.has(a) && hot.has(b);
+    return `<path d="${d}" class="${use ? "use" : ""}${hot ? (on ? " hot" : " mute") : ""}" data-a="${esc(a)}" data-b="${esc(b)}"/>`; }).join("")
+  // 383 row 19: a white ground under each box and heading, painted over the lines, so a greyed box
+  // (opacity .5) and a heading never show a line through them
+    + [...gr.querySelectorAll(".b, .ch, .kh, .sub")].map(e => { const r = e.getBoundingClientRect();
+      return `<rect class="under" x="${r.left - R.left}" y="${r.top - R.top}" width="${r.width}" height="${r.height}" rx="6"/>`; }).join("");
+}
+
+// Ticket 331: the phone's page for one BIA (spec §10.2, §10.4 variant A, as 336 tightens them). The
+// boxes, gaps, bands and "Not drawn" rows are the laptop's (the one table, `merge_table`); here they
+// are only stacked, chosen and said in words. A site row is a tag, never an edge.
+const phview = () => innerWidth <= 720;
+// 462 K1: a box the view does not draw, folded into a band (`band`), is that band when a plant lights it
+const folded = k => GB[k].band && !drawnIds(GB).includes(k) ? GB[k].band : k;
+const SITES = "sites", PLANTS = () => GB[SITES] ? GB[SITES].plants : [];
+const plantName = id => (PLANTS().find(p => p.id === id) || {name: id}).name;
+// 331 round 3: a plant's words are merge_table.plant_words's, the one copy: this activity and how
+// many others run there, its OWN takeover, "Site of" only where something is tagged
+// a plant's words, merge_table.plant_words: This BIA's from g2, Whole company's from the company (t334b)
+// by SCOPE, never by width (2_nemo_design_phone P1): Whole company reads the company's words on
+// every width, This BIA its own activity's
+const plantWords = p => (S.mode === "all" ? C : G).plantWords[p.id];
+// how each box of a chain is reached, in words: up what stands on it, down what it stands on
+function phReach(c) {
+  if (isAct(c)) return actReach(c);
+  const out = new Map([[c, ""]]), C = GB[c].name;
+  if (c === SITES) { if (S.plant) Object.keys(GB).forEach(k => { if (GB[k].sites[S.plant]) out.set(folded(k), `At ${plantName(S.plant)}`); });
+    // 425: on Whole company, the activities run at the plant (at its sites), each said where
+    if (S.mode === "all") { const at = C.siteActs || {}, ps = S.plant ? [S.plant] : Object.keys(at);
+      siteSlugs().filter(a => CO.acts[a]).forEach(a => out.set("a:" + a, `Runs at ${ps.filter(p => (at[p] || []).includes(a)).map(plantName).join(", ")}`)); }
+    return out; }
+  // part D (D7): member by member along the register's edges, from the gapped members under a gap
+  const R = reachOf(c), at = (k, v) => GB[k] && !out.has(k) && out.set(k, v);
+  // a fold reached through some of its members names them (11_marschkamp: "via Cold-chain …")
+  Object.entries(R.up).forEach(([k, [v, m]]) => at(k, (v === c ? `Stands on ${C}` : `Via ${GB[v].name}`) + (m ? ` · via ${m}` : "")));
+  Object.entries(R.down).forEach(([k, [v, m]]) => at(k, (v === c ? `${C} stands on this` : `Under ${C} via ${GB[v].name}`) + (m ? ` · ${m}` : "")));
+  if (S.mode === "all")  // 332: the activities that depend on it, said how; 408 H: a People box its own (355 F7)
+    Object.entries(R.acts).filter(([s]) => CO.acts[s] && (!c.startsWith("people") || GB[c].neededBy.includes(s))).forEach(([s, v]) =>
+      out.set("a:" + s, v === c ? `Uses ${C}` : v && GB[v] ? `Via ${GB[v].name}` : "Via its own systems"));
+  if (S.mode === "all" && GB[c].people) {  // 467 (465): every activity and People box sharing one of its roles
+    const w = `Shares a role with ${GB[c].people.of}`;
+    GB[c].people.serves.filter(s => CO.acts[s] && !out.has("a:" + s)).forEach(s => out.set("a:" + s, GB[c].neededBy.includes(s) ? `Uses ${C}` : w));
+    GB[c].people.peers.forEach(k => at(k, w)); }
+  return out; }
+// 378 r3: the default views read their own drawn boxes' lines and reach; only By dependency level
+// reads the level view's (`levelDeps`, a box's `level`), its level-only boxes' too
+const DEPS = X => S.view === "level" && X.levelDeps || X.deps;
+const byLevel = b => S.view === "level" && b.level || b;
+// part D: a box's reach (merge_table.reach), from the members carrying the gap tile chosen, if any
+const reachOf = (c, B = GB) => (b => (S.gap && b.gapReach[S.gap]) || b.reach)(byLevel(B[c]));
+// 332: an activity chosen on the whole company: the boxes it uses, and what they stand on
+// 408 E: by level, the level view's boxes (`level`)
+function actReach(c) { const a0 = actOf(c), a = {...a0, ...byLevel(a0)}, out = new Map([[c, ""]]);
+  a.uses.forEach(k => out.set(k, `${a.name} uses this`));
+  a.under.forEach(k => { const via = a.uses.find(u => DEPS(G).some(([x, d]) => x === u && d === k));
+    out.set(k, via ? `Under ${a.name} via ${GB[via].name}` : `Under ${a.name}`); });
+  return out; }
+// every chosen box's chain, each box said by the first chain that reaches it; a chosen box unsaid
+function phShown() { if (S.show) return new Map([...S.show.hot].map(k => [k.startsWith("act:") ? "a:" + k.slice(4) : k, ""]));
+  const out = new Map(S.pick.map(c => [c, ""]));
+  S.pick.forEach(c => phReach(c).forEach((l, k) => { if (!out.has(k)) out.set(k, l); })); return out; }
+// 505: the sheet's chain line, one line at 390 as the laptop's (cutName)
+const phChain = (n, all) => `<div class="cnt">Chain of ${cutName("span", n)} · ${litWords(phLit(), all)}</div>`;
+// 505: This BIA's phone draws no activity tile; its card and handoffs count as the laptop's chain lights them
+const phLit = () => { const out = phShown();
+  if (S.mode === "bia") S.pick.forEach(c => GB[c] && g2chain(c).forEach(k => { if (isCard(k)) out.set(k, ""); })); return out; };
+// the BIA card says how it reaches the chosen: it uses it, or via the box it uses that stands on it
+function phBiaLabel() {
+  return S.pick.map(c => { if (G.needs.includes(c)) return `Uses ${GB[c].name}`;
+    const via = c !== SITES && reachOf(c).acts[D.slug];
+    return via && via !== c && GB[via] ? `Via ${GB[via].name}` : ""; }).filter(Boolean).join(" · "); }
+// 354: the phone's bands by resource type, or by dependency level (merge_table's cut); 374: on both
+// scopes, the activity column on top unchanged
+const PB = () => S.view === "level" ? G.phoneLevels : G.phone;
+const phCols = () => Object.keys(PB());
+const phOf = c => [...PB()[c].shown, ...(S.more.has(c) ? PB()[c].more : [])];
+// 355 (§12.10, §12.11): a tile is its name, its gap badges and its kind bar; its why (a People
+// tile's key roles) is the tray's second line
+const tileWhy = b => b.named && b.named.length || b.more ? [...(b.named || []).map(r => shortName(r.name)), roles(b)].filter(Boolean).join(" · ") : b.why || "";
+function phTile(k, label, mode) { const b = GB[k];
+  return `<div class="t${b.gaps.length ? " gap" : ""}${isBase(k) ? " fnd" : ""}${b.people ? " pp" : ""}${mode}" data-id="${esc(k)}"${kindAttr(b)}${btn(S.pick.includes(k))}>`
+    + (mode.includes("line") ? `<span class="tick"></span>${S.pick.includes(k) ? `<span class="dot"></span>` : ""}` : "")
+    + faceName(b) + (label ? `<div class="lb">${esc(label)}</div>` : "")
+    + b.gaps.map(g => `<span class="gp">${esc(capital(g))}</span>`).join(" ") + rebiaFace(b) + `</div>`; }
+// 332: an activity's tile: its name, "Uses n" and "n with gaps", from its own BIA graph
+function actTile(k, label, mode) { const a = actOf(k);
+  return `<div class="t act${a.gapsN ? " gap" : ""}${mode}" data-id="${esc(k)}"${btn(S.pick.includes(k))}>`
+    + (mode.includes("line") ? `<span class="tick"></span>${S.pick.includes(k) ? `<span class="dot"></span>` : ""}` : "")
+    + `<div class="nm">${esc(a.name)}</div>${byBadge(k.slice(2))}<div class="use">Uses ${a.usesN}</div>${label ? `<div class="lb">${esc(label)}</div>` : ""}`
+    + (a.gapsN ? `<span class="gp">${a.gapsN} with gaps</span>` : "") + waitSpan(k.slice(2)) + `</div>`; }
+const anyTile = (k, label, mode) => isAct(k) ? actTile(k, label, mode) : phTile(k, label, mode);
+const actIds = () => S.mode === "all" ? CO.groups.flatMap(g => [...g.flow, ...g.rest]).map(s => "a:" + s) : [];
+// §10.3: the core one per row, in flow order joined by the arrows to the Customers pill, then the
+// rest one per row after the core column's own "alongside" (352 amend: only the header's flow row
+// went); each support band its handoff pair first, its own systems named, the rest two to a row
+// 332 round 2 (336: "opening a band shows its activities"): a support band opens collapsed, its
+// header, its own systems and its handoff pair in words; a tap on the header shows its tiles
+// a support band's header; chosen (amber) where the gap counted holds an item inside it (345 Q1)
+const gapBands = () => S.mode === "all" && S.gap ? CO.gapItems[S.gap].bands : [];
+const grpHead = g => `<button class="ph-gh${S.grp.has(g.name) ? " on" : ""}${gapBands().includes(g.id) ? " sel" : ""}${S.pick.length && phShown().has(g.id) ? " hot" : ""}" data-grp="${esc(g.name)}"><span class="eb">${esc(g.name.replace(/ \(\d+\)$/, ""))} · ${g.flow.length + g.rest.length + g.nobia.length} activities</span><span class="ch">${S.grp.has(g.name) ? "&#9662;" : "&#9656;"}</span></button>`;
+function coActs(state, off = () => false) {
+  // 353: the activities in a chain are in the chain's column above; the rest keep their order, and
+  // keep their arrows only while nothing is chosen (an arrow over a gap would say a false handoff)
+  const T = s => actTile("a:" + s, "", state("a:" + s)), chosen = S.pick.length > 0;
+  const HW = chosen ? "" : `<div class="ph-hw">&#8595; Hands work to</div>`, mine = xs => xs.filter(s => !off("a:" + s));
+  const n = g => g.flow.length + g.rest.length;
+  const head = g => g.side ? `<span class="eb">${esc(g.name)} · ${n(g)}</span>` : grpHead(g);
+  const tiles = g => mine(g.flow).map(T).join(HW) + (g.customers && !chosen ? HW + `<div class="ph-cust">${esc(g.customers)}</div>` : "")
+    + (!mine(g.rest).length && !g.nobia.length ? "" : g.side ? `<div class="ph-side">alongside</div>${mine(g.rest).map(T).join("")}`
+      : `<div class="ph-grid">${mine(g.rest).map(T).join("")}${g.nobia.map(n => `<div class="t nob" aria-disabled="true"><div class="nm">${esc(n)} · no BIA yet</div></div>`).join("")}</div>`);
+  // 375 B: all the map's processes, those with no BIA counted too
+  return `<div class="ph-band" data-col="Activities"><span class="eb">Activities · ${actIds().length + CO.groups.reduce((n, g) => n + g.nobia.length, 0)}</span>` + CO.groups.map(g =>
+    `<div class="ph-grp">${head(g)}`
+    + (g.own.length ? `<div class="ph-own">Its own systems: ${esc(g.own.join(", "))}</div>` : "")
+    + (g.side || S.grp.has(g.name) ? tiles(g) : g.flow.length ? `<div class="ph-pair">${esc(g.flow.map(s => CO.acts[s].name).join(" → "))}</div>` : "")
+    + `</div>`).join("") + `</div>`; }
+function phBands() {
+  const shown = phShown(), sel = S.pick.length > 0 || !!S.show, cols = phCols();
+  const state = k => S.pick.includes(k) ? " sel" : shown.has(k) ? " hot" : "";
+  // 353 (§12.15, his "ALL other grayed out, so still visible"): the chosen's chain one amber column
+  // on top, the activities first in flow order, then its boxes; every other tile greyed below in
+  // its band (the 6 cap and "+ n more" kept). Clear, or a second tap on the only chosen, restores
+  let h = "";
+  const off = k => sel && shown.has(k);  // in the chain column, so not again below
+  if (sel) {  // one column, one amber line with a tick into every box (none to a plant)
+    // 378: a firm chosen by level stays in the chain on By resource type, where it is no tile
+    const all = [...new Set([...actIds(), ...cols.flatMap(c => [...PB()[c].shown, ...PB()[c].more]), ...S.pick])];
+    const line = S.show || S.pick.some(c => c !== SITES);
+    h += `<div class="ph-chain">${line ? `<div class="ph-line"></div>` : ""}${all.filter(k => shown.has(k)).map(k => anyTile(k, shown.get(k), state(k) + (line ? " line" : ""))).join("")}</div>`; }
+  const grey = k => sel ? " grey" : state(k);
+  return h + (S.mode === "all" ? coActs(grey, off) : "") + cols.map(c => {
+    const rest = [...PB()[c].shown, ...PB()[c].more].filter(k => !off(k)), cap = Math.max(PB()[c].shown.filter(k => !off(k)).length, Math.min(6, rest.length));
+    const more = S.more.has(c) ? [] : rest.slice(cap), tiles = S.more.has(c) ? rest : rest.slice(0, cap);
+    // D2: a band counts the tiles it draws (greyed under a chain: those off the chain)
+    return !rest.length ? "" : `<div class="ph-band" data-col="${esc(c)}"${D.kinds[c] ? ` data-kind="${D.kinds[c]}"` : ""}><span class="eb">${esc(c)} · ${rest.length}</span><div class="ph-grid">`
+      + tiles.map(k => phTile(k, "", grey(k))).join("") + (more.length ? `<button class="t more" data-more="${esc(c)}" aria-pressed="false">+ ${more.length} more</button>` : "") + `</div></div>`; }).join(""); }
+function phTop() {
+  const label = phBiaLabel();
+  // 355 (§12.10, §12.12): the card's face as on the laptop; a tap opens its tray
+  const card = `<div class="ph-bia" data-card="1"${btn(S.card)}><h1 class="nm">${esc(D.act.name)}</h1>`
+    + cardFace().map(([t, c]) => `<span class="cl${c ? ` ${c}` : ""}">${esc(t)}</span>`).join("")
+    + (label ? `<div class="lb">${esc(label)}</div>` : "") + `</div>`;
+  return phScope() + bpRow() + card + phCounts() + phView(); }
+// 354, §12.18's phone note: the switch under the gap counts; 374: on both scopes
+const phView = () => `<div class="ph-view" role="group" aria-label="Sort the tiles">${[["kind", "By resource type"], ["level", "By dependency level"]]
+  .map(([v, t]) => `<button data-pv="${v}" aria-pressed="${S.view === v}">${t}</button>`).join("")}</div>`;
+const phScope = () => `<div class="ph-scope">${[["bia", "This BIA"], ["all", "Whole company"]].map(([m, t]) => `<span data-mode="${m}" class="${S.mode === m ? "on" : ""}"${btn(S.mode === m)}>${t}</span>`).join("")}</div>`;
+// 345 Q1: Whole company counts the register items with the gap, a band's included; 447 r2: This
+// BIA too, the distinct rows its boxes hold with the gap (as the tray and B5), never the boxes
+const gapIds = g => S.mode === "all" ? CO.gapItems[g].boxes : Object.keys(GB).filter(k => GB[k].gaps.includes(g));
+// 359 D6 (31_nemo_check): a gap's items, [name, its box or band], one tray line each: This BIA its
+// boxes' members with the gap, Whole company 345 Q1's (whose count counts them)
+const gapRows = g => S.mode === "all" ? CO.gapItems[g].rows : gapIds(g).flatMap(k => GB[k].gapNames[g].map(n => [n, k]));
+const gapN = g => S.mode === "all" ? CO.gapItems[g].items.length : new Set(gapRows(g).map(([n]) => n)).size;
+// 383 row 25 (§12.27): This BIA's gap no drawn box carries, greyed, no button, no tray
+const NOGAP = (g, cls, at, html) => `<div class="${cls} none" data-${at}="${g}" aria-disabled="true">${html}</div>`;
+const phCounts = () => `<div class="ph-counts">${["no workaround", "single source", "owner missing"].map(g => S.mode === "bia" && !gapN(g)
+  ? NOGAP(g, "cnt", "cg", `<b>0</b><span>${capital(g)}</span>`)
+  : `<div class="cnt${S.gap === g ? " on" : ""}" data-cg="${g}"${btn(S.gap === g)}><b>${gapN(g)}</b><span>${capital(g)}</span></div>`).join("")}</div>`;
+// §10.3.1: "<company> · whole company · n activities · n resources", the gap counts company-wide
+const coTop = () => phScope()
+  + `<div class="ph-bia ph-co"><h1 class="nm">${esc(CO.name)}</h1></div>` + phCounts() + phView();  // 355: no count line
+// 463 (7_nemo_design_phone's slim sheet): the count alone; the activities' names sit behind Open
+const depend = ns => ns.length ? `If it fails, ${ns.length} ${ns.length === 1 ? "activity depends" : "activities depend"} on it` : "If it fails, no activity depends on it";
+// a box's one line on the sheet, under its name
+const sheetLine = b => b.people ? peopleCount(b) : depend(b.neededBy);  // 467: a People box's, its counts
+const boxes = n => `${n} box${n === 1 ? "" : "es"}`;
+// 345 R1, one helper for both widths: the laptop's strip names the gap boxes first and the rest
+// apart (never "0 with gaps"); the phone's tray, given no names, says the counts only
+function usesWords(n, k, gap, rest) {
+  if (!gap) return `Uses ${boxes(n)}, ${k} with gaps.`;
+  if (!gap.length) return `Uses ${boxes(n)}.` + (rest.length ? ` ${rest.join(", ")}.` : "");
+  return `Uses ${boxes(n)}. ${k} with gaps: ${gap.join(", ")}.` + (rest.length ? ` Also uses: ${rest.join(", ")}.` : ""); }
+const actWords = a => usesWords(a.usesN, a.gapsN);
+// 355 (§12.12): the card's tray: its why, what it runs without, who can step in
+// 380: the tray's × top-right, 44 px, as its Clear
+const PHX = `<button class="ph-clear x" aria-label="Close"></button>`;
+function cardTray() {
+  // R1 (4_nemo_design_phone): whom it waits for comes right after the why, in view
+  const rows = [A.desc, waitRow(D.slug), G.runsWithout.length ? `Runs without (the record says so): ${G.runsWithout.join(", ")}` : "",
+    G.stepIn.length ? STEP_IN : "", ...firmRows(D.slug)].filter(Boolean);
+  return `<div class="ph-tray">${PHX}<div class="nm">${esc(A.name)}</div><div class="why rows">${rows.map(x => `<div>${esc(x)}</div>`).join("")}</div>`
+    + `<div class="acts"><button class="ph-add">Add to Ask nemo</button><button class="ph-clear">Clear</button></div></div>`; }
+// 359 D6 (spec §12.22 amend): a gap count's tray is the gap's own: "<gap> · n", one line per gap
+// item, "<item> · <its box or band>" (a box that is the item alone says its band), then the chain
+// line; never one chosen box's why or depend sentence
+const bandName = k => (CO.groups.find(g => g.id === k) || {name: k}).name.replace(/ \(\d+\)$/, "");
+// 383 row 17 (12_marschkamp): an item in a People box is "People in <its activity or band>"
+const peopleIn = k => `People in ${S.mode === "all" && GB[k].people ? GB[k].people.of : A.name}`;  // 467: whose, never its face
+const heldBy = (n, k) => !GB[k] ? bandName(k) : k.startsWith("people") ? peopleIn(k) : GB[k].name !== n ? GB[k].name : phCols().find(c => [...PB()[c].shown, ...PB()[c].more].includes(k)) || "";
+// 447 r2 retires N1's "n in m boxes": both scopes count the items, so the title is "<gap> · n";
+// the chain line's resources are the view's own drawn set (378's level-only boxes by level only)
+function gapTray() { const g = capital(S.gap), rows = gapRows(S.gap).map(([n, k]) => `${n} · ${heldBy(n, k)}`);
+  const n = gapN(S.gap), all = drawnIds(GB);
+  return `<div class="ph-tray">${PHX}<div class="nm">${esc(g)} · ${n}</div><div class="why rows">${rows.map(x => `<div>${esc(x)}</div>`).join("")}</div>`
+    + phChain(g, all)
+    + `<div class="acts"><button class="ph-add">Add to Ask nemo</button><button class="ph-clear">Clear</button></div></div>`; }
+function phTray() {
+  if (S.card && S.mode === "bia" && !S.page.length && !S.open) return cardTray();
+  if (S.gap && !S.page.length && !S.open) return gapTray();
+  if (!S.pick.length || S.page.length || S.open) return "";
+  const k = S.pick[S.pick.length - 1], b = isAct(k) ? {name: actOf(k).name} : GB[k], plant = k === SITES && S.plant ? PLANTS().find(p => p.id === S.plant) : null;
+  // 345 N1: the Sites tray counts its sites and never repeats the chosen row (that row is amber)
+  const nm = (S.pick.length > 1 ? `${S.pick.length} chosen · ` : "") + (k === SITES ? `${b.name} · ${plural(PLANTS().length, "site")}` : b.name);
+  // 359 (§12.11, 10_marschkamp's ruling): This BIA's Sites why is the activity's need on its site rows;
+  // Whole company has no one activity, so a chosen plant's company-wide words (332) stay
+  const why = isAct(k) ? actWords(actOf(k)) : k !== SITES ? sheetLine(b) : S.mode === "bia" ? G.sitesWhy : plant ? plantWords(plant) : "";
+  const plants = k === SITES ? PLANTS().map(p => `<div class="pr${S.plant === p.id ? " on" : ""}" data-plant="${esc(p.id)}">${esc(p.name)} · ${esc(plantWords(p))}</div>`).join("") : "";
+  // 463: a box's sheet is its name and one count line; its why, "Part of", shared roles and
+  // re-BIA lines sit behind Open (its page)
+  const extra = isAct(k) ? [waitRow(k.slice(2))].filter(Boolean) : [];
+  // 353: whose chain the column above is, and what it lights (505)
+  const all = drawnIds(GB);
+  const head = phChain(b.name, all);
+  return `<div class="ph-tray">${PHX}<div class="nm">${esc(nm)}</div><div class="why rows">${[why, ...extra].filter(Boolean).map(x => `<div>${esc(x)}</div>`).join("")}</div>${head}${plants}`
+    + `<div class="acts"><button class="pill" data-open="${esc(k)}">Open</button><button class="ph-add">Add to Ask nemo</button><button class="ph-clear">Clear</button></div></div>`; }
+const phLi = x => `<div class="li${GB[x].gaps.length ? " gap" : ""}" data-go="${esc(x)}"><span class="nm">${esc(GB[x].name)}</span>${GB[x].gaps.map(g => `<span class="gp">${esc(g)}</span>`).join(" ")}<span class="ar">&#8250;</span></div>`;
+// Open: the box's page: a crumb trail, the card, Stood on by (502: the laptop card's words), Stands on, Needed by
+// 332: an activity's page on the whole company: its card, "Open its BIA graph", the boxes it uses
+function actPage(k) { const a = actOf(k);
+  const uses = a.needs.map(([n, g]) => `<div class="li${g.length ? " gap" : ""}"><span class="nm">${esc(n)}</span>${g.map(x => `<span class="gp">${esc(x)}</span>`).join(" ")}</div>`).join("");
+  return `<div class="ph-page"><div class="crumb"><a data-crumb="-1">Graph</a> › ${esc(a.name)}</div>`
+    + `<div class="card"><h1 class="h">${esc(a.name)}</h1><p>${esc(actWords(a))}</p>`
+    + (firmRows(k.slice(2)).length ? `<p>${STEP_IN}</p>${firmRows(k.slice(2)).map(x => `<div class="mono">${esc(x)}</div>`).join("")}` : "")
+    + `<button class="pill" data-bia="${esc(k.slice(2))}" style="margin-top:10px">Open its BIA graph</button> <button class="ph-add">Add to Ask nemo</button></div>`
+    + `<div class="kh">Uses · ${a.usesN}</div><div class="uses">${uses}</div></div>`; }
+function phPage() {
+  const k = S.page[S.page.length - 1];
+  if (isAct(k)) return actPage(k);
+  const b = GB[k], reach = phReachOf(k);
+  const dark = [...reach.up], on = DEPS(G).filter(([a]) => a === k).map(([, d]) => d);
+  const crumb = `<div class="crumb"><a data-crumb="-1">Graph</a>${S.page.map((x, i) => ` › ${i < S.page.length - 1 ? `<a data-crumb="${i}">${esc(GB[x].name)}</a>` : esc(GB[x].name)}`).join("")}</div>`;
+  const facts = [b.fact, ...b.said, ...b.marks, ...workRows(b), b.partOf ? `Part of: ${b.partOf}` : "", ...shared(b).map(([t]) => t), ...b.rebia]
+    .filter(Boolean).map(x => `<div class="mono">${esc(x)}</div>`).join("");
+  const team = b.named ? `<p>${[...b.named.map(r => `${r.name}: ${r.figures.join(", ")}`), roles(b)].filter(Boolean).map(esc).join(" · ")}</p>` : "";
+  const plants = k === SITES ? PLANTS().map(p => `<p>${esc(`${p.name} · ${plantWords(p)}`)}</p>`).join("") : "";
+  // 467: a People box's card is its Open card's lines, as on the laptop
+  const card = b.people ? `<div class="card"><h1 class="h">${esc(b.name)}</h1>${lines(peopleOpen(b, S.mode === "all" ? clauseOf(b) : whyOf(b)))}<button class="pill ph-add" style="margin-top:10px">Add to Ask nemo</button></div>`
+    : `<div class="card"><h1 class="h">${esc(b.name)}</h1><p>${esc(capital(tileWhy(b)))}</p>${facts}${team}${plants}`
+    + (b.gaps.length ? `<p class="gp">${esc(gapText(b, true).join(" · "))}</p>` : "")
+    + (b.desc ? `<details><summary>What the record says</summary>${esc(b.desc)}</details>` : "")
+    + (mergedOf(b) ? [MERGED, ...mergedRows(b)].map(x => `<div class="mono">${esc(x)}</div>`).join("") : "")  // 466 H3: open, no fold
+    + `<button class="pill ph-add" style="margin-top:10px">Add to Ask nemo</button></div>`;
+  return `<div class="ph-page">${crumb}${card}<div class="kh">Stood on by · ${dark.length}</div><div class="dark">${dark.map(phLi).join("") || `<p class="why">Nothing else stands on it.</p>`}</div>`
+    + `<div class="kh">Stands on · ${on.length}</div>${on.map(phLi).join("") || `<p class="why">Nothing drawn beneath it.</p>`}`
+    + `<div class="kh">Needed by · ${b.neededBy.length}</div>${b.neededBy.map(x => `<div class="li"><span class="nm">${esc(G.actNames[x] || x)}</span></div>`).join("")}</div>`; }
+function phReachOf(k) { return {up: new Set(Object.keys(reachOf(k).up).filter(x => GB[x]))}; }
+function phonePage() {
+  return `<div id="ph">${S.page.length ? phPage() : (S.mode === "all" ? coTop() : phTop()) + phBands()
+    }</div>` + phTray() + bpSheet(); }
+const phPick = ids => { S.pick = ids; S.plant = null; };
+// a tap on the phone's page: true where it was the page's own
+function phClick(e) {
+  const at = sel => e.target.closest(sel);
+  let x;
+  if ((x = at(".ph-scope [data-mode]"))) { S.mode = x.dataset.mode; phPick([]); S.gap = null; S.card = false; S.more = new Set(); S.page = []; unlight(); }
+  else if ((x = at("[data-bia]"))) { openBia(x.dataset.bia); return true; }
+  else if ((x = at("[data-grp]"))) { const g = x.dataset.grp; S.grp.has(g) ? S.grp.delete(g) : S.grp.add(g); }
+  else if ((x = at("[data-cg]"))) { const g = x.dataset.cg; S.gap = S.gap === g ? null : g; phPick(S.gap ? gapIds(g) : []); }
+  else if ((x = at("[data-more]"))) S.more.add(x.dataset.more);
+  else if ((x = at("[data-pv]"))) { S.view = x.dataset.pv; S.more = new Set(); }
+  else if ((x = at(".ph-tray [data-plant]"))) S.plant = S.plant === x.dataset.plant ? null : x.dataset.plant;
+  else if ((x = at("[data-open]"))) { S.page = [x.dataset.open]; scrollTo(0, 0); }
+  else if ((x = at("[data-go]"))) S.page.push(x.dataset.go);
+  else if ((x = at("[data-crumb]"))) S.page = S.page.slice(0, +x.dataset.crumb + 1);
+  else if (at(".ph-clear")) { phPick([]); S.gap = null; S.card = false; }
+  else if (at(".ph-add")) { (S.page.length ? [S.page[S.page.length - 1]] : S.card ? [ACT] : S.pick).forEach(k => S.sel.add(k)); S.open = true; unlight(); }
+  else if (at("[data-card]")) { S.card = !S.card; phPick([]); }
+  else if ((x = at("#ph .t[data-id]"))) { const k = x.dataset.id; S.gap = null; S.card = false;
+    S.pick = S.pick.includes(k) ? S.pick.filter(i => i !== k) : [...S.pick, k]; if (k === SITES) S.plant = null; x = "tile"; }
+  else return false;
+  render();
+  // 463 (his "To the chain's start"): the chain moves on top, so the page scrolls to its topmost
+  // lit item, the chain's start, under the app header; the sheet names the tapped box
+  if (x === "tile") document.querySelector("#ph .ph-chain > .t")?.scrollIntoView({block: "start"});
+  return true; }
+// Ticket 334: the laptop's Whole company, the one table (live_graph.whole, merge_table.company): the
+// activity column (the core in flow order, the two bands), every box of the table (384); no
+// line before a click (his "Only on a click"); a click lights what the register ties to it ("Light it here")
+const seg = all => `<div class="seg2"><button data-mode="bia" class="${all ? "" : "on"}">This BIA</button><button data-mode="all" class="${all ? "on" : ""}">Whole company</button></div>`;
+const cpview = () => innerWidth > 720 && S.mode === "all";
+const hw = (from, to) => `<div class="hw" data-from="${esc(from)}" data-to="${esc(to)}">&#8595; Hands work to</div>`;
+// 425 (his "Light, no line"): the activities run at the chosen plant, or at every site of the
+// Sites box, `siteActs` (live_graph.SITES_LIGHT_ACTIVITIES), each activity's slug: plant ids
+const siteSlugs = () => { const at = C.siteActs || {};
+  return [...new Set((S.plant ? [S.plant] : Object.keys(at)).flatMap(p => at[p] || []))]; };
+function cpchain(id) {
+  if (id === "sites") { const s = new Set(["sites"]); if (S.plant) Object.keys(CB).forEach(k => { if (CB[k].sites[S.plant]) s.add(folded(k)); });
+    siteSlugs().forEach(a => { if (CA["act:" + a]) s.add("act:" + a); C.bands.forEach(b => { if (b.slugs.includes(a)) s.add(b.id); }); });
+    return s; }
+  return new Set(CA[id] ? [id, ...byLevel(CA[id]).lit] : CB[id] ? byLevel(CB[id]).hot : [id]); }
+// dashed from an activity to what it uses, solid down what that stands on; for a box, its lit web
+function cpedges(hot) {
+  if (!hot) return [];
+  if (CA[S.focus]) return byLevel(CA[S.focus]).edges;
+  // 425: a site is a tag, never an edge, so the Sites box draws no line to an activity it lights
+  return DEPS(C).filter(([a, b]) => hot.has(a) && hot.has(b)).map(([a, b]) => [a, b, false])
+    .concat(S.focus === "sites" ? [] : [...C.acts, ...C.bands].flatMap(a => a.edges.filter(([x, y, u]) => u && hot.has(x) && hot.has(y)))); }
+// 359 (§12.19), as on This BIA: the boxes and bands carrying the gap (345 Q1), and from the gapped
+// members only, member by member (375 part D, merge_table.reach), what they reach and the
+// activities (and their bands) that use them, on top; every other box greyed below
+function cpGapHot() { const lit = C.gapItems[S.gap], s = new Set([...lit.boxes, ...lit.bands]);
+  Object.keys(CB).forEach(m => { if (!CB[m].gaps.includes(S.gap)) return; const R = reachOf(m, CB);
+    [m, ...Object.keys(R.up), ...Object.keys(R.down)].forEach(x => s.add(x));
+    Object.keys(R.acts).forEach(a => { if (CA["act:" + a]) s.add("act:" + a);
+      C.bands.forEach(b => { if (b.slugs.includes(a)) s.add(b.id); }); }); });
+  return s.size ? s : null; }
+const cphot = () => S.focus ? cpchain(S.focus) : S.show ? S.show.hot : S.gap ? cpGapHot() : null;
+const cpany = (set, k) => set.has(k) || (CB[k] ? CB[k].members : CA[k] ? CA[k].cards : []).some(m => set.has(m));
+const cpcls = (k, hot) => (hot && hot.has(k) ? " hot" : "") + (S.sel.has(k) ? " sel" : "")
+  + (cpany(S.lit, k) ? " lit" : cpany(S.named, k) ? " named" : "");
+// 354: a box's face is its name and its gap badges, as on This BIA; the rest in its strip and tooltip
+function cpbox(k, hot) { const b = CB[k];
+  return `<div class="b${b.gaps.length ? " gap" : ""}${isBase(k) ? " fnd" : ""}${cpcls(k, hot)}" data-id="${esc(k)}"${kindAttr(b)}${btn(S.focus === k)}>`
+    + faceName(b) + gapFace(b).map(g => `<span class="gp">${esc(g)}</span>`).join("") + rebiaFace(b) + `</div>`; }
+function cpfacts(f) { const b = CB[f], list = ids => ids.map(name).join(", ") || "nothing";
+  const on = DEPS(C).filter(e => e[0] === f).map(e => e[1]), by = DEPS(C).filter(e => e[1] === f).map(e => e[0]);
+  const team = b.named && b.named.length ? b.named.map(r => `${r.name}: ${r.figures.join(", ")}`).join(" · ") + (b.more ? ` · ${roles(b)}` : "") : roles(b);
+  return [[clauseOf(b)], [b.fact], ...workRows(b).map(x => [x]),
+    [b.desc ? `What the record says: ${b.desc}` : ""], [team],
+    ...shared(b), [dependCount(f, b)],
+    [`Needed by ${b.neededBy.length} of ${C.total}:`, "", "", b.list],
+    ...sides(on.length || !b.outside ? list(on) : "outside firm", list(by), on.length || by.length || b.outside),
+    [mergedOf(b) ? MERGED : "", "", "", mergedRows(b)],  // 466 I2: its suppliers are its why's "<what>: <full name>", never named twice
+    ...b.rebia.map(x => [x, "flag"]), [b.gaps.length ? gapText(b, true).map(capital).join(" · ") : "", "flag"]].filter(([t]) => t); }
+// an activity box: its name, "Uses n", "n with gaps", a rust left edge where it has gaps (462 G3:
+// the boxes it uses itself, `uses`; what sits beneath lights on a click)
+// 355 (§12.11): its name and "n with gaps"; "Uses n" is its strip's
+const cpface = a => `<div class="nm">${esc(a.name)}</div><small>${byBadge(a.slug)}${a.gaps} with gaps</small>` + (a.slug ? waitSpan(a.slug) : "");
+// a band's row lights with a click, never with an answer: its band carries the lit mark
+const cprow = (r, hot) => `<div class="r${hot && hot.has(r.id) ? " hot" : ""}" data-id="${esc(r.id)}"${btn(S.focus === r.id)}>${esc(r.name)}${byBadge(r.slug)}${waitSpan(r.slug)}</div>`;
+// a band: its stated handoff pair always on (333), "Show its n activities" opens the rest
+function cpband(b, hot) { const open = S.opened.has(b.id), rows = open ? b.rows : b.rows.slice(0, b.pair);
+  const drawn = rows.map((r, i) => cprow(r, hot) + (i === 0 && b.pairs.length ? hw(b.pairs[0][0], b.pairs[0][1]) : "")).join("")
+    + (open ? b.nobia.map(n => `<div class="r nob" aria-disabled="true">${esc(n)} · no BIA yet</div>`).join("") : "");  // 375 B
+  return `<div class="b act band${b.gaps ? " ag" : ""}${cpcls(b.id, hot)}" data-id="${esc(b.id)}"${btn(S.focus === b.id)}>${cpface(b)}${drawn}`
+    + `<button class="more" data-open="${esc(b.id)}">${open ? "Hide its activities" : `Show its ${b.slugs.length + b.nobia.length} activities`}</button></div>`; }
+function cpacts(hot) { const F = C.flow || {up: [], here: "", down: [], customers: null}, chain = [...F.up, F.here, ...F.down];
+  const core = C.acts.map((a, i) => { const next = C.acts[i + 1];
+    return `<div class="b act${a.gaps ? " ag" : ""}${cpcls(a.id, hot)}" data-id="${esc(a.id)}"${btn(S.focus === a.id)}>${cpface(a)}</div>`
+      + (next && a.down.includes(next.name) ? hw(a.name, next.name) : "")
+      + (F.customers && a.name === chain[chain.length - 1] ? hw(a.name, F.customers) + `<div class="cust">${esc(F.customers)}</div>` : ""); }).join("");
+  return `<div class="col2"><div class="ch">Activity</div><div class="sub">Core processes</div>${core}<div class="sub">Support processes</div>${C.bands.map(b => cpband(b, hot)).join("")}</div>`; }
+// within a column, Sites and Power and network last (356), else gaps first, then the highest "Needed by" (§11.1 item 4); People in the activities' order
+// 378: the level view draws every box, a band's own system and each outside firm (`levelOnly`) too
+const cpcol = c => drawnIds(CB).filter(k => CB[k].col === c).sort((x, y) => c === "People" ? 0
+  : (depth(x) - depth(y)) || (!CB[x].gaps.length - !CB[y].gaps.length) || (CB[y].neededBy.length - CB[x].neededBy.length) || CB[x].name.localeCompare(CB[y].name));
+function cpPage() {
+  // 345 Q1: a gap tile counts the register items with it, a band's included; 359: and is a click
+  const hot = cphot();
+  const chips = `Gap ${["no workaround", "single source", "owner missing"].map(g => `<span class="c g${S.gap === g ? " on" : ""}" data-g="${g}"${btn(S.gap === g)}>${capital(g)} · ${C.gapItems[g].items.length}</span>`).join("")}` + VIEW();
+  const bar = chipsRow(chainLine(S.focus, hot || new Set(), drawnIds(CB)), chips);
+  // 374: Whole company sorts by dependency level too, its own levels across all activities
+  const cols = cpacts(hot) + (S.view === "level" ? levelCols(hot, C.levels, C.levelCols, (c, keep) => cpcol(c).filter(keep), cpbox)
+    : C.cols.map(c => `<div class="col2"><div class="ch" data-kind="${D.kinds[c]}">${esc(c)}</div>${cpcol(c).map(k => cpbox(k, hot)).join("")}</div>`).join(""));
+  // 355: no summary line (the kicker names the company) and no "Not drawn, and why" (§12.12)
+  return `<div class="gtop"><h1 class="eb">${esc(C.company)}</h1>${seg(true)}</div>`
+    + bar + `<div id="g2" class="${hot ? "dim" : ""}">${SVG}${cols}</div>`;
+}
+// 463: Whole company's Open card
+function cpopen(f) {
+  const a = CA[f], b = CB[f], firms = a ? (a.slug ? [a.slug] : a.slugs).flatMap(firmRows) : [];
+  return f === "sites" ? sitesBody(CB.sites)
+    : a ? `<p>${a.number ? `Process ${esc(a.number)} · ${esc(a.area)}.` : `${a.activities.length} activities: ${esc(a.activities.join(", "))}.`}`
+        + ` ${esc(usesWords(a.uses.length, a.gaps, a.uses.filter(i => CB[i].gaps.length).map(name), a.uses.filter(i => !CB[i].gaps.length).map(name)))}`
+        + `${a.holds ? `<br>Holds on its own: ${esc(a.holds.join(", "))}` : ""}</p>`
+        + (firms.length ? lines([[STEP_IN, "", "", firms]]) : "")  // 466 H1, above whom it waits for (372: last)
+        + (a.slug && waitN(a.slug) ? `<p>${esc(waitRow(a.slug))}</p>` : "")
+        + (a.slug ? `<button class="clr" data-bia="${esc(a.slug)}">Open this BIA's graph &#8594;</button>` : "")
+    : b ? lines(b.people ? peopleOpen(b, clauseOf(b)) : cpfacts(f)) : ""; }
+
+// nemo's answer as he reads it in the chat: bold, links into this room's pages or the web, tables, lines
+function inline(text) {
+  return esc(text).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
+    .replace(/\[([^\]]+)\]\(((?:\/|https:\/\/)[^\s)]+)\)/g, (m, t, u) => `<a href="${u}" target="_blank" rel="noopener">${t}</a>`);
+}
+function said(text) {
+  const out = [], lines = String(text).split("\n");
+  for (let i = 0; i < lines.length; i++) {
+    if (!lines[i].trim().startsWith("|")) { out.push(inline(lines[i]) + "<br>"); continue; }
+    const rows = [];
+    for (; i < lines.length && lines[i].trim().startsWith("|"); i++)
+      if (!/^\s*\|[\s:|-]+\|\s*$/.test(lines[i])) rows.push(lines[i].trim().replace(/^\||\|$/g, "").split("|").map(c => inline(c.trim())));
+    i--;
+    out.push(`<table>${rows.map((r, k) => `<tr>${r.map(c => k ? `<td>${c}</td>` : `<th>${c}</th>`).join("")}</tr>`).join("")}</table>`);
+  }
+  return out.join("").replace(/(<br>)+$/, "");
+}
+
+const QS = ["What depends on these?", "Who owns them?", "What are the workarounds?"];
+function chat() {
+  const ctx = [...S.sel].map(i => `<span data-un="${esc(i)}">${esc(name(i))} ×</span>`).join("") || `<span class="none">Click a card, then "Add to Ask nemo".</span>`;
+  const sugg = QS.map((t, k) => `<button data-q="${k}"${S.sel.size && !S.busy ? "" : " disabled"}>${t}</button>`).join("");
+  const conv = S.turns.map(t => t.y !== undefined ? `<div class="turn y">${esc(t.y)}</div>`
+    : `<div class="turn n${t.wait ? " wait" : ""}"><span class="who">nemo</span>${t.wait ? "Thinking…" : said(t.n)}</div>`).join("")
+    + (S.next.length && !S.busy ? `<div class="next">${S.next.map((x, k) => `<button data-tap="${k}">${esc(x.label)}</button>`).join("")}</div>` : "");
+  return `<header><b>Ask nemo</b><button class="x" data-close>Close</button></header><p class="eb">About</p><div class="ctx">${ctx}</div>
+    <div class="sugg">${sugg}</div>${conv}<div class="comp"><textarea rows="1" placeholder="${esc(g2view() && G.example ? G.example : "Ask about these cards")}" aria-label="Your question">${esc(S.draft)}</textarea><button class="send" aria-label="Send"${S.busy ? " disabled" : ""}>&#8593;</button></div><p class="priv">${esc(ISLAND.priv)}<a href="https://ai4bcm.org/privacy/" target="_blank" rel="noopener" data-item="privacy">Privacy</a></p>`;
+}
+
+const PANEL_GAP = 8;  // 386: px between the Ask nemo panel's bottom and the tray's top
+const g2view = () => innerWidth > 720 && S.mode === "bia";
+const HEAD = document.querySelector("header.top");
+function render() {
+  scope();
+  // every width and scope has its page: the phone 331's and 332's, the laptop 326's G2 and 334's table
+  const gw = document.getElementById("gwrap"), ph = phview(), tray = ph && !!phTray();
+  document.body.classList.toggle("tray", tray);
+  const had = document.activeElement && document.activeElement.closest("#gwrap") && document.activeElement.dataset.id;
+  const onBack = document.activeElement === HEAD.querySelector("#back");  // 639: the header moves with the first row
+  gw.innerHTML = tie(ph ? phonePage() : g2view() ? g2page() : cpPage());
+  const gt = !ph && gw.querySelector(".gtop"), br = gt && gw.querySelector(".bar");
+  (gt || document.body).prepend(HEAD);  // 639 G3: on the laptop the header joins the first row
+  if (onBack) HEAD.querySelector("#back").focus({preventScroll: true});
+  fitChain();
+  if (br) br.style.top = `${gt.offsetHeight - 16}px`;  // G2: the chips row pins under the first row
+  const st = gw.querySelector(".ph-tray");  // 380: every board row can scroll above the tray
+  gw.style.paddingBottom = st ? `${st.offsetHeight + 12}px` : "";
+  if (had) { const back = gw.querySelector(`[data-id="${CSS.escape(had)}"]`); if (back) back.focus({preventScroll: true}); }
+  tip(null);
+  openCard();
+  document.querySelectorAll(".ask").forEach(e => e.remove());
+  const show = S.open;
+  const ask = document.createElement("aside"); ask.className = "ask a" + (show ? "" : " hidden");
+  ask.innerHTML = chat();
+  document.body.appendChild(ask);
+  ask.querySelector("textarea").addEventListener("input", e => { S.draft = e.target.value; });
+  ask.querySelector("textarea").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); typed(); } });
+  // 386 (row 30): the panel opens above the tray, its bottom PANEL_GAP px over its top
+  if (st) { const top = st.getBoundingClientRect().top;
+    ask.style.bottom = `${innerHeight - top + PANEL_GAP}px`; ask.style.maxHeight = `min(76vh, ${top - 2 * PANEL_GAP}px)`; }
+  ask.scrollTop = ask.scrollHeight;
+  g2lines();  // 385 (§12.28): no floating "Ask nemo"; a strip's or tray's "Add to Ask nemo" opens the panel
+}
+
+// one turn of the room's chat: the cards added are its context; what goes down with them is the
+// register's chain (lit), and the other cards nemo's answer names are only marked (M13)
+async function send(body, words) {
+  S.busy = true; S.turns.push({y: words}, {wait: true}); S.next = []; S.focus = null; unlight(); render();
+  let got;
+  try {
+    const r = await fetch(ASK, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)});
+    got = r.ok ? await r.json() : {reply: "nemo could not answer just now. Try again in a moment.", lit: [], next: []};
+  } catch (e) { got = {reply: "nemo could not be reached. Check the connection and try again.", lit: [], next: []}; }
+  S.turns.pop(); S.turns.push({n: got.reply}); S.next = got.next || []; S.lit = new Set(got.lit || []); S.named = new Set(got.named || []); S.busy = false; render();
+}
+function unlight() { S.lit = new Set(); S.named = new Set(); }
+// 334: a question from the laptop's Whole company says so, so its boxes are the table's
+const scoped = body => S.mode === "all" ? {...body, scope: "all"} : body;
+function typed() { const q = S.draft.trim(); if (!q || S.busy) return; S.draft = ""; send(scoped({cards: [...S.sel], question: q}), q); }
+
+document.addEventListener("click", e => {
+  // 375 A: the picker opens and closes; a click outside it, or on the sheet's shade, closes it
+  if (e.target.closest(".bp-btn, .bp-ph")) { S.bp = !S.bp; return render(); }
+  if (S.bp && !e.target.closest(".bp-pop")) { S.bp = false; return render(); }
+  // 463: "Open for the full list" opens the box's card; a click outside the card closes it
+  const oc = e.target.closest("#tip [data-oc]"); if (oc) { S.oc = oc.dataset.oc; return render(); }
+  if (S.oc && !e.target.closest(".ocard")) { S.oc = null;
+    if (!e.target.closest("[data-id], button, [role='button'], [data-un]")) return render(); }
+  // 375 B: a process with no BIA is listed, never chosen; 383: nor an empty gap tile
+  if (e.target.closest('[aria-disabled="true"]')) return;
+  if (phview() && phClick(e)) return;
+  const m = e.target.closest("[data-mode]"); if (m) { S.mode = m.dataset.mode; unlight(); S.focus = null; S.show = null; return render(); }
+  const v = e.target.closest(".view [data-v]"); if (v) { S.view = v.dataset.v; return render(); }
+  const g = e.target.closest(".bar [data-g]"); if (g) { S.gap = S.gap === g.dataset.g ? null : g.dataset.g; return render(); }
+  if (e.target.closest("#reset")) { S.focus = null; S.show = null; S.plant = null; S.gap = null; S.opened = new Set(); unlight(); return render(); }
+  const pl = e.target.closest("[data-plant]"); if (pl) { S.plant = S.plant === pl.dataset.plant ? null : pl.dataset.plant; S.focus = "sites"; return render(); }
+  const add = e.target.closest("[data-add]"); if (add) { S.sel.add(add.dataset.add); S.open = true; unlight(); return render(); }
+  if (e.target.closest("[data-clear]")) { S.focus = null; S.plant = null; S.show = null; return render(); }
+  const op = e.target.closest("[data-open]"); if (op) { const b = op.dataset.open; S.opened.has(b) ? S.opened.delete(b) : S.opened.add(b); return render(); }
+  const bi = e.target.closest("[data-bia]"); if (bi) return openBia(bi.dataset.bia);
+  const c = e.target.closest("[data-id]"); if (c) { const id = c.dataset.id; S.focus = S.focus === id ? null : id; S.plant = null; unlight(); render();
+    return tip(document.querySelector(`#g2 [data-id="${CSS.escape(id)}"]`)); }  // 463: its hover card stays
+  const u = e.target.closest("[data-un]"); if (u) { S.sel.delete(u.dataset.un); return render(); }
+  const q = e.target.closest("[data-q]"); if (q && !q.disabled) return send(scoped({cards: [...S.sel], question: QS[+q.dataset.q]}), QS[+q.dataset.q]);
+  const t = e.target.closest("[data-tap]"); if (t && !S.busy) { const x = S.next[+t.dataset.tap]; return send(scoped({tap: x, cards: [...S.sel]}), x.label); }
+  if (e.target.closest(".send")) return typed();
+  if (e.target.closest("[data-close]")) { S.open = false; unlight(); return render(); }
+});
+addEventListener("keydown", e => { if (e.target.closest("input,textarea,[contenteditable]")) return;
+  // 354 F2: Enter or Space chooses a box, a chip or a tile as a click does
+  if ((e.key === "Enter" || e.key === " ") && e.target.matches('[role="button"]')) { e.preventDefault(); e.target.click(); return; }
+  if (e.key === "Escape" && S.bp) { S.bp = false; render(); }  // 375 A: Esc closes the picker first
+  else if (e.key === "Escape") { S.focus = null; S.plant = null; S.gap = null; S.opened = new Set(); S.oc = null; render(); } });
+addEventListener("resize", render);
+// 463 (spec 'Hover style and the laptop Open card', his "B · Counts everywhere"): a hover card is
+// the name, the "Why:" line, one count line and "Open for the full list"; the rest is the Open card
+const standCount = (on, by) => [on.length ? `stands on ${on.length}` : "", by.length ? `${by.length} ${by.length === 1 ? "stands" : "stand"} on it` : ""];
+// a box's count line: who depends on it, what it stands on, what stands on it
+const countLine = (k, b, E) => b.people ? peopleCount(b) : [dependCount(k, b), ...standCount(E.filter(e => e[0] === k), E.filter(e => e[1] === k))].filter(Boolean).join(" · ");
+function tipLines(k) {
+  if (cpview()) return CB[k] && CB[k].people && CB[k].people.owners ? [peopleCount(CB[k])]  // 467: a band's People box, its counts alone
+    : CB[k] ? (k === "sites" ? [CB[k].why ? `Why: ${CB[k].why}` : "", plural(CB[k].plants.length, "site")] : [clauseOf(CB[k]), countLine(k, CB[k], DEPS(C))])
+    : CA[k] ? [`Uses ${CA[k].uses.length} boxes, ${CA[k].gaps} with gaps`] : [];
+  if (k === ACT) return [[G.needs.length ? `Uses ${G.needs.length} boxes directly` : NONE_YET,
+    G.shared ? `shares boxes with ${G.shared} other activit${G.shared === 1 ? "y" : "ies"}` : ""].filter(Boolean).join(" · ")];
+  if (H[k]) return [`${H[k].why} · the flow: work handed on, not something it runs on`];
+  if (k === "sites") return [whyOf(GB[k]), plural(GB[k].plants.length, "site")];
+  return GB[k] ? [whyOf(GB[k]), countLine(k, GB[k], g2edges())] : [];
+}
+let tipOff;
+function tip(el) {
+  let t = document.getElementById("tip");
+  clearTimeout(tipOff);
+  if (!el || phview()) { if (t) t.remove(); return; }
+  const L = tipLines(el.dataset.id).filter(Boolean); if (!L.length) return;
+  if (!t) { t = document.createElement("div"); t.id = "tip"; t.setAttribute("role", "tooltip"); document.body.appendChild(t); }
+  t.dataset.of = el.dataset.id;
+  t.innerHTML = tie(`<b>${esc(name(el.dataset.id))}</b>` + L.map(x => `<p>${esc(x)}</p>`).join(""))
+    + `<div><button class="op" data-oc="${esc(el.dataset.id)}">Open for the full list</button></div>`;
+  place(t, el);
+}
+// a card beside its box: right of it where it fits, else left; inside the screen and under the
+// title row and the gap chips, so its chain line, Add and Clear stay in reach
+function place(t, el) {
+  const bar = document.querySelector(".bar"), lim = Math.max(8, bar ? bar.getBoundingClientRect().bottom + 8 : 8);
+  t.style.maxHeight = `${innerHeight - lim - 8}px`;
+  const r = el.getBoundingClientRect(), w = t.offsetWidth, h = t.offsetHeight;
+  t.style.left = `${Math.max(8, r.right + 8 + w > innerWidth ? r.left - w - 8 : r.right + 8)}px`;
+  t.style.top = `${Math.max(lim, Math.min(r.top, innerHeight - h - 8))}px`;
+}
+// the Open card of the box `S.oc` (laptop only), beside its box; gone with its box
+function openCard() {
+  document.querySelectorAll(".ocard").forEach(e => e.remove());
+  const el = S.oc && !phview() && document.querySelector(`#g2 [data-id="${CSS.escape(S.oc)}"]`);
+  if (!el) { S.oc = null; return; }
+  const c = document.createElement("div"); c.className = "ocard"; c.setAttribute("role", "dialog"); c.setAttribute("aria-label", name(S.oc));
+  c.innerHTML = tie(`<h2 class="h">${esc(name(S.oc))}</h2>` + (cpview() ? cpopen(S.oc) : g2open(S.oc)));
+  document.body.appendChild(c); place(c, el);
+}
+// the hover card shows for the box under the pointer (its card lets the pointer through to the
+// boxes it covers, but for its link); anywhere over it, it stays; another box takes it, or it goes,
+// a moment after the pointer leaves box and card (639 H1)
+const inTip = e => { const t = document.getElementById("tip"), r = t && t.getBoundingClientRect();
+  return !!r && e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom; };
+// (a move counts as an entry: a box the pointer reached under the card takes it once it leaves the card)
+let tipFor;  // the box a handover is counting for
+function hover(e) {
+  const b = e.target.closest("#g2 [data-id]"), id = b ? b.dataset.id : null, t = document.getElementById("tip");
+  if (e.target.closest("#tip") || inTip(e) || (t && t.dataset.of === id)) { tipFor = undefined; return clearTimeout(tipOff); }
+  if (!t) return b ? tip(b) : undefined;
+  if (e.type === "mousemove" && tipFor === id) return;
+  clearTimeout(tipOff); tipFor = id; tipOff = setTimeout(() => { tipFor = undefined; tip(b); }, 250);
+}
+document.addEventListener("mouseover", hover);
+document.addEventListener("mousemove", hover);
+// the board scrolled: the hover card and the Open card stay beside their boxes
+const boxEl = id => id && document.querySelector(`#g2 [data-id="${CSS.escape(id)}"]`);
+document.getElementById("gwrap").addEventListener("scroll", () => { [[document.getElementById("tip"), "of"], [document.querySelector(".ocard"), "oc"]]
+  .forEach(([c, k]) => { const el = c && boxEl(k === "of" ? c.dataset.of : S.oc); if (el) place(c, el); }); });
+// 485: the chat's "Visualise for <resource>" opens the page on that resource's chain
+// (`#chain=<box>`, PROTOTYPE_core.CHAIN_VIEW): Whole company, its box chosen as a click or a tap
+// chooses it, so what needs it and its own chain light, and the chain is scrolled into view
+const asked = new URLSearchParams(location.hash.slice(1)), viewed = asked.get("chain");
+if (viewed && CB[viewed] && CO.boxes[viewed]) { S.mode = "all"; S.focus = viewed; S.pick = [viewed]; }
+// 524: `#share=<slug>,<slug>` the resources two activities share, `#cut=<box>` what a cut of it reaches
+// (the boxes standing on it and the activities that depend on them, the box's own `hot`): one lit set from the page's data
+// an activity's cards: its own and its band (as a site's chain lights them)
+const cardsOf = s => [CA["act:" + s] && "act:" + s, ...C.bands.filter(b => b.slugs.includes(s)).map(b => b.id)].filter(Boolean);
+const share = (asked.get("share") || "").split(",").filter(s => cardsOf(s).length), cut = asked.get("cut");
+if (share.length > 1) { S.mode = "all"; S.show = {label: share.map(s => CA[cardsOf(s)[0]].name).join(" and ") + " share",
+  hot: new Set([...share.flatMap(cardsOf), ...Object.keys(CB).filter(k => CB[k].col !== "People" && share.every(s => (CB[k].rowsBy[s] || []).length) && CB[k].rowsBy[share[0]].some(r => share.every(s => CB[k].rowsBy[s].includes(r))))])}; }
+else if (cut && CB[cut]) { S.mode = "all"; S.show = {label: CB[cut].name + " cut", hot: new Set(CB[cut].hot)}; }
+else if (cut && (C.siteActs || {})[cut]) { S.mode = "all";  // a site: a plant of the Sites box
+  S.show = {label: CB.sites.plants.find(p => p.id === cut).name + " cut",
+    hot: new Set(["sites", ...Object.keys(CB).filter(k => CB[k].sites[cut]), ...C.siteActs[cut].flatMap(cardsOf)])}; }
+render();
+if (S.focus) (phview() ? document.querySelector("#ph .ph-chain > .t") : boxEl(S.focus))?.scrollIntoView({block: phview() ? "start" : "nearest", inline: "nearest"});
+document.fonts.ready.then(render);  // the lines again, in the type the page is read in
+</script>
+</body></html>

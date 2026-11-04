@@ -1,0 +1,277 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+   "speaker": "Kai Brüning",
+   "department": "change-and-release-management",
+   "why": "Own interview of the process: full impact grid, MTPD, RTO, owner, emergency operation, resources and dependencies for change and release management.",
+   "own_department": true
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Change and release management (merged: request, risk analysis, approval, implementation, fallback plan, release scheduling and follow-up)",
+   "owner": {
+    "name": "Kai Brüning",
+    "quote": "It is a support process, and its process owner is the head of IT service management. The organisational unit is IT.",
+    "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "reason": "Stated scored row; in words all horizons none.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "reason": "Stated scored row; in words all horizons none.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 2.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "reason": "Stated scored row; 168 h low because 'Changes can have time-critical requirements (legislative, security).'",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "reason": "Stated scored row; in words all horizons none.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 2.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "reason": "Stated scored row; 168 h low because 'Changes can have time-critical requirements (legislative, security).'",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "MTPD: >168 h.",
+    "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+    "speaker": "Kai Brüning",
+    "reason": "Worst rating across categories never reaches the intolerable level 4 at any horizon, consistent with the stated grid.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "RTO: >168 h.",
+    "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+    "speaker": "Kai Brüning",
+    "reason": "Process owner's decision, carried as stated; sits over an MTPD past the last horizon, so it is an RTO, not a recovery gap.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "IT systems. Atlassian Jira: RPO <24 h, RTO >168 h.",
+    "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+    "speaker": "Kai Brüning",
+    "reason": "No RPO was stated for the process itself; its change and release data live in Jira and Microsoft 365, both given RPO <24 h, so <24 h is the best fit.",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "Atlassian Jira is used to record, assess, approve, schedule and follow up changes and releases.",
+     "asset_id": "jira",
+     "quote": "Atlassian Jira is used to record, assess, approve, schedule and follow up changes and releases.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft 365 supports communication, scheduling, documentation and providing release documents.",
+     "asset_id": "microsoft-365",
+     "quote": "Microsoft 365 supports communication, scheduling, documentation and providing release documents.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Release manager plans releases, coordinates dependencies and ensures controlled implementation.",
+     "asset_id": "release-manager",
+     "quote": "Plans releases, coordinates dependencies and ensures controlled implementation.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Release controller checks completeness, approval status and compliance with the release rules.",
+     "asset_id": "release-controller",
+     "quote": "Checks completeness, approval status and compliance with the release rules.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Approvals in emergency operation are given by phone or through Microsoft Teams.",
+     "asset_id": "microsoft-teams",
+     "quote": "Approvals are given by phone or through Microsoft Teams and logged by release management.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "verified_quote": true
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "MTPD: >168 h.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "speaker": "Kai Brüning"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "The grid stays at level 1-2 everywhere, yet the interviewee says changes can have time-critical legislative or security requirements; a single urgently needed change could hurt far faster than the 168 h horizon shows. Also no RPO was stated for the process itself.",
+   "ask": "Do you accept RPO <24 h for change and release data, and is an outage really tolerable up to and beyond 168 h even when a legally required or security-critical change is pending?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "change-and-release-management",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 11.4,
+  "usage": {
+   "completion_tokens": 2275,
+   "prompt_tokens": 32667,
+   "total_tokens": 34942,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 655,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00603755,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00603755,
+    "upstream_inference_prompt_cost": 0.00490005,
+    "upstream_inference_completions_cost": 0.0011375
+   }
+  },
+  "calls": [
+   {
+    "seconds": 11.4,
+    "usage": {
+     "completion_tokens": 2275,
+     "prompt_tokens": 32667,
+     "total_tokens": 34942,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 655,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00603755,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00603755,
+      "upstream_inference_prompt_cost": 0.00490005,
+      "upstream_inference_completions_cost": 0.0011375
+     }
+    }
+   }
+  ],
+  "cost": 0.006,
+  "made": "2026-09-22 18:12"
+ }
+}

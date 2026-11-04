@@ -1,0 +1,273 @@
+/* skin/chat.css: what Chainlit's theme variables cannot do (ticket 288).
+ *
+ * skin/chat_build.py serves this after the theme block it computes and after 287's harbour.css,
+ * so every var() below is a pinned Harbour token and no colour is written here
+ * (skin/tests/test_t287_one_harbour_source.py holds it to that). The look is direction C of
+ * nemo_design's pick (~/work/nemo-builds/design-2026-10-02/nemo-design-pick.html), on the phone
+ * and the laptop alike: his turns and nemo's both as bubbles (the owner, 2026-10-02T22:58:03Z).
+ *
+ * The hooks were read off the rendered DOM of Chainlit 2.12.0 on 2026-10-03: the four controls'
+ * ids, `[data-step-type]` on each message, `.ai-message` (avatar, then the content column whose
+ * last child is the row of taps), `#message-composer` and `#chat-submit`. A Chainlit upgrade that
+ * renames one leaves that piece stock; the screenshots in the ticket's report are the check.
+ */
+
+/* ── Light only, and none of the three controls a tester has no use for ────────────────────── */
+/* Readme is Chainlit's own page, the theme toggle would offer an untokened dark, and the gear opens
+ * the model switch, which is the owner's and not a tester's. The paperclip stays (his answer,
+ * 2026-10-03T07:52:07Z, "Show the paperclip", ticket 298): a file goes in by it as by paste and
+ * drop, all three Chainlit's one upload, as the app's config.toml sets it. */
+#readme-button,
+#theme-toggle,
+#chat-settings-open-modal {
+  display: none !important;
+}
+
+/* ── His turns: a grey bubble on the right ─────────────────────────────────────────────────── */
+[data-step-type="user_message"] .bg-accent {
+  background-color: var(--color-harbour-grey);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-12) var(--spacing-16);
+}
+
+/* ── nemo's turns: white with a hairline, nemo's name above ────────────────────────────────── */
+/* No avatar: the name says who speaks, as the page's eyebrows do. */
+[data-step-type="assistant_message"] .ai-message > .inline-block:first-child {
+  display: none;
+}
+
+[data-step-type="assistant_message"] .ai-message > div:last-child {
+  flex-grow: 0;
+  max-width: 92%;
+  background-color: var(--color-white);
+  border: var(--border-width-hairline) solid var(--color-hairline);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-12) var(--spacing-16);
+}
+
+[data-step-type="assistant_message"] .ai-message > div:last-child::before {
+  content: "nemo";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-caption);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* A link in a turn acts (a page tap answers with one, 276): its tap area reaches 44 px tall (362) by
+ * padding, which an inline box draws without moving a line. */
+.message-content a {
+  color: var(--text-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding-block: 13px;
+}
+
+.message-content a:hover {
+  color: var(--text-link-hover);
+}
+
+/* A paragraph with hard breaks (A8's drafts, the findings' lines) is one block, each line on the
+ * next (418 r3). Chainlit draws a paragraph `white-space: pre-wrap`, so the newline after each
+ * `<br>` broke the line a second time and every line stood apart; here the `<br>` alone breaks. */
+.message-content [role="article"]:has(br) {
+  white-space: normal;
+}
+
+/* ── Next steps (ADR-0045): navy-outline pills under nemo's turn ───────────────────────────── */
+/* Each tap is a button with an id (Chainlit's action id) in the turn's last row; the copy button
+ * beside them has none and stays as it is. A phone tap wants 44 px each way (362, 354's F8). */
+[data-step-type="assistant_message"] .ai-message > div:last-child > div:last-child:has(> button[id]) {
+  gap: var(--spacing-8);
+  margin-left: 0;
+  margin-top: var(--spacing-4);
+}
+
+[data-step-type="assistant_message"] .ai-message > div:last-child > div:last-child > button[id] {
+  height: auto;
+  min-width: 44px;
+  min-height: 44px;
+  white-space: normal;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-navy);
+  background-color: var(--color-white);
+  border: var(--border-width-strong) solid var(--color-navy);
+  border-radius: var(--radius-buttons);
+  padding: var(--spacing-8) var(--spacing-16);
+}
+
+[data-step-type="assistant_message"] .ai-message > div:last-child > div:last-child > button[id]:hover {
+  color: var(--color-on-navy);
+  background-color: var(--color-navy);
+}
+
+/* ── Room under the last tap for Chainlit's scroll-down button (347) ───────────────────────── */
+/* Short of the list's foot Chainlit shows a round 36 px button 16 px above it, over the last tap
+ * row at 390. The message list (the padded column in Chainlit's scroll container, the composer's
+ * column has no flex-grow) keeps the button's height and a gap clear at its foot; the button stays
+ * where Chainlit puts it. */
+.overflow-y-auto > .mx-auto.flex-grow.p-4 {
+  padding-bottom: var(--spacing-64);
+}
+
+/* ── Chainlit's own buttons reach a phone tap's 44 px (423) ─────────────────────────────────── */
+/* At 390 Chainlit drew new chat 36, the user menu 32, a step's thinking toggle 24 tall, copy 36 and
+ * scroll-down 36. On the phone only, at the chart's phone break (impact_chart.NARROW_PX), so the
+ * laptop moves not a pixel. The scroll-down button goes to the right-hand margin beside nemo's
+ * bubble (92% wide, above), where no tap reaches; its holder spans the list's width, so it lets a
+ * touch through to the taps under it and only the button takes one. */
+@media (max-width: 480px) {
+  #new-chat-button,
+  #user-nav-button,
+  button:has(> svg.lucide-copy),
+  .absolute.bottom-4.left-0.right-0 > button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  button[id^="step-"] {
+    min-height: 44px;
+  }
+
+  .absolute.bottom-4.left-0.right-0 {
+    justify-content: flex-end;
+    padding-right: var(--spacing-4);
+    pointer-events: none;
+  }
+
+  .absolute.bottom-4.left-0.right-0 > button {
+    pointer-events: auto;
+  }
+}
+
+/* ── The composer: white with a hairline, one row, and the amber send pill ─────────────────── */
+#message-composer {
+  flex-direction: row;
+  align-items: flex-end;
+  gap: var(--spacing-8);
+  min-height: 0;
+  background-color: var(--color-white);
+  border: var(--border-width-hairline) solid var(--color-hairline);
+  border-radius: var(--radius-inputs);
+  padding: var(--spacing-8) var(--spacing-8) var(--spacing-8) var(--spacing-16);
+}
+
+#message-composer:focus-within {
+  border-color: var(--color-navy);
+}
+
+#message-composer > div:first-child {
+  flex: 1;
+  align-self: center;
+}
+
+#chat-submit {
+  width: 44px;
+  height: 44px;
+  color: var(--color-navy);
+  background-color: var(--color-amber);
+  border-radius: var(--radius-buttons);
+}
+
+/* Solid while the composer is empty too, as the mockup draws it: Chainlit's half-faded amber is a
+ * colour Harbour does not have. */
+#chat-submit:disabled {
+  opacity: 1;
+}
+
+#chat-submit:hover {
+  background-color: var(--color-amber-hover);
+}
+
+/* The paperclip: a phone tap's 44 px, as send (362). */
+#upload-button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* ── No red and no pink: Chainlit's take Harbour's rust and peach (the polish fix) ─────────── */
+/* Harbour has no red. --destructive is rust in the theme block, as ~/work/ai4bcm-site's chat maps
+ * it; these are the reds and pinks Chainlit's bundle writes as Tailwind colours instead: the "Could
+ * not reach the server" banner, a caution note, the delete item, a failed step, a field's error.
+ * Each is set again by its own selector, which wins by coming later. Rust is the type and the
+ * stroke, peach the pale ground and its border. The dark: ones too, should a dark class ever land.
+ * skin/tests/test_t288_chat_in_harbour.py reads the served bundle and fails one this misses. */
+.bg-red-50,
+.bg-red-50\/80,
+.bg-red-950,
+.dark\:bg-red-950:is(.dark *),
+.dark\:bg-red-900\/30:is(.dark *) {
+  background-color: var(--color-peach);
+}
+
+.bg-red-500 {
+  background-color: var(--color-rust);
+}
+
+.border-red-200,
+.border-red-900,
+.dark\:border-red-900:is(.dark *),
+.dark\:border-red-600\/30:is(.dark *) {
+  border-color: var(--color-peach-border);
+}
+
+.border-red-500 {
+  border-color: var(--color-rust);
+}
+
+.border-l-red-400,
+.dark\:border-l-red-500:is(.dark *) {
+  border-left-color: var(--color-rust);
+}
+
+.text-red-200,
+.text-red-300,
+.text-red-400,
+.text-red-500,
+.text-red-600,
+.text-red-700,
+.focus\:text-red-500:focus,
+.dark\:text-red-200:is(.dark *),
+.dark\:text-red-300:is(.dark *),
+.dark\:text-red-400:is(.dark *) {
+  color: var(--color-rust);
+}
+
+/* highlight.js's keywords are Monokai's pink. */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-name,
+.hljs-attr {
+  color: var(--color-rust);
+}
+
+/* The toasts write their own stylesheet into the page after this one, so `html ` outranks it. */
+html [data-sonner-toaster][data-theme=light],
+html [data-sonner-toaster][data-theme=dark] {
+  --error-bg: var(--color-peach);
+  --error-border: var(--color-peach-border);
+  --error-text: var(--color-rust);
+}
+
+/* t403 r6: the chart card shows its laptop chart or its phone split by the page's width; that
+ * rule is impact_chart.PAGE_SWITCH, which chat_build.py appends after this file, so its break is
+ * the chart's own (NARROW_PX) and never typed twice. */
+
+/* t478: every answer opens on its stage, a link to the stage map (`core.stage_line`): a small mono
+ * eyebrow, muted, never a button; 44 px tall all the same, as every link in a turn (t362). */
+.ai-message a[href*="/stage-map#stage-"] {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font: 500 12px/1.2 var(--font-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: none;
+}

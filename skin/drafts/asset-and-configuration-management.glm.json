@@ -1,0 +1,241 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+   "speaker": "Kai Brüning",
+   "department": "asset-and-configuration-management",
+   "why": "This is the process's own interview: it states the activity's impact grid (all 1s), RTO, MTPD and BCMS relevance.",
+   "own_department": true
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "IT asset and configuration management",
+   "owner": {
+    "name": "Kai Brüning",
+    "quote": "The systematic recording, management and control of all of a company's IT assets and configuration items (CIs), to ensure their integrity, traceability and dependencies over the whole life cycle. It is a support process, and its process owner is the head of IT service management.",
+    "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Kai Brüning: Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "reason": "Interviewee's own scored row.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Kai Brüning: Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "reason": "Interviewee's own scored row.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Kai Brüning: Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "reason": "Interviewee's own scored row.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Kai Brüning: Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "reason": "Interviewee's own scored row.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Kai Brüning: Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "reason": "Interviewee's own scored row.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Kai Brüning: MTPD: >168 h.",
+    "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+    "speaker": "Kai Brüning",
+    "reason": "Stated by the process owner; consistent with the grid never reaching the threshold of 4.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Kai Brüning: RTO: >168 h.",
+    "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+    "speaker": "Kai Brüning",
+    "reason": "The owner's own recovery decision, carried as stated; an RTO past the last horizon over an MTPD past the last horizon is not a recovery gap.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": ">168 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+    "speaker": "",
+    "reason": "Nothing at all was said about RPO in the interview; proposed >168 h because CMDB/asset record data are rebuilt over the life cycle and no other process names this process as time-critical.",
+    "verified_quote": false
+   },
+   "dependencies": []
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "Kai Brüning: MTPD: >168 h.",
+     "path": "07_Interviews/25_02_25_asset-and-configuration-management-bruening-interview.md",
+     "speaker": "Kai Brüning"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "The interview names no sub-steps, no resources and no dependencies for the process, so evidence for what the activity needs (e.g. a CMDB/ITSM tool, Microsoft 365) and for any data-loss tolerance is missing.",
+   "ask": "Which systems and roles does asset and configuration management depend on, and how much asset/CI data can be lost (RPO) before the process is impaired?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "asset-and-configuration-management",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 44.2,
+  "usage": {
+   "completion_tokens": 1871,
+   "prompt_tokens": 32722,
+   "total_tokens": 34593,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 267,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 64,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.007003344,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.007003344,
+    "upstream_inference_prompt_cost": 0.005880744,
+    "upstream_inference_completions_cost": 0.0011226
+   }
+  },
+  "calls": [
+   {
+    "seconds": 44.2,
+    "usage": {
+     "completion_tokens": 1871,
+     "prompt_tokens": 32722,
+     "total_tokens": 34593,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 267,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 64,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.007003344,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.007003344,
+      "upstream_inference_prompt_cost": 0.005880744,
+      "upstream_inference_completions_cost": 0.0011226
+     }
+    }
+   }
+  ],
+  "cost": 0.007,
+  "made": "2026-09-22 18:11"
+ }
+}

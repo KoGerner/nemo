@@ -1,0 +1,388 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+   "speaker": "Ulrike Tiedemann",
+   "department": "data-protection",
+   "why": "Own department interview: the process owner gives the full grid, RTO, MTPD, emergency operation and all resources and dependencies for data protection management.",
+   "own_department": true
+  },
+  {
+   "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "production-and-processing",
+   "why": "States RPO <24 h and RTO 72 h for Microsoft 365 and Microsoft SharePoint Online, which the data-protection process depends on.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+   "speaker": "Jens Harder",
+   "department": "raw-material-procurement",
+   "why": "States RPO <24 h for Microsoft 365 and RPO <168 h for Microsoft SharePoint Online, dependencies of the data-protection process.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_helpdesk-and-support-sievers-interview.md",
+   "speaker": "Frerk Sievers",
+   "department": "helpdesk-and-support",
+   "why": "States RPO <1 h and RTO 8 h for Microsoft 365 and Atlassian Jira Service Management, dependencies of the data-protection process.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/25_02_25_access-management-voss-interview.md",
+   "speaker": "Timo Voß",
+   "department": "access-management",
+   "why": "States RPO <1 h and RTO 1 h for Microsoft 365 and Atlassian Jira Service Management, dependencies of the data-protection process.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+   "speaker": "Kai Brüning",
+   "department": "change-and-release-management",
+   "why": "States RPO <24 h and RTO >168 h for Microsoft 365, a dependency of the data-protection process.",
+   "own_department": false
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Data protection management",
+   "owner": {
+    "name": "Ulrike Tiedemann",
+    "quote": "its process owner is the data protection officer",
+    "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "speaker": "Ulrike Tiedemann",
+     "reason": "Interviewee scored this row herself in words and numbers.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "speaker": "Ulrike Tiedemann",
+     "reason": "Interviewee scored this row herself in words and numbers.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Legal. Breach of the legal reporting deadlines for reporting an incident. In words: 1 h none, 2 h none, 4 h none, 8 h none, 24 h none, 72 h none, 168 h high.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "speaker": "Ulrike Tiedemann",
+     "reason": "Interviewee scored this row herself: legal reaches high only at 168 h.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "speaker": "Ulrike Tiedemann",
+     "reason": "Interviewee scored this row herself in words and numbers.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "speaker": "Ulrike Tiedemann",
+     "reason": "Interviewee scored this row herself in words and numbers.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "168 h",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "MTPD: >168 h.",
+    "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+    "speaker": "Ulrike Tiedemann",
+    "reason": "Process owner stated the MTPD explicitly, even though the stated legal row touches 4 at 168 h.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "72 h",
+    "kind": "stated",
+    "quote": "RTO: 72 h.",
+    "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+    "speaker": "Ulrike Tiedemann",
+    "reason": "Process owner stated the recovery time as 72 h; it sits inside the MTPD.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<1 h",
+    "kind": "proposed",
+    "quote": "IT systems. Atlassian Jira Service Management: RPO <1 h, RTO 72 h.",
+    "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+    "speaker": "Ulrike Tiedemann",
+    "reason": "No activity-level RPO was stated, so I propose the tightest RPO of its resources (JSM, M365, SharePoint all <1 h).",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "Atlassian Jira Service Management records, assesses and assigns data protection incidents and tracks their deadlines",
+     "asset_id": "jira-service-management",
+     "quote": "Atlassian Jira Service Management records, assesses and assigns data protection incidents and tracks their deadlines.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft 365 for secure communication, documentation and collaboration on incidents",
+     "asset_id": "microsoft-365",
+     "quote": "Microsoft 365 supports secure communication, documentation and collaboration on data protection incidents.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft SharePoint Online as the protected filing for case files, evidence and authority reports",
+     "asset_id": "sharepoint-online",
+     "quote": "Microsoft SharePoint Online is the protected filing for case files, evidence, templates and reports to authorities.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Data protection officer assesses incidents, coordinates measures and decides on reports",
+     "asset_id": "data-protection-officer",
+     "quote": "Assesses data protection incidents, coordinates measures and decides on the reports needed.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Data protection coordinator supports case intake, documentation, communication and follow-up",
+     "asset_id": "data-protection-coordinator",
+     "quote": "Supports case intake, documentation, communication and follow-up.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "verified_quote": true
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2025) gives 168 h by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "168 h (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "MTPD: >168 h.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "speaker": "Ulrike Tiedemann"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "C1",
+   "activity": "A1",
+   "about": "RPO of the shared dependency Microsoft 365",
+   "sides": [
+    {
+     "claim": "Data protection treats Microsoft 365 with RPO <1 h and RTO 72 h",
+     "quote": "IT systems. Microsoft 365: RPO <1 h, RTO 72 h.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "speaker": "Ulrike Tiedemann",
+     "implies": {
+      "item_id": "A1.rpo",
+      "value": "<1 h"
+     },
+     "verified_quote": true
+    },
+    {
+     "claim": "Production treats Microsoft 365 with RPO <24 h and RTO 72 h",
+     "quote": "IT systems. Microsoft 365: RPO <24 h, RTO 72 h.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "speaker": "Henning Barsch",
+     "implies": null,
+     "verified_quote": true
+    },
+    {
+     "claim": "Change and release management treats Microsoft 365 with RPO <24 h and RTO >168 h",
+     "quote": "IT systems. Microsoft 365: RPO <24 h, RTO >168 h.",
+     "path": "07_Interviews/25_02_25_change-and-release-management-bruening-interview.md",
+     "speaker": "Kai Brüning",
+     "implies": null,
+     "verified_quote": true
+    }
+   ],
+   "recommend": 0,
+   "why": "For this BIA the data-protection interview's own tighter figure (<1 h) governs its dependency; the other interviews describe other processes' use of the same system."
+  },
+  {
+   "id": "C2",
+   "activity": "A1",
+   "about": "RPO of the shared dependency Microsoft SharePoint Online",
+   "sides": [
+    {
+     "claim": "Data protection treats SharePoint Online with RPO <1 h and RTO 72 h",
+     "quote": "IT systems. Microsoft SharePoint Online: RPO <1 h, RTO 72 h.",
+     "path": "07_Interviews/25_02_26_data-protection-tiedemann-interview.md",
+     "speaker": "Ulrike Tiedemann",
+     "implies": {
+      "item_id": "A1.rpo",
+      "value": "<1 h"
+     },
+     "verified_quote": true
+    },
+    {
+     "claim": "Raw material procurement treats SharePoint Online with RPO <168 h and RTO 72 h",
+     "quote": "IT systems. Microsoft SharePoint Online: RPO <168 h, RTO 72 h.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "speaker": "Jens Harder",
+     "implies": null,
+     "verified_quote": true
+    }
+   ],
+   "recommend": 0,
+   "why": "The data-protection interview's very high protection need for its case filing justifies the tighter <1 h within this process."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "The stated MTPD >168 h sits in tension with the stated legal row that reaches high (4) at 168 h, which per the method would put the MTPD at 168 h.",
+   "ask": "Should the MTPD be corrected to 168 h, or does the legal breach at 168 h not apply in the worst case you assume?"
+  },
+  {
+   "activity": "A1",
+   "what": "No activity-level RPO was stated for data protection management; the proposed <1 h is taken from the resource rows.",
+   "ask": "Do you confirm an RPO of <1 h for the data-protection activity itself?"
+  },
+  {
+   "activity": "A1",
+   "what": "Failure causes include loss of, or unauthorised access to, case files and failure of secure communication channels, but no register asset clearly matches a secure communication channel.",
+   "ask": "Which concrete system carries the secure communication channel for incident reporting, so it can be entered as a dependency?"
+  }
+ ],
+ "verify_log": [
+  "interview '07_Interviews/25_02_25_order-picking-barsch-interview.md' is not an interview file in the seed, dropped"
+ ],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "data-protection",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 28.3,
+  "usage": {
+   "completion_tokens": 3944,
+   "prompt_tokens": 32665,
+   "total_tokens": 36609,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 1273,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00687175,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00687175,
+    "upstream_inference_prompt_cost": 0.00489975,
+    "upstream_inference_completions_cost": 0.001972
+   }
+  },
+  "calls": [
+   {
+    "seconds": 28.3,
+    "usage": {
+     "completion_tokens": 3944,
+     "prompt_tokens": 32665,
+     "total_tokens": 36609,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 1273,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00687175,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00687175,
+      "upstream_inference_prompt_cost": 0.00489975,
+      "upstream_inference_completions_cost": 0.001972
+     }
+    }
+   }
+  ],
+  "cost": 0.0069,
+  "made": "2026-09-22 18:12"
+ }
+}

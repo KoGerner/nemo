@@ -1,0 +1,348 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+   "speaker": "Heike Brodersen",
+   "department": "payments-and-salary-transfers",
+   "why": "The process's own interview: scored impact grid, RTO/MTPD, owner, failure causes, emergency operation and full dependency list.",
+   "own_department": true
+  },
+  {
+   "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+   "speaker": "Heike Brodersen",
+   "department": "payroll",
+   "why": "Upstream payroll process by the same owner: it produces the released payroll and master data the payments process reconciles against, and shares SAP S/4HANA Finance, the HR master data system, the payroll clerks and the Head of Payroll.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_time-recording-lorenzen-interview.md",
+   "speaker": "Birte Lorenzen",
+   "department": "time-recording",
+   "why": "States that time recording is the basis for payroll, which feeds the released payroll data that the payments process depends on.",
+   "own_department": false
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "One-off payments and salary transfers",
+   "owner": {
+    "name": "Heike Brodersen",
+    "quote": "It is a support process, and its process owner is the head of payroll. The organisational unit is human resources.",
+    "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "reason": "Interviewee's own scored row for the process.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "reason": "Interviewee's own scored row for the process.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 4.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "reason": "Interviewee's own scored row; regulations breached with high fines from 168 h.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 2.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "reason": "Interviewee's own scored row; complaints and negative media reports after a week.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 2.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "reason": "Interviewee's own scored row for the process.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "168 h",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+    "speaker": "Heike Brodersen",
+    "reason": "Stated by the process owner; although the legal row reaches 4 at 168 h, her explicit MTPD statement is carried as stated.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "72 h",
+    "kind": "stated",
+    "quote": "RTO: 72 h.",
+    "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+    "speaker": "Heike Brodersen",
+    "reason": "Explicit labelled RTO line from the process owner; it sits inside the MTPD (>168 h).",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<1 h",
+    "kind": "proposed",
+    "quote": "IT systems. SAP S/4HANA Finance: RPO <1 h, RTO 72 h.",
+    "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+    "speaker": "Heike Brodersen",
+    "reason": "No RPO was stated for the activity itself; the key payment system is rated RPO <1 h, so the activity is carried at <1 h.",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "HR master data system provides bank details and payment bases",
+     "asset_id": "hr-master-data-system",
+     "quote": "Provides checked bank details, employment data and payment bases.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "SAP S/4HANA Finance records, approves and transmits payments",
+     "asset_id": "sap-s4hana-finance",
+     "quote": "Records, checks, approves and transmits one-off payments for salaries and correction payments.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Corporate network for protected access",
+     "asset_id": "corporate-network",
+     "quote": "Enables protected access to HR and finance systems.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Power supply for workplaces and devices",
+     "asset_id": "power-supply",
+     "quote": "Supplies workplaces, network components and end devices.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Payroll clerks create, check and monitor the payments",
+     "asset_id": "payroll-clerks",
+     "quote": "They create, check and monitor one-off payments and correction transfers.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Released payroll and master data from the payroll process",
+     "asset_id": "",
+     "quote": "Payment data are reconciled with the released payroll and master data.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Connection to the bank for transmission",
+     "asset_id": "",
+     "quote": "Failure of SAP S/4HANA Finance; missing or wrong bank and payment data; failure of the connection to the bank;",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Last released data state from payroll as the emergency basis",
+     "asset_id": "",
+     "quote": "The basis is the last released data state, secured master-data exports and an encrypted list of differences for changes.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "verified_quote": true
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2025) gives 168 h by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "168 h (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "speaker": "Heike Brodersen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  },
+  {
+   "id": "C1",
+   "activity": "A1",
+   "about": "RTO of one-off payments and salary transfers: narrative says more than 168 hours, the labelled recovery line says 72 hours.",
+   "sides": [
+    {
+     "claim": "The narrative in the same interview calls the RTO more than 168 hours.",
+     "quote": "The one-off payments and salary transfers process has an RTO (recovery time objective) of more than 168 hours, because it was classed as not critical for short process outages.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "implies": {
+      "item_id": "A1.rto",
+      "value": ">168 h"
+     },
+     "verified_quote": true
+    },
+    {
+     "claim": "The labelled recovery line in the same interview sets the RTO at 72 hours.",
+     "quote": "RTO: 72 h.",
+     "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "implies": {
+      "item_id": "A1.rto",
+      "value": "72 h"
+     },
+     "verified_quote": true
+    }
+   ],
+   "recommend": 1,
+   "why": "The explicitly labelled 'RTO:' line is the structured scored answer in the method's read-back format and sits inside the stated MTPD, so 72 h is carried and the narrative reading is discarded."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "The interview names sub-steps — recording, checking, releasing and transmitting one-off payments and salary transfers, and reconciling payment data with the released payroll and master data — but the BIA activity list is fixed with the manager at step 1 and here holds one activity; the merge of these sub-steps into A1 has not been confirmed.",
+   "ask": "Do you confirm that recording, checking, releasing, transmitting and reconciling all merge into the single BIA activity 'One-off payments and salary transfers', with the worst score per category and the tightest clock?"
+  },
+  {
+   "activity": "A1",
+   "what": "No RPO was stated for the activity itself; the proposed <1 h rests only on the SAP S/4HANA Finance system rating.",
+   "ask": "How much payment data may be lost before the salary transfer run is compromised — is <1 h the right recovery point for the activity?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "payments-and-salary-transfers",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 19.5,
+  "usage": {
+   "completion_tokens": 4469,
+   "prompt_tokens": 32671,
+   "total_tokens": 37140,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 1836,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00713515,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00713515,
+    "upstream_inference_prompt_cost": 0.00490065,
+    "upstream_inference_completions_cost": 0.0022345
+   }
+  },
+  "calls": [
+   {
+    "seconds": 19.5,
+    "usage": {
+     "completion_tokens": 4469,
+     "prompt_tokens": 32671,
+     "total_tokens": 37140,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 1836,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00713515,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00713515,
+      "upstream_inference_prompt_cost": 0.00490065,
+      "upstream_inference_completions_cost": 0.0022345
+     }
+    }
+   }
+  ],
+  "cost": 0.0071,
+  "made": "2026-09-22 18:21"
+ }
+}

@@ -1,0 +1,296 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+   "speaker": "Jens Harder",
+   "department": "raw-material-procurement",
+   "why": "The process owner's own interview: describes the process, its scored impact grid, RTO, MTPD, failure causes, emergency operation and all resource dependencies.",
+   "own_department": true
+  },
+  {
+   "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+   "speaker": "Henning Barsch",
+   "department": "production-and-processing",
+   "why": "The downstream process names raw material procurement as its upstream process and lists missing raw materials as a failure cause, confirming the dependency and the effect of a procurement outage.",
+   "own_department": false
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Raw material procurement",
+   "owner": {
+    "name": "Jens Harder",
+    "quote": "It is a core process, and its process owner is purchasing management.",
+    "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Jens Harder: Impact health: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "speaker": "Jens Harder",
+     "reason": "The interviewee scored the row himself.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 2,
+      "24 h": 3,
+      "72 h": 3,
+      "168 h": 3
+     },
+     "kind": "stated",
+     "quote": "Jens Harder: Impact financial: 1 h –, 2 h 1, 4 h 1, 8 h 2, 24 h 3, 72 h 3, 168 h 3.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "speaker": "Jens Harder",
+     "reason": "The interviewee scored the row himself.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Jens Harder: Impact legal: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "speaker": "Jens Harder",
+     "reason": "The interviewee scored the row himself.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Jens Harder: Impact image: 1 h –, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 4.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "speaker": "Jens Harder",
+     "reason": "The interviewee scored the row himself.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 2,
+      "8 h": 2,
+      "24 h": 3,
+      "72 h": 3,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Jens Harder: Impact operational: 1 h –, 2 h 1, 4 h 2, 8 h 2, 24 h 3, 72 h 3, 168 h 4.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "speaker": "Jens Harder",
+     "reason": "The interviewee scored the row himself.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "168 h",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "Jens Harder: MTPD: >168 h.",
+    "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+    "speaker": "Jens Harder",
+    "reason": "The interviewee stated it; the grid reaches 4 (image, operational) only at 168 h, the last horizon, and the owner set MTPD beyond it.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "72 h",
+    "kind": "stated",
+    "quote": "Raw material procurement has an RTO (recovery time objective) of 72 hours, because a standstill of the process beyond that time has considerable operational, financial, legal and image impacts.",
+    "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+    "speaker": "Jens Harder",
+    "reason": "The interviewee stated a 72 h recovery time objective.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "IT systems. Microsoft 365: RPO <24 h, RTO 72 h.",
+    "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+    "speaker": "Jens Harder",
+    "reason": "No process-level RPO was stated; orders run on Microsoft 365 whose RPO is <24 h, so a stricter RPO is not needed for the order data.",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "Microsoft 365 for ordering, e-mail and documentation",
+     "asset_id": "microsoft-365",
+     "quote": "Office 365 is needed as the standard resource for Word, Excel, PowerPoint, Outlook, OneDrive and Teams.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Microsoft SharePoint Online to exchange and store data",
+     "asset_id": "sharepoint-online",
+     "quote": "SharePoint is used to exchange and store data.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Buyers (2 in normal operation, 1 in emergency operation)",
+     "asset_id": "buyer",
+     "quote": "The buyer is responsible for choosing suitable suppliers, placing orders and making sure that the ordered products are delivered on time and in high quality.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Suppliers with framework contracts and open-market suppliers; they transport the goods and keep the cold chain",
+     "asset_id": "",
+     "quote": "There are suppliers with framework contracts, bound long-term, who regularly deliver set quantities of raw materials and meat products, and suppliers on the open market, chosen as needed.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Interruption of transport routes or of the cold chain would make the process fail",
+     "asset_id": "",
+     "quote": "interruption of transport routes or of the cold chain",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Downstream process production and processing depends on delivered raw materials",
+     "asset_id": "",
+     "quote": "Its upstream process is raw material procurement; the downstream process is order picking.",
+     "path": "07_Interviews/24_09_24_production-and-processing-barsch-interview.md",
+     "verified_quote": true
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2025) gives 168 h by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "168 h (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "Jens Harder: MTPD: >168 h.",
+     "path": "07_Interviews/25_02_13_raw-material-procurement-harder-interview.md",
+     "speaker": "Jens Harder"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "No process-level RPO for raw material procurement was stated; only the system RPOs of Microsoft 365 (<24 h) and SharePoint Online (<168 h) are known.",
+   "ask": "How old may the order and supplier data be at the latest before resuming procurement after an outage?"
+  },
+  {
+   "activity": "A1",
+   "what": "In emergency operation one buyer runs the process remotely, but the workaround names no specific deputy: 'In an emergency somebody takes over; no name is given for who.'",
+   "ask": "Who exactly deputises for the buyer in emergency operation, and is that person trained for it?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "raw-material-procurement",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 29.5,
+  "usage": {
+   "completion_tokens": 2644,
+   "prompt_tokens": 32669,
+   "total_tokens": 35313,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 449,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00622235,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00622235,
+    "upstream_inference_prompt_cost": 0.00490035,
+    "upstream_inference_completions_cost": 0.001322
+   }
+  },
+  "calls": [
+   {
+    "seconds": 29.5,
+    "usage": {
+     "completion_tokens": 2644,
+     "prompt_tokens": 32669,
+     "total_tokens": 35313,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 449,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00622235,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00622235,
+      "upstream_inference_prompt_cost": 0.00490035,
+      "upstream_inference_completions_cost": 0.001322
+     }
+    }
+   }
+  ],
+  "cost": 0.0062,
+  "made": "2026-09-22 18:26"
+ }
+}

@@ -1,0 +1,289 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+   "speaker": "Heike Brodersen",
+   "department": "payroll",
+   "why": "The process's own interview: names the sub-steps, gives the full scored impact grid, MTPD, RTO, failure causes, emergency operation, resources and dependencies.",
+   "own_department": true
+  },
+  {
+   "path": "07_Interviews/25_01_20_payments-and-salary-transfers-brodersen-interview.md",
+   "speaker": "Heike Brodersen",
+   "department": "payments-and-salary-transfers",
+   "why": "Downstream sibling process by the same owner that reconciles its payment data with the released payroll and shares the HR master data system and SAP S/4HANA Finance dependencies payroll relies on.",
+   "own_department": false
+  },
+  {
+   "path": "07_Interviews/25_01_20_time-recording-lorenzen-interview.md",
+   "speaker": "Birte Lorenzen",
+   "department": "time-recording",
+   "why": "Upstream HR process that provides the working-time data payroll processes, and states its own RTO/RPO posture for that data supply.",
+   "own_department": false
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Payroll (merged: creating new employees, maintaining payroll-relevant master data, processing working-time and pay data, running and checking the monthly payroll)",
+   "owner": {
+    "name": "Heike Brodersen",
+    "quote": "It is a support process, and its process owner is the head of payroll. The organisational unit is human resources.",
+    "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "reason": "Interviewee's own scored row; no sub-step scores health higher.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "reason": "Interviewee's own scored row; no sub-step scores financial higher.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 2,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 2, 168 h 4.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "reason": "Interviewee's own scored row for the legal impact of a payroll outage; carried as the worst-case legal scores.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 4.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "reason": "Interviewee's own scored row; image damage peaks very late, at 168 h.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 2,
+      "8 h": 2,
+      "24 h": 3,
+      "72 h": 3,
+      "168 h": 4
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 2, 8 h 2, 24 h 3, 72 h 3, 168 h 4.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "speaker": "Heike Brodersen",
+     "reason": "Interviewee's own scored row; operational impact is the earliest-rising category across the sub-steps.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "168 h",
+   "mtpd": {
+    "value": "168 h",
+    "kind": "stated",
+    "quote": "MTPD: 168 h.",
+    "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+    "speaker": "Heike Brodersen",
+    "reason": "Matches the method rule: legal, image and operational all reach 4 at the 168 h horizon.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": "72 h",
+    "kind": "stated",
+    "quote": "RTO: 72 h.",
+    "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+    "speaker": "Heike Brodersen",
+    "reason": "Owner's decision in the interview, strictly inside the MTPD of 168 h.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<1 h",
+    "kind": "stated",
+    "quote": "IT systems. Payroll system: RPO <1 h, RTO 72 h.",
+    "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+    "speaker": "Heike Brodersen",
+    "reason": "The tightest RPO named across the process's systems (payroll system, HR master data system, SAP S/4HANA Finance, HR-to-financial-accounting interface all at <1 h).",
+    "verified_quote": true
+   },
+   "dependencies": [
+    {
+     "heard": "Payroll system processes master data, time data, pay, deductions and payroll runs",
+     "asset_id": "payroll-system",
+     "quote": "Processes payroll-relevant master data, time data, pay, deductions and payroll runs.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "HR master data system manages personal data, bank details, employment data and payroll-relevant master data",
+     "asset_id": "hr-master-data-system",
+     "quote": "Manages personal data, bank details, employment data and payroll-relevant master data.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "SAP S/4HANA Finance transmits bulk payments to the bank",
+     "asset_id": "sap-s4hana-finance",
+     "quote": "Takes over checked payment data, supports releases and transmits bulk payments to the bank.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "HR-to-financial-accounting interface transfers payroll data for posting",
+     "asset_id": "hr-finance-interface",
+     "quote": "Transfers payroll data for posting and further processing in financial accounting.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Personnel mail carries garnishments and other payroll-relevant documents",
+     "asset_id": "personnel-mail",
+     "quote": "These include garnishments, notices of termination and other payroll-relevant documents.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Payroll clerks record and check payroll-relevant data and produce the monthly payroll",
+     "asset_id": "payroll-clerks",
+     "quote": "They record and check payroll-relevant data and produce the monthly payroll.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "HR systems owner monitors payroll runs, interfaces and technical jobs",
+     "asset_id": "hr-systems-owner",
+     "quote": "They monitor payroll runs, interfaces and technical jobs.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "verified_quote": true
+    },
+    {
+     "heard": "Head of Payroll responsible for prioritisation, control and formal releases",
+     "asset_id": "head-of-payroll",
+     "quote": "Responsible for prioritisation, control and formal releases.",
+     "path": "07_Interviews/25_01_20_payroll-brodersen-interview.md",
+     "verified_quote": true
+    }
+   ]
+  }
+ ],
+ "conflicts": [],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "Failure causes named by the payments-and-salary-transfers interview overlap payroll's systems (HR master data system, SAP S/4HANA Finance), but neither interview scored the impact on payroll of a time-recording outage, which feeds payroll's working-time data; time recording itself claims an RTO beyond 168 h.",
+   "ask": "Should payroll's dependency on the time-recording data supply carry its own recovery requirement inside payroll's 72 h RTO, or is the released master-data export a sufficient fallback?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "payroll",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 29.2,
+  "usage": {
+   "completion_tokens": 3196,
+   "prompt_tokens": 32663,
+   "total_tokens": 35859,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 925,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00649745,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00649745,
+    "upstream_inference_prompt_cost": 0.00489945,
+    "upstream_inference_completions_cost": 0.001598
+   }
+  },
+  "calls": [
+   {
+    "seconds": 29.2,
+    "usage": {
+     "completion_tokens": 3196,
+     "prompt_tokens": 32663,
+     "total_tokens": 35859,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 925,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00649745,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00649745,
+      "upstream_inference_prompt_cost": 0.00489945,
+      "upstream_inference_completions_cost": 0.001598
+     }
+    }
+   }
+  ],
+  "cost": 0.0065,
+  "made": "2026-09-22 18:21"
+ }
+}

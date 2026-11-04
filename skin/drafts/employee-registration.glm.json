@@ -1,0 +1,249 @@
+{
+ "interviews": [
+  {
+   "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+   "speaker": "Silke Jessen",
+   "department": "employee-registration",
+   "why": "The process owner's own interview: it defines the process, its impact grid, RTO, MTPD and owner, and is the only interview that speaks about employee-registration or anything it depends on.",
+   "own_department": true
+  }
+ ],
+ "activities": [
+  {
+   "id": "A1",
+   "name": "Employee registration and deregistration",
+   "owner": {
+    "name": "Silke Jessen",
+    "quote": "It is a support process, and its process owner is the head of HR administration.",
+    "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+    "verified_quote": true
+   },
+   "grid": {
+    "health": {
+     "lens": "health",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact health: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+     "speaker": "Silke Jessen",
+     "reason": "The process owner gave these scores herself in the interview's impact grid.",
+     "verified_quote": true
+    },
+    "financial": {
+     "lens": "financial",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact financial: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+     "speaker": "Silke Jessen",
+     "reason": "The process owner gave these scores herself in the interview's impact grid.",
+     "verified_quote": true
+    },
+    "legal": {
+     "lens": "legal",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 3
+     },
+     "kind": "stated",
+     "quote": "Impact legal: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 3.",
+     "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+     "speaker": "Silke Jessen",
+     "reason": "The process owner gave these scores herself in the interview's impact grid.",
+     "verified_quote": true
+    },
+    "image": {
+     "lens": "image",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 1
+     },
+     "kind": "stated",
+     "quote": "Impact image: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 1.",
+     "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+     "speaker": "Silke Jessen",
+     "reason": "The process owner gave these scores herself in the interview's impact grid.",
+     "verified_quote": true
+    },
+    "operational": {
+     "lens": "operational",
+     "scores": {
+      "1 h": 1,
+      "2 h": 1,
+      "4 h": 1,
+      "8 h": 1,
+      "24 h": 1,
+      "72 h": 1,
+      "168 h": 2
+     },
+     "kind": "stated",
+     "quote": "Impact operational: 1 h 1, 2 h 1, 4 h 1, 8 h 1, 24 h 1, 72 h 1, 168 h 2.",
+     "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+     "speaker": "Silke Jessen",
+     "reason": "The process owner gave these scores herself in the interview's impact grid.",
+     "verified_quote": true
+    }
+   },
+   "derived_mtpd": "no MTPD within horizons",
+   "mtpd": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "MTPD: >168 h.",
+    "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+    "speaker": "Silke Jessen",
+    "reason": "The stated grid never reaches intolerability (4) in any horizon, so the MTPD lies past the last horizon, exactly as the interview states.",
+    "verified_quote": true
+   },
+   "rto": {
+    "value": ">168 h",
+    "kind": "stated",
+    "quote": "RTO: >168 h.",
+    "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+    "speaker": "Silke Jessen",
+    "reason": "The process owner stated the recovery objective directly; carried as stated, not as a gap.",
+    "verified_quote": true
+   },
+   "rpo": {
+    "value": "<24 h",
+    "kind": "proposed",
+    "quote": "",
+    "path": "",
+    "speaker": "",
+    "reason": "Nothing at all was said about tolerable data loss, so this is a best-judgement proposal: newly recorded registration data could be re-entered within a day from paper evidence given the process's low criticality.",
+    "verified_quote": false
+   },
+   "dependencies": [
+    {
+     "heard": "Statutory registrations and deregistrations must be transmitted on time to the competent bodies",
+     "asset_id": "",
+     "quote": "maintaining their employment status, and transmitting the statutory registrations and deregistrations on time to the competent bodies",
+     "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+     "verified_quote": true
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "A1-MTPD-RULE",
+   "activity": "A1",
+   "about": "MTPD: the grid (2025) gives no MTPD within horizons by the method's rule, the draft says >168 h",
+   "sides": [
+    {
+     "claim": "no MTPD within horizons (the method's rule over the grid, 2025)",
+     "quote": "",
+     "path": "02_BCM-Method/method.json",
+     "speaker": "method"
+    },
+    {
+     "claim": ">168 h (stated)",
+     "quote": "MTPD: >168 h.",
+     "path": "07_Interviews/25_01_20_employee-registration-jessen-interview.md",
+     "speaker": "Silke Jessen"
+    }
+   ],
+   "recommend": 0,
+   "floor": true,
+   "why": "The method derives the MTPD from the grid; the other figure is the thing to explain."
+  }
+ ],
+ "gaps": [
+  {
+   "activity": "A1",
+   "what": "No recovery point objective was asked about or given, and no failure modes, emergency operation or resources were covered in the interview.",
+   "ask": "How much data loss can employee registration tolerate before it hurts the statutory notification deadlines, and which systems does it run on?"
+  }
+ ],
+ "verify_log": [],
+ "floor": {
+  "interviews_added": [],
+  "dependencies_added": [],
+  "unused_own_interviews": []
+ },
+ "authors_marked": true,
+ "meta": {
+  "activity": "employee-registration",
+  "model": "glm",
+  "lane": "ai4bcm/glm-5.3-flash",
+  "seconds": 12.4,
+  "usage": {
+   "completion_tokens": 1879,
+   "prompt_tokens": 32663,
+   "total_tokens": 34542,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 589,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0,
+    "cache_write_tokens": 0
+   },
+   "cost": 0.00583895,
+   "is_byok": false,
+   "cost_details": {
+    "upstream_inference_cost": 0.00583895,
+    "upstream_inference_prompt_cost": 0.00489945,
+    "upstream_inference_completions_cost": 0.0009395
+   }
+  },
+  "calls": [
+   {
+    "seconds": 12.4,
+    "usage": {
+     "completion_tokens": 1879,
+     "prompt_tokens": 32663,
+     "total_tokens": 34542,
+     "completion_tokens_details": {
+      "audio_tokens": 0,
+      "reasoning_tokens": 589,
+      "image_tokens": 0
+     },
+     "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0,
+      "video_tokens": 0,
+      "cache_write_tokens": 0
+     },
+     "cost": 0.00583895,
+     "is_byok": false,
+     "cost_details": {
+      "upstream_inference_cost": 0.00583895,
+      "upstream_inference_prompt_cost": 0.00489945,
+      "upstream_inference_completions_cost": 0.0009395
+     }
+    }
+   }
+  ],
+  "cost": 0.0058,
+  "made": "2026-09-22 18:13"
+ }
+}
