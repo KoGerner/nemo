@@ -435,6 +435,14 @@ UNRATED_DENIED = re.compile(r"(?:\bnot?|\bnever|\bneither|\bnor|n['’]t|\brathe
 ACROSS = re.compile(r"\bboth\b|\balways\b|\b(?:each|every|all|two|three|several|many|either"
                     r"|neither)\b(?:\s+\w+){0,2}?\s+(?:years?|records?|cycles?|grids?|interviews?|files?"
                     r"|categor(?:y|ies)|class(?:es)?)\b", re.I)
+#: 768: a sentence saying every category (or "all three") was none: read against the prior
+#: record's whole grid for the activity, cited or not (`_every_none`)
+_BUT = r"\b(?:except|but|apart|other than|besides)\b"
+EVERY_NONE = re.compile(r"(?<!\bnot )\b(?:every|all)\b(?P<n>(?:\s+\w+){0,2}?)\s+"
+                        rf"(?:categor(?:y|ies)|class(?:es)?)\b(?:(?!{_BUT})[^.;])*?\bnone\b"
+                        rf"(?!\s+of\b|\W+{_BUT})", re.I)  # "none of them", "none except X"
+EVERY_NONE_OFF = ("it says every category was none, but the prior record rates {row} {level} "
+                  "at {hour}")
 #: 652: said uncited, it says last year or the prior record
 LAST_RECORD = re.compile(r"\blast year\b|\bprior (?:record|grid|cycle)\b", re.I)
 _RATING = "|".join((*core.GRID_LEVELS, r"\d"))
@@ -1237,7 +1245,8 @@ def _why(sentence: str, room: Room, held: bool = False) -> str | None:
     counted, why = _claimed_counts(bare, room)
     about = core.named_in(room.folder, bare) or ([room.activity] if room.activity else [])
     fact_counted, off = _fact_counts(bare, room, about)
-    if why := why or off or _days(bare, room) or _hour(bare, room):
+    if why := why or off or _days(bare, room) or _hour(bare, room) \
+            or _every_none(bare, cited, room, about):
         return why
     return _held(sentence, bare, cited, cells, room, {
         str(n) for n in counted | fact_counted | rows_counted | total_counted}, about)
@@ -1911,6 +1920,28 @@ def _rates(said: str, hours: str, cells: list[Cell]) -> bool:
                        or re.search(rf"(?<!\d){hours} h\s+{rating}\b", v, re.I)
                        for k, v, _ in cells)
                for rating in re.findall(rf"\b(?:{_RATING})\b", rest, re.I))
+
+
+def _every_none(bare: str, cited: list[tuple[str, int]], room: Room,
+                about: list[str]) -> str | None:
+    """768: "every category was none" about last year holds only where the prior record's whole
+    grid for the activity reads none, its uncited rows too; "all three categories" reads the rows
+    it names. The first cell that is not none, where one is; else None."""
+    m = EVERY_NONE.search(bare)
+    if not m or not (LAST_RECORD.search(bare) or any(p.startswith(f"{core.PRIOR}/")
+                                                     for p, _ in cited)):
+        return None
+    counted = any(w.lower() in _WORDS or w.isdigit() for w in m["n"].split())
+    for activity in about:
+        grid = core.last_year(room.folder, activity).get("grid") or {}
+        named = {c: r for c, r in grid.items()
+                 if c and re.search(rf"\b{re.escape(c.split()[0])}", bare, re.I)} if counted else {}
+        rows = named or grid  # "all three" naming none of them: the whole grid
+        for row, cells in rows.items():
+            if off := next(((h, v) for h, v in cells["cells"].items()
+                            if v.strip().lower() not in ("", "none")), None):
+                return EVERY_NONE_OFF.format(row=row, level=off[1], hour=off[0])
+    return None
 
 
 def _unrated_hours(sentence: str, cited: list[tuple[str, int]], cells: list[Cell], room: Room,

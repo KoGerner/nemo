@@ -14,12 +14,18 @@ prototype `briefing_template.py`), built here on the skin's own readers:
     pdf(folder, activity)     the PDF, printed by the newest chrome-headless-shell (`chrome`)
     pages(data)               each page's size in points, read from the PDF
 
-Page 1 is the reading: the process, why now, who came last time and who to add (functions only,
-ADR-0051), the checks, last year's results (ADR-0050: an hour no lens rated is no column), the
-gaps (N no workaround, O owner missing, S single source, R comes back after the process must) and
-the dependencies in four columns of the graph's ISO words (`merge_table.COLUMNS`), what it runs
-without one line under them (r4). Page 2 is the interview checklist, its minutes inside the
-invitation's length (`core.INTERVIEW_LENGTH`).
+Page 1 is the reading, in the AI4BCM Guidance look (the website's wordmark, Space Grotesk and
+IBM Plex from `skin/harbour`, navy, rust and one peach card): the process with its RTO, MTPD and
+RPO, why now, the checks to settle before the interview, last year's results as a heatmap
+(ADR-0050: an hour no lens rated is no column), who came last time and who to add (functions
+only, ADR-0051), the gaps (N no workaround, O owner missing, S single source, R comes back after
+the process must) and the dependencies the gaps do not already list, each with a box to tick, in
+four columns of the graph's ISO words (`merge_table.COLUMNS`), what it runs without one line under
+them (r4). Page 2 is the interview sheet, its blocks A-E inside the invitation's length
+(`core.INTERVIEW_LENGTH`): the RTO is asked after the people and dependencies it comes from.
+No notes boxes: he does not need them (2026-11-04). Each page scales its type down (to
+`MIN_ZOOM`) until it fits its A4; a page that still does not fit prints a third page, which the
+suite fails on, so the print never drops text.
 
 Every figure, name and date is the record's, the register's, the plan's or the seed's; the only
 fixed text is the template's own words. No model call, and no PDF library: the print is a
@@ -48,11 +54,11 @@ SUPPLIERS = "03_Dependencies/supplier-register.md"
 RISKS = "06_Risk-and-Incidents/risk-register.md"
 #: his Wednesday note: four columns; the fourth keeps the graph's three kinds as its sub-headings
 FOUR = ((PEOPLE,), (PROVIDERS,), (ICT,), (RELEASE, merge_table.EQUIPMENT, BUILDINGS))
-PER_COLUMN = 6
+PER_COLUMN = 3
+#: last year's risk actions named in the check card, each with its title and status
+RISKS_SHOWN = 3
 #: who to add, each with why (his Wednesday note: at most three); the rest by function only
 SUGGESTED = 3
-#: last year's risk actions named with their risk while there are at most this many
-RISKS_NAMED = 2
 #: the header of a process no prior record names (`core.last_year`'s "first assessment")
 FIRST = "BIA briefing · no prior record names it: a first BIA"
 NO_RECORD = "No prior record: nothing from last year to compare."
@@ -71,7 +77,6 @@ MARKS = {"N": "no workaround", "O": "owner missing", "S": "single source",
 #: the check lines' heads (the tests find each line by its head)
 LATE_HEAD = "Comes back after the process must"
 TIGHT_HEAD = "No margin"
-ASK_HEAD = "Not in the record, bring or ask"
 #: what a re-interview asks that no record holds, each with the word that marks it known when the
 #: supplier register's section for the process states it (ADR-0034 Part B point 7)
 ASKED = (("incident", "incidents since {since}"), ("stock", "stock or backlog it can live on"),
@@ -204,15 +209,12 @@ def _checks(f: dict[str, Any]) -> list[str]:
 
 
 def _still_open(f: dict[str, Any]) -> list[str]:
-    """The checks' last two lines: last year's risk actions, and what to bring or ask."""
-    out = ["Last year's risk actions: " + "; ".join(  # named in full while they fit
-        f"{i} {risk} ({status})" if len(f["risks"]) <= RISKS_NAMED else f"{i} ({status})"
-        for i, risk, status in f["risks"]) + "."] if f["risks"] else []
-    known = [label.lower() for label, _ in f["authored"]]
-    ask = [item.format(since=f["since"]) if f["since"] else RECENT if key == "incident" else item
-           for key, item in ASKED
-           if not any(key in label for label in known)]
-    return out + ([f"{ASK_HEAD}: " + " · ".join(ask) + "."] if ask else [])
+    """The checks' last line: last year's risk actions, each with its title and status (a bare id
+    means nothing in the room). What to bring or ask is no check line: the run sheet asks it."""
+    shown, more = f["risks"][:RISKS_SHOWN], len(f["risks"]) - RISKS_SHOWN
+    return ["Last year's risk actions: " + "; ".join(
+        f"{i} {risk} ({status})" for i, risk, status in shown)
+        + (f"; and {more} more" if more > 0 else "") + "."] if f["risks"] else []
 
 
 def _suggested(f: dict[str, Any]) -> list[tuple[str, str]]:
@@ -251,7 +253,8 @@ def facts(folder: Path, activity: str) -> dict[str, Any]:
     owner = next((function.split(" (")[0] for function, held in chat["attendees"]
                   if held is None and "process owner" in function), "")
     f = {"chat": chat, "name": chat["name"], "record": prior.get("record", ""), "rto": rto,
-         "mtpd": mtpd, "grid": grid, "horizons": horizons, "rows": rows, "lines": lines,
+         "mtpd": mtpd, "rpo": str(figures.get("RPO") or ""), "grid": grid,
+         "horizons": horizons, "rows": rows, "lines": lines,
          "does": does, "updown": updown, "owner": owner or core.NOT_STATED,
          "since": (str(prior.get("interview") or "").split(",")[0] or "the last interview")
          if prior.get("record") else "",
@@ -290,90 +293,170 @@ def blocks(f: dict[str, Any]) -> list[tuple[str, str, int, list[str]]]:
     providers = any(r["col"] == PROVIDERS for r in f["rows"])
     peak = any("peak" in label.lower() for label, _ in f["authored"])
     shared = any("share" in label.lower() for label, _ in f["authored"])
+    stock = "What could you live on, and for how long (stock, backlog, manual work)?"
     return [
         ("A", f"Since {f['since']}" if f["since"] else RECENT.capitalize(), 4, [
             "What went wrong since then, and what did you do?" if f["since"]
             else "What went wrong lately, and what did you do?",
             *(["Which of last year's risk actions got done?"] if f["risks"] else []),
-            *f["chat"]["points"], "What is missing from page 1?"]),
+            *f["chat"]["points"], "What is missing from page 1?",
+            "Who sits across from you, and who is their deputy?"]),
         ("B", "Impact: where did it change?", 12, [
-            "For each class (health, financial, legal, image, operational): from which hour does "
-            "it start to hurt, and what happens then?",
-            "Then compare with last year's grid on page 1; mark every cell that differs.",
-            *(["Settle the check on page 1: which holds, the grid or the MTPD?"] if flagged
-              else [])]),
-        ("C", "Recovery figures", 4, ["RTO and MTPD: what would you set today, and why?"]),
-        ("D", "The marked boxes, one open question each", min(12, 2 * len(d) + 2),  # r3: rule 6
-         d or ["Which dependency would you miss first?"]),
-        ("E", "People and outside help", 6, [
-            "Who do you call first, and who after?",
-            *(["Who else can deliver?", SHARE_KNOWN if shared else SHARE_OPEN] if providers
-              else []),
+            "For each class (health, financial, legal, image, operational): after how many hours "
+            "does it start to hurt, and what happens then?",
+            "Compare with last year's grid on page 1; mark every cell that differs.",
             PEAK_KNOWN if peak else PEAK_OPEN,
-            "What could you live on, and for how long (stock, backlog, manual)?"]),
-        ("F", "Close", 3, ["Who decides each open point, and by when?"])]
+            *(["Settle the check on page 1: which is right, the grid or the MTPD?"] if flagged
+              else [])]),
+        ("C", "People and outside help", 6, [
+            "Who do you call first, and who after?",
+            "Which of the dependencies on page 1 do you use? Which would you miss first?",
+            *(["Who else can deliver?", SHARE_KNOWN if shared else SHARE_OPEN] if providers
+              else [])]),
+        ("D", "Recovery figures", 4, [
+            "RTO and MTPD: what would you set today, and why?", stock,
+            "Minimum level: how many people, and which systems at half?"]),
+        ("E", "Weak spots and close", min(12, 2 * len(d) + 2) + 3,  # r3: rule 6
+         [*(d or ["Which dependency would you miss first?"]),
+          "Who decides each open point, and by when?"])]
 
 
 E = html.escape
-CSS = """@page{size:A4;margin:0}*{box-sizing:border-box}
-body{margin:0;font:10px/1.36 "DejaVu Sans",system-ui,sans-serif;color:#0f1d2e;background:#fff}
-.pg{width:210mm;min-height:296mm;padding:11mm 12mm 13mm;position:relative;display:flex;
-flex-direction:column;break-after:page}.pg:last-child{break-after:auto}
-h1{font-size:17px;margin:0}h2{font-size:10px;margin:7px 0 3px;text-transform:uppercase;
-letter-spacing:.05em;color:#5b6676;border-bottom:1px solid #d8dde5;padding-bottom:2px}
-h3{font-size:10.5px;margin:7px 0 2px}h4{margin:0 0 3px;font-size:9px;text-transform:uppercase;
-letter-spacing:.04em;color:#5b6676}.sub{display:block;margin-top:3px;font-size:8px;color:#5b6676;
-text-transform:uppercase;letter-spacing:.03em}.subt{color:#5b6676;margin:2px 0 0}
-.two{display:flex;gap:12px}.two>div{flex:1}p{margin:2px 0}
-table.g{border-collapse:collapse;width:100%;font-size:9px}table.g td,table.g th{border:1px solid
-#c9d0da;padding:0 4px;text-align:center}table.g th.l{text-align:left;font-weight:600;
-white-space:nowrap}table.r{border-collapse:collapse;width:100%}table.r td{border-top:1px solid
-#d8dde5;padding:2px 5px;vertical-align:middle}table.r td.k{color:#5b6676;font-size:9px}
-table.r td.m{white-space:nowrap;width:1%}.fn{font-size:8.5px;color:#5b6676;margin:2px 0}
-.ft{position:absolute;bottom:6mm;left:12mm;right:12mm;font-size:8px;color:#5b6676;display:flex;
-justify-content:space-between}.chk{border:1.5px solid #0f1d2e;border-radius:5px;padding:3px 8px;
-margin:5px 0}.bd{display:inline-block;min-width:14px;text-align:center;font-weight:700;
-border-radius:3px;padding:0 3px;margin-left:3px;font-size:9px;line-height:13px;color:#b8470f;
-border:1.5px solid #b8470f;background:#fff}.four{display:grid;grid-template-columns:repeat(4,1fr);
-gap:6px}.chip{border:1px solid #c9d0da;border-radius:4px;padding:1px 4px;margin:2px 0;
-font-size:9px;line-height:1.25}.chip.mk{border:1.6px solid #b8470f}.ck{display:flex;gap:6px;
-margin:2px 0;align-items:flex-start}.bx{flex:none;width:10px;height:10px;border:1.3px solid
-#0f1d2e;border-radius:2px;margin-top:2px}.ab{display:inline-block;width:15px;height:15px;
-border-radius:50%;background:#0f1d2e;color:#fff;text-align:center;font-size:9px;line-height:15px;
-margin-right:3px}.min{float:right;font-weight:400;color:#5b6676}
-.notes{border:1px solid #d8dde5;border-radius:4px;flex:1;min-height:10mm;margin:3px 0 0}"""
-LEVEL_COLOUR = {"low": "#fbf3df", "medium": "#f6dcb8", "high": "#e9a37c", "very high": "#d9805a"}
+#: the Harbour fonts the skin already ships (`skin/harbour/assets/fonts`, byte for byte the
+#: website's), loaded from disk by the print so nothing is fetched from off the box
+FONTS = Path(__file__).resolve().parent / "harbour" / "assets" / "fonts"
+FONT_FACES = "".join(
+    f'@font-face{{font-family:"{family}";src:url("{(FONTS / file).as_uri()}") format("woff2");'
+    f"font-weight:{weight};font-style:normal}}"
+    for family, file, weight in (("Space Grotesk", "space-grotesk-var.woff2", "300 700"),
+                                 ("IBM Plex Sans", "ibm-plex-sans-var.woff2", "100 700"),
+                                 ("IBM Plex Mono", "ibm-plex-mono-400.woff2", "400"),
+                                 ("IBM Plex Mono", "ibm-plex-mono-500.woff2", "500")))
+#: the AI4BCM Guidance look (Harbour tokens): navy ink, slate text, hairlines, rust accent, amber
+#: marker on a key word, one peach card. Sizes in px: A4 is 794 x 1123 at 96 dpi.
+CSS_BODY = """@page{size:A4;margin:0}*{box-sizing:border-box}
+:root{--z:1;--ink:#0b1f3a;--slate:#4a5a70;--muted:#5c6b80;--hair:#d5dce5;--fog:#eef1f5;--rust:#8a3a14;
+--amber:#f2a900;--wm:#9a6700;--mark:#fde7b0;--peach:#fff0e8;--peach-text:#5a3a2c}
+body{margin:0;font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif;color:var(--ink);background:#fff}
+.pg{width:210mm;height:296mm;padding:40px 52px 28px;position:relative;display:flex;
+flex-direction:column;gap:13px;break-after:page}.pg:last-child{break-after:auto}
+.top{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;
+border-bottom:1px solid var(--hair)}.wm{font:700 24px "Space Grotesk",sans-serif;
+letter-spacing:-.01em}.wm span{color:var(--wm)}
+.lab{font:400 12px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;
+color:var(--muted)}.eb{color:var(--rust)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}.head>div:first-child{min-width:0;flex:1}
+h1{margin:0;font:700 40px/1.05 "Space Grotesk",sans-serif;letter-spacing:-.02em}
+.tiles{display:flex;gap:8px;flex:none}
+.tile{border:1px solid var(--hair);border-radius:8px;padding:8px 14px;
+min-width:78px;white-space:nowrap}.tile b{display:block;font:700 26px "Space Grotesk",sans-serif}
+.tile.nil{border-style:dashed}.tile.nil b{font:500 18px/35px "Space Grotesk",sans-serif;
+color:var(--muted)}
+.own{padding:10px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+font-size:14px}.own .lab{margin-right:6px}
+.why{margin:0;color:var(--slate)}mark{background:linear-gradient(var(--mark),var(--mark)) 0 .63em/
+100% .36em no-repeat;color:var(--ink);font-weight:500}
+.chk{background:var(--peach);border-radius:10px;padding:12px 18px;color:var(--peach-text);
+font-size:14px;line-height:1.4}
+.chk .lab{color:var(--rust);display:block;margin-bottom:6px}.chk{counter-reset:n}
+.chk p{margin:0 0 5px;
+display:flex;gap:12px;counter-increment:n}.chk p:last-child{margin:0}.chk p::before{
+content:counter(n);flex:none;font:400 15px "IBM Plex Mono",monospace;color:var(--rust)}
+h2{margin:0 0 8px;font:400 12px "IBM Plex Mono",monospace;letter-spacing:.08em;
+text-transform:uppercase;color:var(--muted)}
+table.g{border-collapse:separate;border-spacing:3px;width:100%;margin:-3px}
+table.g th{font:400 12px "IBM Plex Mono",monospace;color:var(--muted);padding:0 0 2px}
+table.g th.l{font:500 13px "IBM Plex Sans",sans-serif;color:var(--ink);text-align:left;width:116px}
+table.g th.rto{color:var(--rust);font-weight:500}
+table.g td{font:400 12px/21px "IBM Plex Mono",monospace;text-align:center;border-radius:3px;
+background:var(--fog);color:var(--muted)}table.g td.rto{box-shadow:inset 0 0 0 2px var(--rust)}
+table.g td.first{font-weight:700}
+.lv-low{background:var(--mark)!important;color:var(--ink)!important}
+.lv-medium{background:var(--amber)!important;color:var(--ink)!important}
+.lv-high{background:var(--rust)!important;color:#fff!important}
+.lv-very{background:var(--ink)!important;color:#fff!important}
+.fn{margin:4px 0 0;font:400 12px "IBM Plex Mono",monospace;color:var(--slate)}
+.who{margin:0;font-size:13.5px;line-height:1.45;color:var(--slate)}
+.who b{color:var(--ink);font-weight:600}.who b+*{}
+.known p{margin:0 0 4px;font-size:13.5px}
+table.r{border-collapse:collapse;width:100%}table.r td{border-top:1px solid var(--hair);
+padding:3px 6px 3px 0;font-size:13.5px;vertical-align:middle}table.r td.k{color:var(--muted);
+font:400 12px "IBM Plex Mono",monospace;text-align:right}table.r td.m{width:1%;white-space:nowrap}
+.bd{display:inline-block;width:22px;height:22px;border:1.5px solid var(--rust);border-radius:4px;
+color:var(--rust);font:500 12px/19px "IBM Plex Mono",monospace;text-align:center;margin-right:4px}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+h4{margin:0 0 5px;font:400 12px "IBM Plex Mono",monospace;letter-spacing:.06em;
+text-transform:uppercase;color:var(--muted)}.sub{display:block;margin-top:5px;font:400 12px
+"IBM Plex Mono",monospace;color:var(--muted);text-transform:uppercase}
+.chip{display:flex;gap:7px;align-items:flex-start;border:1px solid var(--hair);border-radius:4px;
+padding:2px 6px;margin:0 0 4px;font-size:12.5px;line-height:1.25}.chip.mk{border-color:var(--rust)}
+.bx{flex:none;width:12px;height:12px;border:1.5px solid var(--ink);border-radius:2px;margin-top:1px}
+.bd2{color:var(--rust);font:500 11px "IBM Plex Mono",monospace;margin-left:4px}
+.ft{margin-top:auto;display:flex;justify-content:space-between;padding-top:12px;
+border-top:1px solid var(--hair);font:400 12px "IBM Plex Mono",monospace;color:var(--muted)}
+.sheet{display:flex;flex-direction:column}.blk{display:flex;gap:20px;padding:7px 0;
+border-top:1px solid var(--hair)}.blk .l{width:84px;flex:none}.ab{display:flex;width:32px;
+height:32px;border-radius:50%;background:var(--ink);color:#fff;font:700 16px "Space Grotesk",
+sans-serif;align-items:center;justify-content:center;margin-bottom:6px}
+.min{font:400 12px "IBM Plex Mono",monospace;color:var(--muted)}.blk .q{flex:1}
+h3{margin:0 0 4px;font:500 17px "Space Grotesk",sans-serif;letter-spacing:-.01em}
+.ck{display:flex;gap:12px;margin:0 0 3px;font-size:15px;line-height:1.4}.ck .bx{margin-top:4px}
+.sp{margin:0;color:var(--slate)}"""
+#: every length in px scales with `--z`, which the page's script lowers until a page fits its A4
+#: (down to `MIN_ZOOM`); a page that still overflows prints a third page, so a test fails loudly
+#: instead of the print dropping text
+MIN_ZOOM = 0.78
+CSS = FONT_FACES + re.sub(r"(?<![\w#.-])(\d*\.?\d+)px", r"calc(\1px*var(--z))", CSS_BODY)
+FIT = """<script>(function(){function fit(){document.querySelectorAll('.pg').forEach(function(p){
+var z=1;for(var i=0;i<5;i++){p.style.setProperty('--z',z);var o=p.scrollHeight/p.clientHeight;
+if(o<=1.0||z<=MIN_ZOOM)break;z=Math.max(MIN_ZOOM,z/o*0.995)}})}
+window.addEventListener('load',function(){(document.fonts&&document.fonts.ready?document.fonts.ready
+:Promise.resolve()).then(fit)})})();</script>""".replace("MIN_ZOOM", str(MIN_ZOOM))
+LEVEL_CLASS = {"low": "lv-low", "medium": "lv-medium", "high": "lv-high", "very high": "lv-very"}
 
 
 def _badges(marks: list[str]) -> str:
-    return "".join(f'<span class="bd">{m}</span>' for m in marks)
-
-
-def _cell(level: str) -> str:
-    return f'<td style="background:{LEVEL_COLOUR.get(level, "#fff")}">{E(level)}</td>'
+    return "".join(f'<span class="bd2">{m}</span>' for m in marks)
 
 
 def _grid(f: dict[str, Any]) -> str:
-    """Last year's grid as the record states it; an hour no lens rated is no column (ADR-0050)."""
+    """Last year's grid as the record states it; an hour no lens rated is no column (ADR-0050).
+    A level is written in its cell (it reads in grey on paper); the RTO's hour is outlined and
+    each row's first high is bold."""
     if not f["grid"]:
         return "<p>The record states no impact grid.</p>"
     blank = ("", core.GRID_BLANK, "-")
     unrated = [h for h in f["horizons"] if all(r["cells"].get(h, "") in blank
                                                 for r in f["grid"].values())]
     shown = [h for h in f["horizons"] if h not in unrated]
-    return ("<table class='g'><tr><th></th>" + "".join(f"<th>{E(h)}</th>" for h in shown)
-            + "</tr>" + "".join(
-                f"<tr><th class='l'>{E(n)}</th>" + "".join(_cell(r["cells"].get(h, ""))
-                                                          for h in shown) + "</tr>"
-                for n, r in f["grid"].items()) + "</table><p class='fn'>"
-            + " · ".join([*core.GRID_LEVELS, *sorted(
-                {v for r in f["grid"].values() for v in r["cells"].values()}
-                - {*core.GRID_LEVELS, *blank})]) + " (high = intolerable)"
-            + "".join(f" · {E(h)}: not rated in the source" for h in unrated) + ".</p>")
+    rto = _plain(f["rto"])
+
+    def is_rto(h: str) -> bool:
+        return bool(rto) and _hours(h) == rto
+
+    def row(name: str, r: dict[str, Any]) -> str:
+        first = next((h for h in shown if r["cells"].get(h) in
+                      ("high", "very high")), None)
+        cells = "".join(
+            f'<td class="{LEVEL_CLASS.get(r["cells"].get(h, ""), "")}'
+            f'{" rto" if is_rto(h) else ""}{" first" if h == first else ""}">'
+            f'{E(r["cells"].get(h, "") if r["cells"].get(h, "") not in ("none",) + blank else "–")}'
+            "</td>" for h in shown)
+        return f"<tr><th class='l'>{E(name)}</th>{cells}</tr>"
+    head = "".join(f"<th{' class=\"rto\"' if is_rto(h) else ''}>"
+                   f"{E(h)}{' RTO' if is_rto(h) else ''}</th>" for h in shown)
+    extra = sorted({v for r in f["grid"].values() for v in r["cells"].values()}
+                   - {*core.GRID_LEVELS, "very high", *blank})
+    return ("<table class='g'><tr><th></th>" + head + "</tr>"
+            + "".join(row(n, r) for n, r in f["grid"].items()) + "</table><p class='fn'>"
+            + " · ".join(["– = none", "high = intolerable",
+                          *(["outlined column = RTO"] if rto else []), *[E(v) for v in extra]])
+            + "".join(f" · {E(h)}: not rated in the source" for h in unrated) + "</p>")
 
 
 def _column(kinds: tuple[str, ...], rows: list[dict[str, Any]]) -> str:
-    """One of the four columns: marked rows first, at most `PER_COLUMN`, the rest named."""
+    """One of the four columns: marked rows first, at most `PER_COLUMN`, the rest named. Each
+    entry carries a box to tick in the room."""
     mine = sorted((r for r in rows if r["col"] in kinds), key=lambda r: not r["marks"])
     shown, rest = mine[:PER_COLUMN], mine[PER_COLUMN:]
     out = f"<h4>{E(kinds[0])}</h4>" if len(kinds) == 1 else ""
@@ -381,8 +464,8 @@ def _column(kinds: tuple[str, ...], rows: list[dict[str, Any]]) -> str:
         these = [r for r in shown if r["col"] == kind]
         if len(kinds) > 1 and these:
             out += f'<span class="sub">{E(kind)}</span>'
-        out += "".join(f"<div class='chip{' mk' if r['marks'] else ''}'>{E(r['name'])}"
-                       f"{_badges(r['marks'])}</div>" for r in these)
+        out += "".join(f"<div class='chip{' mk' if r['marks'] else ''}'><span class='bx'></span>"
+                       f"<span>{E(r['name'])}{_badges(r['marks'])}</span></div>" for r in these)
     if not mine:
         out += "<p class='fn'>none in the register</p>"
     if rest:
@@ -398,8 +481,13 @@ def _why(r: dict[str, Any], rto: str) -> str:
             "O": "no owner named", "S": "the only source"}[r["marks"][0]]
 
 
+def _tile(label: str, said: str) -> str:
+    return (f'<div class="tile"><span class="lab">{label}</span><b>{E(said)}</b></div>' if said
+            else f'<div class="tile nil"><span class="lab">{label}</span><b>not stated</b></div>')
+
+
 def sheet(folder: Path, activity: str) -> str:
-    """The two pages as one HTML document, A4 each."""
+    """The two pages as one HTML document, A4 each, in the AI4BCM Guidance look."""
     f = facts(folder, activity)
     chat, rows = f["chat"], f["rows"]
     marked = [r for r in rows if r["marks"]]
@@ -409,53 +497,70 @@ def sheet(folder: Path, activity: str) -> str:
                          if f["suggested"][SUGGESTED:] else []))
     used = sorted({m for r in marked for m in r["marks"]}, key=list(MARKS).index)
     gaps = ("<table class='r'>" + "".join(
-        f"<tr><td class='m'>{_badges(r['marks'])}</td><td><b>{E(r['name'])}</b></td>"
+        f"<tr><td class='m'>{_badges_big(r['marks'])}</td><td><b>{E(r['name'])}</b></td>"
         f"<td>{E(_why(r, f['rto']))}</td><td class='k'>{E(r['owner'])}</td></tr>" for r in marked)
-        + "</table><p class='fn'>" + " · ".join(f"{_badges([m])} {MARKS[m]}" for m in used)
-        + "</p>") if marked else "<p>The register marks no gap for this process.</p>"
+        + "</table><p class='fn'>" + " · ".join(f"{m} {MARKS[m]}" for m in used)
+        + "</p>") if marked else "<p class='sp'>The register marks no gap for this process.</p>"
     lines = "".join(f"<p class='fn'>{E(rule)}: {E(core._listed(names))}.</p>"
                     for rule, names in f["lines"])
     known = "".join(f"<p><b>{E(label)}:</b> {E(fact)}</p>" for label, fact in f["authored"])
     plan = blocks(f)
     planned = sum(m for _, _, m, _ in plan)
     checklist = "".join(
-        f"<h3><span class='ab'>{a}</span> {E(t)} <span class='min'>{m} min</span></h3>"
-        + "".join(f"<div class='ck'><span class='bx'></span><span>{E(q)}</span></div>" for q in qs)
-        for a, t, m, qs in plan)
+        f"<div class='blk'><div class='l'><span class='ab'>{a}</span>"
+        f"<span class='min'>{m} min</span></div><div class='q'><h3>{E(t)}</h3>"
+        + "".join(f"<div class='ck'><span class='bx'></span><span>{E(q)}</span></div>"
+                  for q in qs) + "</div></div>" for a, t, m, qs in plan)
     came = " · ".join(E(x) for x in there) or (NO_INTERVIEW if f["record"] else NO_EARLIER)
     add = ("The same" + (", plus " + added if added else "") + ".") if there \
         else f"{added}." if added else NO_INTERVIEW if f["record"] else NO_ONE
-    results = f"<p><b>RTO {E(f['rto'])} · MTPD {E(f['mtpd'])}</b></p>{_grid(f)}" \
-        if f["record"] else f"<p>{NO_RECORD}</p>"
-    drawn = [r for r in rows if not r["without"]]
+    if f["record"]:
+        tiles = _tile("RTO", f["rto"]) + _tile("MTPD", f["mtpd"]) + _tile("RPO", f["rpo"])
+        results = f"<h2>Last year's impact, by hour of standstill</h2>{_grid(f)}"
+    else:
+        tiles, results = "", f"<p class='sp'>{NO_RECORD}</p>"
+    drawn = [r for r in rows if not r["without"] and not r["marks"]]  # the gaps list has the rest
     four = f'<div class="four">{"".join(_column(k, drawn) for k in FOUR)}</div>' if rows \
-        else f"<p>{NO_ROWS}</p>"
+        else f"<p class='sp'>{NO_ROWS}</p>"
     four += (f"<p class='fn'>{RUNS_WITHOUT}: {E(', '.join(chat['without']))}.</p>"
              if chat["without"] else "")
+    eyebrow = (f"Record {E(f['record'])} · {f['minutes']} minutes" if f["record"]
+               else f"{E(FIRST)} · {f['minutes']} minutes") + f" · owner: {E(f['owner'])}"
     return f"""<!doctype html><html><head><meta charset="utf-8">
 <title>Briefing · {E(f['name'])}</title><style>{CSS}</style></head><body>
-<div class="pg"><h1>{E(f['name'])}</h1>
-<p class="subt">{f"BIA re-interview briefing · record {E(f['record'])}" if f['record'] else FIRST}
-{f" · owner: {E(f['owner'])}" if f['owner'] != core.NOT_STATED else ''} · {f['minutes']} minutes</p>
-{''.join(f'<p>{E(w.removeprefix("- "))}</p>' for w in chat['why'])}
-{f"<p><b>What it does:</b> {E(f['does'])} {E(f['updown'])}</p>" if f['does'] else ''}
-<div class="two"><div><h2>Last interview</h2><p>{came}</p></div>
-<div><h2>Suggested this time</h2><p>{add}</p></div></div>
-<div class="chk"><b>Check before you go</b>{''.join(f'<p>{E(c)}</p>' for c in f['checks'])}</div>
-{f'<h2>From the supplier register · {E(merge_table.MARK)}</h2>{known}' if known else ''}
-<h2>Last year's results</h2>{results}
-<h2>{'Gaps and single points of failure' if 'S' in used else 'Gaps'}</h2>{gaps}
-<h2>Dependencies</h2>{four}{lines}
-<h2>Notes</h2><div class="notes"></div>
-<div class="ft"><span>nemo · from the record and the register · no model wrote any of it</span>
-<span>page 1 of 2</span></div></div>
-<div class="pg"><h1>Interview checklist · {E(f['name'])}</h1>
-<p class="subt">Ask open, write the answer, compare after. Marked boxes from page 1 come in D.</p>
-{checklist}<p class="fn">{f['minutes']} minutes in the invitation = {planned} planned +
+<div class="pg"><div class="top"><div class="wm">AI4<span>BCM</span></div>
+<div class="lab">BIA re-interview briefing</div></div>
+<div class="head"><div><div class="lab eb">{eyebrow}</div><h1>{E(f['name'])}</h1></div>
+<div class="tiles">{tiles}</div></div>
+{''.join(f'<p class="why">{_lead(w)}</p>' for w in chat['why'])}
+<div class="chk"><span class="lab">Settle before you go</span>{''.join(
+    f'<p>{E(c)}</p>' for c in f['checks']
+) or '<p>Nothing to settle: the record and the register agree.</p>'}</div>
+<div>{results}</div>
+<p class="who"><b>Last interview:</b> {came} <b>Suggested this time:</b> {add}</p>
+{f'<div class="known"><h2>From the supplier register · {E(merge_table.MARK)}</h2>{known}</div>'
+ if known else ''}
+<div><h2>{'Gaps and single points of failure' if 'S' in used else 'Gaps'}</h2>{gaps}</div>
+<div><h2>Dependencies: tick the ones it uses</h2>{four}{lines}</div>
+<div class="ft"><span>nemo · from the record and the register</span><span>1 / 2</span></div></div>
+<div class="pg"><div class="top"><div class="wm">AI4<span>BCM</span></div>
+<div class="lab">BIA re-interview briefing</div></div>
+<div><div class="lab eb">{E(f['name'])} · {f['minutes']} minutes</div><h1>Interview sheet</h1>
+<p class="why">Ask open questions, write down the answer, compare afterwards.</p></div>
+<div class="sheet">{checklist}</div>
+<p class="fn">{f['minutes']} minutes in the invitation = {planned} planned +
 {f['minutes'] - planned} spare (interviews overrun).</p>
-<h2>Notes</h2><div class="notes"></div>
-<div class="ft"><span>nemo · from the record and the register</span><span>page 2 of 2</span>
-</div></div></body></html>"""
+<div class="ft"><span>nemo · from the record and the register</span><span>2 / 2</span></div>
+</div>{FIT}</body></html>"""
+
+
+def _lead(line: str) -> str:
+    """The why-now line, the word "overdue" marked as the website marks a key word."""
+    return E(line.removeprefix("- ")).replace("overdue", "<mark>overdue</mark>")
+
+
+def _badges_big(marks: list[str]) -> str:
+    return "".join(f'<span class="bd">{m}</span>' for m in marks)
 
 
 def pdf(folder: Path, activity: str) -> bytes:
@@ -469,6 +574,7 @@ def pdf(folder: Path, activity: str) -> bytes:
         page.write_text(sheet(folder, activity), encoding="utf-8")
         subprocess.run([str(shell), "--headless", "--no-sandbox", "--disable-gpu",
                         f"--user-data-dir={top}/profile", "--no-pdf-header-footer",
+                        "--virtual-time-budget=4000",
                         f"--print-to-pdf={out}", page.as_uri()],
                        check=True, capture_output=True, timeout=60)
         return out.read_bytes()

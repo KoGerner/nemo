@@ -80,6 +80,17 @@ FIRST_PROMPT = f"Start a BIA for {COMPANY}. Take me through it one stage at a ti
 SHORT_STAGES = walk.SHORT_NAMES
 #: t432: and the rail and the menu sheet say them as well (the long line is a card's subtitle only)
 STAGES = SHORT_STAGES
+#: t770: what each stage does, his words of 4 Nov ("Yes, use them"), as
+#: `docs/research/five-stages-how-it-must-look.md` "The words a user reads" holds them: the
+#: stage's hover on the laptop, a line under it in the phone's menu sheet (`.stages li::after`).
+STAGE_LINES = (
+    "Decide what this BIA covers: who to talk to and what they are responsible for.",
+    "Prepare and invite, then a structured interview: the questions are asked and the answers "
+    "challenged.",
+    "Turn what was said into a standard template: a table and numbers you can work on.",
+    "List the requirements with their RTOs and RPOs: the numbers that count.",
+    "Bring the requirements from all departments together and sanity-check them, then hand them "
+    "over.")
 #: The documents "Your documents" lists once nemo has written them. t256: the follow-up list, the
 #: room's referrals by recipient (`PROTOTYPE_core.FOLLOW_UP`).
 DOCUMENTS = (handover.HANDOVER, handover.CERTIFICATE, "follow-up-list.md")
@@ -430,9 +441,11 @@ def progress(folder: Path) -> dict[str, str]:
     now = min(done + 1, 5)
     states = ["done" if n <= done else "now" if n == now else "todo" for n in range(1, 6)]
     return {
-        "stages": "".join(f'<li class="{s}"{CURRENT if s == "now" else ""}><span class="no">'
+        "stages": "".join(f'<li class="{s}"{CURRENT if s == "now" else ""}'
+                          f' title="{html.escape(line)}"><span class="no">'
                           f'{"&#10003;" if s == "done" else n}</span>{html.escape(name)}</li>'
-                          for n, (s, name) in enumerate(zip(states, STAGES, strict=True), 1)),
+                          for n, (s, name, line)
+                          in enumerate(zip(states, STAGES, STAGE_LINES, strict=True), 1)),
         "bar": "".join(f'<i class="{s}"></i>' for s in states),
         "where": (f"Stage {now} of 5 · {SHORT_STAGES[now - 1]}" if done < 5
                   else "All five stages done · signed"),
@@ -894,13 +907,18 @@ body.open .rail {{ display: block; }}
 .rail .top {{ margin: 0 -20px 20px; padding: 14px 20px; }}
 .rail ol, .rail ul {{ list-style: none; margin: 0; padding: 0; }}
 .stages {{ margin-bottom: 20px !important; }}
-.stages li {{ display: flex; gap: 12px; padding: 8px 0; font-size: 16px; line-height: 1.35; }}
+.stages li {{ display: flex; flex-wrap: wrap; gap: 2px 12px; padding: 8px 0; font-size: 16px;
+              line-height: 1.35; }}
 .stages .no {{ font: 500 14px var(--font-mono); color: var(--color-muted); width: 16px; flex: none;
                padding-top: 1px; }}
 .stages li.done .no, .stages li.now .no {{ color: var(--color-navy); }}
 .stages li.now {{ font-weight: 500; background: var(--color-harbour-grey);
                   border-radius: var(--radius-inputs); padding: 8px; margin: 0 -8px; }}
 .stages li.todo {{ color: var(--color-muted); }}
+/* t770: no hover on the phone, so each stage's line sits under its name in the menu sheet */
+.stages li::after {{ content: attr(title); flex: 0 0 100%; box-sizing: border-box;
+                     padding-left: 28px; font: 400 14px/1.4 var(--font-body);
+                     color: var(--color-muted); }}
 .go a, .go > span {{ display: block; padding: 12px 0; font-weight: 500;
                      border-top: 1px solid var(--color-hairline);
                      color: var(--color-navy); text-decoration: none; }}
@@ -925,6 +943,10 @@ body.open .rail {{ display: block; }}
                     padding: 8px 0 8px 10px; box-shadow: inset 1.5px 0 0 var(--color-rust); }}
   main {{ grid-column: 2; grid-row: 1; padding: 0 16px; }}
   .panel {{ position: absolute; inset: 0; border-radius: 0; box-shadow: none; }}
+}}
+/* t770: where a mouse can hover, the laptop's line is the stage's hover; a touch tablet keeps it */
+@media (min-width: 60rem) and (hover: hover) {{
+  .stages li::after {{ display: none; }}
 }}
 </style></head>
 <body>

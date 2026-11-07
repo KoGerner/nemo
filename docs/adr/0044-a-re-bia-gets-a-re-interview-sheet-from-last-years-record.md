@@ -73,3 +73,7 @@ He answered *"everything else as suggested please"* (20:53:12Z) and *"almost all
 ## Note, 2026-11-03 (ticket 733, ruled by 49_nemo_check, tick 12:35:03)
 
 - **One exception to the note of 2026-10-02.** That note says the comparative check keeps reading only the figures and nothing compares the grid. Ticket 733 makes `skin/checks.py` read last year's grid for one purpose: to keep a sentence whose true "was none, now high" the grid shows. It never cuts on the grid. Everything else in that note stands. The docstrings of `_prior_grid` and `last_year` in `skin/PROTOTYPE_core.py` still say display only, a row in `docs/issues/after-the-demo.md`.
+
+## Note, 2026-11-07 (ticket 768, ruled by 49_nemo_check on 56_nemo's STOP)
+
+- **A second exception, and the one place it cuts.** The note of 2026-11-03 (ticket 733) says `skin/checks.py` never cuts on the grid. Ticket 768 adds one cut: a sentence saying every category of last year's record was none is dropped when that record's grid for the activity holds a row that is not none (`checks.EVERY_NONE`, beside `ACROSS`). It is ADR-0034's rule, nothing contradicts a record, applied to a claim about last year's grid itself; it compares no figure with the grid and fills in no cell, so ADR-0014 stands. "all three categories … none", naming categories that are none, stays. Any other cut on the grid is a new note.

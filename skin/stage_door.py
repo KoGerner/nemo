@@ -102,10 +102,9 @@ NOT_PRIVATE = "Don't type anything confidential. nemo learns from your answers."
 
 #: t287: its colours are Harbour's, from the one stylesheet the skin serves; light only (ADR-0042's
 #: note of 2026-10-03). t290 redrew it as direction A (`nemo-design-directions.html`): the heading,
-#: then a white card; on a laptop the heading left and the card right. The closing line is a
-#: promise to testers and stays, in small type (spec §3).
-#: t484, his R18 *"Change the deck/page wording"* and his answer "B: send + copy": the closing
-#: lines also say plainly that nemo does not send the work, so copy it before 11 November.
+#: then a white card; on a laptop the heading left and the card right.
+#: t767 (his word, 4 Nov: nobody understood them): the closing paragraph t484 wrote is gone; the
+#: Privacy link says what is kept and for how long.
 LANDING = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -147,7 +146,7 @@ input {{ display: block; width: 100%; margin-top: .5rem; font: 1rem var(--font-b
 .go:hover {{ background: var(--color-amber-hover); }}
 .wrong {{ margin: 0; padding: .6rem .8rem; color: var(--color-rust);
           background: var(--color-peach); border-left: 1.5px solid var(--color-rust); }}
-.note, .closing {{ font-size: .875rem; color: var(--color-muted); margin: 1rem 0 0; }}
+.note {{ font-size: .875rem; color: var(--color-muted); margin: 1rem 0 0; }}
 .note a {{ color: inherit; text-underline-offset: .2em; }}
 input:focus-visible, button:focus-visible, a:focus-visible {{ outline: 3px solid var(--color-amber);
                                                                 outline-offset: 2px; }}
@@ -177,10 +176,6 @@ h1 {{ font-size: 4rem; line-height: .95; letter-spacing: -.05em; }}
 </form>
 <p class="note">{not_private}
 <a href="https://ai4bcm.org/privacy/#stage-demo">Privacy</a></p>
-<p class="closing"><small>nemo does not send you your work. Copy anything you want to keep
-before 11 November.</small>
-<small>Your chat and your email are closed on 11 November and deleted within
-ninety days.</small></p>
 </div>
 </main>
 </body></html>

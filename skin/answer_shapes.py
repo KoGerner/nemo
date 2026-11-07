@@ -82,7 +82,7 @@ SHAPES: tuple[Shape, ...] = (
           "what matters most, with its effect", (
               "each change, one line", "what did not change", "other interviews this year"),
           "which figures are still open (RTO, MTPD)",
-          r"\d|\b(?:MTPD|RTO|RPO|level|impact|days?|hours?)\b|" + _COUNT),
+          r"\d|\b(?:MTPD|RTO|RPO|level|impact|days?|hours?|" + _COUNT + r")\b"),
     Shape("mismatch", "What does not match last year or the grid",
           "'Yes, N mismatches' or 'No'", (
               "each mismatch: its class, this year against last year",
@@ -433,7 +433,8 @@ def _listed(shape: Shape | None, bare: str, details: list[Any],
 
 def noted(why: str) -> bool:
     """640 (a): a shape-only miss (`OPENS`, `IN_DAYS`) is a finding, never a cut: the part stands
-    and the turn is not failed by it (until `OPENS` is tuned on the saved runs)."""
+    and the turn is not failed by it (until `OPENS` is tuned on the saved runs). 765: one word
+    missing `OPENS` carries a second reason, `led_turn.STAND_IN`, which is a cut."""
     return any(p.fullmatch(why) for p in (_OPENS_SAID, _IN_DAYS_SAID))
 
 

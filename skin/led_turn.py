@@ -292,6 +292,8 @@ VERDICT_SAID = ("Code's yes or no for {about}: {verdict} ({rows}). The answer's 
                 "{verdict}.")
 NONE_FLAGGED = "the register flags no row"
 NONE_DEPENDS = "nothing in the register depends on it"
+#: 765: one word standing for a first line, sent back as a part that failed (`_stand_in`)
+STAND_IN = "its first line is one word that misses its shape's opening: no first line"
 VERDICT_OFF = "it opens with '{said}', but code's answer for {about} is {verdict} ({rows})"
 #: 604: a line asking for a yes or a no ("Does …?", "Is …?", "Has …?"), and what it asks of one
 #: register resource: whether anything depends on it (the resource after the verb)
@@ -1306,6 +1308,7 @@ class _Run:
         self.later: list[dict[str, Any]] = []  # 651: the reply's letter calls after its first
         self.unwritten: list[dict[str, Any]] = []  # 651: its letter calls that failed as empty
         self.held = _Held([], [], [], [], [])  # 756
+        self.inviting = False  # 769: code's invitation drawn for an invite ask's refused letter
         #: every item of a list code handed: one the answer leaves out is recorded as a miss
         self.must_cover = [i for items in self.brief.lists.values() for i in items]
 
@@ -1564,12 +1567,18 @@ class _Run:
             self._send_back(name, args, checked)
             return None
         (first_name, first_args, was), self.first = self.first, None
+        details = first_args.get("details")  # 765: a stray word over nothing, or over words alone
+        nothing = any(d["reason"] == STAND_IN for d in was.drops) and (_blank(details) or all(
+            _one_word({"answer": d}) for d in checks.as_list(details)))
+        if name != first_name and nothing and not _one_word(args):  # 765: nothing stood
+            return self._done([(name, args, None)], [])
         if name != first_name:
             standing, refused = first_args, [{"text": "the template", "reason":
                                               checks.RETRY_CHANGED.format(path="the template")}]
         else:
-            standing, refused = checks.retry(first_args, args, was.failed or [
-                (k,) for k in first_args], self.must_cover)
+            standing, refused = checks.retry(first_args, args, [
+                (k,) for k in {**first_args, **args}] if nothing else was.failed or [
+                (k,) for k in first_args], self.must_cover)  # 765: nothing stood, the retry whole
         return self._done([(first_name, standing, None)], refused)
 
     def _check(self, name: str, args: dict[str, Any]) -> checks.CheckedCall:
@@ -1598,6 +1607,9 @@ class _Run:
             if stale := _stale(name, said, checked.args, self.folder, self.brief.focus,
                                {len(items) for items in self.brief.lists.values()}):
                 shapes.apply(checked, [(("answer",), stale)], said)
+            # 765: as he would read it, after the cuts; its finding stays
+            if _stand_in(name, checked.args, self.brief.verdict):
+                shapes.apply(checked, [(("answer",), STAND_IN)], said)
         if why := _verdict_off(self.brief.verdict, name, said):
             shapes.apply(checked, [why], said)
         return checked
@@ -1971,7 +1983,21 @@ class _Run:
         """606, 646: first what is in hand: the try sent back, the call with no first line."""
         if self.held.stood:  # 756: never a plain line while one letter stands
             return cast(Turn, self._letters([], True))
-        return self._done([x for x in (self.first, self.part) if x], drops, misses)
+        turn = self._done([x for x in (self.first, self.part) if x], drops, misses)
+        if turn.path == PLAIN and self._invites_instead():  # 769: what is in hand came to nothing
+            self.inviting = True
+            card = cast(Turn, self._invitation({}, True))
+            if card.template == INVITATION:
+                return dataclasses.replace(card, drops=[*turn.drops, *card.drops])
+        return turn
+
+    def _invites_instead(self) -> bool:
+        """769: his line asks to invite and not to write (`core.asks_to_invite`,
+        `core.asks_to_write`), and the model answered with a letter: code draws the invitation
+        once, where the plain line would end it. A letter he asked for goes as ever."""
+        return not self.inviting and core.asks_to_invite(self.line) \
+            and not core.asks_to_write(self.line) \
+            and any((c.get("function") or {}).get("name") == LETTER for c in self.calls)
 
     def _turn(self, text: str, path: str, template: str | None, args: dict[str, Any],
               drops: list[dict[str, str]], misses: list[str], shown: list[dict[str, Any]],
@@ -1993,6 +2019,22 @@ def _verdict_off(v: dict[str, Any] | None, name: str, said: dict[str, Any]
     if v is None or not (m := OPENS[not v["verdict"]].match(first)):
         return None
     return (key,), _verdict_said(v, VERDICT_OFF, said=m[0].strip())
+
+
+def _one_word(said: dict[str, Any]) -> str:
+    """765: the first line where it is one word, bare of its cites and the marks round it; else "".
+    """
+    first = re.sub(r"^[\W_]+|[\W_]+$", "", shapes._bare(str(said.get("answer") or "")))
+    return first if len(first.split()) == 1 else ""
+
+
+def _stand_in(name: str, said: dict[str, Any], v: dict[str, Any] | None) -> bool:
+    """765: a first line of one word that misses its shape's opening is no first line, read by its
+    form and never by a list of words; one saying code's yes or no (`verdict`) keeps its place."""
+    opens = shape.opens if (shape := shapes.BY_NAME.get(name)) else ""
+    first = _one_word(said)
+    return bool(opens and first) and not re.search(opens, first, re.I) \
+        and not (v and OPENS[v["verdict"]].fullmatch(first))
 
 
 def _names_no_row(v: dict[str, Any] | None, said: str) -> bool:
