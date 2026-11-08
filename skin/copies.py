@@ -1,15 +1,16 @@
 """Ticket 437 (ADR-0052): the phone and the stage each run as N copies behind the room router.
 
-On the demo day nemo runs as four copies (ADR-0052, decision 1), each on a port of its own, and the
-room router (`room_router.py`, ticket 436) takes the port nginx and the phone proxy already send to:
+On the demo day nemo runs as six copies (ADR-0052, decision 1 as its note of 2026-11-08 amends it,
+ticket 773), each on a port of its own, and the room router (`room_router.py`, ticket 436) takes
+the port nginx and the phone proxy already send to:
 127.0.0.1:8473 for the phone (behind his 8474), 127.0.0.1:8477 for the stage (behind the vhost's
 /chat/). So nothing in front of nemo changes. `COPIES` below is the one place N is set: the units,
 the router, the move's checks and the move walk all read it from here.
 
 Every copy of a fleet shares one `PROTO_RUN` (so one rooms folder and one approot), its unit's one
 `CHAINLIT_AUTH_SECRET` and run-live.sh's one `NEMO_SEED` (436's STOP 2); it differs only in its
-port, its `NEMO_COPY=<k>/<n>` (copy k is the router's k-th URL) and its own `PROTO_LOG`, so four
-processes never append turn lines to one file.
+port, its `NEMO_COPY=<k>/<n>` (copy k is the router's k-th URL) and its own `PROTO_LOG`, so no two
+processes ever append turn lines to one file.
 
     copies.py copy <fleet> <k>   exec copy k: run-live.sh (the guard, then the app), as the unit
                                  nemo-<fleet>-copy@<k> starts it
@@ -35,8 +36,9 @@ from collections.abc import Callable
 from dataclasses import dataclass, replace
 from pathlib import Path
 
-#: ADR-0052: four copies on the day (three is the floor). The one place N is set.
-COPIES = 4
+#: ADR-0052: six copies on the day (its note of 2026-11-08, ticket 773; three is the floor). The
+#: one place N is set.
+COPIES = 6
 SKIN = Path(__file__).resolve().parent
 
 
