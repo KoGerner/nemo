@@ -299,6 +299,11 @@ STEP_FACT = "the next step {step!r} states {facts}, which the answer does not"
 SAME_COUNT = "it says {said}, where {where} says {other}: the same count is the same everywhere"
 
 _PAIR = re.compile(r"\bfrom\b[^.;]*?\bto\b|→|\bagainst\b|\bvs\.?\s|\binstead of\b", re.I)
+#: 775: what sets a first line's second before/after pair apart from its first: a clause mark, a
+#: joining word after it too (a joining word alone may join two nouns); a dash between two
+#: figures ("15–18") is a range, never a break
+_PAIR_BREAK = re.compile(r"(?:[:;]|(?<!\d)[—–]|[—–](?!\d)|[.!?](?=\s+[A-ZÄÖÜ])|,(?=\s))\s*"
+                         r"(?:(?:and|while|but|whereas)\s+)?")
 _THE_METHOD = re.compile(r"\bthe method\b(?!\s*\(|\s*[:–—]|['’]s\b|\s+(?:of|for|in)\s|\s+file\b)",
                          re.I)
 _PROPOSAL = re.compile(r"\bpropos\w*", re.I)
@@ -398,6 +403,31 @@ def _first(name: str, first: str, details: list[Any], folder: Path,
     if h := next((int(x) for x in _IN_HOURS.findall(bare) if _days(x)), None):
         out.append(IN_DAYS.format(hours=h, days=h // 24))
     return out
+
+
+def one_pair_first(first: str) -> tuple[str, str] | None:
+    """775: a first line holding more than one before/after pair (`_PAIR`), as (the line up to the
+    last break between its first pair and its second, closed with a stop; the rest, opened with a
+    capital). Each cite stays where it stands, and a part with none of its own takes the other's:
+    the stack passed the line on them. None where it holds one pair, or nothing between
+    the two sets them apart (`_PAIR_BREAK`): a comma inside a figure, or a stop not before a
+    capital, is none; nor a dash between two figures."""
+    text = checks.each_cite(first).strip()
+    masked = checks.CITE.sub(lambda m: " " * len(m[0]), text)  # a cite holds no pair, nor a break
+    pairs = list(_PAIR.finditer(masked))
+    breaks = [b for b in _PAIR_BREAK.finditer(masked, pairs[0].end())  # the second pair's own
+              if b.start() < pairs[1].start()] if len(pairs) > 1 else []  # capital ends a stop
+    if not breaks:
+        return None
+    head, rest = text[:breaks[-1].start()].rstrip(" ,"), text[breaks[-1].end():].strip()
+    return _lent(head, rest), _lent(rest[:1].upper() + rest[1:], head)
+
+
+def _lent(part: str, other: str) -> str:
+    """775: `part`, closed with a stop, and the cites of `other` before it where it has none."""
+    part = part.rstrip(".!?") if not checks.CITE.search(part) else part
+    lent = "" if checks.CITE.search(part) else "".join(m[0] for m in checks.CITE.finditer(other))
+    return part + f" {lent}" * bool(lent) + "." * (part[-1:] not in ".!?")
 
 
 def true_mismatches(bare: str, folder: Path, activity: str | None) -> bool:
@@ -571,10 +601,14 @@ def apply(checked: checks.CheckedCall, failed: list[tuple[Place, str]],
     place of its own. 640: a shape-only miss (`noted`) is recorded and the part stands; hours
     where days are plainer get their days beside them; where another part failed (so it is sent
     back), the retry may change the noted part too."""
+    moved: list[Place] = []
     for at, why in failed:
         key = str(at[0])
         said = checks.as_list(args.get(key))[int(at[1])] if len(at) > 1 else args.get(key)
         checked.drops.append({"text": str(said), "reason": why})
+        if why == PAIRS and at == ("answer",) and _moved(checked):
+            moved.append(at)
+            continue
         if noted(why):
             if _IN_DAYS_SAID.fullmatch(why) and len(at) == 1:
                 checked.args[key] = in_days(str(checked.args.get(key) or ""))
@@ -582,12 +616,47 @@ def apply(checked: checks.CheckedCall, failed: list[tuple[Place, str]],
         checked.failed += [] if at in checked.failed else [at]
         if len(at) == 1:
             checked.args[key] = ""
+            if key == "answer":
+                _unmoved(checked)
         elif said in (kept := checks.as_list(checked.args.get(key))):
             kept.remove(said)
             checked.args[key] = kept
     if checked.failed:
-        checked.failed += list(dict.fromkeys(at for at, why in failed if noted(why)
+        checked.failed += list(dict.fromkeys(at for at, why in failed if (noted(why) or at in moved)
                                              and at not in checked.failed))
+
+
+def _unmoved(checked: checks.CheckedCall) -> None:
+    """775: a first line cut after its second pair moved under it (`_moved`), by this call or an
+    earlier one: the part that moved goes with it, never left to open the answer."""
+    details = checks.as_list(checked.args.get("details"))
+    if details and any(d["reason"] == PAIRS and (split := one_pair_first(d["text"]))
+                       and _words(split[1]) == _words(str(details[0]))
+                       for d in checked.drops):  # as said, its cites aside: the stack's may differ
+        checked.args["details"] = details[1:]
+
+
+def _words(text: str) -> str:
+    """775: `text` as said, its cites and the spaces they leave aside."""
+    return re.sub(r"\s+(?=[.,;:!?]|$)", "", " ".join(_bare(text).split()))
+
+
+def _moved(checked: checks.CheckedCall) -> bool:
+    """775: a first line caught holding more than one pair (`PAIRS`) keeps its first: the rest
+    moves under it, the first of its points (`one_pair_first`). True where the line stands so, as
+    the stack left it (one it cut whole, or to one pair, has none to move); False where nothing
+    sets the pairs apart, and it goes."""
+    kept = str(checked.args.get("answer") or "")
+    if len(_PAIR.findall(_bare(kept))) < 2:  # amend: a line the stack cut a part of goes
+        whole = next((d["text"] for d in checked.drops if d["reason"] == PAIRS), "").strip()
+        return bool(kept.strip()) and not any(
+            d["reason"] != PAIRS and (part := str(d["text"]).strip()) and part != whole
+            and part in whole for d in checked.drops)
+    if (split := one_pair_first(kept)) is None or checks.LISTED.search(_bare(split[0])):
+        return False  # a line counting the points under it (640 b) is not one more point
+    checked.args["answer"], rest = in_days(split[0]), split[1]  # 640 (c), as on a one-pair line
+    checked.args["details"] = [rest, *checks.as_list(checked.args.get("details"))]
+    return True
 
 
 def taps(args: dict[str, Any]) -> list[tuple[str, dict[str, Any]]]:

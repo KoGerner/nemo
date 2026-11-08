@@ -1703,10 +1703,12 @@ def _fact_held(sentence: str, room: Room, about: list[str]) -> set[str]:
                    if m[1] in held and int(m[1]) == 24 * int(m[2])}
 
 
-def _whole(bare: str, value: re.Match[str], fact: str, room: Room, about: list[str]) -> bool:
+def _whole(bare: str, value: re.Match[str], fact: str, room: Room, about: list[str],
+           member: str | None = None) -> bool:
     """655 r4 (49's ruling): the sentence says `fact` as the whole of `value` (">168 h", never 168
     nor "72 people" for "72 h"), each time as the member its fact key holds: the member named last
-    before it, else first after it (`MEMBER_KEYS`; a member no key holds is held by none)."""
+    before it, else first after it (`MEMBER_KEYS`; a member no key holds is held by none). 775:
+    with a `member`, as that member, named, whatever its fact key holds."""
     if fact != value["n"]:
         return False
     found = list(re.finditer(_FIGURE_SAID.format(n=re.escape(fact)), bare, re.I))
@@ -1718,6 +1720,8 @@ def _whole(bare: str, value: re.Match[str], fact: str, room: Room, about: list[s
         named = max(((m.start(), k) for k, w in MEMBERS.items() for m in w.finditer(bare[:at])),
                     default=None) or min(((m.start(), k) for k, w in MEMBERS.items()
                                           for m in w.finditer(bare, at)), default=None)
+        if member:
+            return named is not None and named[1] == member
         if named is None:
             return True
         key = MEMBER_KEYS.get(named[1])
@@ -2546,6 +2550,10 @@ def check_call(template: str, args: dict[str, Any], room: Room, must_cover: Iter
         on = _on_the_plan(said, room) if template == "briefing" and at == ("answer",) else room
         c = _lead(said, points, on, template) if at == ("answer",) and points else \
             check(said, on, body=body, held=template == "letter")
+        if at == ("answer",) and c.drops and all(  # 775: failed only for want of a cite
+                d["reason"].startswith(NO_CITE.partition("{")[0]) for d in c.drops) \
+                and (cited := _codes_cite(said, on)):
+            c = cited
         if at[0] == "not_stated" and (slot := _denies_code(_not_stated_said(_bare(said)), on)):
             c = Checked("", [{"text": said.strip(), "reason": slot}])
         out.drops += c.drops
@@ -2659,6 +2667,60 @@ def _lead(said: str, points: list[str], room: Room, template: str = "") -> Check
         return c
     lent.text = lent.text.replace(f" {theirs}", "")
     return lent
+
+
+#: 775: last year's record's MTPD row
+_RECORD_MTPD = re.compile(r"^\|\s*MTPD\s*\|")
+
+
+def code_holds(folder: Path, activity: str) -> list[tuple[str, tuple[str, int]]]:
+    """775: the MTPD figures code reads for `activity` (`core.mtpd_reading_now`), each with the line
+    it reads it off: this year's on this year's interview, the grid line of the first class reaching
+    it (`core.GRID_LINE`); last year's on the record's MTPD row, in the activity's section. None
+    where code reads none, or finds no such line."""
+    found = core.mtpd_reading_now(folder, activity)
+    if found is None:
+        return []
+    out: list[tuple[str, tuple[str, int]]] = []
+    lens = str((found["lenses"] or [""])[0]).lower()
+    for n, t in enumerate(_file(folder, found["path"]).splitlines() if found["path"] else [], 1):
+        if (g := core.GRID_LINE.search(t)) and g["lens"].lower() == lens \
+                and re.search(rf"\b{re.escape(str(found['horizon']))}\s+\d", t):
+            out.append((str(found["horizon"]), (found["path"], n)))
+            break
+    prior = core.last_year(folder, activity)
+    section = False
+    for n, t in enumerate(_file(folder, str(prior["source"])).splitlines()
+                          if found["figure"] and prior.get("ref") else [], 1):
+        if t.startswith("### "):
+            section = t.startswith(f"### {prior['ref']} ")
+        elif section and _RECORD_MTPD.match(t):
+            out.append((str(found["figure"]), (str(prior["source"]), n)))
+            break
+    return out
+
+
+def _codes_cite(said: str, room: Room) -> Checked | None:
+    """775: an uncited first line that failed, each of whose figures code holds whole for the one
+    activity it is about (`code_holds`), said as the MTPD (named), with code's cite of each
+    before its stop and those lines read, through the whole stack again: what it gives where
+    nothing fails, else None (the drop stands)."""
+    if CITE.search(each_cite(said)):
+        return None
+    bare = _bare(said)
+    about = core.named_in(room.folder, bare) or ([room.activity] if room.activity else [])
+    held = code_holds(room.folder, about[0]) if len(about) == 1 else []
+    stated = facts(said, room.classes, room.folder)
+    on = [[at for v, at in held if (m := _FIGURE_VALUE.fullmatch(v.strip()))
+           and _whole(bare, m, f, room, about, member="MTPD")] for f in stated]
+    if not stated or [] in on:
+        return None
+    at = list(dict.fromkeys(x for each in on for x in each))  # a figure both hold cites both
+    read = {**room.read, **{(p, n): _file(room.folder, p).splitlines()[n - 1] for p, n in at}}
+    cites = "".join(f"[{p}:{n}]" for p, n in at)
+    c = check(re.sub(r"(?=[.!?]?\s*$)", f" {cites}", said.strip(), count=1),
+              dataclasses.replace(room, read=read))
+    return None if c.drops else c
 
 
 def _changes(a: Any, b: Any, at: Place, failed: list[Place]) -> list[Place]:
