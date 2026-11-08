@@ -270,11 +270,18 @@ _SPELLED = re.compile(rf"\b({'|'.join(SPELLED)})(?=\s+(?:day|hour|week|month)s?\
 #: 607 (rule 11): a count said of the things code counts
 COUNTED = re.compile(rf"\b(\d+|{'|'.join(SPELLED)})\s+(?:[\w-]+\s+)?(?:BIAs?|reviews?|"
                      r"process(?:es)?|activit(?:y|ies)|interviews?)\b", re.I)
+#: the things a count may be said of that are no BIA, process or interview (`LISTED`, 774)
+_OTHER_THINGS = (r"mismatch(?:es)?|gaps?|dependenc(?:y|ies)|people|persons?|owners?|suppliers?"
+                 r"|drafts?|changes?|points?|risks?|resources?|workarounds?")
+#: 774: a count bound to a noun P11 does not count ("two of its dependencies"): no count of records;
+#: one bound to its owner's BIAs or records ("two owners' BIAs") is
+COUNT_OF_ELSE = re.compile(rf"\b(?:\d+|{'|'.join(SPELLED)})\s+(?:of\s+(?:its|their|the|our|these"
+                           r"|those|his|her|your)\s+)?"
+                           rf"(?:[A-Za-z-]+\s+)?(?:{_OTHER_THINGS})\b"
+                           r"(?!['’]\s*(?:BIA\s+)?(?:BIAs?|records?)\b)", re.I)
 #: 640 (b), 603's rule 11: a count of things a first line says, and what it counts
-LISTED = re.compile(rf"\b(\d+|{'|'.join(SPELLED)})\s+((?:[A-Za-z-]+\s+)?(?:mismatch(?:es)?|gaps?"
-                    r"|dependenc(?:y|ies)|people|persons?|owners?|suppliers?|processes|BIAs?"
-                    r"|drafts?|interviews?|changes?|points?|risks?|resources?|workarounds?))\b",
-                    re.I)
+LISTED = re.compile(rf"\b(\d+|{'|'.join(SPELLED)})\s+((?:[A-Za-z-]+\s+)?(?:processes|BIAs?"
+                    rf"|interviews?|{_OTHER_THINGS}))\b", re.I)
 #: 645: a cite naming a file and no line, alone in its bracket or among others
 FILE_ONLY = re.compile(r"\[(?:[^\]\[]*?[;,]\s*)?(?P<path>[\w./-][\w./ -]*?\.(?:md|json))"
                        r"\s*(?=[;,\]])")
@@ -1160,23 +1167,30 @@ def _count_pairs(bare: str, room: Room) -> list[tuple[str, tuple[str, re.Pattern
     return pairs
 
 
+def _numbers_said(text: str) -> set[int]:
+    """The counts a text says, in figures or in words."""
+    return {int(n) for n in NUMBER.findall(text) if n.isdigit()} | {
+        k for k, w in enumerate(core.COUNTS) if k and re.search(rf"\b{w}\b", text, re.I)}
+
+
 def _claimed_counts(bare: str, room: Room) -> tuple[set[int], str | None]:
     """P9-P12: (the counts the sentence says that are code's count of the member its words claim;
     why it fails where a count it says is the other member's)."""
     bare = YEAR.sub(lambda m: " " if _a_year(m[0], room) else m[0], DATE.sub(" ", _iso(
         bare)))  # 607: a date's day and a year count nothing
-    said = {int(n) for n in NUMBER.findall(bare) if n.isdigit()} | {
-        k for k, w in enumerate(core.COUNTS) if k and re.search(rf"\b{w}\b", bare, re.I)}
+    said = _numbers_said(bare)
     counts = [(m, int(m[1]) if m[1].isdigit() else SPELLED.index(m[1].lower()) + 1)
               for m in COUNTED.finditer(bare)]
     held: set[int] = set()
     for pair, a, b in _count_pairs(bare, room) if said else []:
+        # 774: P11 reads only a count of records, never one bound to another noun
+        mine = _numbers_said(COUNT_OF_ELSE.sub(" ", bare)) if pair == "P11" else said
         for own, other in ((a, b), (b, a)):
             if not own[1].search(bare) or other[1].search(bare):
                 continue
-            if own[2] in said:
+            if own[2] in mine:
                 held.add(own[2])
-            elif other[2] in said:
+            elif other[2] in mine:
                 return held, PAIR_OFF.format(pair=pair, claimed=own[0], fact=other[2],
                                              other=other[0])
             elif wrong := sorted({n for m, n in counts if n != own[2] and own[1].search(
@@ -1240,7 +1254,8 @@ def _why(sentence: str, room: Room, held: bool = False) -> str | None:
     total_counted, off = _total_counted(bare, room)
     if why := why or off or _says_absent(bare, cells, room) or _not_stated(bare, room):
         return why
-    if why := (None if held else _present_why(sentence, cited, room)) or _not_spof(bare, room):
+    if why := (None if held else _present_why(sentence, cited, room)) \
+            or _not_spof(sentence, room):
         return why
     counted, why = _claimed_counts(bare, room)
     about = core.named_in(room.folder, bare) or ([room.activity] if room.activity else [])
@@ -1887,17 +1902,42 @@ def _number(n: str) -> int:
     return int(n) if n.isdigit() else SPELLED.index(n.lower()) + 1
 
 
-def _not_spof(bare: str, room: Room) -> str | None:
+#: 774: a name said with "'s" (after "role" or the like) before its stand-in or owner names that
+#: person, not itself ("the Buyer role's emergency stand-in"); "the Buyer's absence" is the Buyer
+_ITS_OWN = (r"(?:\s+(?:role|function|position))?['’]s\s+(?:[\w-]+\s+){0,2}"
+            r"(?:stand-?ins?|deput(?:y|ies)|owners?|backups?|substitutes?)\b")
+#: 774: a sentence's parts at its semicolons, never at one inside a cite's bracket
+_PARTS = re.compile(r";(?![^\[\]]*\])")
+#: 774: a part that says something of its own (a verb), not only items listed with the call
+_SAYS = re.compile(r"\b(?:is|are|was|were|has|have|had|remains?|needs?|depends?|lacks?|holds?"
+                   r"|runs?|covers?|can|must|should|will)\b"
+                   r"|\b(?:is|are|was|were|has|have|had|does|do|did)n['’]t\b", re.I)
+#: 774: a part that points back at the call ("the Planner is one of them") reads with it
+_ONE_OF_THEM = re.compile(r"\b(?:one|both|each|all|two|three) of (?:them|these|those)\b"
+                          r"|\bamong them\b|\bso (?:is|are|was|were|does|do)\b|\balso one\b"
+                          r"|\b(?:is|are) (?:another|one too|one as well)\b", re.I)
+
+
+def _not_spof(sentence: str, room: Room) -> str | None:
     """604 (576 part C): a sentence calling a register resource a single point of failure stands
     only where `core.spof` flags its row, for the activities it names, else the turn's, else any.
-    A sentence saying something is not one claims nothing."""
-    if not SPOF_SAID.search(bare) or SPOF_DENIED.search(bare):
+    A sentence saying something is not one claims nothing. 774: a resource named only for its
+    stand-in or owner ("the Buyer role's emergency stand-in"), or only in a part of the sentence
+    (between semicolons) that says something of its own and calls nothing one, is not called one;
+    a part that only lists items, or points back at the call ("one of them"), reads with it."""
+    if not SPOF_SAID.search(sentence):
         return None
+    parts = [_own(p) for p in _PARTS.split(core.QUOTED.sub(" ", sentence))]
+    called = " ; ".join(b for b in parts if not SPOF_DENIED.search(b)
+                        and (SPOF_SAID.search(b) or _ONE_OF_THEM.search(b) or not _SAYS.search(b)))
+    if not SPOF_SAID.search(called):
+        return None
+    bare = _own(sentence)
     on = core.named_in(room.folder, bare) or (
         [room.activity] if room.activity else walk.processes(room.folder))
     rows = [r for a in on for r in core.spof(room.folder, a)["rows"]]
     return next((NOT_SPOF.format(resource=name) for name in sorted({r["resource"] for r in rows})
-                 if re.search(rf"(?<!\w){re.escape(name)}(?!\w)", bare, re.I)
+                 if re.search(rf"(?<!\w){re.escape(name)}(?!\w)(?!{_ITS_OWN})", called, re.I)
                  and not any(r["flagged"] for r in rows if r["resource"] == name)), None)
 
 

@@ -792,9 +792,10 @@ def one_count(turn: Turn, prompt: Prompt) -> list[str]:
     reply's every count, the N of "Keep these N" and its name list are the card's, and so is the
     count the room held before (`kept_before`, `drawn`) where no Keep or Drop tap changed it.
     Outside a Keep turn a count qualified own, of a cycle or of the last cycle is the front matter's
-    (`room_read`): the room's or the turn's activity's own, less one where "other" qualifies it
-    (559: "the other two re-interviews" are all but the one at hand); an unqualified count is not
-    judged."""
+    (`room_read`): the room's or the turn's activity's own. Where "other" qualifies it, it is the
+    cycle's all but the turn's own activity, and is judged only when that cycle holds that activity
+    (570); a turn on no activity keeps 559's all but the one at hand ("the other two
+    re-interviews"). An unqualified count is not judged."""
     reply = str(turn.get("reply") or "")
     card = keep_card(turn)
     if card is None:
@@ -836,11 +837,12 @@ def _cycle_counts(turn: Turn, reply: str) -> list[str]:
         if own and not act or not own and cycle is None:
             continue
         held = [d for d, c in files if cycle is None or (c == cycle[0]) == cycle[1]]
-        right = {held.count(act)} if act else set()
-        if not own:
-            right.add(len(held))
-        if re.search(r"\bother\b", q):  # 559: the others, all but the one the reply is on
-            right = {r - 1 for r in right}
+        if re.search(r"\bother\b", q):  # 570: all but the turn's own activity in the cycle
+            if act and act not in held:
+                continue
+            right = {len(held) - held.count(act)} if act else {len(held) - 1}
+        else:
+            right = ({held.count(act)} if act else set()) | (set() if own else {len(held)})
         if k not in right:
             out.append(f"the reply says {said!r}: the interviews' front matter holds "
                        f"{' or '.join(map(str, sorted(right)))}")
@@ -2374,10 +2376,15 @@ _HAS_SPOF = re.compile(rf"^yes\b|\b(?:does|do|has|have|there (?:is|are))\b[^\n]{
 _NO_SPOF = re.compile(rf"\b(?:no|not any|none of|nothing)\s+(?:\w+\s+){{0,2}}?{_SPOF}")
 #: (619, Amend 2) a negation that denies the SPOF itself: such a line is never a yes. "none …" or
 #: "nothing …" before it, "not / no longer" up to two words before it, "no more / any more /
-#: no longer" right after it; a "not" in another clause leaves the yes
+#: no longer" right after it; a "not" in another clause leaves the yes. (623) A removal word with
+#: the point as its object, "lost its only SPOF", "removes the last SPOF", denies it too, unless
+#: a "not" ("cannot", "n't") or "never" right before it says the point stays ("has not removed")
 _DENY_SPOF = re.compile(rf"\b(?:none|nothing)\b[^\n]{{0,40}}?\b{_SPOF}"
                         rf"|\b(?:not|no longer)\s+(?:\w+\s+){{0,2}}?{_SPOF}"
-                        rf"|\b{_SPOF}\s+(?:\w+\s+)?(?:no more|any ?more|no longer)\b")
+                        rf"|\b{_SPOF}\s+(?:\w+\s+)?(?:no more|any ?more|no longer)\b"
+                        rf"|(?<!not )(?<!n't )(?<!\bnever )"
+                        rf"\b(?:removes?|removed|lost|closes?|closed)\s+(?:the|its|their)\s+"
+                        rf"(?:last|only)\s+{_SPOF}")
 
 
 def _spof_verdict(turn: Turn, seed: Path, cid: str) -> list[str]:
